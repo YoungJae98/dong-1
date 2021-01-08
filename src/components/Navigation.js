@@ -8,6 +8,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 
 import List from "./List";
 import Listitem from "./Listitem";
+import { Link, NavLink } from "react-router-dom";
 
 const StyledNavigation = styled.div`
   background-color: ${(props) => props.backgroundColor || "white"};
@@ -18,7 +19,7 @@ const StyledNavigation = styled.div`
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
 
-  padding-top: ${(props) => props.paddingTop};
+  padding-top: ${(props) => props.paddingTop || "1px"};
   padding-bottom: ${(props) => props.paddingBottom};
   padding-left: ${(props) => props.paddingLeft || "30px"};
   padding-right: ${(props) => props.paddingRight || "30px"};
@@ -67,13 +68,30 @@ export function Navigation({
       verticalAlign={verticalAlign}
       horizontalAlign={horizontalAlign}
     >
-      <img src={logo_reversed} className="App-logo" alt="logo" height="118px" />
+      <Link to="/">
+        <img
+          src={logo_reversed}
+          className="App-logo"
+          alt="logo"
+          height="118px"
+        />
+      </Link>
       <List width="800px">
-        <Listitem label="총동아리연합회" marginRight="80px" />
-        <Listitem label="중앙동아리" marginRight="80px" />
-        <Listitem label="정보" marginRight="80px" />
-        <Listitem label="소통" marginRight="80px" />
-        <Listitem label="자료" marginRight="80px" />
+        <NavLink to="/clubunion" activeStyle={{ color: "red" }}>
+          <Listitem label="총동아리연합회" />
+        </NavLink>
+        <NavLink to="/centralclub" activeStyle={{ color: "red" }}>
+          <Listitem label="중앙동아리" />
+        </NavLink>
+        <NavLink to="/information" activeStyle={{ color: "red" }}>
+          <Listitem label="정보" />
+        </NavLink>
+        <NavLink to="/communication" activeStyle={{ color: "red" }}>
+          <Listitem label="소통" />
+        </NavLink>
+        <NavLink to="/document" activeStyle={{ color: "red" }}>
+          <Listitem label="자료" />
+        </NavLink>
       </List>
       <a href="">
         <BsFillPersonFill size="32" />

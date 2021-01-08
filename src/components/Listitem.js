@@ -9,6 +9,9 @@ const StyledListitem = styled.li`
 
   width: ${(props) => props.width};
   height: ${(props) => props.height};
+
+  font-weight: bold;
+  font-size: 21px;
 `;
 
 function Listitem({ label, marginTop, marginBottom, marginLeft, marginRight }) {

@@ -11,6 +11,7 @@ import {
   AiOutlineFacebook,
   AiOutlineYoutube,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.div`
   background-color: ${(props) => props.backgroundColor || "#14406c"};
@@ -69,7 +70,9 @@ export function Header({
       horizontalAlign={horizontalAlign}
     >
       <Container height="180px" horizontalAlign="left">
-        <Logo />
+        <Link to="/">
+          <Logo />
+        </Link>
       </Container>
       <Container height="180px" horizontalAlign="flex-end" paddingRight="30px">
         <a

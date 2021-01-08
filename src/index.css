@@ -1,22 +1,26 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "NanumGothic";
+  font-weight: bold;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+@font-face {
+  font-family: "Bamin";
+  src: url(./assets/BMJUA_ttf.ttf) format("truetype");
 }
 
 a {
   color: inherit;
+  text-decoration: none;
 }
 
 ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0;
+  margin: 0;
 }

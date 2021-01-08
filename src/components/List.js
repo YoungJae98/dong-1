@@ -7,7 +7,7 @@ const StyledList = styled.ul`
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};
   align-items: ${(props) => props.verticalAlign || "center"};
-  justify-content: ${(props) => props.horizontalAlign || "center"};
+  justify-content: ${(props) => props.horizontalAlign || "space-around"};
 
   width: ${(props) => props.width};
 `;
