@@ -1,24 +1,24 @@
-import logo from "./logo.svg";
-import "./App.css";
-import Button from "./components/Button";
+import Header from "./components/Header";
+import Container from "./components/Container";
+import Navigation from "./components/Navigation";
+import Carousel from "./components/Carousel";
+import Card from "./components/Card";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>컴포넌트 개발중</p>
-        <Button size="small" label="test1" />
-        <Button primary size="medium" label="test2" />
-        <Button
-          primary
-          size="large"
-          backgroundColor="cyan"
-          label="test3"
-          marginTop="30px"
-        />
-      </header>
-    </div>
+    <Container fd="column">
+      <Header />
+      <Navigation />
+      <Carousel />
+      <Container marginTop="2px">
+        <Card width="599px" height="200px" marginRight="2px">
+          card1
+        </Card>
+        <Card width="599px" height="200px">
+          card2
+        </Card>
+      </Container>
+    </Container>
   );
 }
 

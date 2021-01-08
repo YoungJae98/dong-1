@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 const StyledButton = styled.button`
   background-color: ${(props) => (props.primary ? "red" : "")};
   background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.fontColor || "black"};
 
   margin-top:${(props) => props.marginTop};
   margin-bottom:${(props) => props.marginBottom};
@@ -14,14 +15,14 @@ const StyledButton = styled.button`
   ${(props) =>
     props.size === "small" &&
     css`
-      width: 4vw;
-      height: 3vh;
+      width: 4rem;
+      height: 3rem;
     `}
   ${(props) =>
     props.size === "medium" &&
     css`
-      width: 8vw;
-      height: 6vh;
+      width: 8rem;
+      height: 6rem;
     `}
   ${(props) =>
     props.size === "large" &&
@@ -30,6 +31,9 @@ const StyledButton = styled.button`
       height: 9rem;
     `}
 
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
+
   outline:none;
   border:none;
   border-radius:5px;
@@ -37,31 +41,43 @@ const StyledButton = styled.button`
   transition: 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: green;
-    color: white;
+    background-color: ${(props) => props.hoverBackgrounColor || "green"};
+    color: ${(props) => props.hoverFontColor || "white"};
   }
 
 `;
 
-function Button({
+export function Button({
   primary,
   backgroundColor,
+  hoverBackgrounColor,
+  fontColor,
+  hoverFontColor,
   size,
+  fontSize,
   label,
   marginTop,
   marginBottom,
   marginLeft,
   marginRight,
+  width,
+  height,
 }) {
   return (
     <StyledButton
       primary={primary}
       backgroundColor={backgroundColor}
+      hoverBackgrounColor={hoverBackgrounColor}
+      fontColor={fontColor}
+      hoverFontColor={hoverFontColor}
       size={size}
+      fontSize={fontSize}
       marginTop={marginTop}
       marginBottom={marginBottom}
       marginLeft={marginLeft}
       marginRight={marginRight}
+      width={width}
+      height={height}
     >
       {label}
     </StyledButton>
@@ -74,10 +90,10 @@ Button.propTypes = {
   size: PropTypes.oneOf(["small", "medium", "large"]),
   label: PropTypes.string.isRequired,
   onClick: PropTypes.func,
-  marginTop: PropTypes.number,
-  marginBottom: PropTypes.number,
-  marginLeft: PropTypes.number,
-  marginRight: PropTypes.number,
+  marginTop: PropTypes.string,
+  marginBottom: PropTypes.string,
+  marginLeft: PropTypes.string,
+  marginRight: PropTypes.string,
 };
 
 Button.defaultProps = {

@@ -1,20 +1,9 @@
-/* eslint-disable react/jsx-no-target-blank */
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import Logo from "./Logo";
-import Container from "./Container";
-
-import {
-  AiOutlineInstagram,
-  AiOutlineFacebook,
-  AiOutlineYoutube,
-} from "react-icons/ai";
-
-const StyledHeader = styled.div`
-  background-color: ${(props) => props.backgroundColor || "#14406c"};
-  color: ${(props) => props.fontColor || "white"};
+const StyledContainer = styled.div`
+  background-color: ${(props) => props.backgroundColor};
 
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
@@ -26,8 +15,8 @@ const StyledHeader = styled.div`
   padding-left: ${(props) => props.paddingLeft};
   padding-right: ${(props) => props.paddingRight};
 
-  width: ${(props) => props.width || "1200px"};
-  height: ${(props) => props.height || "180px"};
+  width: ${(props) => props.width || "100%"};
+  height: ${(props) => props.height || "100%"};
 
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};
@@ -35,8 +24,10 @@ const StyledHeader = styled.div`
   justify-content: ${(props) => props.horizontalAlign || "center"};
 `;
 
-export function Header({
+export function Container({
   backgroundColor,
+  size,
+  fontSize,
   marginTop,
   marginBottom,
   marginLeft,
@@ -50,10 +41,13 @@ export function Header({
   fd,
   verticalAlign,
   horizontalAlign,
+  children,
 }) {
   return (
-    <StyledHeader
+    <StyledContainer
       backgroundColor={backgroundColor}
+      size={size}
+      fontSize={fontSize}
       marginTop={marginTop}
       marginBottom={marginBottom}
       marginLeft={marginLeft}
@@ -68,33 +62,12 @@ export function Header({
       verticalAlign={verticalAlign}
       horizontalAlign={horizontalAlign}
     >
-      <Container height="180px" horizontalAlign="left">
-        <Logo />
-      </Container>
-      <Container height="180px" horizontalAlign="flex-end" paddingRight="30px">
-        <a
-          href="https://www.instagram.com/?hl=ko"
-          target="_blank"
-          style={{ marginRight: "10px" }}
-        >
-          <AiOutlineInstagram size="50" />
-        </a>
-        <a
-          href="https://www.facebook.com/sejongclubunion"
-          target="_blank"
-          style={{ marginRight: "10px" }}
-        >
-          <AiOutlineFacebook size="50" />
-        </a>
-        <a href="https://www.instagram.com/?hl=ko" target="_blank">
-          <AiOutlineYoutube size="50" />
-        </a>
-      </Container>
-    </StyledHeader>
+      {children}
+    </StyledContainer>
   );
 }
 
-Header.propTypes = {
+Container.propTypes = {
   backgroundColor: PropTypes.string,
   marginTop: PropTypes.string,
   marginBottom: PropTypes.string,
@@ -111,6 +84,6 @@ Header.propTypes = {
   horizontalAlign: PropTypes.string,
 };
 
-Header.defaultProps = {};
+Container.defaultProps = {};
 
-export default Header;
+export default Container;
