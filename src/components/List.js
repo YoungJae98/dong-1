@@ -9,13 +9,15 @@ const StyledList = styled.ul`
   align-items: ${(props) => props.verticalAlign || "center"};
   justify-content: ${(props) => props.horizontalAlign || "space-around"};
 
-  width: ${(props) => props.width};
+  width: ${(props) => props.width || "100%"};
+  height: ${(props) => props.height || "100%"};
 `;
 
-function List({ width, fd, verticalAlign, horizontalAlign, children }) {
+function List({ width, height, fd, verticalAlign, horizontalAlign, children }) {
   return (
     <StyledList
       width={width}
+      height={height}
       fd={fd}
       verticalAlign={verticalAlign}
       horizontalAlign={horizontalAlign}

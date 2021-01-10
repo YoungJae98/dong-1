@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Container from "./components/Container";
 import Navigation from "./components/Navigation";
+import Footer from "./components/Footer";
 
 import Main from "./routes/Main";
 import ClubUnion from "./routes/ClubUnion";
@@ -34,6 +35,7 @@ function App() {
       <Route path="/document">
         <Document />
       </Route>
+      <Footer />
     </Container>
   );
 }

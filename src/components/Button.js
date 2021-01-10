@@ -6,6 +6,8 @@ const StyledButton = styled.button`
   background-color: ${(props) => (props.primary ? "red" : "")};
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor || "black"};
+  font-size:${(props) => props.fontSize};
+  font-weight: bold;
 
   margin-top:${(props) => props.marginTop};
   margin-bottom:${(props) => props.marginBottom};
@@ -35,14 +37,15 @@ const StyledButton = styled.button`
   height: ${(props) => props.height};
 
   outline:none;
-  border:none;
-  border-radius:5px;
+  border: 2px solid #14406c;
+  border-radius:3px;
 
   transition: 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: ${(props) => props.hoverBackgrounColor || "green"};
-    color: ${(props) => props.hoverFontColor || "white"};
+    background-color: ${(props) => props.hoverBackgrounColor || "white"};
+    border: 2px solid #14406c;
+    color: ${(props) => props.hoverFontColor || "#14406c"};
   }
 
 `;

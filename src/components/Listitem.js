@@ -7,20 +7,51 @@ const StyledListitem = styled.li`
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
 
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => props.width || "100%"};
+  height: ${(props) => props.height || "100%"};
 
+  color: ${(props) => props.fontColor};
   font-weight: bold;
-  font-size: 21px;
+  font-size: ${(props) => props.fontSize || "21px"};
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: ${(props) => props.borderBottom};
+
+  &:hover {
+    background-color: ${(props) => props.hoverBackgroundColor};
+    color: ${(props) => props.hoverColor};
+    cursor: ${(props) => props.hoverCursor};
+  }
 `;
 
-function Listitem({ label, marginTop, marginBottom, marginLeft, marginRight }) {
+function Listitem({
+  label,
+  fontSize,
+  fontColor,
+  hoverBackgroundColor,
+  hoverColor,
+  hoverCursor,
+  borderBottom,
+  marginTop,
+  marginBottom,
+  marginLeft,
+  marginRight,
+}) {
   return (
     <StyledListitem
       marginTop={marginTop}
       marginBottom={marginBottom}
       marginLeft={marginLeft}
       marginRight={marginRight}
+      fontSize={fontSize}
+      fontColor={fontColor}
+      hoverBackgroundColor={hoverBackgroundColor}
+      hoverColor={hoverColor}
+      hoverCursor={hoverCursor}
+      borderBottom={borderBottom}
     >
       {label}
     </StyledListitem>
