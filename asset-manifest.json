@@ -1,24 +1,25 @@
 {
   "files": {
     "main.css": "/dong/static/css/main.b9c6bbca.chunk.css",
-    "main.js": "/dong/static/js/main.af94a64f.chunk.js",
-    "main.js.map": "/dong/static/js/main.af94a64f.chunk.js.map",
+    "main.js": "/dong/static/js/main.b7980a08.chunk.js",
+    "main.js.map": "/dong/static/js/main.b7980a08.chunk.js.map",
     "runtime-main.js": "/dong/static/js/runtime-main.7df10508.js",
     "runtime-main.js.map": "/dong/static/js/runtime-main.7df10508.js.map",
-    "static/js/2.3fdb748d.chunk.js": "/dong/static/js/2.3fdb748d.chunk.js",
-    "static/js/2.3fdb748d.chunk.js.map": "/dong/static/js/2.3fdb748d.chunk.js.map",
+    "static/js/2.2064bd7a.chunk.js": "/dong/static/js/2.2064bd7a.chunk.js",
+    "static/js/2.2064bd7a.chunk.js.map": "/dong/static/js/2.2064bd7a.chunk.js.map",
     "index.html": "/dong/index.html",
     "static/css/main.b9c6bbca.chunk.css.map": "/dong/static/css/main.b9c6bbca.chunk.css.map",
-    "static/js/2.3fdb748d.chunk.js.LICENSE.txt": "/dong/static/js/2.3fdb748d.chunk.js.LICENSE.txt",
+    "static/js/2.2064bd7a.chunk.js.LICENSE.txt": "/dong/static/js/2.2064bd7a.chunk.js.LICENSE.txt",
     "static/media/index.css": "/dong/static/media/BMJUA_ttf.bf12d2d8.ttf",
+    "static/media/Sejonglogo.fb16eeb7.png": "/dong/static/media/Sejonglogo.fb16eeb7.png",
+    "static/media/carousel1.8ff7e904.png": "/dong/static/media/carousel1.8ff7e904.png",
     "static/media/logo_reversed.3e77b522.png": "/dong/static/media/logo_reversed.3e77b522.png",
-    "static/media/main.6f0a0f95.png": "/dong/static/media/main.6f0a0f95.png",
     "static/media/sejong.df1675eb.png": "/dong/static/media/sejong.df1675eb.png"
   },
   "entrypoints": [
     "static/js/runtime-main.7df10508.js",
-    "static/js/2.3fdb748d.chunk.js",
+    "static/js/2.2064bd7a.chunk.js",
     "static/css/main.b9c6bbca.chunk.css",
-    "static/js/main.af94a64f.chunk.js"
+    "static/js/main.b7980a08.chunk.js"
   ]
 }
