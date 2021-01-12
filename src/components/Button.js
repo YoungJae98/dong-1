@@ -33,19 +33,17 @@ const StyledButton = styled.button`
       height: 9rem;
     `}
 
-  width: ${(props) => props.width};
-  height: ${(props) => props.height};
+  width: ${(props) => props.width || "100%"};
+  height: ${(props) => props.height || "100%"};
 
   outline:none;
-  border: 2px solid #14406c;
-  border-radius:3px;
+  border:none;
 
   transition: 0.2s;
   &:hover {
     cursor: pointer;
-    background-color: ${(props) => props.hoverBackgrounColor || "white"};
-    border: 2px solid #14406c;
-    color: ${(props) => props.hoverFontColor || "#14406c"};
+    background-color: ${(props) => props.hoverBackgrounColor};
+    color: ${(props) => props.hoverFontColor};
   }
 
 `;
@@ -58,13 +56,14 @@ export function Button({
   hoverFontColor,
   size,
   fontSize,
-  label,
   marginTop,
   marginBottom,
   marginLeft,
   marginRight,
   width,
   height,
+  onClick,
+  children,
 }) {
   return (
     <StyledButton
@@ -81,8 +80,9 @@ export function Button({
       marginRight={marginRight}
       width={width}
       height={height}
+      onClick={onClick}
     >
-      {label}
+      {children}
     </StyledButton>
   );
 }

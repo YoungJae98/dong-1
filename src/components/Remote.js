@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledRemote = styled.div`
-  background-color: ${(props) => props.backgroundColor || "#14406c"};
+  background-color: ${(props) => props.backgroundColor || "#FAFAFA"};
 
-  border: 2px solid white;
-  border-radius: 5px;
+  border: 1px solid #14406c;
+  border-radius: 10px;
 
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
@@ -18,7 +18,7 @@ const StyledRemote = styled.div`
   padding-right: ${(props) => props.paddingRight};
 
   width: ${(props) => props.width || "100%"};
-  height: ${(props) => props.height || "100%"};
+  height: ${(props) => props.height};
 
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};

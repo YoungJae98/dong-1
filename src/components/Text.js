@@ -9,15 +9,24 @@ const StyledText = styled.p`
   font-weight: ${(props) => props.fontWeight || "bold"};
 
   margin: 0;
+  margin-left: ${(props) => props.marginLeft};
 `;
 
-function Text({ fontSize, fontColor, fontFamily, fontWeight, children }) {
+function Text({
+  fontSize,
+  fontColor,
+  fontFamily,
+  fontWeight,
+  marginLeft,
+  children,
+}) {
   return (
     <StyledText
       fontSize={fontSize}
       fontColor={fontColor}
       fontFamily={fontFamily}
       fontWeight={fontWeight}
+      marginLeft={marginLeft}
     >
       {children}
     </StyledText>

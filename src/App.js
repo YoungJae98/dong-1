@@ -1,4 +1,3 @@
-import Header from "./components/Header";
 import Container from "./components/Container";
 import Navigation from "./components/Navigation";
 import Footer from "./components/Footer";
@@ -15,7 +14,6 @@ import { Route } from "react-router-dom";
 function App() {
   return (
     <Container fd="column">
-      <Header />
       <Navigation />
       <Route exact path="/">
         <Main />

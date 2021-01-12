@@ -16,7 +16,7 @@ const StyledListitem = styled.li`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: left;
 
   border-bottom: ${(props) => props.borderBottom};
 
@@ -28,6 +28,7 @@ const StyledListitem = styled.li`
 `;
 
 function Listitem({
+  height,
   label,
   fontSize,
   fontColor,
@@ -42,6 +43,7 @@ function Listitem({
 }) {
   return (
     <StyledListitem
+      height={height}
       marginTop={marginTop}
       marginBottom={marginBottom}
       marginLeft={marginLeft}

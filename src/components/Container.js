@@ -22,6 +22,9 @@ const StyledContainer = styled.div`
   flex-direction: ${(props) => props.fd || "row"};
   align-items: ${(props) => props.verticalAlign || "center"};
   justify-content: ${(props) => props.horizontalAlign || "center"};
+
+  border: ${(props) => props.border};
+  border-radius: ${(props) => props.borderRadius};
 `;
 
 export function Container({
@@ -41,6 +44,8 @@ export function Container({
   fd,
   verticalAlign,
   horizontalAlign,
+  border,
+  borderRadius,
   children,
 }) {
   return (
@@ -61,6 +66,8 @@ export function Container({
       fd={fd}
       verticalAlign={verticalAlign}
       horizontalAlign={horizontalAlign}
+      border={border}
+      borderRadius={borderRadius}
     >
       {children}
     </StyledContainer>

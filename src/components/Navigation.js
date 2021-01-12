@@ -8,13 +8,13 @@ import { BsFillPersonFill } from "react-icons/bs";
 
 import List from "./List";
 import Listitem from "./Listitem";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, Redirect } from "react-router-dom";
 
 const StyledNavigation = styled.div`
-  background-color: ${(props) => props.backgroundColor || "white"};
+  background-color: ${(props) => props.backgroundColor || "#fafafa"};
   color: ${(props) => props.fontColor || "#14406c"};
 
-  margin-top: ${(props) => props.marginTop || "2px"};
+  margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
@@ -24,15 +24,13 @@ const StyledNavigation = styled.div`
   padding-left: ${(props) => props.paddingLeft || "30px"};
   padding-right: ${(props) => props.paddingRight || "30px"};
 
-  width: ${(props) => props.width || "1138px"};
+  width: ${(props) => props.width || "1140px"};
   height: ${(props) => props.height || "118px"};
 
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};
   align-items: ${(props) => props.verticalAlign || "center"};
   justify-content: ${(props) => props.horizontalAlign || "space-between"};
-
-  border: 1px solid #14406c;
 `;
 
 export function Navigation({
@@ -77,11 +75,11 @@ export function Navigation({
         />
       </Link>
       <List width="800px">
-        <NavLink to="/clubunion" activeStyle={{ color: "red" }}>
-          <Listitem label="총동아리연합회" />
+        <NavLink to="/clubunion/" activeStyle={{ color: "red" }}>
+          <Listitem label="총동아리연합회 소개" />
         </NavLink>
         <NavLink to="/centralclub" activeStyle={{ color: "red" }}>
-          <Listitem label="중앙동아리" />
+          <Listitem label="중앙동아리 소개" />
         </NavLink>
         <NavLink to="/information" activeStyle={{ color: "red" }}>
           <Listitem label="정보" />

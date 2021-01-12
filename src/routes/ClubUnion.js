@@ -1,135 +1,152 @@
 import React from "react";
+import { NavLink, Route } from "react-router-dom";
+import logo_inversed from "../assets/logo_reversed.png";
+import Sejonglogo from "../assets/Sejonglogo.png";
 import Button from "../components/Button";
+
 import Container from "../components/Container";
-import Text from "../components/Text";
-import Remote from "../components/Remote";
 import List from "../components/List";
 import Listitem from "../components/Listitem";
+import Remote from "../components/Remote";
+import Text from "../components/Text";
 
-function Main() {
+function ClubUnion() {
   return (
-    <Container
-      width="1200px"
-      backgroundColor="#14406c"
-      marginTop="2px"
-      paddingBottom="30px"
-      fd="column"
-    >
-      <Container>
-        <Container width="240px" height="1px"></Container>
+    <Container height="1200px" backgroundColor="#FAFAFA">
+      <Container
+        backgroundColor="#FAFAFA"
+        width="200px"
+        fd="column"
+        horizontalAlign="left"
+      >
         <Container
-          verticalAlign="baseline"
-          fd="column"
-          paddingTop="20px"
-          paddingBottom="20px"
-          width="960px"
+          height="50px"
+          horizontalAlign="left"
+          verticalAlign="flex-end"
+          marginTop="100px"
         >
-          <Text fontColor="white" fontSize="24px">
-            구성원 소개
+          <img src={logo_inversed} alt="" width="40px" />
+          <Text fontColor="#14406c" fontSize="18px" fontWeight="bold">
+            총동아리연합회 소개
           </Text>
-          <Text fontColor="white">총동아리 연합회의 구성원을 소개합니다.</Text>
         </Container>
-      </Container>
-      <Container verticalAlign="flex-start">
-        <Container width="240px">
-          <Container backgroundColor="white" width="150px" height="200px">
-            <Remote>
-              <List fd="column">
+        <Remote width="200px" paddingTop="20px" paddingBottom="20px">
+          <List fd="column">
+            {/* list item foreach로 고치기 필요 */}
+            <Button backgroundColor="#FAFAFA" onClick={() => {}}>
+              <NavLink to="/clubunion/hello">
                 <Listitem
-                  label="총동아리연합회"
-                  fontSize="15px"
-                  fontColor="white"
-                  borderBottom="2px solid white"
-                />
+                  height="50px"
+                  fontColor="#14406c"
+                  fontSize="18px"
+                  label="인사말"
+                ></Listitem>
+              </NavLink>
+            </Button>
+            <Button backgroundColor="#FAFAFA" onClick={() => {}}>
+              <NavLink to="/clubunion/introduce">
                 <Listitem
-                  label="총동연 소개"
-                  fontSize="15px"
-                  fontColor="white"
-                  hoverBackgroundColor="white"
-                  hoverColor="#14406c"
-                  hoverCursor="pointer"
-                />
+                  height="50px"
+                  fontColor="#14406c"
+                  fontSize="18px"
+                  label="회장단 및 국장 소개"
+                ></Listitem>
+              </NavLink>
+            </Button>
+            <Button backgroundColor="#FAFAFA" paddingBottom="20px">
+              <NavLink to="/clubunion/way2us">
                 <Listitem
-                  label="구성원 소개"
-                  fontSize="15px"
-                  fontColor="white"
-                  hoverBackgroundColor="white"
-                  hoverColor="#14406c"
-                  hoverCursor="pointer"
-                />
-                <Listitem
+                  height="50px"
+                  fontColor="#14406c"
+                  fontSize="18px"
                   label="찾아오시는 길"
-                  fontSize="15px"
-                  fontColor="white"
-                  hoverBackgroundColor="white"
-                  hoverColor="#14406c"
-                  hoverCursor="pointer"
-                />
-              </List>
-            </Remote>
+                ></Listitem>
+              </NavLink>
+            </Button>
+          </List>
+        </Remote>
+      </Container>
+      <Container
+        backgroundColor="#FAFAFA"
+        width="1000px"
+        fd="column"
+        marginLeft="30px"
+      >
+        <Route path="/clubunion/hello">
+          <Container
+            backgroundColor="#FAFAFA"
+            height="100px"
+            horizontalAlign="left"
+          >
+            <Text fontColor="#14406c" fontSize="32px" marginLeft="30px">
+              인사말
+            </Text>
           </Container>
-        </Container>
-        <Container width="930px" backgroundColor="white" marginRight="30px">
-          <Container marginTop="20px" marginBottom="20px">
-            <Button
-              marginRight="3px"
-              backgroundColor="#14406c"
-              width="120px"
-              height="50px"
-              fontColor="white"
-              fontSize="18px"
-              label="회장"
-            />
-            <Button
-              marginRight="3px"
-              backgroundColor="#14406c"
-              width="120px"
-              height="50px"
-              fontColor="white"
-              fontSize="18px"
-              label="부회장"
-            />
-            <Button
-              marginRight="3px"
-              backgroundColor="#14406c"
-              width="120px"
-              height="50px"
-              fontColor="white"
-              fontSize="18px"
-              label="기획국장"
-            />
-            <Button
-              marginRight="3px"
-              backgroundColor="#14406c"
-              width="120px"
-              height="50px"
-              fontColor="white"
-              fontSize="18px"
-              label="사무국장"
-            />
-            <Button
-              marginRight="3px"
-              backgroundColor="#14406c"
-              width="120px"
-              height="50px"
-              fontColor="white"
-              fontSize="18px"
-              label="소통국장"
-            />
-            <Button
-              marginRight="3px"
-              backgroundColor="#14406c"
-              width="120px"
-              height="50px"
-              fontColor="white"
-              fontSize="18px"
-              label="홍보국장"
-            />
+          <Container
+            backgroundColor="white"
+            border="1px solid #14406c"
+            borderRadius="15px"
+            fd="column"
+            horizontalAlign="left"
+            verticalAlign="flex-start"
+          >
+            <Container marginTop="50px" marginLeft="50px" fd="column">
+              <Text>안녕 난 훈래야</Text>
+              <img src={Sejonglogo} alt="sejong" width="500px" />
+            </Container>
           </Container>
-        </Container>
+        </Route>
+        <Route path="/clubunion/introduce">
+          <Container
+            backgroundColor="#FAFAFA"
+            height="100px"
+            horizontalAlign="left"
+          >
+            <Text fontColor="#14406c" fontSize="32px" marginLeft="30px">
+              회장단 및 국장 소개
+            </Text>
+          </Container>
+          <Container
+            backgroundColor="white"
+            border="1px solid #14406c"
+            borderRadius="15px"
+            fd="column"
+            horizontalAlign="left"
+            verticalAlign="flex-start"
+          >
+            <Container marginTop="50px" marginLeft="50px" fd="column">
+              <Text>회장은 누구고 부회장은 누구고 국장들은 누구다</Text>
+              <img src={Sejonglogo} alt="sejong" width="500px" />
+            </Container>
+          </Container>
+        </Route>
+        <Route path="/clubunion/way2us">
+          <Container
+            backgroundColor="#FAFAFA"
+            height="100px"
+            horizontalAlign="left"
+          >
+            <Text fontColor="#14406c" fontSize="32px" marginLeft="30px">
+              찾아오시는 길
+            </Text>
+          </Container>
+          <Container
+            backgroundColor="white"
+            border="1px solid #14406c"
+            borderRadius="15px"
+            fd="column"
+            horizontalAlign="left"
+            verticalAlign="flex-start"
+          >
+            <Container marginTop="50px" marginLeft="50px" fd="column">
+              <Text>이렇게해서 저렇게 오면 되지 않을까?</Text>
+              <img src={Sejonglogo} alt="sejong" width="500px" />
+            </Container>
+          </Container>
+        </Route>
       </Container>
     </Container>
   );
 }
 
-export default Main;
+export default ClubUnion;
