@@ -8,7 +8,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 
 import List from "./List";
 import Listitem from "./Listitem";
-import { Link, NavLink, Redirect } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const StyledNavigation = styled.div`
   background-color: ${(props) => props.backgroundColor || "#fafafa"};
