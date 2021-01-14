@@ -12,7 +12,6 @@ import Document from "./routes/Document";
 
 import { Route } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 function App() {
   const [sticky, setsticky] = useState(false);
   useEffect(() => {}, [sticky]);
