@@ -5,7 +5,6 @@ import PropTypes from "prop-types";
 
 import Logo from "./Logo";
 import Container from "./Container";
-// aborted
 import {
   AiOutlineInstagram,
   AiOutlineFacebook,
@@ -28,7 +27,7 @@ const StyledHeader = styled.div`
   padding-right: ${(props) => props.paddingRight};
 
   width: ${(props) => props.width || "1200px"};
-  height: ${(props) => props.height || "180px"};
+  height: ${(props) => props.height || "120px"};
 
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};

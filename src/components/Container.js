@@ -25,6 +25,8 @@ const StyledContainer = styled.div`
 
   border: ${(props) => props.border};
   border-radius: ${(props) => props.borderRadius};
+
+  position: ${(props) => props.position};
 `;
 
 export function Container({
@@ -46,6 +48,7 @@ export function Container({
   horizontalAlign,
   border,
   borderRadius,
+  position,
   children,
 }) {
   return (
@@ -68,6 +71,7 @@ export function Container({
       horizontalAlign={horizontalAlign}
       border={border}
       borderRadius={borderRadius}
+      position={position}
     >
       {children}
     </StyledContainer>
