@@ -34,6 +34,9 @@ const StyledNavigation = styled.div`
   justify-content: ${(props) => props.horizontalAlign || "space-between"};
 
   border: ${(props) => props.border};
+
+  position: ${(props) => (props.sticky ? "fixed" : "")};
+  top: 0;
 `;
 
 export function Navigation({
@@ -52,56 +55,56 @@ export function Navigation({
   verticalAlign,
   horizontalAlign,
   border,
+  sticky,
 }) {
   return (
-    <Container className="navbar" backgroundColor="#FAFAFA">
-      <StyledNavigation
-        backgroundColor={backgroundColor}
-        marginTop={marginTop}
-        marginBottom={marginBottom}
-        marginLeft={marginLeft}
-        marginRight={marginRight}
-        paddingTop={paddingTop}
-        paddingBottom={paddingBottom}
-        paddingLeft={paddingLeft}
-        paddingRight={paddingRight}
-        width={width}
-        height={height}
-        fd={fd}
-        verticalAlign={verticalAlign}
-        horizontalAlign={horizontalAlign}
-        border={border}
-      >
-        <Link to="/">
-          <img
-            src={logo_reversed}
-            className="App-logo"
-            alt="logo"
-            height="88px"
-          />
-        </Link>
-        <List width="800px">
-          <NavLink to="/clubunion/" activeStyle={{ color: "red" }}>
-            <Listitem label="총동아리연합회 소개" />
-          </NavLink>
-          <NavLink to="/centralclub" activeStyle={{ color: "red" }}>
-            <Listitem label="중앙동아리 소개" />
-          </NavLink>
-          <NavLink to="/information" activeStyle={{ color: "red" }}>
-            <Listitem label="정보" />
-          </NavLink>
-          <NavLink to="/communication" activeStyle={{ color: "red" }}>
-            <Listitem label="소통" />
-          </NavLink>
-          <NavLink to="/document" activeStyle={{ color: "red" }}>
-            <Listitem label="자료" />
-          </NavLink>
-        </List>
-        <a href="">
-          <BsFillPersonFill size="32" />
-        </a>
-      </StyledNavigation>
-    </Container>
+    <StyledNavigation
+      backgroundColor={backgroundColor}
+      marginTop={marginTop}
+      marginBottom={marginBottom}
+      marginLeft={marginLeft}
+      marginRight={marginRight}
+      paddingTop={paddingTop}
+      paddingBottom={paddingBottom}
+      paddingLeft={paddingLeft}
+      paddingRight={paddingRight}
+      width={width}
+      height={height}
+      fd={fd}
+      verticalAlign={verticalAlign}
+      horizontalAlign={horizontalAlign}
+      border={border}
+      sticky={sticky}
+    >
+      <Link to="/">
+        <img
+          src={logo_reversed}
+          className="App-logo"
+          alt="logo"
+          height="88px"
+        />
+      </Link>
+      <List width="800px">
+        <NavLink to="/clubunion/" activeStyle={{ color: "red" }}>
+          <Listitem label="총동아리연합회 소개" />
+        </NavLink>
+        <NavLink to="/centralclub" activeStyle={{ color: "red" }}>
+          <Listitem label="중앙동아리 소개" />
+        </NavLink>
+        <NavLink to="/information" activeStyle={{ color: "red" }}>
+          <Listitem label="정보" />
+        </NavLink>
+        <NavLink to="/communication" activeStyle={{ color: "red" }}>
+          <Listitem label="소통" />
+        </NavLink>
+        <NavLink to="/document" activeStyle={{ color: "red" }}>
+          <Listitem label="자료" />
+        </NavLink>
+      </List>
+      <a href="">
+        <BsFillPersonFill size="32" />
+      </a>
+    </StyledNavigation>
   );
 }
 

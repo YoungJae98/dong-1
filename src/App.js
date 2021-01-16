@@ -10,20 +10,19 @@ import Information from "./routes/Information";
 import Communication from "./routes/Communication";
 import Document from "./routes/Document";
 
-import { Route } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Route, useLocation } from "react-router-dom";
+import { useState } from "react";
 
 function App() {
   const [sticky, setsticky] = useState(false);
-  useEffect(() => {}, [sticky]);
+  const current = useLocation();
   window.onscroll = () => {
     const offset = window.scrollY;
-    if (offset > 120) {
+    const stickyLimit = current.pathname === "/" ? 120 : 0;
+    if (offset > stickyLimit) {
       setsticky(true);
-      console.log(sticky);
     } else {
       setsticky(false);
-      console.log(sticky);
     }
   };
   return (
@@ -31,7 +30,16 @@ function App() {
       <Route exact path="/">
         <Header />
       </Route>
-      <Navigation sticky={sticky} />
+      <Container width="100%" height="80px">
+        <Container
+          width="100%"
+          height="80px"
+          backgroundColor="#FAFAFA"
+          position={sticky ? "fixed" : ""}
+        >
+          <Navigation />
+        </Container>
+      </Container>
       <Route exact path="/">
         <Main />
       </Route>

@@ -27,6 +27,7 @@ const StyledContainer = styled.div`
   border-radius: ${(props) => props.borderRadius};
 
   position: ${(props) => props.position};
+  top: ${(props) => (props.position === "fixed" ? 0 : null)};
 `;
 
 export function Container({
