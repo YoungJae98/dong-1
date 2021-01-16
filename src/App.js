@@ -30,10 +30,10 @@ function App() {
       <Route exact path="/">
         <Header />
       </Route>
-      <Container width="100%" height="80px">
+      <Container width="100%" height="61px">
         <Container
           width="100%"
-          height="80px"
+          height="61px"
           backgroundColor="#FAFAFA"
           position={sticky ? "fixed" : ""}
         >

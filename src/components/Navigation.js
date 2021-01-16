@@ -26,7 +26,7 @@ const StyledNavigation = styled.div`
   padding-right: ${(props) => props.paddingRight || "30px"};
 
   width: ${(props) => props.width || "1138px"};
-  height: ${(props) => props.height || "80px"};
+  height: ${(props) => props.height || "60px"};
 
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};
@@ -74,14 +74,13 @@ export function Navigation({
       verticalAlign={verticalAlign}
       horizontalAlign={horizontalAlign}
       border={border}
-      sticky={sticky}
     >
       <Link to="/">
         <img
           src={logo_reversed}
           className="App-logo"
           alt="logo"
-          height="88px"
+          height="60px"
         />
       </Link>
       <List width="800px">
