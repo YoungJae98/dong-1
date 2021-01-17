@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledRemote = styled.div`
-  background-color: ${(props) => props.backgroundColor || "#FAFAFA"};
+  background-color: ${(props) => props.backgroundColor || "white"};
 
   border: 1px solid #14406c;
   border-radius: 10px;

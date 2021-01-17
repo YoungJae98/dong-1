@@ -28,6 +28,8 @@ const StyledContainer = styled.div`
 
   position: ${(props) => props.position};
   top: ${(props) => (props.position === "fixed" ? 0 : null)};
+
+  z-index: ${(props) => props.zIndex};
 `;
 
 export function Container({
@@ -50,6 +52,7 @@ export function Container({
   border,
   borderRadius,
   position,
+  zIndex,
   children,
 }) {
   return (
@@ -73,6 +76,7 @@ export function Container({
       border={border}
       borderRadius={borderRadius}
       position={position}
+      zIndex={zIndex}
     >
       {children}
     </StyledContainer>

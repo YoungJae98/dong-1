@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const StyledCard = styled.div`
   background-color: violet;
+  opacity: 0.5;
 
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};

@@ -12,14 +12,16 @@ const StyledFooter = styled.div`
 
 function Footer() {
   return (
-    <Container
-      width="1200px"
-      marginTop="30px"
-      horizontalAlign="left"
-      marginBottom="30px"
-    >
-      <img src={sejong} alt="Sejong Logo" />
-      <StyledFooter>총동아리연합회</StyledFooter>
+    <Container backgroundColor="#FAFAFA" marginTop="50px" zIndex={10}>
+      <Container
+        width="1200px"
+        marginTop="30px"
+        horizontalAlign="left"
+        marginBottom="30px"
+      >
+        <img src={sejong} alt="Sejong Logo" />
+        <StyledFooter>총동아리연합회 저작권 뭐시기</StyledFooter>
+      </Container>
     </Container>
   );
 }

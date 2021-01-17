@@ -91,7 +91,7 @@ Button.propTypes = {
   primary: PropTypes.bool,
   backgroundColor: PropTypes.string,
   size: PropTypes.oneOf(["small", "medium", "large"]),
-  label: PropTypes.string.isRequired,
+  label: PropTypes.string,
   onClick: PropTypes.func,
   marginTop: PropTypes.string,
   marginBottom: PropTypes.string,

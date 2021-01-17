@@ -10,6 +10,7 @@ const StyledText = styled.p`
 
   margin: 0;
   margin-left: ${(props) => props.marginLeft};
+  margin-top: ${(props) => props.marginTop};
 `;
 
 function Text({
@@ -18,6 +19,7 @@ function Text({
   fontFamily,
   fontWeight,
   marginLeft,
+  marginTop,
   children,
 }) {
   return (
@@ -27,6 +29,7 @@ function Text({
       fontFamily={fontFamily}
       fontWeight={fontWeight}
       marginLeft={marginLeft}
+      marginTop={marginTop}
     >
       {children}
     </StyledText>

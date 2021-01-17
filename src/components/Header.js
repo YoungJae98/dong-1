@@ -27,7 +27,7 @@ const StyledHeader = styled.div`
   padding-right: ${(props) => props.paddingRight};
 
   width: ${(props) => props.width || "1200px"};
-  height: ${(props) => props.height || "120px"};
+  height: ${(props) => props.height || "100px"};
 
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};
@@ -52,47 +52,53 @@ export function Header({
   horizontalAlign,
 }) {
   return (
-    <StyledHeader
-      backgroundColor={backgroundColor}
-      marginTop={marginTop}
-      marginBottom={marginBottom}
-      marginLeft={marginLeft}
-      marginRight={marginRight}
-      paddingTop={paddingTop}
-      paddingBottom={paddingBottom}
-      paddingLeft={paddingLeft}
-      paddingRight={paddingRight}
-      width={width}
-      height={height}
-      fd={fd}
-      verticalAlign={verticalAlign}
-      horizontalAlign={horizontalAlign}
-    >
-      <Container height="180px" horizontalAlign="left">
-        <Link to="/">
-          <Logo />
-        </Link>
-      </Container>
-      <Container height="180px" horizontalAlign="flex-end" paddingRight="30px">
-        <a
-          href="https://www.instagram.com/?hl=ko"
-          target="_blank"
-          style={{ marginRight: "10px" }}
+    <Container backgroundColor="#14406c" zIndex={10}>
+      <StyledHeader
+        backgroundColor={backgroundColor}
+        marginTop={marginTop}
+        marginBottom={marginBottom}
+        marginLeft={marginLeft}
+        marginRight={marginRight}
+        paddingTop={paddingTop}
+        paddingBottom={paddingBottom}
+        paddingLeft={paddingLeft}
+        paddingRight={paddingRight}
+        width={width}
+        height={height}
+        fd={fd}
+        verticalAlign={verticalAlign}
+        horizontalAlign={horizontalAlign}
+      >
+        <Container height="100px" horizontalAlign="left">
+          <Link to="/">
+            <Logo />
+          </Link>
+        </Container>
+        <Container
+          height="100px"
+          horizontalAlign="flex-end"
+          paddingRight="30px"
         >
-          <AiOutlineInstagram size="50" />
-        </a>
-        <a
-          href="https://www.facebook.com/sejongclubunion"
-          target="_blank"
-          style={{ marginRight: "10px" }}
-        >
-          <AiOutlineFacebook size="50" />
-        </a>
-        <a href="https://www.instagram.com/?hl=ko" target="_blank">
-          <AiOutlineYoutube size="50" />
-        </a>
-      </Container>
-    </StyledHeader>
+          <a
+            href="https://www.instagram.com/?hl=ko"
+            target="_blank"
+            style={{ marginRight: "10px" }}
+          >
+            <AiOutlineInstagram size="50" />
+          </a>
+          <a
+            href="https://www.facebook.com/sejongclubunion"
+            target="_blank"
+            style={{ marginRight: "10px" }}
+          >
+            <AiOutlineFacebook size="50" />
+          </a>
+          <a href="https://www.instagram.com/?hl=ko" target="_blank">
+            <AiOutlineYoutube size="50" />
+          </a>
+        </Container>
+      </StyledHeader>
+    </Container>
   );
 }
 

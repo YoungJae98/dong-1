@@ -1,10 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-import dummy from "../assets/carousel1.png";
-
 const StyledCarousel = styled.div`
-  background-color: pink;
+  background-color: green;
+  z-index: 1;
 
   margin-top: ${(props) => props.marginTop || "2px"};
   margin-bottom: ${(props) => props.marginBottom};
@@ -12,7 +11,7 @@ const StyledCarousel = styled.div`
   margin-right: ${(props) => props.marginRight};
 
   width: ${(props) => props.width || "100%"};
-  height: ${(props) => props.height || "600px"};
+  height: ${(props) => props.height || "400px"};
 
   display: flex;
   align-items: ${(props) => props.verticalAlign || "center"};
@@ -20,11 +19,7 @@ const StyledCarousel = styled.div`
 `;
 
 function Carousel() {
-  return (
-    <StyledCarousel>
-      <img src={dummy} alt="" />
-    </StyledCarousel>
-  );
+  return <StyledCarousel></StyledCarousel>;
 }
 
 export default Carousel;
