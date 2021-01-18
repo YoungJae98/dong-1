@@ -4,6 +4,7 @@ import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 import logo_reversed from "../assets/logo_reversed.png";
+import logo from "../assets/logo.png";
 import { BsFillPersonFill } from "react-icons/bs";
 
 import List from "./List";
@@ -12,6 +13,7 @@ import { Link, NavLink } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Container from "../components/Container";
+import { colors } from "@material-ui/core";
 
 const StyledNavigation = styled.div`
   background-color: ${(props) => props.backgroundColor || ""};
@@ -37,10 +39,7 @@ const StyledNavigation = styled.div`
 
   border: ${(props) => props.border};
 
-  position: ${(props) => props.position};
-  top: ${(props) => (props.position === "fixed" ? 0 : "relative")};
-
-  z-index: 1000;
+  z-index: 10;
 `;
 
 export function Navigation({
@@ -83,7 +82,7 @@ export function Navigation({
       <Container
         width="100%"
         height="60px"
-        backgroundColor="#FAFAFA"
+        backgroundColor={main ? "#FAFAFA" : "#14406c"}
         zIndex={10}
         position={sticky ? "fixed" : ""}
       >
@@ -106,31 +105,31 @@ export function Navigation({
         >
           <Link to="/">
             <img
-              src={logo_reversed}
+              src={main ? logo_reversed : logo}
               className="App-logo"
               alt="logo"
               height="60px"
             />
           </Link>
-          <List width="800px">
-            <NavLink to="/clubunion" activeStyle={{ color: "red" }}>
+          <List width="800px" fontColor={main ? "#14406c" : "white"}>
+            <NavLink to="/clubunion" activeStyle={{ color: "BurlyWood" }}>
               <Listitem label="총동아리연합회 소개" />
             </NavLink>
-            <NavLink to="/centralclub" activeStyle={{ color: "red" }}>
+            <NavLink to="/centralclub" activeStyle={{ color: "BurlyWood" }}>
               <Listitem label="중앙동아리 소개" />
             </NavLink>
-            <NavLink to="/information" activeStyle={{ color: "red" }}>
+            <NavLink to="/information" activeStyle={{ color: "BurlyWood" }}>
               <Listitem label="정보" />
             </NavLink>
-            <NavLink to="/communication" activeStyle={{ color: "red" }}>
+            <NavLink to="/communication" activeStyle={{ color: "BurlyWood" }}>
               <Listitem label="소통" />
             </NavLink>
-            <NavLink to="/document" activeStyle={{ color: "red" }}>
+            <NavLink to="/document" activeStyle={{ color: "BurlyWood" }}>
               <Listitem label="자료" />
             </NavLink>
           </List>
           <a href="">
-            <BsFillPersonFill size="32" />
+            <BsFillPersonFill size="32" color={main ? "#14406c" : "white"} />
           </a>
         </StyledNavigation>
       </Container>

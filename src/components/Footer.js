@@ -18,6 +18,8 @@ function Footer() {
         marginTop="30px"
         horizontalAlign="left"
         marginBottom="30px"
+        paddingTop="30px"
+        borderTop="1px solid #14406c"
       >
         <img src={sejong} alt="Sejong Logo" />
         <StyledFooter>총동아리연합회 저작권 뭐시기</StyledFooter>

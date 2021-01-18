@@ -16,6 +16,7 @@ const StyledList = styled.ul`
 
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
+  color: ${(props) => props.fontColor};
 `;
 
 function List({
@@ -28,6 +29,7 @@ function List({
   paddingRight,
   verticalAlign,
   horizontalAlign,
+  fontColor,
   children,
 }) {
   return (
@@ -41,6 +43,7 @@ function List({
       paddingRight={paddingRight}
       verticalAlign={verticalAlign}
       horizontalAlign={horizontalAlign}
+      fontColor={fontColor}
     >
       {children}
     </StyledList>

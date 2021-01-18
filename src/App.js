@@ -12,7 +12,7 @@ import { Route, Switch } from "react-router-dom";
 
 function App() {
   return (
-    <Container fd="column">
+    <Container fd="column" backgroundColor="#FAFAFA">
       <Switch>
         <Route exact path="/" component={Main} />
         <Route path="/clubunion" component={ClubUnion} />

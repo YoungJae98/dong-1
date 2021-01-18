@@ -24,12 +24,24 @@ const StyledContainer = styled.div`
   justify-content: ${(props) => props.horizontalAlign || "center"};
 
   border: ${(props) => props.border};
+  border-bottom: ${(props) => props.borderBottom};
+  border-top: ${(props) => props.borderTop};
   border-radius: ${(props) => props.borderRadius};
 
   position: ${(props) => props.position};
   top: ${(props) => (props.position === "fixed" ? 0 : null)};
-
   z-index: ${(props) => props.zIndex};
+
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  animation: fadein 0.3s;
 `;
 
 export function Container({
@@ -51,6 +63,8 @@ export function Container({
   horizontalAlign,
   border,
   borderRadius,
+  borderBottom,
+  borderTop,
   position,
   zIndex,
   children,
@@ -75,6 +89,8 @@ export function Container({
       horizontalAlign={horizontalAlign}
       border={border}
       borderRadius={borderRadius}
+      borderBottom={borderBottom}
+      borderTop={borderTop}
       position={position}
       zIndex={zIndex}
     >

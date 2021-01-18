@@ -13,21 +13,10 @@ const ScrollToTop = () => {
 ReactDOM.render(
   <BrowserRouter basename="/dong/">
     <Route component={ScrollToTop} />
-    <div className="bg" />
-    <App />
-    {/* <div id="group1" class="parallax__group">
-        <div class="parallax__layer parallax__layer--base">
-          <div class="title">Base Layer</div>
-        </div>
-      </div>
-      <div id="group2" class="parallax__group">
-        <div class="parallax__layer parallax__layer--base">
-          <div class="title">Base Layer</div>
-        </div>
-        <div class="parallax__layer parallax__layer--back">
-          <div class="title">Background Layer</div>
-        </div>
-      </div> */}
+    <div className="parallax">
+      {/* <div className="bg" /> */}
+      <App />
+    </div>
   </BrowserRouter>,
   document.getElementById("root")
 );
