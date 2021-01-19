@@ -1,25 +1,31 @@
 import React from "react";
-import styled from "styled-components";
+import { Carousel } from "react-responsive-carousel";
 
-const StyledCarousel = styled.div`
-  background-color: green;
-  z-index: 1;
+import c1 from "../assets/carousel1.jpg";
+import c2 from "../assets/carousel2.jpg";
+import c3 from "../assets/carousel3.jpg";
 
-  margin-top: ${(props) => props.marginTop || "2px"};
-  margin-bottom: ${(props) => props.marginBottom};
-  margin-left: ${(props) => props.marginLeft};
-  margin-right: ${(props) => props.marginRight};
-
-  width: ${(props) => props.width || "100%"};
-  height: ${(props) => props.height || "400px"};
-
-  display: flex;
-  align-items: ${(props) => props.verticalAlign || "center"};
-  justify-content: ${(props) => props.horizontalAlign || "center"};
-`;
-
-function Carousel() {
-  return <StyledCarousel></StyledCarousel>;
+function MyCarousel() {
+  return (
+    <Carousel
+      showThumbs={false}
+      autoPlay
+      infiniteLoop={true}
+      showStatus={false}
+      dynamicHeight={true}
+      interval={10000}
+    >
+      <div>
+        <img src={c1} alt="" />
+      </div>
+      <div>
+        <img src={c2} alt="" />
+      </div>
+      <div>
+        <img src={c3} alt="" />
+      </div>
+    </Carousel>
+  );
 }
 
-export default Carousel;
+export default MyCarousel;

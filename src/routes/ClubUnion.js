@@ -7,9 +7,10 @@ import Button from "../components/Button";
 import Container from "../components/Container";
 import List from "../components/List";
 import Listitem from "../components/Listitem";
-import { Navigation } from "../components/Navigation";
+import Navigation from "../components/Navigation";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
+import Way2Us from "../components/Way2Us";
 
 function ClubUnion() {
   return (
@@ -111,7 +112,7 @@ function ClubUnion() {
                 fd="column"
               >
                 <Text fontSize="32px" marginTop="30px">
-                  인사말 김훈래를 국회로
+                  인사말
                 </Text>
                 <Text fontSize="24px" marginTop="30px">
                   국회의원은 그 지위를 남용하여 국가·공공단체 또는 기업체와의
@@ -204,7 +205,7 @@ function ClubUnion() {
                 horizontalAlign="left"
                 verticalAlign="flex-start"
               >
-                <img src={hello} alt="sejong" width="500px" />
+                <Way2Us />
               </Container>
               <Container
                 horizontalAlign="left"

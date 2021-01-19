@@ -10,10 +10,10 @@ import { BsFillPersonFill } from "react-icons/bs";
 import List from "./List";
 import Listitem from "./Listitem";
 import { Link, NavLink } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import {} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Container from "../components/Container";
-import { colors } from "@material-ui/core";
+import Button from "./Button";
 
 const StyledNavigation = styled.div`
   background-color: ${(props) => props.backgroundColor || ""};
@@ -42,7 +42,15 @@ const StyledNavigation = styled.div`
   z-index: 10;
 `;
 
-export function Navigation({
+const StyledNavLink = styled(NavLink)`
+  &:hover {
+    & .submenu {
+      display: block;
+    }
+  }
+`;
+
+function Navigation({
   backgroundColor,
   marginTop,
   marginBottom,
@@ -112,9 +120,44 @@ export function Navigation({
             />
           </Link>
           <List width="800px" fontColor={main ? "#14406c" : "white"}>
-            <NavLink to="/clubunion" activeStyle={{ color: "BurlyWood" }}>
+            <StyledNavLink to="/clubunion" activeStyle={{ color: "BurlyWood" }}>
               <Listitem label="총동아리연합회 소개" />
-            </NavLink>
+              <div className="submenu">
+                <div>
+                  <Button
+                    height="40px"
+                    width="183px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    fontSize="18px"
+                  >
+                    <Link to="/clubunion">인사말</Link>
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    height="40px"
+                    width="183px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    fontSize="18px"
+                  >
+                    <Link to="/clubunion/introduce">회장단 및 국장 소개</Link>
+                  </Button>
+                </div>
+                <div>
+                  <Button
+                    height="40px"
+                    width="183px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    fontSize="18px"
+                  >
+                    <Link to="/clubunion/way2us">찾아오시는 길</Link>
+                  </Button>
+                </div>
+              </div>
+            </StyledNavLink>
             <NavLink to="/centralclub" activeStyle={{ color: "BurlyWood" }}>
               <Listitem label="중앙동아리 소개" />
             </NavLink>
@@ -156,4 +199,4 @@ Navigation.propTypes = {
 
 Navigation.defaultProps = {};
 
-export default withRouter(Navigation);
+export default Navigation;

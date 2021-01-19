@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledCard = styled.div`
-  background-color: violet;
-  opacity: 0.5;
+  background-color: white;
+  box-shadow: 5px 5px 10px 1px grey;
+  border-radius: 2px;
 
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};

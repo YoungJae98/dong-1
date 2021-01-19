@@ -35,7 +35,7 @@ const StyledHeader = styled.div`
   justify-content: ${(props) => props.horizontalAlign || "center"};
 `;
 
-export function Header({
+function Header({
   backgroundColor,
   marginTop,
   marginBottom,

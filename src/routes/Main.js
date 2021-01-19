@@ -1,35 +1,36 @@
 import React from "react";
 
-import Carousel from "../components/Carousel";
 import Card from "../components/Card";
 import Container from "../components/Container";
-import { Header } from "../components/Header";
-import { Navigation } from "../components/Navigation";
+import MyCarousel from "../components/Carousel";
+import Header from "../components/Header";
+import Navigation from "../components/Navigation";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function Main() {
   return (
     <Container fd="column">
       <Header />
       <Navigation main />
-      <Carousel />
-      <Container marginTop="2px">
-        <Card width="599px" height="200px" marginRight="2px">
-          card1
+      <MyCarousel />
+      <Container marginTop="20px">
+        <Card width="599px" height="200px" marginRight="20px">
+          인기 청원 목록
         </Card>
         <Card width="599px" height="200px">
           card2
         </Card>
       </Container>
-      <Container marginTop="2px">
-        <Card width="599px" height="200px" marginRight="2px">
+      <Container marginTop="20px">
+        <Card width="599px" height="200px" marginRight="20px">
           card3
         </Card>
         <Card width="599px" height="200px">
           card4
         </Card>
       </Container>
-      <Container marginTop="2px">
-        <Card width="599px" height="200px" marginRight="2px">
+      <Container marginTop="20px">
+        <Card width="599px" height="200px" marginRight="20px">
           card5
         </Card>
         <Card width="599px" height="200px">

@@ -47,3 +47,20 @@ li {
   padding: 0;
   margin: 0;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background-color: "#14406c";
+  padding-top: 17px;
+  animation: fadein 0.2s;
+}
