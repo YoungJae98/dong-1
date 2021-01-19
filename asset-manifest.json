@@ -1,17 +1,22 @@
 {
   "files": {
-    "main.css": "/dong/static/css/main.4e366299.chunk.css",
-    "main.js": "/dong/static/js/main.7d2525ac.chunk.js",
-    "main.js.map": "/dong/static/js/main.7d2525ac.chunk.js.map",
+    "main.css": "/dong/static/css/main.045bb48a.chunk.css",
+    "main.js": "/dong/static/js/main.dadee8c7.chunk.js",
+    "main.js.map": "/dong/static/js/main.dadee8c7.chunk.js.map",
     "runtime-main.js": "/dong/static/js/runtime-main.7df10508.js",
     "runtime-main.js.map": "/dong/static/js/runtime-main.7df10508.js.map",
-    "static/js/2.c6bb0f51.chunk.js": "/dong/static/js/2.c6bb0f51.chunk.js",
-    "static/js/2.c6bb0f51.chunk.js.map": "/dong/static/js/2.c6bb0f51.chunk.js.map",
+    "static/css/2.55d8add8.chunk.css": "/dong/static/css/2.55d8add8.chunk.css",
+    "static/js/2.11565a5a.chunk.js": "/dong/static/js/2.11565a5a.chunk.js",
+    "static/js/2.11565a5a.chunk.js.map": "/dong/static/js/2.11565a5a.chunk.js.map",
     "index.html": "/dong/index.html",
-    "static/css/main.4e366299.chunk.css.map": "/dong/static/css/main.4e366299.chunk.css.map",
-    "static/js/2.c6bb0f51.chunk.js.LICENSE.txt": "/dong/static/js/2.c6bb0f51.chunk.js.LICENSE.txt",
+    "static/css/2.55d8add8.chunk.css.map": "/dong/static/css/2.55d8add8.chunk.css.map",
+    "static/css/main.045bb48a.chunk.css.map": "/dong/static/css/main.045bb48a.chunk.css.map",
+    "static/js/2.11565a5a.chunk.js.LICENSE.txt": "/dong/static/js/2.11565a5a.chunk.js.LICENSE.txt",
     "static/media/index.css": "/dong/static/media/BMJUA_ttf.bf12d2d8.ttf",
     "static/media/Sejonglogo.fb16eeb7.png": "/dong/static/media/Sejonglogo.fb16eeb7.png",
+    "static/media/carousel1.2301cdc7.jpg": "/dong/static/media/carousel1.2301cdc7.jpg",
+    "static/media/carousel2.25af7dc9.jpg": "/dong/static/media/carousel2.25af7dc9.jpg",
+    "static/media/carousel3.b5e49e22.jpg": "/dong/static/media/carousel3.b5e49e22.jpg",
     "static/media/logo.b3958d8f.png": "/dong/static/media/logo.b3958d8f.png",
     "static/media/logo_reversed.3e77b522.png": "/dong/static/media/logo_reversed.3e77b522.png",
     "static/media/main.6f0a0f95.png": "/dong/static/media/main.6f0a0f95.png",
@@ -19,8 +24,9 @@
   },
   "entrypoints": [
     "static/js/runtime-main.7df10508.js",
-    "static/js/2.c6bb0f51.chunk.js",
-    "static/css/main.4e366299.chunk.css",
-    "static/js/main.7d2525ac.chunk.js"
+    "static/css/2.55d8add8.chunk.css",
+    "static/js/2.11565a5a.chunk.js",
+    "static/css/main.045bb48a.chunk.css",
+    "static/js/main.dadee8c7.chunk.js"
   ]
 }
