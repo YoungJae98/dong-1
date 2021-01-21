@@ -9,11 +9,11 @@ function MyCarousel() {
   return (
     <Carousel
       showThumbs={false}
-      autoPlay
+      // autoPlay
       infiniteLoop={true}
       showStatus={false}
       dynamicHeight={true}
-      interval={10000}
+      interval={2000}
     >
       <div>
         <img src={c1} alt="" />

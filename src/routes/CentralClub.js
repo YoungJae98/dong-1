@@ -7,14 +7,12 @@ import Button from "../components/Button";
 import Container from "../components/Container";
 import List from "../components/List";
 import Listitem from "../components/Listitem";
-import Navigation from "../components/Navigation";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
 
 function CentralClub() {
   return (
     <>
-      <Navigation />
       <Container height="1200px" backgroundColor="">
         <Container
           backgroundColor=""
@@ -35,7 +33,7 @@ function CentralClub() {
           </Container>
           <Remote width="200px" paddingTop="20px" paddingBottom="20px">
             <List fd="column">
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/centralclub/">
                   <Listitem
                     height="50px"
@@ -45,7 +43,7 @@ function CentralClub() {
                   ></Listitem>
                 </NavLink>
               </Button>
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/centralclub/physical">
                   <Listitem
                     height="50px"
@@ -55,7 +53,7 @@ function CentralClub() {
                   ></Listitem>
                 </NavLink>
               </Button>
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/centralclub/culture">
                   <Listitem
                     height="50px"
@@ -65,7 +63,7 @@ function CentralClub() {
                   ></Listitem>
                 </NavLink>
               </Button>
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/centralclub/show">
                   <Listitem
                     height="50px"
@@ -75,7 +73,7 @@ function CentralClub() {
                   ></Listitem>
                 </NavLink>
               </Button>
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/centralclub/academic">
                   <Listitem
                     height="50px"
@@ -85,7 +83,7 @@ function CentralClub() {
                   ></Listitem>
                 </NavLink>
               </Button>
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/centralclub/religion">
                   <Listitem
                     height="50px"
@@ -124,6 +122,8 @@ function CentralClub() {
               verticalAlign="flex-start"
               marginTop="30px"
               paddingLeft="30px"
+              paddingRight="30px"
+              width="840px"
             >
               <Container
                 height="200px"
@@ -168,6 +168,8 @@ function CentralClub() {
               verticalAlign="flex-start"
               marginTop="30px"
               paddingLeft="30px"
+              paddingRight="30px"
+              width="840px"
             >
               <Container
                 height="200px"
@@ -212,6 +214,8 @@ function CentralClub() {
               verticalAlign="flex-start"
               marginTop="30px"
               paddingLeft="30px"
+              paddingRight="30px"
+              width="840px"
             >
               <Container
                 height="200px"
@@ -256,6 +260,8 @@ function CentralClub() {
               verticalAlign="flex-start"
               marginTop="30px"
               paddingLeft="30px"
+              paddingRight="30px"
+              width="840px"
             >
               <Container
                 height="200px"
@@ -300,6 +306,8 @@ function CentralClub() {
               verticalAlign="flex-start"
               marginTop="30px"
               paddingLeft="30px"
+              paddingRight="30px"
+              width="840px"
             >
               <Container
                 height="200px"
@@ -344,6 +352,8 @@ function CentralClub() {
               verticalAlign="flex-start"
               marginTop="30px"
               paddingLeft="30px"
+              paddingRight="30px"
+              width="840px"
             >
               <Container
                 height="200px"
@@ -388,6 +398,8 @@ function CentralClub() {
               verticalAlign="flex-start"
               marginTop="30px"
               paddingLeft="30px"
+              paddingRight="30px"
+              width="840px"
             >
               <Container
                 height="200px"

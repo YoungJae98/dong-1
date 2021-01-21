@@ -7,7 +7,6 @@ import Button from "../components/Button";
 import Container from "../components/Container";
 import List from "../components/List";
 import Listitem from "../components/Listitem";
-import Navigation from "../components/Navigation";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
 import Way2Us from "../components/Way2Us";
@@ -15,7 +14,6 @@ import Way2Us from "../components/Way2Us";
 function ClubUnion() {
   return (
     <>
-      <Navigation />
       <Container height="1200px" backgroundColor="">
         <Container
           backgroundColor=""
@@ -30,13 +28,13 @@ function ClubUnion() {
             marginTop="100px"
           >
             <img src={logo_inversed} alt="" width="40px" />
-            <Text fontColor="#14406c" fontSize="18px" fontWeight="bold">
+            <Text fontColor="#14406c" fontSize="18px">
               총동아리연합회 소개
             </Text>
           </Container>
           <Remote width="200px" paddingTop="20px" paddingBottom="20px">
             <List fd="column">
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/clubunion/">
                   <Listitem
                     height="50px"
@@ -46,7 +44,7 @@ function ClubUnion() {
                   ></Listitem>
                 </NavLink>
               </Button>
-              <Button backgroundColor="white" onClick={() => {}}>
+              <Button backgroundColor="white">
                 <NavLink to="/clubunion/introduce">
                   <Listitem
                     height="50px"
@@ -56,7 +54,7 @@ function ClubUnion() {
                   ></Listitem>
                 </NavLink>
               </Button>
-              <Button backgroundColor="white" paddingBottom="20px">
+              <Button backgroundColor="white">
                 <NavLink to="/clubunion/way2us">
                   <Listitem
                     height="50px"

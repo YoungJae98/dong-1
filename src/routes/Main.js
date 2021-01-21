@@ -3,15 +3,11 @@ import React from "react";
 import Card from "../components/Card";
 import Container from "../components/Container";
 import MyCarousel from "../components/Carousel";
-import Header from "../components/Header";
-import Navigation from "../components/Navigation";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 function Main() {
   return (
     <Container fd="column">
-      <Header />
-      <Navigation main />
       <MyCarousel />
       <Container marginTop="20px">
         <Card width="599px" height="200px" marginRight="20px">

@@ -9,7 +9,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 
 import List from "./List";
 import Listitem from "./Listitem";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import {} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Container from "../components/Container";
@@ -24,7 +24,7 @@ const StyledNavigation = styled.div`
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
 
-  padding-top: ${(props) => props.paddingTop || "1px"};
+  padding-top: ${(props) => props.paddingTop};
   padding-bottom: ${(props) => props.paddingBottom};
   padding-left: ${(props) => props.paddingLeft || "30px"};
   padding-right: ${(props) => props.paddingRight || "30px"};
@@ -42,9 +42,16 @@ const StyledNavigation = styled.div`
   z-index: 10;
 `;
 
-const StyledNavLink = styled(NavLink)`
+const StyledNavButton = styled.div`
   &:hover {
-    & .submenu {
+    cursor: default;
+    & > .submenu {
+      display: block;
+    }
+    & > .submenu2 {
+      display: block;
+    }
+    & > .submenu3 {
       display: block;
     }
   }
@@ -67,6 +74,7 @@ function Navigation({
   horizontalAlign,
   border,
   main,
+  setMain,
 }) {
   const [sticky, setsticky] = useState(false);
   useEffect(() => {
@@ -80,11 +88,8 @@ function Navigation({
           setsticky(false);
         }
       };
-    } else {
-      setsticky(true);
     }
   }, [main]);
-
   return (
     <Container width="100%" height="60px">
       <Container
@@ -92,7 +97,7 @@ function Navigation({
         height="60px"
         backgroundColor={main ? "#FAFAFA" : "#14406c"}
         zIndex={10}
-        position={sticky ? "fixed" : ""}
+        position={main ? (sticky ? "fixed" : "") : "fixed"}
       >
         <StyledNavigation
           backgroundColor={backgroundColor}
@@ -111,65 +116,343 @@ function Navigation({
           horizontalAlign={horizontalAlign}
           border={border}
         >
-          <Link to="/">
-            <img
-              src={main ? logo_reversed : logo}
-              className="App-logo"
-              alt="logo"
-              height="60px"
-            />
+          <Link to="/" onClick={() => setMain(true)}>
+            <Container width="60px" height="60px">
+              <img
+                src={main ? logo_reversed : logo}
+                className="App-logo"
+                alt="logo"
+                height="60px"
+              />
+            </Container>
           </Link>
           <List width="800px" fontColor={main ? "#14406c" : "white"}>
-            <StyledNavLink to="/clubunion" activeStyle={{ color: "BurlyWood" }}>
+            <StyledNavButton>
               <Listitem label="총동아리연합회 소개" />
               <div className="submenu">
+                <div className="navigation-uparrow"></div>
                 <div>
-                  <Button
-                    height="40px"
-                    width="183px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    fontSize="18px"
-                  >
-                    <Link to="/clubunion">인사말</Link>
-                  </Button>
+                  <Link to="/clubunion" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      인사말
+                    </Button>
+                  </Link>
                 </div>
                 <div>
-                  <Button
-                    height="40px"
-                    width="183px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    fontSize="18px"
+                  <Link
+                    to="/clubunion/introduce"
+                    onClick={() => setMain(false)}
                   >
-                    <Link to="/clubunion/introduce">회장단 및 국장 소개</Link>
-                  </Button>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      회장단 및 국장 소개
+                    </Button>
+                  </Link>
                 </div>
                 <div>
-                  <Button
-                    height="40px"
-                    width="183px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    fontSize="18px"
-                  >
-                    <Link to="/clubunion/way2us">찾아오시는 길</Link>
-                  </Button>
+                  <Link to="/clubunion/way2us" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      찾아오시는 길
+                    </Button>
+                  </Link>
                 </div>
               </div>
-            </StyledNavLink>
-            <NavLink to="/centralclub" activeStyle={{ color: "BurlyWood" }}>
+            </StyledNavButton>
+            <StyledNavButton>
               <Listitem label="중앙동아리 소개" />
-            </NavLink>
-            <NavLink to="/information" activeStyle={{ color: "BurlyWood" }}>
+              <div className="submenu2">
+                <div className="navigation-uparrow"></div>
+                <div>
+                  <Link to="/centralclub/" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      동방 배치도
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/centralclub/physical"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      체육 분과
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/centralclub/culture"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      문화 분과
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/centralclub/show" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      공연 분과
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/centralclub/academic"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      학술 분과
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/centralclub/religion"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      종교 분과
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/centralclub/volunteer"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      봉사 분과
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </StyledNavButton>
+            <StyledNavButton
+              to="/information"
+              activeStyle={{ color: "BurlyWood" }}
+            >
               <Listitem label="정보" />
-            </NavLink>
-            <NavLink to="/communication" activeStyle={{ color: "BurlyWood" }}>
+              <div className="submenu3">
+                <div className="navigation-uparrow"></div>
+                <div>
+                  <Link to="/information/" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      공약 이행도
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/information/alliance"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      제휴 사업
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/information/seoul" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      서동협
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/information/report" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      예결산 보고
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/information/meetinglog"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      회의록
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </StyledNavButton>
+            <StyledNavButton>
               <Listitem label="소통" />
-            </NavLink>
-            <NavLink to="/document" activeStyle={{ color: "BurlyWood" }}>
+              <div className="submenu3">
+                <div className="navigation-uparrow"></div>
+                <div>
+                  <Link to="/communication/" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      건의 사항
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/communication/petition"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      회칙 개정 요구 청원
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </StyledNavButton>
+            <StyledNavButton>
               <Listitem label="자료" />
-            </NavLink>
+              <div className="submenu3">
+                <div className="navigation-uparrow"></div>
+                <div>
+                  <Link to="/document/" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      자료1
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link to="/document/d2" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      자료2
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </StyledNavButton>
           </List>
           <a href="">
             <BsFillPersonFill size="32" color={main ? "#14406c" : "white"} />

@@ -63,6 +63,7 @@ export function Button({
   width,
   height,
   onClick,
+  className,
   children,
 }) {
   return (
@@ -81,6 +82,7 @@ export function Button({
       width={width}
       height={height}
       onClick={onClick}
+      className={className}
     >
       {children}
     </StyledButton>

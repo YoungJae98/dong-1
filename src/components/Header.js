@@ -80,7 +80,7 @@ function Header({
           paddingRight="30px"
         >
           <a
-            href="https://www.instagram.com/?hl=ko"
+            href="https://www.instagram.com/sejong_clubunion/"
             target="_blank"
             style={{ marginRight: "10px" }}
           >
@@ -93,7 +93,10 @@ function Header({
           >
             <AiOutlineFacebook size="50" />
           </a>
-          <a href="https://www.instagram.com/?hl=ko" target="_blank">
+          <a
+            href="https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg"
+            target="_blank"
+          >
             <AiOutlineYoutube size="50" />
           </a>
         </Container>
