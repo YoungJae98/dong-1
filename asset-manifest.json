@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/dong/static/css/main.c4606921.chunk.css",
-    "main.js": "/dong/static/js/main.04fb21d1.chunk.js",
-    "main.js.map": "/dong/static/js/main.04fb21d1.chunk.js.map",
+    "main.css": "/dong/static/css/main.8c40caf7.chunk.css",
+    "main.js": "/dong/static/js/main.5f1d695e.chunk.js",
+    "main.js.map": "/dong/static/js/main.5f1d695e.chunk.js.map",
     "runtime-main.js": "/dong/static/js/runtime-main.7df10508.js",
     "runtime-main.js.map": "/dong/static/js/runtime-main.7df10508.js.map",
     "static/css/2.55d8add8.chunk.css": "/dong/static/css/2.55d8add8.chunk.css",
@@ -10,9 +10,9 @@
     "static/js/2.2484cc12.chunk.js.map": "/dong/static/js/2.2484cc12.chunk.js.map",
     "index.html": "/dong/index.html",
     "static/css/2.55d8add8.chunk.css.map": "/dong/static/css/2.55d8add8.chunk.css.map",
-    "static/css/main.c4606921.chunk.css.map": "/dong/static/css/main.c4606921.chunk.css.map",
+    "static/css/main.8c40caf7.chunk.css.map": "/dong/static/css/main.8c40caf7.chunk.css.map",
     "static/js/2.2484cc12.chunk.js.LICENSE.txt": "/dong/static/js/2.2484cc12.chunk.js.LICENSE.txt",
-    "static/media/index.css": "/dong/static/media/l.4e661c34.jpg",
+    "static/media/index.css": "/dong/static/media/Typo_SsangmunDongB.4bd085d1.ttf",
     "static/media/carousel1.2301cdc7.jpg": "/dong/static/media/carousel1.2301cdc7.jpg",
     "static/media/carousel2.25af7dc9.jpg": "/dong/static/media/carousel2.25af7dc9.jpg",
     "static/media/carousel3.b5e49e22.jpg": "/dong/static/media/carousel3.b5e49e22.jpg",
@@ -25,7 +25,7 @@
     "static/js/runtime-main.7df10508.js",
     "static/css/2.55d8add8.chunk.css",
     "static/js/2.2484cc12.chunk.js",
-    "static/css/main.c4606921.chunk.css",
-    "static/js/main.04fb21d1.chunk.js"
+    "static/css/main.8c40caf7.chunk.css",
+    "static/js/main.5f1d695e.chunk.js"
   ]
 }
