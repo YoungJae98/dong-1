@@ -16,9 +16,6 @@ function Way2Us() {
           key={1}
           position={{ lat: 37.549634, lng: 127.075216 }}
           animation={1}
-          onClick={() => {
-            alert("여기는 N서울타워입니다.");
-          }}
         />
       </NaverMap>
     </RenderAfterNavermapsLoaded>

@@ -7,16 +7,16 @@ const StyledListitem = styled.li`
   margin-left: ${(props) => props.marginLeft};
   margin-right: ${(props) => props.marginRight};
 
-  width: ${(props) => props.width || "100%"};
-  height: ${(props) => props.height || "100%"};
+  width: ${(props) => props.width};
+  height: ${(props) => props.height};
 
   color: ${(props) => props.fontColor};
-  font-weight: bold;
   font-size: ${(props) => props.fontSize || "21px"};
+  text-align: center;
 
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
 
   border-bottom: ${(props) => props.borderBottom};
 

@@ -13,96 +13,69 @@ function Main() {
   return (
     <>
       <Container height="1200px" backgroundColor="">
-        <Container
-          backgroundColor=""
-          width="200px"
-          fd="column"
-          horizontalAlign="left"
-        >
+        <Container width="200px" verticalAlign="baseline">
           <Container
-            height="50px"
-            horizontalAlign="left"
-            verticalAlign="flex-end"
+            width="200px"
+            height="156px"
+            fd="column"
+            verticalAlign="baseline"
+            position="sticky"
             marginTop="100px"
           >
-            <img src={logo_inversed} alt="" width="40px" />
-            <Text fontColor="#14406c" fontSize="18px">
-              소통
-            </Text>
+            <Container
+              height="50px"
+              horizontalAlign="left"
+              verticalAlign="flex-end"
+            >
+              <img src={logo_inversed} alt="" width="40px" />
+              <Text fontColor="#14406c" fontSize="18px" fontFamily="Arial">
+                자료
+              </Text>
+            </Container>
+            <Remote width="200px" paddingTop="10px" paddingBottom="10px">
+              <List fd="column">
+                <Button backgroundColor="white">
+                  <NavLink to="/document/">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      fontSize="18px"
+                      label="회칙"
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+                <Button backgroundColor="white">
+                  <NavLink to="/document/form">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      fontSize="18px"
+                      label="제출서류 양식"
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+              </List>
+            </Remote>
           </Container>
-          <Remote width="200px" paddingTop="20px" paddingBottom="20px">
-            <List fd="column">
-              <Button backgroundColor="white">
-                <NavLink to="/document/">
-                  <Listitem
-                    height="50px"
-                    fontColor="#14406c"
-                    fontSize="18px"
-                    label="자료1"
-                  ></Listitem>
-                </NavLink>
-              </Button>
-              <Button backgroundColor="white">
-                <NavLink to="/document/d2">
-                  <Listitem
-                    height="50px"
-                    fontColor="#14406c"
-                    fontSize="18px"
-                    label="자료2"
-                  ></Listitem>
-                </NavLink>
-              </Button>
-            </List>
-          </Remote>
         </Container>
         <Container
-          backgroundColor=""
           width="900px"
           fd="column"
           marginLeft="30px"
+          verticalAlign="flex-start"
         >
           <Route exact path="/document/">
             <Container
-              backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="15px"
-              fd="column"
-              horizontalAlign="left"
-              verticalAlign="flex-start"
-              marginTop="30px"
-              paddingLeft="30px"
-              paddingRight="30px"
+              height="40px"
+              marginTop="50px"
+              marginLeft="20px"
               width="840px"
+              horizontalAlign="left"
             >
-              <Container
-                height="200px"
-                width="840px"
-                horizontalAlign="left"
-                borderBottom="2px solid #14406c"
-                marginBottom="30px"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  자료1
-                </Text>
-              </Container>
-              <Container
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                fd="column"
-              >
-                <Text fontSize="32px" marginTop="30px">
-                  자료1
-                </Text>
-                <Text fontSize="24px" marginTop="30px">
-                  국회가 재적의원 과반수의 찬성으로 계엄의 해제를 요구한 때에는
-                  대통령은 이를 해제하여야 한다. 대법원장의 임기는 6년으로 하며,
-                  중임할 수 없다. 대법원장은 국회의 동의를 얻어 대통령이
-                  임명한다.
-                </Text>
-              </Container>
+              <Text fontColor="#14406c" fontSize="32px">
+                회칙
+              </Text>
             </Container>
-          </Route>
-          <Route path="/document/d2">
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
@@ -110,38 +83,36 @@ function Main() {
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              marginTop="30px"
               paddingLeft="30px"
               paddingRight="30px"
+              paddingTop="30px"
               width="840px"
+            ></Container>
+          </Route>
+          <Route path="/document/form">
+            <Container
+              height="40px"
+              marginTop="50px"
+              marginLeft="20px"
+              width="840px"
+              horizontalAlign="left"
             >
-              <Container
-                height="200px"
-                width="840px"
-                horizontalAlign="left"
-                borderBottom="2px solid #14406c"
-                marginBottom="30px"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  자료2
-                </Text>
-              </Container>
-              <Container
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                fd="column"
-              >
-                <Text fontSize="32px" marginTop="30px">
-                  자료2
-                </Text>
-                <Text fontSize="24px" marginTop="30px">
-                  신체장애자 및 질병·노령 기타의 사유로 생활능력이 없는 국민은
-                  법률이 정하는 바에 의하여 국가의 보호를 받는다. 선거와
-                  국민투표의 공정한 관리 및 정당에 관한 사무를 처리하기 위하여
-                  선거관리위원회를 둔다.
-                </Text>
-              </Container>
+              <Text fontColor="#14406c" fontSize="32px">
+                제출서류 양식
+              </Text>
             </Container>
+            <Container
+              backgroundColor="white"
+              border="1px solid #14406c"
+              borderRadius="15px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              width="840px"
+            ></Container>
           </Route>
         </Container>
       </Container>

@@ -16,7 +16,7 @@ import Container from "../components/Container";
 import Button from "./Button";
 
 const StyledNavigation = styled.div`
-  background-color: ${(props) => props.backgroundColor || ""};
+  background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor || "#14406c"};
 
   margin-top: ${(props) => props.marginTop};
@@ -39,7 +39,7 @@ const StyledNavigation = styled.div`
 
   border: ${(props) => props.border};
 
-  z-index: 10;
+  z-index: 100;
 `;
 
 const StyledNavButton = styled.div`
@@ -52,6 +52,9 @@ const StyledNavButton = styled.div`
       display: block;
     }
     & > .submenu3 {
+      display: block;
+    }
+    & > .submenu4 {
       display: block;
     }
   }
@@ -91,11 +94,11 @@ function Navigation({
     }
   }, [main]);
   return (
-    <Container width="100%" height="60px">
+    <Container width="100%" height="60px" zIndex={10}>
       <Container
         width="100%"
         height="60px"
-        backgroundColor={main ? "#FAFAFA" : "#14406c"}
+        backgroundColor={main ? "white" : "#14406c"}
         zIndex={10}
         position={main ? (sticky ? "fixed" : "") : "fixed"}
       >
@@ -197,10 +200,7 @@ function Navigation({
                   </Link>
                 </div>
                 <div>
-                  <Link
-                    to="/centralclub/physical"
-                    onClick={() => setMain(false)}
-                  >
+                  <Link to="/centralclub/show" onClick={() => setMain(false)}>
                     <Button
                       height="40px"
                       width="183px"
@@ -209,7 +209,7 @@ function Navigation({
                       fontSize="18px"
                       className="navigation-submenu-button"
                     >
-                      체육 분과
+                      공연 분과
                     </Button>
                   </Link>
                 </div>
@@ -231,22 +231,8 @@ function Navigation({
                   </Link>
                 </div>
                 <div>
-                  <Link to="/centralclub/show" onClick={() => setMain(false)}>
-                    <Button
-                      height="40px"
-                      width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="18px"
-                      className="navigation-submenu-button"
-                    >
-                      공연 분과
-                    </Button>
-                  </Link>
-                </div>
-                <div>
                   <Link
-                    to="/centralclub/academic"
+                    to="/centralclub/volunteer"
                     onClick={() => setMain(false)}
                   >
                     <Button
@@ -257,7 +243,7 @@ function Navigation({
                       fontSize="18px"
                       className="navigation-submenu-button"
                     >
-                      학술 분과
+                      봉사 분과
                     </Button>
                   </Link>
                 </div>
@@ -280,7 +266,7 @@ function Navigation({
                 </div>
                 <div>
                   <Link
-                    to="/centralclub/volunteer"
+                    to="/centralclub/physical"
                     onClick={() => setMain(false)}
                   >
                     <Button
@@ -291,7 +277,24 @@ function Navigation({
                       fontSize="18px"
                       className="navigation-submenu-button"
                     >
-                      봉사 분과
+                      체육 분과
+                    </Button>
+                  </Link>
+                </div>
+                <div>
+                  <Link
+                    to="/centralclub/academic"
+                    onClick={() => setMain(false)}
+                  >
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                    >
+                      학술 분과
                     </Button>
                   </Link>
                 </div>
@@ -433,12 +436,12 @@ function Navigation({
                       fontSize="18px"
                       className="navigation-submenu-button"
                     >
-                      자료1
+                      회칙
                     </Button>
                   </Link>
                 </div>
                 <div>
-                  <Link to="/document/d2" onClick={() => setMain(false)}>
+                  <Link to="/document/form" onClick={() => setMain(false)}>
                     <Button
                       height="40px"
                       width="183px"
@@ -447,16 +450,47 @@ function Navigation({
                       fontSize="18px"
                       className="navigation-submenu-button"
                     >
-                      자료2
+                      제출서류 양식
                     </Button>
                   </Link>
                 </div>
               </div>
             </StyledNavButton>
           </List>
-          <a href="">
+          <StyledNavButton width="32px" backgroundColor="white">
             <BsFillPersonFill size="32" color={main ? "#14406c" : "white"} />
-          </a>
+            <div className="submenu4">
+              <div className="navigation-uparrow2"></div>
+              <div>
+                <Link to="/signin/" onClick={() => setMain(false)}>
+                  <Button
+                    height="40px"
+                    width="100px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    fontSize="18px"
+                    className="navigation-submenu-button"
+                  >
+                    로그인
+                  </Button>
+                </Link>
+              </div>
+              <div>
+                <Link to="/signup/" onClick={() => setMain(false)}>
+                  <Button
+                    height="40px"
+                    width="100px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    fontSize="18px"
+                    className="navigation-submenu-button"
+                  >
+                    회원가입
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </StyledNavButton>
         </StyledNavigation>
       </Container>
     </Container>

@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledText = styled.p`
   font-size: ${(props) => props.fontSize || "15px"};
   color: ${(props) => props.fontColor || "black"};
-  font-family: ${(props) => props.fontFamily || "NanumGothic"};
+  font-family: ${(props) => props.fontFamily};
   font-weight: ${(props) => props.fontWeight || "bold"};
 
   margin: 0;

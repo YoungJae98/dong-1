@@ -30,18 +30,10 @@ const StyledContainer = styled.div`
 
   position: ${(props) => props.position};
   top: ${(props) => (props.position === "fixed" ? 0 : null)};
+  top: ${(props) => (props.position === "sticky" ? "80px" : null)};
   z-index: ${(props) => props.zIndex};
 
-  @keyframes fadein {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  animation: fadein 0.3s;
+  animation: ${(props) => props.animation || "fadein 0.3s"};
 `;
 
 export function Container({
@@ -67,7 +59,10 @@ export function Container({
   borderTop,
   position,
   zIndex,
+  top,
+  animation,
   children,
+  className,
 }) {
   return (
     <StyledContainer
@@ -93,6 +88,9 @@ export function Container({
       borderTop={borderTop}
       position={position}
       zIndex={zIndex}
+      top={top}
+      animation={animation}
+      className={className}
     >
       {children}
     </StyledContainer>

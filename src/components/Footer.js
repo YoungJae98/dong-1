@@ -12,7 +12,7 @@ const StyledFooter = styled.div`
 
 function Footer() {
   return (
-    <Container backgroundColor="#F6F6F6" marginTop="50px" zIndex={10}>
+    <Container backgroundColor="#F6F6F6" marginTop="50px">
       <Container
         width="1200px"
         marginTop="30px"

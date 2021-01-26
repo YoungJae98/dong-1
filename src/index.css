@@ -1,38 +1,19 @@
 html {
   height: 100%;
 }
-body {
-  margin: 0;
-  font-family: "NanumGothic";
-  font-weight: bold;
-  height: 100%;
-}
-
-.parallax {
-  /* perspective: 1px; */
-}
-
-.bg {
-  position: absolute;
-  top: 0;
-
-  width: 100%;
-  height: 1320px;
-
-  background-image: url("./assets/l.jpg");
-  background-attachment: fixed;
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: blur(3px);
-
-  /* transform: translateZ(-1px); */
-
-  z-index: -2;
-}
-
 @font-face {
   font-family: "Bamin";
   src: url(./assets/BMJUA_ttf.ttf) format("truetype");
+}
+@font-face {
+  font-family: "ssang";
+  src: url(./assets/Typo_SsangmunDongB.ttf) format("truetype");
+}
+
+body {
+  margin: 0;
+  font-family: "ssang";
+  height: 100%;
 }
 
 a {
@@ -60,30 +41,56 @@ li {
   }
 }
 
+@keyframes logo_fadein {
+  0% {
+    transform: translateX(200px);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(200px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100px);
+    opacity: 1;
+  }
+}
+
 .navigation-uparrow {
   width: 0;
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid #14406c;
-  top: 8px;
+  top: 6px;
   left: 45%;
+  position: absolute;
+}
+.navigation-uparrow2 {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #14406c;
+  top: 6px;
+  left: 40%;
   position: absolute;
 }
 
 .submenu {
   display: none;
   position: absolute;
+  transform: translateX(5px);
   background-color: "#14406c";
-  padding-top: 18px;
+  padding-top: 16px;
   animation: fadein 0.2s;
 }
 .submenu2 {
   display: none;
   position: absolute;
-  transform: translateX(-19px);
+  transform: translateX(-12px);
   background-color: "#14406c";
-  padding-top: 18px;
+  padding-top: 16px;
   animation: fadein 0.2s;
 }
 .submenu3 {
@@ -91,7 +98,15 @@ li {
   position: absolute;
   transform: translateX(-70px);
   background-color: "#14406c";
-  padding-top: 18px;
+  padding-top: 16px;
+  animation: fadein 0.2s;
+}
+.submenu4 {
+  display: none;
+  position: absolute;
+  background-color: "#14406c";
+  transform: translateX(-33px) translateY(-5px);
+  padding-top: 16px;
   animation: fadein 0.2s;
 }
 .navigation-submenu-button:hover {

@@ -6,6 +6,8 @@ const StyledButton = styled.button`
   background-color: ${(props) => (props.primary ? "red" : "")};
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor || "black"};
+
+  font-family: ${(props) => props.font};
   font-size:${(props) => props.fontSize};
   font-weight: bold;
 
@@ -39,6 +41,8 @@ const StyledButton = styled.button`
   outline:none;
   border:none;
 
+  border-radius:${(props) => props.borderRadius};
+
   transition: 0.2s;
   &:hover {
     cursor: pointer;
@@ -64,6 +68,8 @@ export function Button({
   height,
   onClick,
   className,
+  font,
+  borderRadius,
   children,
 }) {
   return (
@@ -83,6 +89,8 @@ export function Button({
       height={height}
       onClick={onClick}
       className={className}
+      font={font}
+      borderRadius={borderRadius}
     >
       {children}
     </StyledButton>

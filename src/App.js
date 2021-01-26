@@ -7,6 +7,8 @@ import CentralClub from "./routes/CentralClub";
 import Information from "./routes/Information";
 import Communication from "./routes/Communication";
 import Document from "./routes/Document";
+import Signin from "./routes/Signin";
+import Signup from "./routes/Signup";
 
 import { Route, Switch, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";
@@ -16,7 +18,6 @@ import { useState } from "react";
 function App() {
   const path = useLocation().pathname;
   const [main, setMain] = useState(() => {
-    console.log(path);
     return path === "/" ? true : false;
   });
 
@@ -31,6 +32,8 @@ function App() {
         <Route path="/information" component={Information} />
         <Route path="/communication" component={Communication} />
         <Route path="/document" component={Document} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
       </Switch>
       <Footer />
     </Container>

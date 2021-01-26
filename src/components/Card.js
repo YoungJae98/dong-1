@@ -17,6 +17,8 @@ const StyledCard = styled.div`
   display: flex;
   align-items: ${(props) => props.verticalAlign || "center"};
   justify-content: ${(props) => props.horizontalAlign || "center"};
+
+  animation: fadein 0.5s;
 `;
 function Card({
   width,
