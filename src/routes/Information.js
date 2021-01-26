@@ -41,6 +41,7 @@ function Main() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="공약 이행도"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -51,6 +52,7 @@ function Main() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="제휴사업"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -61,6 +63,7 @@ function Main() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="서동협"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -71,6 +74,7 @@ function Main() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="예결산 보고"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -81,6 +85,7 @@ function Main() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="회의록"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -109,7 +114,7 @@ function Main() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -134,7 +139,7 @@ function Main() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -159,7 +164,7 @@ function Main() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -184,7 +189,7 @@ function Main() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -209,7 +214,7 @@ function Main() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"

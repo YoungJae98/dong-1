@@ -41,6 +41,7 @@ function Main() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="건의사항"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -51,6 +52,7 @@ function Main() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="회칙 개정 요구 청원"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -79,7 +81,7 @@ function Main() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -104,7 +106,7 @@ function Main() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"

@@ -24,6 +24,8 @@ const StyledListitem = styled.li`
     background-color: ${(props) => props.hoverBackgroundColor};
     color: ${(props) => props.hoverColor};
     cursor: ${(props) => props.hoverCursor};
+    text-decoration: ${(props) => props.hoverUnderline && "underline"};
+    text-underline-position: under;
   }
 `;
 
@@ -40,6 +42,7 @@ function Listitem({
   marginBottom,
   marginLeft,
   marginRight,
+  hoverUnderline,
 }) {
   return (
     <StyledListitem
@@ -54,6 +57,7 @@ function Listitem({
       hoverColor={hoverColor}
       hoverCursor={hoverCursor}
       borderBottom={borderBottom}
+      hoverUnderline={hoverUnderline}
     >
       {label}
     </StyledListitem>

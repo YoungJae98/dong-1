@@ -48,6 +48,7 @@ function CentralClub() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="동방 배치도"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -58,6 +59,7 @@ function CentralClub() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="공연 분과"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -68,6 +70,7 @@ function CentralClub() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="문화 분과"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -78,6 +81,7 @@ function CentralClub() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="봉사 분과"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -88,6 +92,7 @@ function CentralClub() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="종교 분과"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -98,6 +103,7 @@ function CentralClub() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="체육 분과"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -108,6 +114,7 @@ function CentralClub() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="학술 분과"
+                      hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
@@ -137,7 +144,7 @@ function CentralClub() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -170,7 +177,7 @@ function CentralClub() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -194,7 +201,7 @@ function CentralClub() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -218,8 +225,7 @@ function CentralClub() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
-              fd="column"
+              borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
@@ -228,7 +234,7 @@ function CentralClub() {
             >
               {showClub.map((club) => {
                 return (
-                  <Container>
+                  <Container width="400px" height="50px">
                     <Text>{club.clubName}</Text>
                   </Container>
                 );
@@ -250,7 +256,7 @@ function CentralClub() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -274,7 +280,7 @@ function CentralClub() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -298,7 +304,7 @@ function CentralClub() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"

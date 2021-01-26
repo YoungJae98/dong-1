@@ -52,6 +52,7 @@ function ClubUnion() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="인사말"
+                      hoverUnderline
                     ></Listitem>
                   </Link>
                 </Button>
@@ -62,6 +63,7 @@ function ClubUnion() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="회장단 및 국장 소개"
+                      hoverUnderline
                     ></Listitem>
                   </Link>
                 </Button>
@@ -72,6 +74,7 @@ function ClubUnion() {
                       fontColor="#14406c"
                       fontSize="18px"
                       label="찾아오시는 길"
+                      hoverUnderline
                     ></Listitem>
                   </Link>
                 </Button>
@@ -100,7 +103,7 @@ function ClubUnion() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -142,7 +145,7 @@ function ClubUnion() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
@@ -370,7 +373,7 @@ function ClubUnion() {
             <Container
               backgroundColor="white"
               border="1px solid #14406c"
-              borderRadius="15px"
+              borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
