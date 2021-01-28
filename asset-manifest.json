@@ -1,18 +1,19 @@
 {
   "files": {
     "main.css": "/dong/static/css/main.eaaf1797.chunk.css",
-    "main.js": "/dong/static/js/main.2877b293.chunk.js",
-    "main.js.map": "/dong/static/js/main.2877b293.chunk.js.map",
+    "main.js": "/dong/static/js/main.2caec834.chunk.js",
+    "main.js.map": "/dong/static/js/main.2caec834.chunk.js.map",
     "runtime-main.js": "/dong/static/js/runtime-main.7df10508.js",
     "runtime-main.js.map": "/dong/static/js/runtime-main.7df10508.js.map",
     "static/css/2.55d8add8.chunk.css": "/dong/static/css/2.55d8add8.chunk.css",
-    "static/js/2.f1a305fc.chunk.js": "/dong/static/js/2.f1a305fc.chunk.js",
-    "static/js/2.f1a305fc.chunk.js.map": "/dong/static/js/2.f1a305fc.chunk.js.map",
+    "static/js/2.c2423366.chunk.js": "/dong/static/js/2.c2423366.chunk.js",
+    "static/js/2.c2423366.chunk.js.map": "/dong/static/js/2.c2423366.chunk.js.map",
     "index.html": "/dong/index.html",
     "static/css/2.55d8add8.chunk.css.map": "/dong/static/css/2.55d8add8.chunk.css.map",
     "static/css/main.eaaf1797.chunk.css.map": "/dong/static/css/main.eaaf1797.chunk.css.map",
-    "static/js/2.f1a305fc.chunk.js.LICENSE.txt": "/dong/static/js/2.f1a305fc.chunk.js.LICENSE.txt",
+    "static/js/2.c2423366.chunk.js.LICENSE.txt": "/dong/static/js/2.c2423366.chunk.js.LICENSE.txt",
     "static/media/index.css": "/dong/static/media/Typo_SsangmunDongB.4bd085d1.ttf",
+    "static/media/Sejonglogo.fb16eeb7.png": "/dong/static/media/Sejonglogo.fb16eeb7.png",
     "static/media/carousel1.2301cdc7.jpg": "/dong/static/media/carousel1.2301cdc7.jpg",
     "static/media/carousel2.25af7dc9.jpg": "/dong/static/media/carousel2.25af7dc9.jpg",
     "static/media/carousel3.b5e49e22.jpg": "/dong/static/media/carousel3.b5e49e22.jpg",
@@ -25,14 +26,15 @@
     "static/media/plan2.f44f4bf3.png": "/dong/static/media/plan2.f44f4bf3.png",
     "static/media/policy-business.6e8bcffa.png": "/dong/static/media/policy-business.6e8bcffa.png",
     "static/media/president.6e2945e8.png": "/dong/static/media/president.6e2945e8.png",
+    "static/media/sample.186721fa.pdf": "/dong/static/media/sample.186721fa.pdf",
     "static/media/sejong.df1675eb.png": "/dong/static/media/sejong.df1675eb.png",
     "static/media/vice.707b29f6.png": "/dong/static/media/vice.707b29f6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.7df10508.js",
     "static/css/2.55d8add8.chunk.css",
-    "static/js/2.f1a305fc.chunk.js",
+    "static/js/2.c2423366.chunk.js",
     "static/css/main.eaaf1797.chunk.css",
-    "static/js/main.2877b293.chunk.js"
+    "static/js/main.2caec834.chunk.js"
   ]
 }
