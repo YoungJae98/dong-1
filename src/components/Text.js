@@ -4,9 +4,9 @@ import styled from "styled-components";
 
 const StyledText = styled.p`
   font-size: ${(props) => props.fontSize || "15px"};
-  color: ${(props) => props.fontColor || "black"};
+  color: ${(props) => props.fontColor};
   font-family: ${(props) => props.fontFamily};
-  font-weight: ${(props) => props.fontWeight || "bold"};
+  font-weight: ${(props) => props.fontWeight};
 
   margin: 0;
   margin-left: ${(props) => props.marginLeft};

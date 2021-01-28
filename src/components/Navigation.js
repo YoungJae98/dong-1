@@ -131,7 +131,7 @@ function Navigation({
           </Link>
           <List width="800px" fontColor={main ? "#14406c" : "white"}>
             <StyledNavButton>
-              <Listitem label="총동아리연합회 소개" />
+              <Listitem label="총동아리연합회 소개" hoverUnderline />
               <div className="submenu">
                 <div className="navigation-uparrow"></div>
                 <div>

@@ -18,7 +18,7 @@ const StyledContainer = styled.div`
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
 
-  display: flex;
+  display: ${(props) => props.display || "flex"};
   flex-direction: ${(props) => props.fd || "row"};
   align-items: ${(props) => props.verticalAlign || "center"};
   justify-content: ${(props) => props.horizontalAlign || "center"};
@@ -40,6 +40,7 @@ export function Container({
   backgroundColor,
   size,
   fontSize,
+  display,
   marginTop,
   marginBottom,
   marginLeft,
@@ -69,6 +70,7 @@ export function Container({
       backgroundColor={backgroundColor}
       size={size}
       fontSize={fontSize}
+      display={display}
       marginTop={marginTop}
       marginBottom={marginBottom}
       marginLeft={marginLeft}

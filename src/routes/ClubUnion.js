@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route } from "react-router-dom";
+import { Link, NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/logo_reversed.png";
 import hello from "../assets/hello.png";
@@ -46,7 +46,10 @@ function ClubUnion() {
             <Remote width="200px" paddingTop="10px" paddingBottom="10px">
               <List fd="column">
                 <Button backgroundColor="white">
-                  <Link to="/clubunion/">
+                  <NavLink
+                    to="/clubunion/"
+                    activeStyle={{ backgroundColor: "black" }}
+                  >
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
@@ -54,7 +57,7 @@ function ClubUnion() {
                       label="인사말"
                       hoverUnderline
                     ></Listitem>
-                  </Link>
+                  </NavLink>
                 </Button>
                 <Button backgroundColor="white">
                   <Link to="/clubunion/introduce">

@@ -1,5 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import PropTypes from "prop-types";
 
 const StyledButton = styled.button`
@@ -8,40 +8,21 @@ const StyledButton = styled.button`
   color: ${(props) => props.fontColor || "black"};
 
   font-family: ${(props) => props.font};
-  font-size:${(props) => props.fontSize};
+  font-size: ${(props) => props.fontSize};
   font-weight: bold;
 
-  margin-top:${(props) => props.marginTop};
-  margin-bottom:${(props) => props.marginBottom};
-  margin-left:${(props) => props.marginLeft};
-  margin-right:${(props) => props.marginRight};
-
-  ${(props) =>
-    props.size === "small" &&
-    css`
-      width: 4rem;
-      height: 3rem;
-    `}
-  ${(props) =>
-    props.size === "medium" &&
-    css`
-      width: 8rem;
-      height: 6rem;
-    `}
-  ${(props) =>
-    props.size === "large" &&
-    css`
-      width: 12rem;
-      height: 9rem;
-    `}
+  margin-top: ${(props) => props.marginTop};
+  margin-bottom: ${(props) => props.marginBottom};
+  margin-left: ${(props) => props.marginLeft};
+  margin-right: ${(props) => props.marginRight};
 
   width: ${(props) => props.width || "100%"};
   height: ${(props) => props.height || "100%"};
 
-  outline:none;
-  border:none;
+  outline: none;
+  border: ${(props) => props.border || "none"};
 
-  border-radius:${(props) => props.borderRadius};
+  border-radius: ${(props) => props.borderRadius};
 
   transition: 0.2s;
   &:hover {
@@ -49,7 +30,6 @@ const StyledButton = styled.button`
     background-color: ${(props) => props.hoverBackgrounColor};
     color: ${(props) => props.hoverFontColor};
   }
-
 `;
 
 export function Button({
@@ -70,6 +50,7 @@ export function Button({
   className,
   font,
   borderRadius,
+  border,
   children,
 }) {
   return (
@@ -90,6 +71,7 @@ export function Button({
       onClick={onClick}
       className={className}
       font={font}
+      border={border}
       borderRadius={borderRadius}
     >
       {children}
