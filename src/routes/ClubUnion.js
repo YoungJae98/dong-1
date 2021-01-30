@@ -39,21 +39,17 @@ function ClubUnion() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="18px" fontFamily="Arial">
+              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
                 총동아리연합회 소개
               </Text>
             </Container>
             <Remote width="200px" paddingTop="10px" paddingBottom="10px">
               <List fd="column">
                 <Button backgroundColor="white">
-                  <NavLink
-                    to="/clubunion/"
-                    activeStyle={{ backgroundColor: "black" }}
-                  >
+                  <NavLink to="/clubunion/">
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="인사말"
                       hoverUnderline
                     ></Listitem>
@@ -64,7 +60,6 @@ function ClubUnion() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="회장단 및 국장 소개"
                       hoverUnderline
                     ></Listitem>
@@ -75,7 +70,6 @@ function ClubUnion() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="찾아오시는 길"
                       hoverUnderline
                     ></Listitem>
@@ -166,7 +160,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="20px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     width="120px"
                     height="50px"
                     marginLeft="3px"
@@ -181,7 +176,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="20px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     width="120px"
                     height="50px"
                     marginLeft="3px"
@@ -196,7 +192,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="20px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     width="120px"
                     height="50px"
                     marginLeft="3px"
@@ -211,7 +208,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="20px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     width="120px"
                     height="50px"
                     marginLeft="3px"
@@ -226,7 +224,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="20px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     width="120px"
                     height="50px"
                     marginLeft="3px"
@@ -241,7 +240,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="20px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     width="120px"
                     height="50px"
                     marginLeft="3px"
@@ -256,7 +256,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="20px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     width="120px"
                     height="50px"
                     marginLeft="3px"

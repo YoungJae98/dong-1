@@ -6,7 +6,7 @@ input:focus {
 }
 body {
   margin: 0;
-  font-family: "ssang";
+  font-family: "SeoulBold";
   height: 100%;
 }
 
@@ -49,11 +49,27 @@ li {
 }
 @font-face {
   font-family: "Bamin";
-  src: url(./assets/BMJUA_ttf.ttf) format("truetype");
+  src: url(./assets/fonts/BMJUA_ttf.ttf) format("truetype");
 }
 @font-face {
   font-family: "ssang";
-  src: url(./assets/Typo_SsangmunDongB.ttf) format("truetype");
+  src: url(./assets/fonts/Typo_SsangmunDongB.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SeoulBold";
+  src: url(./assets/fonts/SeoulBold.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SeoulLight";
+  src: url(./assets/fonts/SeoulLight.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SeoulMedium";
+  src: url(./assets/fonts/SeoulMedium.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SeoulEB";
+  src: url(./assets/fonts/SeoulExtraBold.ttf) format("truetype");
 }
 
 .navigation-uparrow {
@@ -62,8 +78,8 @@ li {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid #14406c;
-  top: 6px;
-  left: 45%;
+  top: 9px;
+  left: 82px;
   position: absolute;
 }
 .navigation-uparrow2 {
@@ -72,33 +88,33 @@ li {
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-bottom: 10px solid #14406c;
-  top: 6px;
-  left: 40%;
+  top: 8px;
+  left: 40px;
   position: absolute;
 }
 
 .submenu {
   display: none;
   position: absolute;
-  transform: translateX(5px);
+  transform: translateX(-12px);
   background-color: "#14406c";
-  padding-top: 16px;
+  padding-top: 19px;
   animation: fadein 0.2s;
 }
 .submenu2 {
   display: none;
   position: absolute;
-  transform: translateX(-12px);
+  transform: translateX(-30px);
   background-color: "#14406c";
-  padding-top: 16px;
+  padding-top: 19px;
   animation: fadein 0.2s;
 }
 .submenu3 {
   display: none;
   position: absolute;
-  transform: translateX(-70px);
+  transform: translateX(-75px);
   background-color: "#14406c";
-  padding-top: 16px;
+  padding-top: 19px;
   animation: fadein 0.2s;
 }
 .submenu4 {
@@ -106,10 +122,48 @@ li {
   position: absolute;
   background-color: "#14406c";
   transform: translateX(-33px) translateY(-5px);
-  padding-top: 16px;
+  padding-top: 18px;
   animation: fadein 0.2s;
 }
 .navigation-submenu-button:hover {
   background-color: white;
   color: #14406c;
+}
+.progressBar-container:hover .progressBar-content {
+  border: 2px solid #14406c;
+}
+.progressBar-container:hover > .subProgress {
+  display: block;
+}
+.subProgress {
+  width: 300px;
+  height: 180px;
+  background-color: white;
+  border: 2px solid #14406c;
+  display: none;
+  position: absolute;
+  left: 530px;
+  bottom: 35px;
+  z-index: 10;
+}
+.subProgress-downarrow {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #14406c;
+  position: absolute;
+  left: 135px;
+  z-index: 10;
+}
+.subProgress-downarrow-cover {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid white;
+  position: absolute;
+  left: 135px;
+  transform: translateY(-2px);
+  z-index: 10;
 }

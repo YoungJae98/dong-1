@@ -38,8 +38,6 @@ const StyledNavigation = styled.div`
   justify-content: ${(props) => props.horizontalAlign || "space-between"};
 
   border: ${(props) => props.border};
-
-  z-index: 100;
 `;
 
 const StyledNavButton = styled.div`
@@ -94,7 +92,7 @@ function Navigation({
     }
   }, [main]);
   return (
-    <Container width="100%" height="60px" zIndex={10}>
+    <Container width="100%" height="60px" zIndex={1000}>
       <Container
         width="100%"
         height="60px"
@@ -131,7 +129,7 @@ function Navigation({
           </Link>
           <List width="800px" fontColor={main ? "#14406c" : "white"}>
             <StyledNavButton>
-              <Listitem label="총동아리연합회 소개" hoverUnderline />
+              <Listitem label="총동아리연합회 소개" />
               <div className="submenu">
                 <div className="navigation-uparrow"></div>
                 <div>
@@ -141,7 +139,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       인사말
@@ -158,7 +157,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       회장단 및 국장 소개
@@ -172,7 +172,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       찾아오시는 길
@@ -192,7 +193,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       동방 배치도
@@ -206,7 +208,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       공연 분과
@@ -223,7 +226,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       문화 분과
@@ -240,7 +244,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       봉사 분과
@@ -257,7 +262,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       종교 분과
@@ -274,7 +280,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       체육 분과
@@ -291,7 +298,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       학술 분과
@@ -314,7 +322,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       공약 이행도
@@ -331,7 +340,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       제휴 사업
@@ -345,7 +355,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       서동협
@@ -359,7 +370,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       예결산 보고
@@ -376,7 +388,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       회의록
@@ -396,7 +409,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       건의 사항
@@ -413,7 +427,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       회칙 개정 요구 청원
@@ -433,7 +448,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       회칙
@@ -447,7 +463,8 @@ function Navigation({
                       width="183px"
                       backgroundColor="#14406c"
                       fontColor="white"
-                      fontSize="18px"
+                      fontSize="21px"
+                      font="SeoulBold"
                       className="navigation-submenu-button"
                     >
                       제출서류 양식
@@ -468,7 +485,8 @@ function Navigation({
                     width="100px"
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="18px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     className="navigation-submenu-button"
                   >
                     로그인
@@ -482,7 +500,8 @@ function Navigation({
                     width="100px"
                     backgroundColor="#14406c"
                     fontColor="white"
-                    fontSize="18px"
+                    fontSize="21px"
+                    font="SeoulBold"
                     className="navigation-submenu-button"
                   >
                     회원가입

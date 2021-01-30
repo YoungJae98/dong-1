@@ -91,7 +91,7 @@ function CentralClub() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="18px" fontFamily="Arial">
+              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
                 중앙동아리 소개
               </Text>
             </Container>
@@ -102,7 +102,6 @@ function CentralClub() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="동방 배치도"
                       hoverUnderline
                     ></Listitem>
@@ -113,7 +112,6 @@ function CentralClub() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="공연 분과"
                       hoverUnderline
                     ></Listitem>
@@ -124,7 +122,6 @@ function CentralClub() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="문화 분과"
                       hoverUnderline
                     ></Listitem>
@@ -135,7 +132,6 @@ function CentralClub() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="봉사 분과"
                       hoverUnderline
                     ></Listitem>
@@ -146,7 +142,6 @@ function CentralClub() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="종교 분과"
                       hoverUnderline
                     ></Listitem>
@@ -157,18 +152,16 @@ function CentralClub() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="체육 분과"
                       hoverUnderline
                     ></Listitem>
                   </NavLink>
                 </Button>
-                <Button backgroundColor="white" onClick={() => {}}>
+                <Button backgroundColor="white">
                   <NavLink to="/centralclub/academic">
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="학술 분과"
                       hoverUnderline
                     ></Listitem>
@@ -246,7 +239,7 @@ function CentralClub() {
                 height="100px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="18px" fontColor="grey" fontFamily="Arial">
+                <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
@@ -276,12 +269,8 @@ function CentralClub() {
                         verticalAlign="flex-start"
                         paddingLeft="30px"
                       >
-                        <Text fontSize="18px" fontFamily="Arial">
-                          {club.clubName}
-                        </Text>
-                        <Text fontFamily="Arial">
-                          {club.clubName}의 한 줄 소개
-                        </Text>
+                        <Text clubName>{club.clubName}</Text>
+                        <Text clubSummary>{club.clubName}의 한 줄 소개</Text>
                       </Container>
                     </Container>
                   </Container>
@@ -317,7 +306,7 @@ function CentralClub() {
                 height="100px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="18px" fontColor="grey" fontFamily="Arial">
+                <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
@@ -349,12 +338,8 @@ function CentralClub() {
                         verticalAlign="flex-start"
                         paddingLeft="30px"
                       >
-                        <Text fontSize="18px" fontFamily="Arial">
-                          {club.clubName}
-                        </Text>
-                        <Text fontFamily="Arial">
-                          {club.clubName}의 한 줄 소개
-                        </Text>
+                        <Text clubName>{club.clubName}</Text>
+                        <Text clubSummary>{club.clubName}의 한 줄 소개</Text>
                       </Container>
                     </Container>
                   </Container>
@@ -390,7 +375,7 @@ function CentralClub() {
                 height="100px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="18px" fontColor="grey" fontFamily="Arial">
+                <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
@@ -420,11 +405,10 @@ function CentralClub() {
                         verticalAlign="flex-start"
                         paddingLeft="30px"
                       >
-                        <Text fontSize="18px" fontFamily="Arial">
-                          {club.clubName}
-                        </Text>
-                        <Text fontFamily="Arial">
-                          {club.clubName}의 한 줄 소개
+                        <Text clubName>{club.clubName}</Text>
+                        <Text clubSummary>
+                          {club.clubName}의 한 줄 소개 글자 수는 어디까지 될까
+                          대충 띄어쓰기 포함 50자 안쪽이면 예쁠듯
                         </Text>
                       </Container>
                     </Container>
@@ -461,7 +445,7 @@ function CentralClub() {
                 height="100px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="18px" fontColor="grey" fontFamily="Arial">
+                <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
@@ -493,12 +477,8 @@ function CentralClub() {
                         verticalAlign="flex-start"
                         paddingLeft="30px"
                       >
-                        <Text fontSize="18px" fontFamily="Arial">
-                          {club.clubName}
-                        </Text>
-                        <Text fontFamily="Arial">
-                          {club.clubName}의 한 줄 소개
-                        </Text>
+                        <Text clubName>{club.clubName}</Text>
+                        <Text clubSummary>{club.clubName}의 한 줄 소개</Text>
                       </Container>
                     </Container>
                   </Container>
@@ -534,7 +514,7 @@ function CentralClub() {
                 height="100px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="18px" fontColor="grey" fontFamily="Arial">
+                <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
@@ -564,12 +544,8 @@ function CentralClub() {
                         verticalAlign="flex-start"
                         paddingLeft="30px"
                       >
-                        <Text fontSize="18px" fontFamily="Arial">
-                          {club.clubName}
-                        </Text>
-                        <Text fontFamily="Arial">
-                          {club.clubName}의 한 줄 소개
-                        </Text>
+                        <Text clubName>{club.clubName}</Text>
+                        <Text clubSummary>{club.clubName}의 한 줄 소개</Text>
                       </Container>
                     </Container>
                   </Container>
@@ -605,11 +581,11 @@ function CentralClub() {
                 height="100px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="18px" fontColor="grey" fontFamily="Arial">
+                <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
-              {volunteerClub.map((club, index) => {
+              {volunteerClub.map((club) => {
                 return (
                   <Container
                     width="420px"
@@ -633,12 +609,8 @@ function CentralClub() {
                         verticalAlign="flex-start"
                         paddingLeft="30px"
                       >
-                        <Text fontSize="18px" fontFamily="Arial">
-                          {club.clubName}
-                        </Text>
-                        <Text fontFamily="Arial">
-                          {club.clubName}의 한 줄 소개
-                        </Text>
+                        <Text clubName>{club.clubName}</Text>
+                        <Text clubSummary>{club.clubName}의 한 줄 소개</Text>
                       </Container>
                     </Container>
                   </Container>

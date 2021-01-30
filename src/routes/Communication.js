@@ -78,7 +78,7 @@ function Main() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="18px" fontFamily="Arial">
+              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
                 소통
               </Text>
             </Container>
@@ -89,7 +89,6 @@ function Main() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="건의사항"
                       hoverUnderline
                     ></Listitem>
@@ -100,7 +99,6 @@ function Main() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="회칙 개정 요구 청원"
                       hoverUnderline
                     ></Listitem>
@@ -154,7 +152,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginRight="15px"
                 >
-                  <Text fontSize="18px">정렬 방식 ▼</Text>
+                  <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
                 <Button
                   width="120px"
@@ -166,7 +164,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginRight="15px"
                 >
-                  <Text fontSize="18px">제목 ▼</Text>
+                  <Text fontSize="21px">제목 ▼</Text>
                 </Button>
                 <input
                   type="text"
@@ -176,7 +174,8 @@ function Main() {
                     height: "35px",
                     border: "2px solid #14406c",
                     borderRadius: "10px",
-                    fontSize: "20px",
+                    fontSize: "21px",
+                    fontFamily: "SeoulBold",
                   }}
                 />
                 <Button
@@ -189,7 +188,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginLeft="15px"
                 >
-                  <Text fontSize="18px">검색</Text>
+                  <Text fontSize="21px">검색</Text>
                 </Button>
                 <Link to="/communication/petition/register">
                   <Button
@@ -201,7 +200,7 @@ function Main() {
                     fontColor="#14406c"
                     marginLeft="15px"
                   >
-                    <Text fontSize="18px">건의하기</Text>
+                    <Text fontSize="21px">건의하기</Text>
                   </Button>
                 </Link>
               </Container>
@@ -224,15 +223,13 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontFamily="Arial" fontSize="32px">
-                        {suggestion.suggestionTitle}
-                      </Text>
+                      <Text fontSize="34px">{suggestion.suggestionTitle}</Text>
                       <Container
                         height="40px"
                         className="form-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontFamily="Arial" fontColor="grey">
+                        <Text fontColor="grey" fontSize="21px">
                           {suggestion.suggestionDate}
                         </Text>
                         <div
@@ -244,17 +241,13 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontFamily="Arial" fontColor="grey">
+                        <Text fontColor="grey" fontSize="21px">
                           {suggestion.suggestioner}
                         </Text>
                       </Container>
                     </Container>
                     <Container width="200px" marginRight="30px">
-                      <Text
-                        fontFamily="Arial"
-                        fontColor="black"
-                        fontSize="22px"
-                      >
+                      <Text fontColor="black" fontSize="22px">
                         {suggestion.suggestionConsensus}명이 동의
                       </Text>
                     </Container>
@@ -298,7 +291,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginRight="15px"
                 >
-                  <Text fontSize="18px">정렬 방식 ▼</Text>
+                  <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
                 <Button
                   width="120px"
@@ -310,7 +303,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginRight="15px"
                 >
-                  <Text fontSize="18px">제목 ▼</Text>
+                  <Text fontSize="21px">제목 ▼</Text>
                 </Button>
                 <input
                   type="text"
@@ -320,7 +313,8 @@ function Main() {
                     height: "35px",
                     border: "2px solid #14406c",
                     borderRadius: "10px",
-                    fontSize: "20px",
+                    fontSize: "21px",
+                    fontFamily: "SeoulBold",
                   }}
                 />
                 <Button
@@ -333,7 +327,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginLeft="15px"
                 >
-                  <Text fontSize="18px">검색</Text>
+                  <Text fontSize="21px">검색</Text>
                 </Button>
                 <Link to="/communication/petition/register">
                   <Button
@@ -345,7 +339,7 @@ function Main() {
                     fontColor="#14406c"
                     marginLeft="15px"
                   >
-                    <Text fontSize="18px">청원 등록하기</Text>
+                    <Text fontSize="21px">청원 등록하기</Text>
                   </Button>
                 </Link>
               </Container>
@@ -368,15 +362,13 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontFamily="Arial" fontSize="32px">
-                        {petition.petitionTitle}
-                      </Text>
+                      <Text fontSize="34px">{petition.petitionTitle}</Text>
                       <Container
                         height="40px"
                         className="form-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontFamily="Arial" fontColor="grey">
+                        <Text fontColor="grey" fontSize="21px">
                           {petition.petitionDate}
                         </Text>
                         <div
@@ -388,17 +380,13 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontFamily="Arial" fontColor="grey">
+                        <Text fontColor="grey" fontSize="21px">
                           {petition.petitioner}
                         </Text>
                       </Container>
                     </Container>
                     <Container width="200px" marginRight="30px">
-                      <Text
-                        fontFamily="Arial"
-                        fontColor="black"
-                        fontSize="22px"
-                      >
+                      <Text fontColor="black" fontSize="22px">
                         {petition.petitionConsensus}명이 동의
                       </Text>
                     </Container>

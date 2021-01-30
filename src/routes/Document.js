@@ -61,7 +61,7 @@ function Main() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="18px" fontFamily="Arial">
+              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
                 자료
               </Text>
             </Container>
@@ -72,7 +72,6 @@ function Main() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="회칙"
                       hoverUnderline
                     ></Listitem>
@@ -83,7 +82,6 @@ function Main() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      fontSize="18px"
                       label="제출서류 양식"
                       hoverUnderline
                     ></Listitem>
@@ -141,7 +139,7 @@ function Main() {
                   marginRight="15px"
                 >
                   <a href={regulations} target="_blank" rel="noreferrer">
-                    <Text fontSize="18px">새 탭에서 열기</Text>
+                    <Text fontSize="21px">새 탭에서 열기</Text>
                   </a>
                 </Button>
                 <Button
@@ -155,7 +153,7 @@ function Main() {
                   marginRight="15px"
                 >
                   <a href={regulations} download>
-                    <Text fontSize="18px">pdf 다운로드</Text>
+                    <Text fontSize="21px">pdf 다운로드</Text>
                   </a>
                 </Button>
               </Container>
@@ -203,7 +201,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginRight="15px"
                 >
-                  <Text fontSize="18px">정렬 방식 ▼</Text>
+                  <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
                 <Button
                   width="120px"
@@ -215,7 +213,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginRight="15px"
                 >
-                  <Text fontSize="18px">제목 ▼</Text>
+                  <Text fontSize="21px">제목 ▼</Text>
                 </Button>
                 <input
                   type="text"
@@ -225,7 +223,8 @@ function Main() {
                     height: "35px",
                     border: "2px solid #14406c",
                     borderRadius: "10px",
-                    fontSize: "20px",
+                    fontSize: "21px",
+                    fontFamily: "SeoulBold",
                   }}
                 />
                 <Button
@@ -238,7 +237,7 @@ function Main() {
                   hoverFontColor="#14406c"
                   marginLeft="15px"
                 >
-                  <Text fontSize="18px">검색</Text>
+                  <Text fontSize="21px">검색</Text>
                 </Button>
               </Container>
               <Container
@@ -261,15 +260,13 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="32px" fontFamily="Arial">
-                        {form.formName}
-                      </Text>
+                      <Text fontSize="34px">{form.formName}</Text>
                       <Container
                         height="40px"
                         className="form-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontFamily="Arial" fontColor="grey">
+                        <Text fontColor="grey" fontSize="21px">
                           {form.formDate}
                         </Text>
                         <div
@@ -281,7 +278,7 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontFamily="Arial" fontColor="grey">
+                        <Text fontColor="grey" fontSize="21px">
                           {form.formUploader}
                         </Text>
                       </Container>
@@ -298,7 +295,7 @@ function Main() {
                         hoverFontColor="white"
                         marginRight="15px"
                       >
-                        <Text fontSize="18px">hwp 다운로드</Text>
+                        <Text fontSize="21px">hwp 다운로드</Text>
                       </Button>
                     </a>
                     <a href={form.formSourceDocx} download>
@@ -313,7 +310,7 @@ function Main() {
                         hoverFontColor="white"
                         marginRight="15px"
                       >
-                        <Text fontSize="18px">docx 다운로드</Text>
+                        <Text fontSize="21px">docx 다운로드</Text>
                       </Button>
                     </a>
                   </Container>

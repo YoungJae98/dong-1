@@ -7,9 +7,8 @@ const StyledButton = styled.button`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor || "black"};
 
-  font-family: ${(props) => props.font};
-  font-size: ${(props) => props.fontSize};
-  font-weight: bold;
+  font-family: ${(props) => props.font || "SeoulBold"};
+  font-size: ${(props) => props.fontSize || "21px"};
 
   margin-top: ${(props) => props.marginTop};
   margin-bottom: ${(props) => props.marginBottom};

@@ -32,7 +32,7 @@ function Signin() {
         fd="column"
         horizontalAlign="flex-start"
       >
-        <Text fontSize="32px" marginTop="50px">
+        <Text fontSize="36px" marginTop="50px">
           로그인
         </Text>
         <form>
@@ -44,7 +44,8 @@ function Signin() {
                 style={{
                   width: "230px",
                   height: "40px",
-                  fontSize: "18px",
+                  fontSize: "21px",
+                  fontFamily: "SeoulBold",
                   backgroundColor: "#FAFAFA",
                   border: "1px solid black",
                   borderRadius: "5px",
@@ -58,7 +59,8 @@ function Signin() {
                 style={{
                   width: "230px",
                   height: "40px",
-                  fontSize: "18px",
+                  fontSize: "21px",
+                  fontFamily: "SeoulBold",
                   backgroundColor: "#FAFAFA",
                   border: "1px solid black",
                   borderRadius: "5px",
@@ -68,7 +70,7 @@ function Signin() {
             <Button
               height="40px"
               marginTop="30px"
-              fontSize="18px"
+              fontSize="21px"
               backgroundColor="#14406c"
               fontColor="white"
               hoverBackgrounColor="white"
@@ -78,7 +80,7 @@ function Signin() {
               로그인
             </Button>
             <Container height="18px">
-              <Text fontSize="16px" marginTop="20px" fontFamily="Arial">
+              <Text fontSize="21px" marginTop="20px">
                 또는
               </Text>
             </Container>
@@ -87,7 +89,7 @@ function Signin() {
                 width="230px"
                 height="40px"
                 marginTop="20px"
-                fontSize="18px"
+                fontSize="21px"
                 backgroundColor="#3867ba"
                 fontColor="white"
                 hoverBackgrounColor="white"
