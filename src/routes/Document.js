@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
-import regulations from "../assets/documents/sample.pdf";
+import regulations from "../assets/documents/regulations.pdf";
 import form1_hwp from "../assets/documents/sample2.hwp";
 import form1_docx from "../assets/documents/sample2.docx";
 import logo_inversed from "../assets/logo_reversed.png";
@@ -128,34 +128,36 @@ function Main() {
                 marginBottom="20px"
                 horizontalAlign="flex-end"
               >
-                <Button
-                  width="150px"
-                  backgroundColor="white"
-                  border="2px solid #14406c"
-                  borderRadius="5px"
-                  fontColor="#14406c"
-                  hoverBackgrounColor="#14406c"
-                  hoverFontColor="white"
-                  marginRight="15px"
-                >
-                  <a href={regulations} target="_blank" rel="noreferrer">
+                <a href={regulations} target="_blank" rel="noreferrer">
+                  <Button
+                    width="150px"
+                    height="50px"
+                    backgroundColor="white"
+                    border="2px solid #14406c"
+                    borderRadius="5px"
+                    fontColor="#14406c"
+                    hoverBackgrounColor="#14406c"
+                    hoverFontColor="white"
+                    marginRight="15px"
+                  >
                     <Text fontSize="21px">새 탭에서 열기</Text>
-                  </a>
-                </Button>
-                <Button
-                  width="150px"
-                  backgroundColor="white"
-                  border="2px solid #14406c"
-                  borderRadius="5px"
-                  fontColor="#14406c"
-                  hoverBackgrounColor="#14406c"
-                  hoverFontColor="white"
-                  marginRight="15px"
-                >
-                  <a href={regulations} download>
+                  </Button>
+                </a>
+                <a href={regulations} download>
+                  <Button
+                    width="150px"
+                    height="50px"
+                    backgroundColor="white"
+                    border="2px solid #14406c"
+                    borderRadius="5px"
+                    fontColor="#14406c"
+                    hoverBackgrounColor="#14406c"
+                    hoverFontColor="white"
+                    marginRight="15px"
+                  >
                     <Text fontSize="21px">pdf 다운로드</Text>
-                  </a>
-                </Button>
+                  </Button>
+                </a>
               </Container>
               <iframe
                 src={`${regulations}#toolbar=0`}

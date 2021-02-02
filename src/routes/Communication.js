@@ -10,14 +10,14 @@ import Remote from "../components/Remote";
 import Text from "../components/Text";
 
 function Main() {
-  const [suggestions, setsuggestions] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
   useEffect(() => {
-    setsuggestions([
+    setSuggestions([
       {
         suggestionId: 1,
         suggestionTitle: "코스모스",
-        suggestionConsensus: 27,
+        suggestionConsensus: 127,
         suggestionDate: "2021-11-42",
         suggestioner: "김지우",
       },
@@ -33,6 +33,20 @@ function Main() {
         suggestionTitle: "피아노 쳐주세요",
         suggestionConsensus: 62,
         suggestionDate: "2021-45-73",
+        suggestioner: "김지우",
+      },
+      {
+        suggestionId: 4,
+        suggestionTitle: "기타 쳐주세요",
+        suggestionConsensus: 602,
+        suggestionDate: "2021-32-13",
+        suggestioner: "김지우",
+      },
+      {
+        suggestionId: 5,
+        suggestionTitle: "책 빌려주세요",
+        suggestionConsensus: 72,
+        suggestionDate: "2021-12-23",
         suggestioner: "김지우",
       },
     ]);
@@ -55,7 +69,21 @@ function Main() {
         petitionId: 3,
         petitionTitle: "청원 3",
         petitionConsensus: 17,
-        petitionDate: "2021-71-63",
+        petitionDate: "2021-01-31",
+        petitioner: "김지우",
+      },
+      {
+        petitionId: 4,
+        petitionTitle: "청원 4",
+        petitionConsensus: 377,
+        petitionDate: "2021-12-22",
+        petitioner: "김지우",
+      },
+      {
+        petitionId: 5,
+        petitionTitle: "청원 5",
+        petitionConsensus: 12,
+        petitionDate: "2021-08-21",
         petitioner: "김지우",
       },
     ]);
@@ -151,9 +179,110 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    const list = document.querySelector(
+                      ".suggestions-sort-options"
+                    );
+                    list.classList.toggle("invisible");
+                  }}
                 >
                   <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
+                <div className="suggestions-sort-options invisible">
+                  <Container
+                    width="110px"
+                    height="120px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".suggestions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(suggestions));
+                        setSuggestions(
+                          tmp.sort((a, b) => {
+                            if (a.suggestionTitle < b.suggestionTitle)
+                              return -1;
+                            else return 1;
+                          })
+                        );
+                      }}
+                    >
+                      제목
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".suggestions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(suggestions));
+                        setSuggestions(
+                          tmp.sort((a, b) => {
+                            if (a.suggestionConsensus < b.suggestionConsensus)
+                              return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      동의 수
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".suggestions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(suggestions));
+                        setSuggestions(
+                          tmp.sort((a, b) => {
+                            if (a.suggestionDate < b.suggestionDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      최근
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".suggestions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(suggestions));
+                        setSuggestions(
+                          tmp.sort((a, b) => {
+                            if (a.suggestionDate > b.suggestionDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      오래된
+                    </Button>
+                  </Container>
+                </div>
                 <Button
                   width="120px"
                   backgroundColor="#14406c"
@@ -190,7 +319,7 @@ function Main() {
                 >
                   <Text fontSize="21px">검색</Text>
                 </Button>
-                <Link to="/communication/petition/register">
+                <Link to="/communication/suggestions/register">
                   <Button
                     width="140px"
                     height="40px"
@@ -215,7 +344,7 @@ function Main() {
                     horizontalAlign="flex-start"
                     marginTop="20px"
                     borderBottom="2px solid #14406c"
-                    key={suggestion.suggestionId}
+                    key={suggestion.suggestionTitle}
                   >
                     <Container
                       className="petition-item-info"
@@ -290,9 +419,109 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    const list = document.querySelector(
+                      ".petitions-sort-options"
+                    );
+                    list.classList.toggle("invisible");
+                  }}
                 >
                   <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
+                <div className="petitions-sort-options invisible">
+                  <Container
+                    width="110px"
+                    height="120px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".petitions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(petitions));
+                        setPetitions(
+                          tmp.sort((a, b) => {
+                            if (a.petitionTitle < b.petitionTitle) return -1;
+                            else return 1;
+                          })
+                        );
+                      }}
+                    >
+                      제목
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".petitions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(petitions));
+                        setPetitions(
+                          tmp.sort((a, b) => {
+                            if (a.petitionConsensus < b.petitionConsensus)
+                              return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      동의 수
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".petitions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(petitions));
+                        setPetitions(
+                          tmp.sort((a, b) => {
+                            if (a.petitionDate < b.petitionDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      최근
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".petitions-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(petitions));
+                        setPetitions(
+                          tmp.sort((a, b) => {
+                            if (a.petitionDate > b.petitionDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      오래된
+                    </Button>
+                  </Container>
+                </div>
                 <Button
                   width="120px"
                   backgroundColor="#14406c"
@@ -343,6 +572,7 @@ function Main() {
                   </Button>
                 </Link>
               </Container>
+
               <Container
                 className="reform-contents-container"
                 fd="column"
