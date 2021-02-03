@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -21,90 +21,121 @@ const StyledContainer = styled(Container)`
 `;
 
 function Signin() {
-  return (
-    <Container height="100vh" backgroundColor="#14406c">
-      <StyledLogo src={logo} alt="" />
-      <StyledContainer
-        width="400px"
-        height="500px"
-        backgroundColor="white"
-        borderRadius="5px"
-        fd="column"
-        horizontalAlign="flex-start"
-      >
-        <Text fontSize="36px" marginTop="50px">
-          로그인
-        </Text>
-        <form>
-          <Container fd="column">
-            <Container marginTop="30px" height="40px">
-              <input
-                type="text"
-                placeholder="학번"
-                style={{
-                  width: "230px",
-                  height: "40px",
-                  fontSize: "21px",
-                  fontFamily: "SeoulBold",
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid black",
-                  borderRadius: "5px",
-                }}
-              />
-            </Container>
-            <Container marginTop="30px" height="40px">
-              <input
-                type="password"
-                placeholder="비밀번호"
-                style={{
-                  width: "230px",
-                  height: "40px",
-                  fontSize: "21px",
-                  fontFamily: "SeoulBold",
-                  backgroundColor: "#FAFAFA",
-                  border: "1px solid black",
-                  borderRadius: "5px",
-                }}
-              />
-            </Container>
-            <Button
-              height="40px"
-              marginTop="30px"
-              fontSize="21px"
-              backgroundColor="#14406c"
-              fontColor="white"
-              hoverBackgrounColor="white"
-              hoverFontColor="#14406c"
-              borderRadius="5px"
-            >
-              로그인
-            </Button>
-            <Container height="18px">
-              <Text fontSize="21px" marginTop="20px">
-                또는
-              </Text>
-            </Container>
-            <Link to="/signup">
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+
+  const loginProcess = async () => {
+    await fetch("http://localhost:3001/api", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+        pw: pw,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        setIsLogin(true);
+      });
+  };
+  if (isLogin) {
+    return;
+  } else {
+    return (
+      <Container height="100vh" backgroundColor="#14406c">
+        <StyledLogo src={logo} alt="" />
+        <StyledContainer
+          width="400px"
+          height="500px"
+          backgroundColor="white"
+          borderRadius="5px"
+          fd="column"
+          horizontalAlign="flex-start"
+        >
+          <Text fontSize="36px" marginTop="50px">
+            로그인
+          </Text>
+          <form>
+            <Container fd="column">
+              <Container marginTop="30px" height="40px">
+                <input
+                  type="text"
+                  placeholder="학번"
+                  value={id}
+                  onChange={({ target: { value } }) => setId(value)}
+                  style={{
+                    width: "230px",
+                    height: "40px",
+                    fontSize: "21px",
+                    fontFamily: "SeoulBold",
+                    backgroundColor: "#FAFAFA",
+                    border: "1px solid black",
+                    borderRadius: "5px",
+                  }}
+                />
+              </Container>
+              <Container marginTop="30px" height="40px">
+                <input
+                  type="password"
+                  placeholder="비밀번호"
+                  value={pw}
+                  onChange={({ target: { value } }) => setPw(value)}
+                  name="pw"
+                  style={{
+                    width: "230px",
+                    height: "40px",
+                    fontSize: "21px",
+                    fontFamily: "SeoulBold",
+                    backgroundColor: "#FAFAFA",
+                    border: "1px solid black",
+                    borderRadius: "5px",
+                  }}
+                />
+              </Container>
               <Button
-                width="230px"
                 height="40px"
-                marginTop="20px"
+                marginTop="30px"
                 fontSize="21px"
-                backgroundColor="#3867ba"
+                backgroundColor="#14406c"
                 fontColor="white"
                 hoverBackgrounColor="white"
                 hoverFontColor="#14406c"
                 borderRadius="5px"
-                onClick={() => {}}
+                onClick={loginProcess}
               >
-                회원가입
+                로그인
               </Button>
-            </Link>
-          </Container>
-        </form>
-      </StyledContainer>
-    </Container>
-  );
+              <Container height="18px">
+                <Text fontSize="21px" marginTop="20px">
+                  또는
+                </Text>
+              </Container>
+              <Link to="/signup">
+                <Button
+                  width="230px"
+                  height="40px"
+                  marginTop="20px"
+                  fontSize="21px"
+                  backgroundColor="#3867ba"
+                  fontColor="white"
+                  hoverBackgrounColor="white"
+                  hoverFontColor="#14406c"
+                  borderRadius="5px"
+                  onClick={() => {}}
+                >
+                  회원가입
+                </Button>
+              </Link>
+            </Container>
+          </form>
+        </StyledContainer>
+      </Container>
+    );
+  }
 }
 
 export default Signin;
