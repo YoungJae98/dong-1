@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var { PythonShell } = require("python-shell");
 
-router.post("/", (req, res) => {
+router.post("/login", (req, res) => {
   var options = {
     mode: "text",
     pythonPath: "",

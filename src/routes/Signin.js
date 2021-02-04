@@ -26,7 +26,7 @@ function Signin() {
   const [isLogin, setIsLogin] = useState(false);
 
   const loginProcess = () => {
-    fetch("http://localhost:3001/api", {
+    fetch("http://localhost:3001/api/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
