@@ -14,7 +14,11 @@ router.post("/", (req, res) => {
     if (err) throw err;
 
     console.log("results : ", results);
-    res.send(results);
+    res.json({
+      id: results[0],
+      name: results[1],
+      department: results[2],
+    });
   });
 });
 

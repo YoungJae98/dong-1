@@ -25,8 +25,8 @@ function Signin() {
   const [pw, setPw] = useState("");
   const [isLogin, setIsLogin] = useState(false);
 
-  const loginProcess = async () => {
-    await fetch("http://localhost:3001/api", {
+  const loginProcess = () => {
+    fetch("http://localhost:3001/api", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -37,13 +37,13 @@ function Signin() {
       }),
     })
       .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+      .then((response) => {
+        console.log(response);
         setIsLogin(true);
       });
   };
   if (isLogin) {
-    return;
+    return <h1>hello</h1>;
   } else {
     return (
       <Container height="100vh" backgroundColor="#14406c">
@@ -59,79 +59,77 @@ function Signin() {
           <Text fontSize="36px" marginTop="50px">
             로그인
           </Text>
-          <form>
-            <Container fd="column">
-              <Container marginTop="30px" height="40px">
-                <input
-                  type="text"
-                  placeholder="학번"
-                  value={id}
-                  onChange={({ target: { value } }) => setId(value)}
-                  style={{
-                    width: "230px",
-                    height: "40px",
-                    fontSize: "21px",
-                    fontFamily: "SeoulBold",
-                    backgroundColor: "#FAFAFA",
-                    border: "1px solid black",
-                    borderRadius: "5px",
-                  }}
-                />
-              </Container>
-              <Container marginTop="30px" height="40px">
-                <input
-                  type="password"
-                  placeholder="비밀번호"
-                  value={pw}
-                  onChange={({ target: { value } }) => setPw(value)}
-                  name="pw"
-                  style={{
-                    width: "230px",
-                    height: "40px",
-                    fontSize: "21px",
-                    fontFamily: "SeoulBold",
-                    backgroundColor: "#FAFAFA",
-                    border: "1px solid black",
-                    borderRadius: "5px",
-                  }}
-                />
-              </Container>
+          <Container fd="column">
+            <Container marginTop="30px" height="40px">
+              <input
+                type="text"
+                placeholder="학번"
+                value={id}
+                onChange={({ target: { value } }) => setId(value)}
+                style={{
+                  width: "230px",
+                  height: "40px",
+                  fontSize: "21px",
+                  fontFamily: "SeoulBold",
+                  backgroundColor: "#FAFAFA",
+                  border: "1px solid black",
+                  borderRadius: "5px",
+                }}
+              />
+            </Container>
+            <Container marginTop="30px" height="40px">
+              <input
+                type="password"
+                placeholder="비밀번호"
+                value={pw}
+                onChange={({ target: { value } }) => setPw(value)}
+                name="pw"
+                style={{
+                  width: "230px",
+                  height: "40px",
+                  fontSize: "21px",
+                  fontFamily: "SeoulBold",
+                  backgroundColor: "#FAFAFA",
+                  border: "1px solid black",
+                  borderRadius: "5px",
+                }}
+              />
+            </Container>
+            <Button
+              height="40px"
+              marginTop="30px"
+              fontSize="21px"
+              backgroundColor="#14406c"
+              fontColor="white"
+              hoverBackgrounColor="white"
+              hoverFontColor="#14406c"
+              borderRadius="5px"
+              onClick={loginProcess}
+            >
+              로그인
+            </Button>
+            <Container height="18px">
+              <Text fontSize="21px" marginTop="20px">
+                또는
+              </Text>
+            </Container>
+            <Link to="/signup">
               <Button
+                width="230px"
                 height="40px"
-                marginTop="30px"
+                marginTop="20px"
                 fontSize="21px"
-                backgroundColor="#14406c"
+                backgroundColor="#3867ba"
                 fontColor="white"
                 hoverBackgrounColor="white"
                 hoverFontColor="#14406c"
                 borderRadius="5px"
-                onClick={loginProcess}
+                onClick={() => {}}
               >
-                로그인
+                회원가입
               </Button>
-              <Container height="18px">
-                <Text fontSize="21px" marginTop="20px">
-                  또는
-                </Text>
-              </Container>
-              <Link to="/signup">
-                <Button
-                  width="230px"
-                  height="40px"
-                  marginTop="20px"
-                  fontSize="21px"
-                  backgroundColor="#3867ba"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  borderRadius="5px"
-                  onClick={() => {}}
-                >
-                  회원가입
-                </Button>
-              </Link>
-            </Container>
-          </form>
+            </Link>
+          </Container>
         </StyledContainer>
       </Container>
     );
