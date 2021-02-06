@@ -949,9 +949,85 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    const list = document.querySelector(".report-sort-options");
+                    list.classList.toggle("invisible");
+                  }}
                 >
                   <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
+                <div className="report-sort-options invisible">
+                  <Container
+                    width="110px"
+                    height="90px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".report-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(reports));
+                        setReports(
+                          tmp.sort((a, b) => {
+                            if (a.reportTitle < b.reportTitle) return -1;
+                            else return 1;
+                          })
+                        );
+                      }}
+                    >
+                      제목
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".report-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(reports));
+                        setReports(
+                          tmp.sort((a, b) => {
+                            if (a.reportDate < b.reportDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      최근
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".report-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(reports));
+                        setReports(
+                          tmp.sort((a, b) => {
+                            if (a.reportDate > b.reportDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      오래된
+                    </Button>
+                  </Container>
+                </div>
                 <Button
                   width="120px"
                   backgroundColor="#14406c"
@@ -1105,9 +1181,89 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    const list = document.querySelector(
+                      ".meetinglogs-sort-options"
+                    );
+                    list.classList.toggle("invisible");
+                  }}
                 >
                   <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
+                <div className="meetinglogs-sort-options invisible">
+                  <Container
+                    width="110px"
+                    height="90px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".meetinglogs-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        setMeetinglogs(
+                          tmp.sort((a, b) => {
+                            if (a.meetinglogTitle < b.meetinglogTitle)
+                              return -1;
+                            else return 1;
+                          })
+                        );
+                      }}
+                    >
+                      제목
+                    </Button>
+
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".meetinglogs-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        setMeetinglogs(
+                          tmp.sort((a, b) => {
+                            if (a.meetinglogDate < b.meetinglogDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      최근
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".meetinglogs-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        setMeetinglogs(
+                          tmp.sort((a, b) => {
+                            if (a.meetinglogDate > b.meetinglogDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      오래된
+                    </Button>
+                  </Container>
+                </div>
                 <Button
                   width="120px"
                   backgroundColor="#14406c"

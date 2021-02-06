@@ -202,9 +202,85 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    const list = document.querySelector(".forms-sort-options");
+                    list.classList.toggle("invisible");
+                  }}
                 >
                   <Text fontSize="21px">정렬 방식 ▼</Text>
                 </Button>
+                <div className="forms-sort-options invisible">
+                  <Container
+                    width="110px"
+                    height="90px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".forms-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(forms));
+                        setForms(
+                          tmp.sort((a, b) => {
+                            if (a.formTitle < b.formTitle) return -1;
+                            else return 1;
+                          })
+                        );
+                      }}
+                    >
+                      제목
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".forms-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(forms));
+                        setForms(
+                          tmp.sort((a, b) => {
+                            if (a.formDate < b.formDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      최근
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".forms-sort-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(forms));
+                        setForms(
+                          tmp.sort((a, b) => {
+                            if (a.formDate > b.formDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      오래된
+                    </Button>
+                  </Container>
+                </div>
                 <Button
                   width="120px"
                   backgroundColor="#14406c"
