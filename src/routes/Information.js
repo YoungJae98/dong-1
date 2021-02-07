@@ -25,6 +25,8 @@ function Main() {
   const [assignment2, setAssignment2] = useState([]);
   const [assignment3, setAssignment3] = useState([]);
   const [assignment4, setAssignment4] = useState([]);
+  const [searchStr, setSearchStr] = useState("");
+  const [reportSearchResult, setReportSearchResult] = useState([]);
   useEffect(() => {
     setReports([
       {
@@ -1276,6 +1278,58 @@ function Main() {
                 >
                   <Text fontSize="21px">제목 ▼</Text>
                 </Button>
+                <div className="meetinglogs-search-options invisible">
+                  <Container
+                    width="110px"
+                    height="60px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".meetinglogs-search-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        setMeetinglogs(
+                          tmp.sort((a, b) => {
+                            if (a.meetinglogTitle < b.meetinglogTitle)
+                              return -1;
+                            else return 1;
+                          })
+                        );
+                      }}
+                    >
+                      제목
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".meetinglogs-search-options"
+                        );
+                        list.classList.toggle("invisible");
+                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        setMeetinglogs(
+                          tmp.sort((a, b) => {
+                            if (a.meetinglogDate < b.meetinglogDate) return 1;
+                            else return -1;
+                          })
+                        );
+                      }}
+                    >
+                      글쓴이
+                    </Button>
+                  </Container>
+                </div>
                 <input
                   type="text"
                   placeholder="검색어를 입력하세요."

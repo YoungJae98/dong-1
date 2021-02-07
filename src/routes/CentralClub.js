@@ -507,6 +507,7 @@ function CentralClub() {
                         ? "none"
                         : "2px solid grey"
                     }
+                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -574,6 +575,7 @@ function CentralClub() {
                         ? "none"
                         : "2px solid grey"
                     }
+                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -639,6 +641,7 @@ function CentralClub() {
                     borderBottom={
                       index === showClub.length - 1 ? "none" : "2px solid grey"
                     }
+                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -702,6 +705,7 @@ function CentralClub() {
                     key={club.clubID}
                     className="club-container"
                     borderBottom="2px solid grey"
+                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -765,6 +769,7 @@ function CentralClub() {
                     key={club.clubID}
                     className="club-container"
                     borderBottom={"2px solid grey"}
+                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -828,6 +833,7 @@ function CentralClub() {
                     key={club.clubID}
                     className="club-container"
                     borderBottom="2px solid grey"
+                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
