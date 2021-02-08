@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
@@ -21,26 +21,51 @@ const StyledContainer = styled(Container)`
 `;
 
 function Signin() {
-  return (
-    <Container height="100vh" backgroundColor="#14406c">
-      <StyledLogo src={logo} alt="" />
-      <StyledContainer
-        width="400px"
-        height="500px"
-        backgroundColor="white"
-        borderRadius="5px"
-        fd="column"
-        horizontalAlign="flex-start"
-      >
-        <Text fontSize="36px" marginTop="50px">
-          로그인
-        </Text>
-        <form>
+  const [id, setId] = useState("");
+  const [pw, setPw] = useState("");
+  const [isLogin, setIsLogin] = useState(false);
+
+  const loginProcess = () => {
+    fetch("http://localhost:3001/api/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({
+        id: id,
+        pw: pw,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setIsLogin(true);
+      });
+  };
+  if (isLogin) {
+    return <h1>hello</h1>;
+  } else {
+    return (
+      <Container height="100vh" backgroundColor="#14406c">
+        <StyledLogo src={logo} alt="" />
+        <StyledContainer
+          width="400px"
+          height="500px"
+          backgroundColor="white"
+          borderRadius="5px"
+          fd="column"
+          horizontalAlign="flex-start"
+        >
+          <Text fontSize="36px" marginTop="50px">
+            로그인
+          </Text>
           <Container fd="column">
             <Container marginTop="30px" height="40px">
               <input
                 type="text"
                 placeholder="학번"
+                value={id}
+                onChange={({ target: { value } }) => setId(value)}
                 style={{
                   width: "230px",
                   height: "40px",
@@ -56,6 +81,9 @@ function Signin() {
               <input
                 type="password"
                 placeholder="비밀번호"
+                value={pw}
+                onChange={({ target: { value } }) => setPw(value)}
+                name="pw"
                 style={{
                   width: "230px",
                   height: "40px",
@@ -76,6 +104,7 @@ function Signin() {
               hoverBackgrounColor="white"
               hoverFontColor="#14406c"
               borderRadius="5px"
+              onClick={loginProcess}
             >
               로그인
             </Button>
@@ -101,10 +130,10 @@ function Signin() {
               </Button>
             </Link>
           </Container>
-        </form>
-      </StyledContainer>
-    </Container>
-  );
+        </StyledContainer>
+      </Container>
+    );
+  }
 }
 
 export default Signin;
