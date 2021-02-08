@@ -12,12 +12,15 @@ const StyledText = styled.p`
   margin-left: ${(props) => props.marginLeft};
   margin-top: ${(props) => props.marginTop};
 
-  ${(props) => props.clubName && "font-size:30px;"}
-  ${(props) => props.clubSummary && "font-size:18px; margin-top:10px"}
+  ${(props) => props.clubName && "font-size:30px; margin-top:20px"}
   ${(props) =>
-    props.donePromise &&
-    "text-decoration-line:line-through; text-decoration-color: pink;"}
-  ${(props) => props.donePromiseV && "font-weight:bold; color:pink;"}
+    props.clubSummary &&
+    "font-size:18px; margin-top:10px; font-family:SeoulLight"}
+  ${(props) =>
+    props.doneAct &&
+    "text-decoration-line:line-through; text-decoration-color: pink; "}
+  ${(props) =>
+    props.doneActV && "font-weight:bold; color:pink; margin-left:5px; "}
 `;
 
 function Text({
@@ -29,8 +32,8 @@ function Text({
   marginTop,
   clubName,
   clubSummary,
-  donePromise,
-  donePromiseV,
+  doneAct,
+  doneActV,
   children,
 }) {
   return (
@@ -43,8 +46,8 @@ function Text({
       marginTop={marginTop}
       clubName={clubName}
       clubSummary={clubSummary}
-      donePromise={donePromise}
-      donePromiseV={donePromiseV}
+      doneAct={doneAct}
+      doneActV={doneActV}
     >
       {children}
     </StyledText>

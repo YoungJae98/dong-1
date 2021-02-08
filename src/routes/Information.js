@@ -21,6 +21,10 @@ import {
 function Main() {
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
+  const [assignment1, setAssignment1] = useState([]);
+  const [assignment2, setAssignment2] = useState([]);
+  const [assignment3, setAssignment3] = useState([]);
+  const [assignment4, setAssignment4] = useState([]);
   useEffect(() => {
     setReports([
       {
@@ -67,6 +71,36 @@ function Main() {
         meetingloger: "김지우",
         meetinglogSource: pdf,
       },
+    ]);
+    setAssignment1([
+      { actId: 1, actTitle: "동아리의 날 지정", isDone: true },
+      { actId: 2, actTitle: "워크샵/간담회 진행", isDone: false },
+      { actId: 3, actTitle: "동아리 가이드 2.0", isDone: false },
+      { actId: 4, actTitle: "피드백 제도 및 회장님과의 대화", isDone: true },
+      { actId: 5, actTitle: "중동원 알 권리 보장", isDone: true },
+      { actId: 6, actTitle: "회칙 개정 플랫폼 마련", isDone: false },
+      { actId: 7, actTitle: "회의 프로세스 재구축", isDone: false },
+    ]);
+    setAssignment2([
+      { actId: 1, actTitle: "분과 회의 활성화", isDone: true },
+      { actId: 2, actTitle: "분과별 우수 동아리 시상", isDone: false },
+      { actId: 3, actTitle: "분과별 맞춤 행사 진행", isDone: false },
+      {
+        actId: 4,
+        actTitle: "분과별 특화 활동 계획서, 내역서 제작",
+        isDone: false,
+      },
+    ]);
+    setAssignment3([
+      { actId: 1, actTitle: "동아리 대표 이미지 구축", isDone: false },
+      { actId: 2, actTitle: "동아리 알림제(가두모집 활성화)", isDone: false },
+      { actId: 3, actTitle: "웹페이지 개설", isDone: true },
+      { actId: 4, actTitle: "유튜브 채널 개설", isDone: true },
+    ]);
+    setAssignment4([
+      { actId: 1, actTitle: "서동협 활동", isDone: true },
+      { actId: 2, actTitle: "동아리 활동인증서 발급 활성화", isDone: true },
+      { actId: 3, actTitle: "우수 성장 동아리 시상", isDone: true },
     ]);
   }, []);
   return (
@@ -229,6 +263,7 @@ function Main() {
                 <Container
                   className="progressBar-container"
                   height="40px"
+                  position="relative"
                   marginTop="10px"
                 >
                   <Container
@@ -241,16 +276,151 @@ function Main() {
                       position="absolute"
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
-                      width="100px"
-                    />
+                      width={`${
+                        ((assignment1.filter((act) => act.isDone === true)
+                          .length +
+                          assignment2.filter((act) => act.isDone === true)
+                            .length +
+                          assignment3.filter((act) => act.isDone === true)
+                            .length +
+                          assignment4.filter((act) => act.isDone === true)
+                            .length) /
+                          (assignment1.length +
+                            assignment2.length +
+                            assignment3.length +
+                            assignment4.length)) *
+                        840
+                      }px`}
+                    >
+                      <Text fontSize="21px" fontColor="#14406c">
+                        {((assignment1.filter((act) => act.isDone === true)
+                          .length +
+                          assignment2.filter((act) => act.isDone === true)
+                            .length +
+                          assignment3.filter((act) => act.isDone === true)
+                            .length +
+                          assignment4.filter((act) => act.isDone === true)
+                            .length) /
+                          (assignment1.length +
+                            assignment2.length +
+                            assignment3.length +
+                            assignment4.length)) *
+                          100}
+                        %
+                      </Text>
+                    </Container>
                   </Container>
+                  <div
+                    className="totalProgress"
+                    style={{ width: "360px", height: "220px" }}
+                  >
+                    <div className="totalProgress-uparrow" />
+                    <div className="totalProgress-uparrow-cover" />
+                    <Container fd="column" horizontalAlign="flex-start">
+                      <Text
+                        fontSize="21px"
+                        fontColor="#14406c"
+                        marginTop="15px"
+                      >
+                        전체 공약 이행도
+                      </Text>
+                      <Text
+                        fontColor="#14406c"
+                        fontSize="21px"
+                        marginTop="10px"
+                      >
+                        과제1&nbsp;
+                        {`${parseInt(
+                          (assignment1.filter((act) => act.isDone === true)
+                            .length /
+                            assignment1.length) *
+                            100
+                        )}%`}
+                      </Text>
+                      <Text
+                        fontColor="#14406c"
+                        fontSize="21px"
+                        marginTop="10px"
+                      >
+                        과제2&nbsp;
+                        {`${parseInt(
+                          (assignment2.filter((act) => act.isDone === true)
+                            .length /
+                            assignment2.length) *
+                            100
+                        )}%`}
+                      </Text>
+                      <Text
+                        fontColor="#14406c"
+                        fontSize="21px"
+                        marginTop="10px"
+                      >
+                        과제3&nbsp;
+                        {`${parseInt(
+                          (assignment3.filter((act) => act.isDone === true)
+                            .length /
+                            assignment3.length) *
+                            100
+                        )}%`}
+                      </Text>
+                      <Text
+                        fontColor="#14406c"
+                        fontSize="21px"
+                        marginTop="10px"
+                      >
+                        과제4&nbsp;
+                        {`${parseInt(
+                          (assignment4.filter((act) => act.isDone === true)
+                            .length /
+                            assignment4.length) *
+                            100
+                        )}%`}
+                      </Text>
+                      <Text
+                        fontColor="#14406c"
+                        fontSize="21px"
+                        marginTop="10px"
+                      >
+                        합계&nbsp;
+                        {`(${
+                          assignment1.filter((act) => act.isDone === true)
+                            .length +
+                          assignment2.filter((act) => act.isDone === true)
+                            .length +
+                          assignment3.filter((act) => act.isDone === true)
+                            .length +
+                          assignment4.filter((act) => act.isDone === true)
+                            .length
+                        } / ${
+                          assignment1.length +
+                          assignment2.length +
+                          assignment3.length +
+                          assignment4.length
+                        }) ${parseInt(
+                          ((assignment1.filter((act) => act.isDone === true)
+                            .length +
+                            assignment2.filter((act) => act.isDone === true)
+                              .length +
+                            assignment3.filter((act) => act.isDone === true)
+                              .length +
+                            assignment4.filter((act) => act.isDone === true)
+                              .length) /
+                            (assignment1.length +
+                              assignment2.length +
+                              assignment3.length +
+                              assignment4.length)) *
+                            100
+                        )}%`}
+                      </Text>
+                    </Container>
+                  </div>
                 </Container>
               </Container>
               <Text marginTop="30px" fontColor="#14406c" fontSize="28px">
                 과제별 공약 이행도
               </Text>
               <Container
-                height="100px"
+                height="80px"
                 className="assignment1Progress"
                 fd="column"
                 horizontalAlign="flex-start"
@@ -278,10 +448,25 @@ function Main() {
                       position="absolute"
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
-                      width="100px"
-                    />
+                      width={`${
+                        (840 *
+                          assignment1.filter((act) => act.isDone === true)
+                            .length) /
+                        assignment1.length
+                      }px`}
+                    >
+                      <Text fontColor="#14406c" fontSize="21px">{`${parseInt(
+                        (assignment1.filter((act) => act.isDone === true)
+                          .length /
+                          assignment1.length) *
+                          100
+                      )}%`}</Text>
+                    </Container>
                   </Container>
-                  <div className="subProgress">
+                  <div
+                    className="subProgress"
+                    style={{ width: "360px", height: "280px" }}
+                  >
                     <Container fd="column" horizontalAlign="flex-start">
                       <Text
                         fontSize="21px"
@@ -290,29 +475,21 @@ function Main() {
                       >
                         과제1 동아리와 총동연을 밀접하게
                       </Text>
-                      <Container horizontalAlign="flex-start">
-                        <Text fontSize="21px" marginLeft="10px">
-                          행동1 밀접밀접
-                        </Text>
-                      </Container>
-                      <Container horizontalAlign="flex-start">
-                        <Text fontSize="21px" marginLeft="10px">
-                          행동2 밀접밀접
-                        </Text>
-                      </Container>
-                      <Container horizontalAlign="flex-start">
-                        <Text fontSize="21px" marginLeft="10px">
-                          행동3 밀접밀접
-                        </Text>
-                      </Container>
-                      <Container horizontalAlign="flex-start">
-                        <Text fontSize="21px" marginLeft="10px" donePromise>
-                          행동4 밀접밀접
-                        </Text>
-                        <Text marginLeft="10px" donePromiseV>
-                          V
-                        </Text>
-                      </Container>
+                      {assignment1.map((act) => (
+                        <Container horizontalAlign="flex-start" key={act.actId}>
+                          <Text
+                            marginLeft="10px"
+                            doneAct={act.isDone}
+                            fontSize="21px"
+                          >
+                            행동{act.actId}&nbsp;
+                          </Text>
+                          <Text doneAct={act.isDone} fontSize="21px">
+                            {act.actTitle}
+                          </Text>
+                          {act.isDone ? <Text doneActV>V</Text> : null}
+                        </Container>
+                      ))}
                     </Container>
                     <div className="subProgress-downarrow" />
                     <div className="subProgress-downarrow-cover" />
@@ -320,7 +497,7 @@ function Main() {
                 </Container>
               </Container>
               <Container
-                height="100px"
+                height="80px"
                 className="assignment2Progress"
                 fd="column"
                 horizontalAlign="flex-start"
@@ -332,6 +509,82 @@ function Main() {
                 </Text>
                 <Container
                   className="progressBar-container"
+                  height="40px"
+                  position="relative"
+                  marginTop="10px"
+                >
+                  <Container
+                    backgroundColor="Gainsboro"
+                    className="progressBar-background"
+                    position="relative"
+                    horizontalAlign="flex-start"
+                  >
+                    <Container
+                      position="absolute"
+                      className="progressBar-content"
+                      backgroundColor="#a8bec9"
+                      width={`${
+                        (840 *
+                          assignment2.filter((act) => act.isDone === true)
+                            .length) /
+                        assignment2.length
+                      }px`}
+                    >
+                      <Text fontColor="#14406c" fontSize="21px">{`${
+                        (assignment2.filter((act) => act.isDone === true)
+                          .length /
+                          assignment2.length) *
+                        100
+                      }%`}</Text>
+                    </Container>
+                  </Container>
+                  <div
+                    className="subProgress"
+                    style={{ width: "360px", height: "200px" }}
+                  >
+                    <Container fd="column" horizontalAlign="flex-start">
+                      <Text
+                        fontSize="21px"
+                        fontColor="#14406c"
+                        marginTop="15px"
+                      >
+                        과제2 분과 살리기
+                      </Text>
+                      {assignment2.map((act) => (
+                        <Container horizontalAlign="flex-start" key={act.actId}>
+                          <Text
+                            marginLeft="10px"
+                            doneAct={act.isDone}
+                            fontSize="21px"
+                          >
+                            행동{act.actId}&nbsp;
+                          </Text>
+                          <Text doneAct={act.isDone} fontSize="21px">
+                            {act.actTitle}
+                          </Text>
+                          {act.isDone ? <Text doneActV>V</Text> : null}
+                        </Container>
+                      ))}
+                    </Container>
+                    <div className="subProgress-downarrow" />
+                    <div className="subProgress-downarrow-cover" />
+                  </div>
+                </Container>
+              </Container>
+              <Container
+                height="80px"
+                className="assignment2Progress"
+                fd="column"
+                horizontalAlign="flex-start"
+                verticalAlign="flex-start"
+                marginTop="10px"
+              >
+                <Text fontSize="21px" fontColor="#14406c">
+                  과제3 동아리 알리기
+                </Text>
+                <Container
+                  className="progressBar-container"
+                  position="relative"
                   height="40px"
                   marginTop="10px"
                 >
@@ -345,9 +598,127 @@ function Main() {
                       position="absolute"
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
-                      width="100px"
-                    />
+                      width={`${
+                        (840 *
+                          assignment3.filter((act) => act.isDone === true)
+                            .length) /
+                        assignment3.length
+                      }px`}
+                    >
+                      <Text fontColor="#14406c" fontSize="21px">{`${
+                        (assignment3.filter((act) => act.isDone === true)
+                          .length /
+                          assignment3.length) *
+                        100
+                      }%`}</Text>
+                    </Container>
                   </Container>
+                  <div
+                    className="subProgress"
+                    style={{ width: "360px", height: "200px" }}
+                  >
+                    <Container fd="column" horizontalAlign="flex-start">
+                      <Text
+                        fontSize="21px"
+                        fontColor="#14406c"
+                        marginTop="15px"
+                      >
+                        과제3 동아리 알리기
+                      </Text>
+                      {assignment3.map((act) => (
+                        <Container horizontalAlign="flex-start" key={act.actId}>
+                          <Text
+                            marginLeft="10px"
+                            doneAct={act.isDone}
+                            fontSize="21px"
+                          >
+                            행동{act.actId}&nbsp;
+                          </Text>
+                          <Text doneAct={act.isDone} fontSize="21px">
+                            {act.actTitle}
+                          </Text>
+                          {act.isDone ? <Text doneActV>V</Text> : null}
+                        </Container>
+                      ))}
+                    </Container>
+                    <div className="subProgress-downarrow" />
+                    <div className="subProgress-downarrow-cover" />
+                  </div>
+                </Container>
+              </Container>
+              <Container
+                height="80px"
+                className="assignment2Progress"
+                fd="column"
+                horizontalAlign="flex-start"
+                verticalAlign="flex-start"
+                marginTop="10px"
+              >
+                <Text fontSize="21px" fontColor="#14406c">
+                  과제4 동아리 활동성 증진
+                </Text>
+                <Container
+                  className="progressBar-container"
+                  height="40px"
+                  position="relative"
+                  marginTop="10px"
+                >
+                  <Container
+                    backgroundColor="Gainsboro"
+                    className="progressBar-background"
+                    position="relative"
+                    horizontalAlign="flex-start"
+                  >
+                    <Container
+                      position="absolute"
+                      className="progressBar-content"
+                      backgroundColor="#a8bec9"
+                      width={`${
+                        (840 *
+                          assignment4.filter((act) => act.isDone === true)
+                            .length) /
+                        assignment4.length
+                      }px`}
+                    >
+                      <Text fontColor="#14406c" fontSize="21px">{`${
+                        (assignment4.filter((act) => act.isDone === true)
+                          .length /
+                          assignment4.length) *
+                        100
+                      }%`}</Text>
+                    </Container>
+                  </Container>
+                  <div
+                    className="subProgress"
+                    style={{ width: "360px", height: "200px" }}
+                  >
+                    <Container fd="column" horizontalAlign="flex-start">
+                      <Text
+                        fontSize="21px"
+                        fontColor="#14406c"
+                        marginTop="15px"
+                      >
+                        과제2 분과 살리기
+                      </Text>
+                      {assignment4.map((act) => (
+                        <Container horizontalAlign="flex-start" key={act.actId}>
+                          <Text
+                            marginLeft="10px"
+                            doneAct={act.isDone}
+                            fontSize="21px"
+                          >
+                            행동{act.actId}&nbsp;
+                          </Text>
+                          <Text doneAct={act.isDone} fontSize="21px">
+                            {act.actTitle}
+                          </Text>
+                          {act.isDone ? <Text doneActV>V</Text> : null}
+                        </Container>
+                      ))}
+                    </Container>
+                    <div className="subProgress-downarrow" />
+                    <div className="subProgress-downarrow-cover" />
+                  </div>
                 </Container>
               </Container>
             </Container>

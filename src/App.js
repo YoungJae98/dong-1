@@ -13,13 +13,16 @@ import Signup from "./routes/Signup";
 import { Route, Switch, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Header from "./components/Header";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function App() {
   const path = useLocation().pathname;
   const [main, setMain] = useState(() => {
     return path === "/" ? true : false;
   });
+  useEffect(() => {
+    setMain(path === "/" ? true : false);
+  }, [path]);
 
   return (
     <Container fd="column" backgroundColor="#F6F6F6">
