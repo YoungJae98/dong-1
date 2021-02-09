@@ -8,6 +8,34 @@ import Button from "../components/Button";
 import Container from "../components/Container";
 import Text from "../components/Text";
 
+/*
+로그인 체크 여부 확인 함수
+
+const loginCheck = () => {
+  fetch("http://localhost:3001/api/account/isLoginCheck", {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      //받아온 응답
+      console.log(response);
+      //받아온 값 중 isLogin이 true 일때
+      if (response["isLogin"]) {
+        console.log("true");
+        //로그인 실패일때
+      } else {
+        console.log("false");
+      }
+    });
+};
+
+
+ */
+
 const StyledLogo = styled.img`
   opacity: 0;
   animation: logo_fadein 1.8s forwards;
@@ -21,16 +49,19 @@ const StyledContainer = styled(Container)`
 `;
 
 function Signin() {
+  //id, pw 입력 변수
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  //로그인 여부 확인 변수
   const [isLogin, setIsLogin] = useState(false);
-
+  //login 응답 보내는 함수
   const loginProcess = () => {
-    fetch("http://localhost:3001/api/login", {
+    fetch("http://localhost:3001/api/account/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({
         id: id,
         pw: pw,
@@ -38,16 +69,19 @@ function Signin() {
     })
       .then((response) => response.json())
       .then((response) => {
+        //받아온 응답
         console.log(response);
+        //받아온 값 중 isLogin이 success일때
         if (response["isLogin"] === "success") {
           setIsLogin(true);
+          //로그인 실패일때
         } else {
           console.log("학번 혹은 비밀번호가 틀렸습니다!");
         }
       });
   };
   if (isLogin) {
-    return <h1>hello</h1>;
+    return <>hello</>;
   } else {
     return (
       <Container height="100vh" backgroundColor="#14406c">
