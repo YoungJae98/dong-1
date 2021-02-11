@@ -1348,7 +1348,9 @@ function Main() {
                           ".meetinglogs-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        const tmp = JSON.parse(
+                          JSON.stringify(meetinglogsSearchResult)
+                        );
                         setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.meetinglogTitle < b.meetinglogTitle)
@@ -1371,7 +1373,9 @@ function Main() {
                           ".meetinglogs-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        const tmp = JSON.parse(
+                          JSON.stringify(meetinglogsSearchResult)
+                        );
                         setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.meetinglogDate < b.meetinglogDate) return 1;
@@ -1392,7 +1396,9 @@ function Main() {
                           ".meetinglogs-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
+                        const tmp = JSON.parse(
+                          JSON.stringify(meetinglogsSearchResult)
+                        );
                         setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.meetinglogDate > b.meetinglogDate) return 1;

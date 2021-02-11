@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Route } from "react-router-dom";
+import { Link, NavLink, Redirect, Route, useHistory } from "react-router-dom";
 import logo_inversed from "../assets/logo_reversed.png";
 
 import Button from "../components/Button";
@@ -17,6 +17,13 @@ function Main() {
   const [searchOption, setSearchOption] = useState(0);
   const [suggestionsSearchResult, setSuggestionsSearchResult] = useState([]);
   const [petitionsSearchResult, setPetitionsSearchResult] = useState([]);
+  const history = useHistory();
+  const suggestionRedirect = () => {
+    history.push("/communication/");
+  };
+  const petitionRedirect = () => {
+    history.push("/communication/petition");
+  };
   useEffect(() => {
     setSuggestions([
       {
@@ -284,8 +291,10 @@ function Main() {
                           ".suggestions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(suggestions));
-                        setSuggestions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(suggestionsSearchResult)
+                        );
+                        setSuggestionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.suggestionTitle < b.suggestionTitle)
                               return -1;
@@ -306,8 +315,10 @@ function Main() {
                           ".suggestions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(suggestions));
-                        setSuggestions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(suggestionsSearchResult)
+                        );
+                        setSuggestionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.suggestionConsensus < b.suggestionConsensus)
                               return 1;
@@ -328,8 +339,10 @@ function Main() {
                           ".suggestions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(suggestions));
-                        setSuggestions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(suggestionsSearchResult)
+                        );
+                        setSuggestionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.suggestionDate < b.suggestionDate) return 1;
                             else return -1;
@@ -349,8 +362,10 @@ function Main() {
                           ".suggestions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(suggestions));
-                        setSuggestions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(suggestionsSearchResult)
+                        );
+                        setSuggestionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.suggestionDate > b.suggestionDate) return 1;
                             else return -1;
@@ -605,8 +620,10 @@ function Main() {
                           ".petitions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(petitions));
-                        setPetitions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(petitionsSearchResult)
+                        );
+                        setPetitionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.petitionTitle < b.petitionTitle) return -1;
                             else return 1;
@@ -626,8 +643,10 @@ function Main() {
                           ".petitions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(petitions));
-                        setPetitions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(petitionsSearchResult)
+                        );
+                        setPetitionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.petitionConsensus < b.petitionConsensus)
                               return 1;
@@ -648,8 +667,10 @@ function Main() {
                           ".petitions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(petitions));
-                        setPetitions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(petitionsSearchResult)
+                        );
+                        setPetitionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.petitionDate < b.petitionDate) return 1;
                             else return -1;
@@ -669,8 +690,10 @@ function Main() {
                           ".petitions-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(petitions));
-                        setPetitions(
+                        const tmp = JSON.parse(
+                          JSON.stringify(petitionsSearchResult)
+                        );
+                        setPetitionsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.petitionDate > b.petitionDate) return 1;
                             else return -1;
@@ -888,7 +911,73 @@ function Main() {
               paddingRight="30px"
               paddingTop="30px"
               width="840px"
-            ></Container>
+            >
+              <Container
+                width="100px"
+                height="50px"
+                horizontalAlign="flex-start"
+                borderBottom="2px solid #14406c"
+                marginBottom="20px"
+              >
+                <Text fontColor="#14406c" fontSize="28px">
+                  건의 내용
+                </Text>
+              </Container>
+              <form>
+                <textarea
+                  placeholder="건의 제목을 작성해 주세요."
+                  style={{
+                    width: "816px",
+                    height: "25px",
+                    fontFamily: "SeoulBold",
+                    fontSize: "24px",
+                    border: "2px solid #14406c",
+                    resize: "none",
+                    outline: "none",
+                    padding: "10px",
+                    marginBottom: "10px",
+                  }}
+                  className="suggestion-title"
+                />
+                <textarea
+                  placeholder="건의 내용을 작성해 주세요."
+                  style={{
+                    width: "816px",
+                    height: "600px",
+                    fontFamily: "SeoulBold",
+                    fontSize: "24px",
+                    border: "2px solid #14406c",
+                    resize: "none",
+                    outline: "none",
+                    padding: "10px",
+                  }}
+                  className="suggestion-content"
+                />
+                <Container
+                  height="50px"
+                  horizontalAlign="flex-end"
+                  marginTop="10px"
+                >
+                  <Button
+                    width="100px"
+                    height="50px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    border="2px solid #14406c"
+                    borderRadius="5px"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    onClick={() => {
+                      // do suggestion submit event
+                      alert("건의사항 등록이 완료되었습니다.");
+                      suggestionRedirect();
+                    }}
+                  >
+                    등록
+                  </Button>
+                </Container>
+              </form>
+            </Container>
           </Route>
           <Route path="/communication/petition/register">
             <Container
@@ -927,6 +1016,21 @@ function Main() {
               </Container>
               <form>
                 <textarea
+                  placeholder="청원 제목을 작성해 주세요."
+                  style={{
+                    width: "816px",
+                    height: "25px",
+                    fontFamily: "SeoulBold",
+                    fontSize: "24px",
+                    border: "2px solid #14406c",
+                    resize: "none",
+                    outline: "none",
+                    padding: "10px",
+                    marginBottom: "10px",
+                  }}
+                  className="suggestion-title"
+                />
+                <textarea
                   type="text"
                   placeholder="청원 내용을 작성해 주세요."
                   style={{
@@ -954,6 +1058,11 @@ function Main() {
                     borderRadius="5px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    onClick={() => {
+                      // do petition submit event
+                      alert("청원 등록이 완료되었습니다.");
+                      petitionRedirect();
+                    }}
                   >
                     등록
                   </Button>

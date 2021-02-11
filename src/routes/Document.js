@@ -255,8 +255,10 @@ function Main() {
                           ".forms-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(forms));
-                        setForms(
+                        const tmp = JSON.parse(
+                          JSON.stringify(formsSearchResult)
+                        );
+                        setFormsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.formTitle < b.formTitle) return -1;
                             else return 1;
@@ -276,8 +278,10 @@ function Main() {
                           ".forms-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(forms));
-                        setForms(
+                        const tmp = JSON.parse(
+                          JSON.stringify(formsSearchResult)
+                        );
+                        setFormsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.formDate < b.formDate) return 1;
                             else return -1;
@@ -297,8 +301,10 @@ function Main() {
                           ".forms-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(forms));
-                        setForms(
+                        const tmp = JSON.parse(
+                          JSON.stringify(formsSearchResult)
+                        );
+                        setFormsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.formDate > b.formDate) return 1;
                             else return -1;

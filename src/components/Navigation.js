@@ -493,21 +493,6 @@ function Navigation({
                   </Button>
                 </Link>
               </div>
-              <div>
-                <Link to="/signup/" onClick={() => setMain(false)}>
-                  <Button
-                    height="40px"
-                    width="100px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    fontSize="21px"
-                    font="SeoulBold"
-                    className="navigation-submenu-button"
-                  >
-                    회원가입
-                  </Button>
-                </Link>
-              </div>
             </div>
           </StyledNavButton>
         </StyledNavigation>
