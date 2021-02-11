@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Redirect, Route, useHistory } from "react-router-dom";
+import { Link, NavLink, Route, useHistory } from "react-router-dom";
 import logo_inversed from "../assets/logo_reversed.png";
 
 import Button from "../components/Button";
