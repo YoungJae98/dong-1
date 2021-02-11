@@ -25,8 +25,11 @@ function Main() {
   const [assignment2, setAssignment2] = useState([]);
   const [assignment3, setAssignment3] = useState([]);
   const [assignment4, setAssignment4] = useState([]);
-  const [searchStr, setSearchStr] = useState("");
+  const [searchStr1, setSearchStr1] = useState("");
+  const [searchStr2, setSearchStr2] = useState("");
+  const [searchOption, setSearchOption] = useState(0);
   const [reportSearchResult, setReportSearchResult] = useState([]);
+  const [meetinglogsSearchResult, setMeetinglogsSearchResult] = useState([]);
   useEffect(() => {
     setReports([
       {
@@ -51,7 +54,53 @@ function Main() {
         reportSource: pdf,
       },
     ]);
+    setReportSearchResult([
+      {
+        reportId: 1,
+        reportTitle: "예산안 1",
+        reportDate: "2022-32-14",
+        reporter: "김지우",
+        reportSource: pdf,
+      },
+      {
+        reportId: 2,
+        reportTitle: "결산안 1",
+        reportDate: "2024-25-39",
+        reporter: "김지우",
+        reportSource: pdf,
+      },
+      {
+        reportId: 3,
+        reportTitle: "예산안 2",
+        reportDate: "2027-73-58",
+        reporter: "김지우",
+        reportSource: pdf,
+      },
+    ]);
     setMeetinglogs([
+      {
+        meetinglogId: 1,
+        meetinglogTitle: "회의록 1",
+        meetinglogDate: "2022-32-14",
+        meetingloger: "김지우",
+        meetinglogSource: pdf,
+      },
+      {
+        meetinglogId: 2,
+        meetinglogTitle: "회의록 2",
+        meetinglogDate: "2029-56-30",
+        meetingloger: "김지우",
+        meetinglogSource: pdf,
+      },
+      {
+        meetinglogId: 3,
+        meetinglogTitle: "회의록 3",
+        meetinglogDate: "2069-57-89",
+        meetingloger: "김지우",
+        meetinglogSource: pdf,
+      },
+    ]);
+    setMeetinglogsSearchResult([
       {
         meetinglogId: 1,
         meetinglogTitle: "회의록 1",
@@ -975,8 +1024,10 @@ function Main() {
                           ".report-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(reports));
-                        setReports(
+                        const tmp = JSON.parse(
+                          JSON.stringify(reportSearchResult)
+                        );
+                        setReportSearchResult(
                           tmp.sort((a, b) => {
                             if (a.reportTitle < b.reportTitle) return -1;
                             else return 1;
@@ -996,8 +1047,10 @@ function Main() {
                           ".report-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(reports));
-                        setReports(
+                        const tmp = JSON.parse(
+                          JSON.stringify(reportSearchResult)
+                        );
+                        setReportSearchResult(
                           tmp.sort((a, b) => {
                             if (a.reportDate < b.reportDate) return 1;
                             else return -1;
@@ -1017,8 +1070,10 @@ function Main() {
                           ".report-sort-options"
                         );
                         list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(reports));
-                        setReports(
+                        const tmp = JSON.parse(
+                          JSON.stringify(reportSearchResult)
+                        );
+                        setReportSearchResult(
                           tmp.sort((a, b) => {
                             if (a.reportDate > b.reportDate) return 1;
                             else return -1;
@@ -1039,9 +1094,69 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    const list = document.querySelector(
+                      ".report-search-options"
+                    );
+                    list.classList.toggle("invisible");
+                  }}
                 >
-                  <Text fontSize="21px">제목 ▼</Text>
+                  <Text fontSize="21px">검색 방식 ▼</Text>
                 </Button>
+                <div className="report-search-options invisible">
+                  <Container
+                    width="110px"
+                    height="90px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".report-search-options"
+                        );
+                        list.classList.toggle("invisible");
+                        setSearchOption(0);
+                      }}
+                    >
+                      제목
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".report-search-options"
+                        );
+                        list.classList.toggle("invisible");
+                        setSearchOption(1);
+                      }}
+                    >
+                      글쓴이
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const list = document.querySelector(
+                          ".report-search-options"
+                        );
+                        list.classList.toggle("invisible");
+                        setSearchOption(2);
+                      }}
+                    >
+                      날짜
+                    </Button>
+                  </Container>
+                </div>
                 <input
                   type="text"
                   placeholder="검색어를 입력하세요."
@@ -1053,6 +1168,10 @@ function Main() {
                     fontSize: "21px",
                     fontFamily: "SeoulBold",
                   }}
+                  value={searchStr1}
+                  onChange={(e) => {
+                    setSearchStr1(e.target.value);
+                  }}
                 />
                 <Button
                   width="120px"
@@ -1063,6 +1182,26 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginLeft="15px"
+                  onClick={() => {
+                    setReportSearchResult(() => {
+                      switch (searchOption) {
+                        case 0: // title
+                          return reports.filter((report) =>
+                            report.reportTitle.includes(searchStr1)
+                          );
+                        case 1: // writer
+                          return reports.filter((report) =>
+                            report.reporter.includes(searchStr1)
+                          );
+                        case 2: // date
+                          return reports.filter((report) =>
+                            report.reportDate.includes(searchStr1)
+                          );
+                        default:
+                          return reports;
+                      }
+                    });
+                  }}
                 >
                   <Text fontSize="21px">검색</Text>
                 </Button>
@@ -1072,7 +1211,7 @@ function Main() {
                 fd="column"
                 horizontalAlign="flex-start"
               >
-                {reports.map((report) => (
+                {reportSearchResult.map((report) => (
                   <Container
                     className="report-item"
                     height="150px"
@@ -1210,7 +1349,7 @@ function Main() {
                         );
                         list.classList.toggle("invisible");
                         const tmp = JSON.parse(JSON.stringify(meetinglogs));
-                        setMeetinglogs(
+                        setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.meetinglogTitle < b.meetinglogTitle)
                               return -1;
@@ -1233,7 +1372,7 @@ function Main() {
                         );
                         list.classList.toggle("invisible");
                         const tmp = JSON.parse(JSON.stringify(meetinglogs));
-                        setMeetinglogs(
+                        setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.meetinglogDate < b.meetinglogDate) return 1;
                             else return -1;
@@ -1254,7 +1393,7 @@ function Main() {
                         );
                         list.classList.toggle("invisible");
                         const tmp = JSON.parse(JSON.stringify(meetinglogs));
-                        setMeetinglogs(
+                        setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
                             if (a.meetinglogDate > b.meetinglogDate) return 1;
                             else return -1;
@@ -1275,13 +1414,18 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    document
+                      .querySelector(".meetinglogs-search-options")
+                      .classList.toggle("invisible");
+                  }}
                 >
-                  <Text fontSize="21px">제목 ▼</Text>
+                  <Text fontSize="21px">검색 방식 ▼</Text>
                 </Button>
                 <div className="meetinglogs-search-options invisible">
                   <Container
                     width="110px"
-                    height="60px"
+                    height="90px"
                     backgroundColor="#14406c"
                     fd="column"
                   >
@@ -1291,18 +1435,10 @@ function Main() {
                       hoverBackgrounColor="white"
                       hoverFontColor="#14406c"
                       onClick={() => {
-                        const list = document.querySelector(
-                          ".meetinglogs-search-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
-                        setMeetinglogs(
-                          tmp.sort((a, b) => {
-                            if (a.meetinglogTitle < b.meetinglogTitle)
-                              return -1;
-                            else return 1;
-                          })
-                        );
+                        document
+                          .querySelector(".meetinglogs-search-options")
+                          .classList.toggle("invisible");
+                        setSearchOption(0);
                       }}
                     >
                       제목
@@ -1313,20 +1449,27 @@ function Main() {
                       hoverBackgrounColor="white"
                       hoverFontColor="#14406c"
                       onClick={() => {
-                        const list = document.querySelector(
-                          ".meetinglogs-search-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(JSON.stringify(meetinglogs));
-                        setMeetinglogs(
-                          tmp.sort((a, b) => {
-                            if (a.meetinglogDate < b.meetinglogDate) return 1;
-                            else return -1;
-                          })
-                        );
+                        document
+                          .querySelector(".meetinglogs-search-options")
+                          .classList.toggle("invisible");
+                        setSearchOption(1);
                       }}
                     >
                       글쓴이
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        document
+                          .querySelector(".meetinglogs-search-options")
+                          .classList.toggle("invisible");
+                        setSearchOption(2);
+                      }}
+                    >
+                      날짜
                     </Button>
                   </Container>
                 </div>
@@ -1341,6 +1484,10 @@ function Main() {
                     fontSize: "21px",
                     fontFamily: "SeoulBold",
                   }}
+                  value={searchStr2}
+                  onChange={(e) => {
+                    setSearchStr2(e.target.value);
+                  }}
                 />
                 <Button
                   width="120px"
@@ -1351,6 +1498,26 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginLeft="15px"
+                  onClick={() => {
+                    setMeetinglogsSearchResult(() => {
+                      switch (searchOption) {
+                        case 0: // title
+                          return meetinglogs.filter((log) =>
+                            log.meetinglogTitle.includes(searchStr2)
+                          );
+                        case 1: // writer
+                          return meetinglogs.filter((log) =>
+                            log.meetingloger.includes(searchStr2)
+                          );
+                        case 2: //date
+                          return meetinglogs.filter((log) =>
+                            log.meetinglogDate.includes(searchStr2)
+                          );
+                        default:
+                          return meetinglogs;
+                      }
+                    });
+                  }}
                 >
                   <Text fontSize="21px">검색</Text>
                 </Button>
@@ -1360,7 +1527,7 @@ function Main() {
                 fd="column"
                 horizontalAlign="flex-start"
               >
-                {meetinglogs.map((meetinglog) => (
+                {meetinglogsSearchResult.map((meetinglog) => (
                   <Container
                     className="meetinglog-item"
                     height="150px"

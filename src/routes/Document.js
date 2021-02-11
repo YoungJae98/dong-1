@@ -15,11 +15,14 @@ import Text from "../components/Text";
 
 function Main() {
   const [forms, setForms] = useState([]);
+  const [formsSearchResult, setFormsSearchResult] = useState([]);
+  const [searchStr, setSearchStr] = useState([]);
+  const [searchOption, setSearchOption] = useState(0);
   useEffect(() => {
     setForms([
       {
         formId: 1,
-        formName: "양식 1",
+        formTitle: "양식 1",
         formDate: "2021-01-28",
         formUploader: "김지우",
         formSourceHwp: form1_hwp,
@@ -27,7 +30,7 @@ function Main() {
       },
       {
         formId: 2,
-        formName: "양식 2",
+        formTitle: "양식 2",
         formDate: "2021-02-42",
         formUploader: "김지우",
         formSourceHwp: form1_hwp,
@@ -35,7 +38,33 @@ function Main() {
       },
       {
         formId: 3,
-        formName: "양식 3",
+        formTitle: "양식 3",
+        formDate: "2021-18-95",
+        formUploader: "김지우",
+        formSourceHwp: form1_hwp,
+        formSourceDocx: form1_docx,
+      },
+    ]);
+    setFormsSearchResult([
+      {
+        formId: 1,
+        formTitle: "양식 1",
+        formDate: "2021-01-28",
+        formUploader: "김지우",
+        formSourceHwp: form1_hwp,
+        formSourceDocx: form1_docx,
+      },
+      {
+        formId: 2,
+        formTitle: "양식 2",
+        formDate: "2021-02-42",
+        formUploader: "김지우",
+        formSourceHwp: form1_hwp,
+        formSourceDocx: form1_docx,
+      },
+      {
+        formId: 3,
+        formTitle: "양식 3",
         formDate: "2021-18-95",
         formUploader: "김지우",
         formSourceHwp: form1_hwp,
@@ -290,12 +319,69 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginRight="15px"
+                  onClick={() => {
+                    document
+                      .querySelector(".forms-search-options")
+                      .classList.toggle("invisible");
+                  }}
                 >
-                  <Text fontSize="21px">제목 ▼</Text>
+                  <Text fontSize="21px">검색 방식 ▼</Text>
                 </Button>
+                <div className="forms-search-options invisible">
+                  <Container
+                    width="110px"
+                    height="90px"
+                    backgroundColor="#14406c"
+                    fd="column"
+                  >
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        document
+                          .querySelector(".forms-search-options")
+                          .classList.toggle("invisible");
+                        setSearchOption(0);
+                      }}
+                    >
+                      제목
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        document
+                          .querySelector(".forms-search-options")
+                          .classList.toggle("invisible");
+                        setSearchOption(1);
+                      }}
+                    >
+                      글쓴이
+                    </Button>
+                    <Button
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        document
+                          .querySelector(".forms-search-options")
+                          .classList.toggle("invisible");
+                        setSearchOption(2);
+                      }}
+                    >
+                      날짜
+                    </Button>
+                  </Container>
+                </div>
                 <input
                   type="text"
                   placeholder="검색어를 입력하세요."
+                  value={searchStr}
                   style={{
                     width: "435px",
                     height: "35px",
@@ -303,6 +389,9 @@ function Main() {
                     borderRadius: "10px",
                     fontSize: "21px",
                     fontFamily: "SeoulBold",
+                  }}
+                  onChange={(e) => {
+                    setSearchStr(e.target.value);
                   }}
                 />
                 <Button
@@ -314,6 +403,26 @@ function Main() {
                   hoverBackgrounColor="white"
                   hoverFontColor="#14406c"
                   marginLeft="15px"
+                  onClick={() => {
+                    setFormsSearchResult(() => {
+                      switch (searchOption) {
+                        case 0: // title
+                          return forms.filter((form) =>
+                            form.formTitle.includes(searchStr)
+                          );
+                        case 1: // writer
+                          return forms.filter((form) =>
+                            form.formUploader.includes(searchStr)
+                          );
+                        case 2: // date
+                          return forms.filter((form) =>
+                            form.formDate.includes(searchStr)
+                          );
+                        default:
+                          return forms;
+                      }
+                    });
+                  }}
                 >
                   <Text fontSize="21px">검색</Text>
                 </Button>
@@ -323,7 +432,7 @@ function Main() {
                 fd="column"
                 horizontalAlign="flex-start"
               >
-                {forms.map((form) => (
+                {formsSearchResult.map((form) => (
                   <Container
                     className="form-item"
                     height="150px"
@@ -338,7 +447,7 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="34px">{form.formName}</Text>
+                      <Text fontSize="34px">{form.formTitle}</Text>
                       <Container
                         height="40px"
                         className="form-item-uploadinfo"

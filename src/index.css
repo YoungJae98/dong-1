@@ -219,6 +219,22 @@ li {
   position: absolute;
   transform: translateX(-361px) translateY(63px);
 }
+.report-search-options {
+  position: absolute;
+  transform: translateX(-227px) translateY(63px);
+}
+.meetinglogs-search-options {
+  position: absolute;
+  transform: translateX(-227px) translateY(63px);
+}
+.suggestions-search-options {
+  position: absolute;
+  transform: translateX(-227px) translateY(63px);
+}
+.forms-search-options {
+  position: absolute;
+  transform: translateX(-227px) translateY(63px);
+}
 .invisible {
   display: none;
 }
