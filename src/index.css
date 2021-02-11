@@ -47,6 +47,15 @@ li {
     opacity: 1;
   }
 }
+@keyframes intro_animation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    z-index: -100;
+  }
+}
 @font-face {
   font-family: "Bamin";
   src: url(./assets/fonts/BMJUA_ttf.ttf) format("truetype");
