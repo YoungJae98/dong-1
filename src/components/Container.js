@@ -33,7 +33,7 @@ const StyledContainer = styled.div`
   top: ${(props) => (props.position === "sticky" ? "80px" : null)};
   z-index: ${(props) => props.zIndex};
 
-  overflow: ${(props) => props.visual && "hidden"};
+  overflow-y: ${(props) => props.scroll && "scroll"};
 
   animation: ${(props) => props.animation || "fadein 0.3s"};
 `;
@@ -63,6 +63,7 @@ export function Container({
   position,
   zIndex,
   visual,
+  scroll,
   top,
   animation,
   children,
@@ -94,6 +95,7 @@ export function Container({
       position={position}
       zIndex={zIndex}
       visual={visual}
+      scroll={scroll}
       top={top}
       animation={animation}
       className={className}

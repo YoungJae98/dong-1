@@ -6,7 +6,9 @@ import Button from "../components/Button";
 import Container from "../components/Container";
 import List from "../components/List";
 import Listitem from "../components/Listitem";
+import Petition from "../components/Petition";
 import Remote from "../components/Remote";
+import Suggestion from "../components/Suggestion";
 import Text from "../components/Text";
 
 function Main() {
@@ -32,6 +34,7 @@ function Main() {
         suggestionConsensus: 127,
         suggestionDate: "2021-11-42",
         suggestioner: "김지우",
+        suggestionContent: "코스모스 책 읽기 싫어요 바꿔 줘요",
       },
       {
         suggestionId: 2,
@@ -39,6 +42,7 @@ function Main() {
         suggestionConsensus: 317,
         suggestionDate: "2021-25-32",
         suggestioner: "김지우",
+        suggestionContent: "꿀호떡 먹고 싶어요",
       },
       {
         suggestionId: 3,
@@ -46,6 +50,7 @@ function Main() {
         suggestionConsensus: 62,
         suggestionDate: "2021-45-73",
         suggestioner: "김지우",
+        suggestionContent: "피아노 듣고 싶어요",
       },
       {
         suggestionId: 4,
@@ -53,6 +58,7 @@ function Main() {
         suggestionConsensus: 602,
         suggestionDate: "2021-32-13",
         suggestioner: "김지우",
+        suggestionContent: "기타 듣고 싶어요",
       },
       {
         suggestionId: 5,
@@ -60,6 +66,7 @@ function Main() {
         suggestionConsensus: 72,
         suggestionDate: "2021-12-23",
         suggestioner: "김지우",
+        suggestionContent: "고전독서 하기 시러요",
       },
     ]);
     setSuggestionsSearchResult([
@@ -69,6 +76,7 @@ function Main() {
         suggestionConsensus: 127,
         suggestionDate: "2021-11-42",
         suggestioner: "김지우",
+        suggestionContent: "코스모스 책 읽기 싫어요 바꿔 줘요",
       },
       {
         suggestionId: 2,
@@ -76,6 +84,7 @@ function Main() {
         suggestionConsensus: 317,
         suggestionDate: "2021-25-32",
         suggestioner: "김지우",
+        suggestionContent: "꿀호떡 먹고 싶어요",
       },
       {
         suggestionId: 3,
@@ -83,6 +92,7 @@ function Main() {
         suggestionConsensus: 62,
         suggestionDate: "2021-45-73",
         suggestioner: "김지우",
+        suggestionContent: "피아노 듣고 싶어요",
       },
       {
         suggestionId: 4,
@@ -90,6 +100,7 @@ function Main() {
         suggestionConsensus: 602,
         suggestionDate: "2021-32-13",
         suggestioner: "김지우",
+        suggestionContent: "코스모스 책 읽기 싫어요 바꿔 줘요",
       },
       {
         suggestionId: 5,
@@ -97,6 +108,7 @@ function Main() {
         suggestionConsensus: 72,
         suggestionDate: "2021-12-23",
         suggestioner: "김지우",
+        suggestionContent: "고전독서 하기 시러요",
       },
     ]);
     setPetitions([
@@ -521,40 +533,54 @@ function Main() {
                     borderBottom="2px solid #14406c"
                     key={suggestion.suggestionTitle}
                   >
-                    <Container
-                      className="petition-item-info"
-                      fd="column"
-                      verticalAlign="flex-start"
-                      marginLeft="30px"
+                    <Link
+                      to={{
+                        pathname: `/communication/suggestion/${suggestion.suggestionId}`,
+                        state: {
+                          suggestion: suggestion,
+                        },
+                      }}
+                      style={{ width: "100%", height: "100%" }}
                     >
-                      <Text fontSize="34px">{suggestion.suggestionTitle}</Text>
-                      <Container
-                        height="40px"
-                        className="form-item-uploadinfo"
-                        horizontalAlign="flex-start"
-                      >
-                        <Text fontColor="grey" fontSize="21px">
-                          {suggestion.suggestionDate}
-                        </Text>
-                        <div
-                          style={{
-                            height: "10px",
-                            borderLeft: "1px solid grey",
-                            marginLeft: "10px",
-                            marginRight: "10px",
-                            display: "inline",
-                          }}
-                        ></div>
-                        <Text fontColor="grey" fontSize="21px">
-                          {suggestion.suggestioner}
-                        </Text>
+                      <Container horizontalAlign="space-between">
+                        <Container
+                          className="petition-item-info"
+                          fd="column"
+                          verticalAlign="flex-start"
+                          marginLeft="30px"
+                        >
+                          <Text fontSize="34px">
+                            {suggestion.suggestionTitle}
+                          </Text>
+                          <Container
+                            height="40px"
+                            className="form-item-uploadinfo"
+                            horizontalAlign="flex-start"
+                          >
+                            <Text fontColor="grey" fontSize="21px">
+                              {suggestion.suggestionDate}
+                            </Text>
+                            <div
+                              style={{
+                                height: "10px",
+                                borderLeft: "1px solid grey",
+                                marginLeft: "10px",
+                                marginRight: "10px",
+                                display: "inline",
+                              }}
+                            ></div>
+                            <Text fontColor="grey" fontSize="21px">
+                              {suggestion.suggestioner}
+                            </Text>
+                          </Container>
+                        </Container>
+                        <Container width="200px" marginRight="30px">
+                          <Text fontColor="black" fontSize="22px">
+                            {suggestion.suggestionConsensus}명이 동의
+                          </Text>
+                        </Container>
                       </Container>
-                    </Container>
-                    <Container width="200px" marginRight="30px">
-                      <Text fontColor="black" fontSize="22px">
-                        {suggestion.suggestionConsensus}명이 동의
-                      </Text>
-                    </Container>
+                    </Link>
                   </Container>
                 ))}
               </Container>
@@ -835,7 +861,6 @@ function Main() {
                   </Button>
                 </Link>
               </Container>
-
               <Container
                 className="reform-contents-container"
                 fd="column"
@@ -849,40 +874,52 @@ function Main() {
                     borderBottom="2px solid #14406c"
                     key={petition.petitionId}
                   >
-                    <Container
-                      className="petition-item-info"
-                      fd="column"
-                      verticalAlign="flex-start"
-                      marginLeft="30px"
+                    <Link
+                      to={{
+                        pathname: `/communication/petition/${petition.petitionId}`,
+                        state: {
+                          petition: petition,
+                        },
+                      }}
+                      style={{ width: "100%", height: "100%" }}
                     >
-                      <Text fontSize="34px">{petition.petitionTitle}</Text>
-                      <Container
-                        height="40px"
-                        className="form-item-uploadinfo"
-                        horizontalAlign="flex-start"
-                      >
-                        <Text fontColor="grey" fontSize="21px">
-                          {petition.petitionDate}
-                        </Text>
-                        <div
-                          style={{
-                            height: "10px",
-                            borderLeft: "1px solid grey",
-                            marginLeft: "10px",
-                            marginRight: "10px",
-                            display: "inline",
-                          }}
-                        ></div>
-                        <Text fontColor="grey" fontSize="21px">
-                          {petition.petitioner}
-                        </Text>
+                      <Container horizontalAlign="space-between">
+                        <Container
+                          className="petition-item-info"
+                          fd="column"
+                          verticalAlign="flex-start"
+                          marginLeft="30px"
+                        >
+                          <Text fontSize="34px">{petition.petitionTitle}</Text>
+                          <Container
+                            height="40px"
+                            className="form-item-uploadinfo"
+                            horizontalAlign="flex-start"
+                          >
+                            <Text fontColor="grey" fontSize="21px">
+                              {petition.petitionDate}
+                            </Text>
+                            <div
+                              style={{
+                                height: "10px",
+                                borderLeft: "1px solid grey",
+                                marginLeft: "10px",
+                                marginRight: "10px",
+                                display: "inline",
+                              }}
+                            ></div>
+                            <Text fontColor="grey" fontSize="21px">
+                              {petition.petitioner}
+                            </Text>
+                          </Container>
+                        </Container>
+                        <Container width="200px" marginRight="30px">
+                          <Text fontColor="black" fontSize="22px">
+                            {petition.petitionConsensus}명이 동의
+                          </Text>
+                        </Container>
                       </Container>
-                    </Container>
-                    <Container width="200px" marginRight="30px">
-                      <Text fontColor="black" fontSize="22px">
-                        {petition.petitionConsensus}명이 동의
-                      </Text>
-                    </Container>
+                    </Link>
                   </Container>
                 ))}
               </Container>
@@ -1070,6 +1107,14 @@ function Main() {
               </form>
             </Container>
           </Route>
+          <Route
+            path="/communication/suggestion/:suggestionId"
+            component={Suggestion}
+          />
+          <Route
+            path="/communication/petition/:petitionId"
+            component={Petition}
+          />
         </Container>
       </Container>
     </>
