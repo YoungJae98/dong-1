@@ -39,7 +39,11 @@ function Signin() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
-        setIsLogin(true);
+        if (response["isLogin"] === "success") {
+          setIsLogin(true);
+        } else {
+          console.log("학번 혹은 비밀번호가 틀렸습니다!");
+        }
       });
   };
   if (isLogin) {
