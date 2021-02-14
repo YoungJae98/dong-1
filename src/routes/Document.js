@@ -4,7 +4,8 @@ import { NavLink, Route } from "react-router-dom";
 import regulations from "../assets/documents/regulations.pdf";
 import form1_hwp from "../assets/documents/sample2.hwp";
 import form1_docx from "../assets/documents/sample2.docx";
-import logo_inversed from "../assets/logo_reversed.png";
+import logo_inversed from "../assets/images/logo_reversed.png";
+import v5 from "../assets/images/visual/visual5.jpg";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -74,6 +75,9 @@ function Main() {
   }, []);
   return (
     <>
+      <Container height="145px">
+        <img src={v5} alt="" />
+      </Container>
       <Container height="1200px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
@@ -82,7 +86,7 @@ function Main() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="100px"
+            marginTop="8px"
           >
             <Container
               height="50px"
@@ -121,7 +125,7 @@ function Main() {
           </Container>
         </Container>
         <Container
-          width="900px"
+          width="1062px"
           fd="column"
           marginLeft="30px"
           verticalAlign="flex-start"
@@ -129,9 +133,9 @@ function Main() {
           <Route exact path="/document/">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -149,7 +153,7 @@ function Main() {
               paddingRight="30px"
               paddingTop="30px"
               paddingBottom="30px"
-              width="840px"
+              width="1000px"
             >
               <Container
                 className="regulations-buttons-container"
@@ -199,9 +203,9 @@ function Main() {
           <Route path="/document/form">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -218,7 +222,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
               className="forms-container"
             >
               <Container className="forms-button-container" height="40px">

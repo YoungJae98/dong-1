@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import sejong from "../assets/sejong.png";
+import sejong from "../assets/images/sejong.png";
 
 import Container from "./Container";
 import Text from "./Text";
@@ -13,14 +13,16 @@ const StyledFooter = styled.div`
 
 function Footer() {
   return (
-    <Container backgroundColor="#F6F6F6" marginTop="50px">
+    <Container
+      backgroundColor="#F6F6F6"
+      marginTop="50px"
+      borderTop="1px solid #14406c"
+    >
       <Container
         width="1200px"
         marginTop="30px"
         horizontalAlign="left"
         marginBottom="30px"
-        paddingTop="30px"
-        borderTop="1px solid #14406c"
       >
         <img src={sejong} alt="Sejong Logo" />
         <StyledFooter>

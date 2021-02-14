@@ -2,8 +2,49 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
 import sejong from "../assets/images/Sejonglogo.png";
-import logo_inversed from "../assets/logo_reversed.png";
+import logo_inversed from "../assets/images/logo_reversed.png";
 import clubroomlayout from "../assets/images/clubroomlayout.png";
+import v2 from "../assets/images/visual/visual2.jpg";
+
+//show
+import hanwoollim from "../assets/images/clubs/show/hanwoollim.jpg";
+import intro from "../assets/images/clubs/show/intro.png";
+import nlehyem from "../assets/images/clubs/show/nlhyem.jpg";
+import pageseven from "../assets/images/clubs/show/pageseven.png";
+import sejonggeukhoi from "../assets/images/clubs/show/sejonggeukhoi.jpg";
+import soultrain from "../assets/images/clubs/show/soultrain.png";
+import ter from "../assets/images/clubs/show/ter.png";
+import theblack from "../assets/images/clubs/show/theblack.jpg";
+//culture
+import bamboo from "../assets/images/clubs/culture/bamboo.png";
+import doobaqui from "../assets/images/clubs/culture/doobaqui.png";
+import hanson from "../assets/images/clubs/culture/hanson.png";
+import master from "../assets/images/clubs/culture/master.png";
+//volunteer
+import sels from "../assets/images/clubs/volunteer/sels.png";
+import zook from "../assets/images/clubs/volunteer/zook.jpg";
+//religion
+import ivf from "../assets/images/clubs/religion/ivf.jpg";
+import jym from "../assets/images/clubs/religion/jym.png";
+//physical
+import jiujitsu from "../assets/images/clubs/physical/jiujitsu.png";
+import jump from "../assets/images/clubs/physical/jump.png";
+import rush from "../assets/images/clubs/physical/rush.gif";
+import sac from "../assets/images/clubs/physical/sac.png";
+import sejongkings from "../assets/images/clubs/physical/sejongkings.jpg";
+import ski from "../assets/images/clubs/physical/ski.png";
+import stc from "../assets/images/clubs/physical/stc.png";
+import tsp from "../assets/images/clubs/physical/tsp.png";
+import yacht from "../assets/images/clubs/physical/yacht.png";
+//academic
+import interfaec from "../assets/images/clubs/academic/interface.png";
+import arom from "../assets/images/clubs/academic/arom.png";
+import kusa from "../assets/images/clubs/academic/kusa.png";
+import sejongmoon from "../assets/images/clubs/academic/sejongmoon.png";
+import sejongseohoi from "../assets/images/clubs/academic/sejongseohoi.png";
+import star from "../assets/images/clubs/academic/star.png";
+import unsa from "../assets/images/clubs/academic/unsa.png";
+import youma from "../assets/images/clubs/academic/youma.png";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -24,16 +65,16 @@ function CentralClub() {
       {
         clubID: 1,
         clubName: "늘혬코러스",
-        clubLogo: sejong,
+        clubLogo: nlehyem,
         clubSummary:
-          "악기 다루는 법을 더 자세히 배우고 (혹은 보컬 트레이닝), 악기와 밴드 음악에 더 관심을 가질 수 있게 하고, 버스킹, 정기공연 등을 통해 무대에 직접 참여할 수 있는 경험을 하도록 도와줌 ",
+          "1988년 설립된 중앙 밴드동아리 늘혬코러스입니다. 합주 및 스터디를 통해 정기적으로 공연을 진행하고 있습니다.",
       },
       {
         clubID: 2,
         clubName: "더블랙",
-        clubLogo: sejong,
+        clubLogo: theblack,
         clubSummary:
-          "흑인 음악을 바탕으로 하여 동아리원들 간의 음악 교류, 공연 등 음악 활동을 하며 문화 발전에 기여하기 위함",
+          "세종대학교 흑인음악동아리 더블랙입니다. 저희는 노래를 좋아하는 친구들이 모여 축제, 버스킹 등 여러가지 공연을 하는 동아리입니다. 노래를 좋아하는 분이라면 누구든 환영입니다! ",
       },
       {
         clubID: 3,
@@ -45,74 +86,74 @@ function CentralClub() {
       {
         clubID: 4,
         clubName: "세종극회",
-        clubLogo: sejong,
+        clubLogo: sejonggeukhoi,
         clubSummary:
-          "세종극회는 1979년에 설립이후로 매년 4회의 수준높은 연극 공연을 올리고 있습니다. 누구나 연기에 관심만 있다면 실력에 상관없이 무대를 경험할 수 있습니다. 인생의 기억에 남는 특별한 경험을 쌓으실 수 있습니다. 무대가 올라가는 과정을 모두 함께해보세요. ",
+          "중앙 연극동아리 ‘세종극회'입니다. 세종극회는 연기, 연출, 소품 등의 분야가 모여 공연 준비를 하여 정기적인 연극 공연을 올립니다.",
       },
       {
         clubID: 5,
         clubName: "소울트레인",
-        clubLogo: sejong,
+        clubLogo: soultrain,
         clubSummary:
-          "흑인음악(주로 힙합)장르의 곡 메이킹과 공연이 주된 목적입니다. ",
+          "2005년 설립된 중앙흑인음악동아리 소울트레인입니다. 주된 활동은 교내 행사에서의 공연과 외부공연장에서의 정기공연이며, 곡 작업 및 스터디, 공연을 위한 연습을 진행합니다. ",
       },
       {
         clubID: 6,
         clubName: "인트로",
-        clubLogo: sejong,
+        clubLogo: intro,
         clubSummary:
-          "방송 음악 및 힙합을 주로 다루며, 춤과 음악을 사랑하고 배우며 회원들과 어울려 공연을 하는 것에 목적을 둔다. ‘힙합’이라 함은 댄스와 랩 등 음악적 요소를 다루는 것임을 밝힌다. ",
+          "춤과 랩을 즐기며 열정이 넘치는 중앙힙합동아리로, 교내행사 및 자체 정기공연을 통해 대학생활에 잊지못할 추억을 남겨드립니다!",
       },
       {
         clubID: 7,
         clubName: "터벌림",
-        clubLogo: sejong,
+        clubLogo: ter,
         clubSummary:
-          "“우리 자신의 보다 넓은 울을 찾고 우리 민족의 열을 찾으며, 우리의 알 터를 찾고 올바른 뜻을 찾는다.”풍물/사물놀이를 공연하기 위해 연습하고 다른 풍물패의 공연을 보거나 공연을 함으로써 공연 경험을 쌓으며 더 나은 공연을 기획 ",
+          "1984년 창립된 사물놀이 동아리입니다. 사물놀이 공연을 위해 연습하며, 많은 이에게 국악에 대한 관심을 도모할 수 있도록 노력합니다.",
       },
       {
         clubID: 8,
         clubName: "페이지세븐",
-        clubLogo: sejong,
+        clubLogo: pageseven,
         clubSummary:
-          "세종대학교 유일 중앙 락 동아리 PAGE7은 락음악에 관심이 있는 재학생들에게 연습과 배움, 공연을 통한 자신감 상승과 연주실력 향상, 밴드에 대한 로망을 직접 성취할 수 있는 동아리",
+          "락, 어쿠스틱, 발라드, 팝 다해버리는 중앙 밴드동아리 PAGE7입니다. OT, 대동제, 힘미제 등 교내 행사 무대, 타 학교 협동 공연과 초심자들을 위한 악기 레슨을 진행하고 있습니다.",
       },
       {
         clubID: 9,
         clubName: "한울림",
-        clubLogo: sejong,
+        clubLogo: hanwoollim,
         clubSummary:
-          "기타를 가르치고 배우고 연주하고 감상하면서 음악을 통해 사람들과 친목을 쌓는 동아리 ",
+          "기타를 가르치고 배우고 연주하고 감상하면서 음악을 통해 사람들과 친목을 쌓는 동아리입니다.",
       },
     ]);
     setPhysicalClub([
       {
         clubID: 1,
         clubName: "RUSH",
-        clubLogo: sejong,
+        clubLogo: rush,
         clubSummary:
-          "농구라는 스포츠를 좋아하는 그 누구나 참여할 수 있는 모임을 위해 만들었으며 더 나가아 실력 증진과 대회 입상까지 목표로 하는 동아리 ",
+          "자체적인 연습경기 및 타 대학과의 친선경기를 주기적으로 진행중에 있으며 각종 대학대회에 참가하고 있습니다. 농구를 못하시더라도 관심이 있으시다면 러쉬는 두 팔 벌려 맞이하겠습니다.",
       },
       {
         clubID: 2,
         clubName: "ESCAPER",
-        clubLogo: sejong,
+        clubLogo: jiujitsu,
         clubSummary:
-          "주짓수라는 운동을 통한 세종인의 호신과 체력증진 및 정서발달 위함 ",
+          "'주짓수' 라는 종목을 통해 세종인들의 심신의 단련과 호신 그리고 주짓수에 대한 흥미 갖게 하기 위한 목적을 띱니다. 매주 운동 모임을 통해 여러 사람들의 신체적 능력을 자신의 능력과 겨뤄 볼 수 있고 여기서 느낀 차이를 뛰어넘기 위한 기술들을 익히고 공유합니다.",
       },
       {
         clubID: 3,
         clubName: "STC",
-        clubLogo: sejong,
+        clubLogo: stc,
         clubSummary:
-          "테니스를 통한 회원 상호간의 친선도모 및 건강한 육체와 건전한 정신 함양을 목적으로 한다. ",
+          "1981년에 창립된 Sejong Tennis Club STC입니다. 테니스를 통한 동아리원간의 친선도모와 실력향상을 목적으로 하고, 트레이닝 및 경기연습, 타 대학과 친선경기를 하고 있습니다.",
       },
       {
         clubID: 4,
         clubName: "TSP",
-        clubLogo: sejong,
+        clubLogo: tsp,
         clubSummary:
-          "세종대 학우들 간의 탁구를 치고 더 나아가 다른 학교들 간의 교류전과 전국 대회 참여 ",
+          "2012년 설립된 중앙 탁구동아리 TSP입니다. 매주 화, 목 개인레슨과 연습경기를 진행합니다. 정기적으로 리그를 진행하고 있습니다. 타 대학과의 교류전과 각종 대회에 자주 참여하고 있습니다.",
       },
       {
         clubID: 5,
@@ -124,34 +165,37 @@ function CentralClub() {
       {
         clubID: 6,
         clubName: "산악부",
-        clubLogo: sejong,
+        clubLogo: sac,
         clubSummary:
-          "산악부는 등반과 등산을 통해 올바른 등반 지식을 익히고 자연을 아끼 는데 목적을 둔다. ",
+          "등산과 등반을 통해 체력과 정신력을 기르며, 일상에서는 보기 힘든 멋진 풍경을 보고 특별한 경험을 할 수 있습니다.",
       },
       {
         clubID: 7,
         clubName: "세종스키",
-        clubLogo: sejong,
-        clubSummary: "스키를 좋아하는 사람들이 모여 같이 스키를 즐기는 동아리",
+        clubLogo: ski,
+        clubSummary:
+          "대학스키연맹 소속 스키부, 세종스키입니다. 매년 겨울, 연맹 합숙 및 대회 진행합니다. #평생추억 #실력무관 #무료강습 #미친인맥 #눈꽃연애",
       },
       {
         clubID: 8,
         clubName: "세종킹스",
-        clubLogo: sejong,
+        clubLogo: sejongkings,
         clubSummary:
-          "야구실력 증진과 야구 외에도 다양한 활동을 통한 친목도모를 목적으로 하고 있다. ",
+          "1999년에 창단된 세종대학교 야구 동아리입니다. 야구실력증진과 친목도모를 목적으로 하며, KUSF, KUBA 등 다양한 대회에 참여하고 전국대학아마야구협회(AUBL)에 소속되어 리그에 참가하고 있습니다.",
       },
       {
         clubID: 9,
         clubName: "요트부",
-        clubLogo: sejong,
-        clubSummary: "요트를 타기 위함",
+        clubLogo: yacht,
+        clubSummary:
+          "1976년부터 이어진 전통 있는 전국대학 연합 동아리입니다. 주요활동으로 매주 한강세일링 및 여름, 겨울 해양훈련을 진행하고 있습니다.",
       },
       {
         clubID: 10,
         clubName: "점프",
-        clubLogo: sejong,
-        clubSummary: "겨울에 스노우보드를 다 같이 모여서 타기 위해 만들어졌다 ",
+        clubLogo: jump,
+        clubSummary:
+          "학기 중에는 스케이트보드 혹은 롱보드를 타고 여름엔 서핑 및 웨이크보드, 겨울엔 스노우보드를 타는 것을 주 목적으로 만들어진 동아리입니다. 주 활동은 스노우보드이고 그에 따라 겨울에 모든 포커스가 맞춰져 있습니다. 스노우보드를 타보셨던 분도, 타보지 않으셨던 분도 재미있게 타고자 만든 동아리입니다.",
       },
       {
         clubID: 11,
@@ -165,38 +209,39 @@ function CentralClub() {
       {
         clubID: 1,
         clubName: "셀스",
-        clubLogo: sejong,
+        clubLogo: sels,
         clubSummary:
-          "SELS는 영어교육봉사동아리로 아이들에게 영어를 교육하는 봉사활동을 통해 사회적인 기여와 이를 통해 학우들의 영어실력 향상에도 도움을 주기 위해",
+          "세종대학교 중앙 영어봉사 동아리 셀스입니다. 다양한 프로그램들을 통해 초등학생들이 영어와 친해질 수 있게 도와주고 있습니다.",
       },
       {
         clubID: 2,
         clubName: "죽순회",
-        clubLogo: sejong,
-        clubSummary: "사회봉사 및 친목도모",
+        clubLogo: zook,
+        clubSummary:
+          "정기 봉사활동과 비정기 봉사활동을 함께 진행합니다. 봉사뿐만 아니라 MT, 집회, 건대 죽순회와의 교류 등을 통해 친목활동도 하고 있습니다. ",
       },
     ]);
     setCultureClub([
       {
         clubID: 1,
         clubName: "BAMBOO",
-        clubLogo: sejong,
+        clubLogo: bamboo,
         clubSummary:
-          "사진을 좋아하는 사람들이 자유롭고 즐거운 분위기 속에서 사진을 즐길 수 있도록 한다. ",
+          "2014년에 설립된 밤부는 캐주얼 사진동아리입니다. 촬영 장비에 구애를 받지 않고 사진찍고자 하는 마음만 있다면 누구나 함께 할 수 있는 사진 동아리입니다. 매달 정기출사와 1년에 2번 사진전을 개최합니다.",
       },
       {
         clubID: 2,
         clubName: "두바퀴",
-        clubLogo: sejong,
+        clubLogo: doobaqui,
         clubSummary:
-          "이륜차(오토바이, 스쿠터)를 좋아하는 사람들이 모여 자가 정비를 서로 배우고 안전교육을 배워 면허 취득을 돕는다. 마실 및 여행을 다니며 즐기는 모임이다.",
+          '"두바퀴"는 바이크 소지 여부와 상관없이, 바이크를 좋아하거나 관심있는 사람이라면 누구나 함께 즐길 수 있는 동아리입니다. 매주 목요일 바이크를 타고 수도권 맛집, 카페 탐방을 하고 한달에 한번 서울을 벗어나 전국팔도 어디든 누비는 MT, 투어를 갑니다. 무려 이륜차로 제주도도 가능!!',
       },
       {
         clubID: 3,
         clubName: "마스터",
-        clubLogo: sejong,
+        clubLogo: master,
         clubSummary:
-          "본래 게임 동아리로 창립되었으나 어떠한 이유로 인하여 보드게임 동아리로 변경되었음.변경된지는 꽤 된 것으로 추청되며 이유는 알지 못함. ",
+          "동아리내 100여종 이상의 게임을 보유하고 있어 다양한 종류의 보드게임을 즐길 수 있습니다.",
       },
       {
         clubID: 4,
@@ -221,66 +266,67 @@ function CentralClub() {
       {
         clubID: 7,
         clubName: "한손",
-        clubLogo: sejong,
+        clubLogo: hanson,
         clubSummary:
-          "만화와 애니메이션을 함께 즐기며, 더 나아가 직접 창작활동을 해본다온라인 게임, 보드게임, TRPG 등 여러 분야의 게임 활동을 해본다.",
+          "오랜 역사를 가진 만화 동아리 한손입니다. 매년마다 창립제와 회지 발간, 그 외 다양한 활동을 통해 친목과 경험을 쌓고 있습니다.",
       },
     ]);
     setAcademicClub([
       {
         clubID: 1,
         clubName: "KUSA",
-        clubLogo: sejong,
+        clubLogo: kusa,
         clubSummary:
-          "유네스코 정신을 토대로 주요 국제 사안에 대한 이해 증진 및 논의를 도모하고, 이러한 움직임이 널리 퍼지는 것을 묘사한 ‘새물결 운동’을 널리 하도록 한다. ",
+          "한국유네스코학생회 KUSA입니다.토론, 봉사, 연합(전국 43개의 대학교에서 운영 중) 등의 다양한 활동을 하고 있습니다.",
       },
       {
         clubID: 2,
         clubName: "UNSA",
-        clubLogo: sejong,
+        clubLogo: unsa,
         clubSummary:
-          "대학생들의 국제 이슈에 대한 관심도를 높이고 대학생들이 세계 평 화에 대해 생각해보게 하며 대학생들 상호간의 대화를 촉진시키고자 창립됨 ",
+          "UNSA(유엔한국학생협회)는 전국 30여개 대학교의 동아리로 조직된 유엔한국협회의 산하단체입니다. 다양한 주제로 진행되는 토론을 통해 누구든지 시사에 쉽게 관심을 가질 수 있도록 돕고 있습니다.",
       },
       {
         clubID: 3,
         clubName: "별무리",
-        clubLogo: sejong,
+        clubLogo: star,
         clubSummary:
-          "중앙동아리 유일 천체관측 동아리로서 천문관측을 통한 우주 삼라만상의 이치를 깨우치며 그 미학을 탐구하는 것 ",
+          "교내 유일한 천체관측 동아리로 정기적으로 교내 혹은 교외에서 천체를 관측합니다. 전문적인 지식이 없어도 함께 즐기며 친목을 도모할 수 있는 동아리입니다.",
       },
       {
         clubID: 4,
         clubName: "세종문학회",
-        clubLogo: sejong,
+        clubLogo: sejongmoon,
         clubSummary:
-          "단체로 오프라인 문화체험을 하고 사회적 이슈에 대해 시사토론 및 문예 창작활동을 통해 인문학적 지식과 논리력을 함양한다. ",
+          "세종문학회는 서적이나 사회의 각종 이슈를 정하여 토론을 하며 논리적인 사고능력과 체계적인 주장 능력을 기르는 활동을 하고 있습니다. 행사 외에는 단체 공연관람 같은 문화 활동을 운영하고 있습니다.",
       },
       {
         clubID: 5,
         clubName: "세종서회",
-        clubLogo: sejong,
+        clubLogo: sejongseohoi,
         clubSummary:
-          "개인의 취미와 특기를 살려 서예를 연마한다. 옛 조상들을 이해하고, 미래의 자아를 위해 개인의 능력을 하고,함양하며 참된 지성인으로서의 인격도야에 힘쓴다.",
+          "1981년 설립된 중앙 서예동아리 세종서회입니다. 한글/한문 서예를 배우며 정기전시회를 통해 자신만의 작품을 만들어 나갑니다.",
       },
       {
         clubID: 6,
         clubName: "아롬",
-        clubLogo: sejong,
+        clubLogo: arom,
         clubSummary:
-          "본 동아리는 어플리케이션 제작 프로젝트를 진행하며 앱 기획, 개발 디자인 능력을 향상 그리고 회원 간의 친목 도모를 목적으로 한다. ",
+          "안드로이드앱과 IOS앱을 개발하는 동아리입니다. 개발부, 기획&디자인부로 나누어 학기 단위 앱 개발 프로젝트를 진행합니다. 학과, 학번, 나이, 실력과 무관하게 누구나 가입해서 앱 개발에 참여할 수 있습니다.",
       },
       {
         clubID: 7,
         clubName: "유마프랜",
-        clubLogo: sejong,
-        clubSummary: "마케팅 프로젝트 경험을 쌓음으로써, 기획 및 PT 능력 함양 ",
+        clubLogo: youma,
+        clubSummary:
+          "세종대학교 마케팅 중앙동아리 유마프랜입니다. 마케팅을 전혀 모르는 신입생, 이과생도 재미있게 마케팅을 경험할 수 있는 동아리입니다. 매학기마다 관련 프로젝트를 진행하고 있습니다.",
       },
       {
         clubID: 8,
         clubName: "인터페이스",
-        clubLogo: sejong,
+        clubLogo: interfaec,
         clubSummary:
-          "본 회는 세종대학교 동아리연합회의 제반목적 및 규악을 준수하여 컴퓨터에 대한 전반적인 지식을 습득하고 이를 활용, 극대화 하는 능력을 기르며, 회원 상호간에 긴밀한 유대관계로 친선을 도모한다. ",
+          "1988년에 설립된 중앙 학술 프로그래밍 동아리 인터페이스입니다. 스터디, 해커톤, 프로젝트 전시회 등 다양한 활동을 통해 사람과 컴퓨터를 잇는 인터페이스의 역할을 합니다.",
       },
     ]);
     setReligionClub([
@@ -296,40 +342,43 @@ function CentralClub() {
         clubName: "CCC",
         clubLogo: sejong,
         clubSummary:
-          "'Movements Everywhere' (어느 곳에서나 영적 운동을 일으키기)이 비전을 가지고 성령의 능력으로 사람들에게 그리스도를 전하고 믿음을 훈련시키고, 이들이 다른 사람들을 전도하고 제자화 할 수 있도록 파송하여, 지상 명령을 성취하도록 돕는다.",
+          "전국 300여개 대학교에서 활동 중인 기독교 동아리 CCC입니다. 크리스천 신앙 훈련 활동들과 누구나 함께 할 수 있는 수련회, 단기선교 등 다양한 대외 활동을 하고 있습니다.",
       },
       {
         clubID: 3,
         clubName: "IVF",
-        clubLogo: sejong,
+        clubLogo: ivf,
         clubSummary:
-          "복음으로 변화된 학생, 학사들이 캠퍼스 및 세상 속에서 그리스도의 철저한 제자로 살며 하나님의 주권과 통치를 드러낸다.",
+          "한국기독학생회 IVF는 전국 150여 개 캠퍼스에서 '캠퍼스와 세상 속의 하나님 나라 운동'을 모토로 활동하고 있는 학생운동 단체입니다.",
       },
       {
         clubID: 4,
         clubName: "JYM",
-        clubLogo: sejong,
+        clubLogo: jym,
         clubSummary:
-          "JYM은 하나님의 말씀과 성령으로 이 시대의 가치관과 한계를 돌파하는 충만한 리더들을 사회 각 영역에 파송하고, 세상을 이기는 영적 용사들로 다음세대를 훈련, 무장시키어 하나님의 나라를 완성하는 것을 목적으로 모임을 이루고 있다. ",
+          "JYM(Joyful Youth Mission)은 복음적 선교단체(KAICAM,기연 소속)입니다. 캠퍼스의 한 사람을 목자로 세워 열방을 제자화 하는 것을 사명으로 삼고 있습니다.",
       },
       {
         clubID: 5,
         clubName: "KSGI",
         clubLogo: sejong,
         clubSummary:
-          "누구나 무한한 가능성을 지니고 있어 그것을 개화시키면 자유자재로 살아갈 수 있다고 믿으며 모든 인간의 평등과 존엄의 실현을 위해서 끊임 없는 노력과 실천을 지속하여 확고한 ‘인간주의’의 활동을 지속한다. ",
+          "SGI는 1930년 창립된 이래 생명존엄의 불법을 기조로 인류의 평화와 행복을 위해 노력하는 단체로 해당 종교의 동아리입니다.",
       },
       {
         clubID: 6,
         clubName: "레지나",
         clubLogo: sejong,
         clubSummary:
-          "대학사회의 특수성에 맞는 방법으로 복음을 실천하고 학교 내 학생들에게 복음을 전함으로써 예수님의 구원사업에 동참하는 것이 가톨릭학생회의 기본적인 역할이다. ",
+          "세종대학교 가톨릭 학생회 레지나입니다. 하느님의 사랑을 배우고, 나누며, 몸소 실천하여 학교 복음화에 기여하고자 하는 것이 기본 목적입니다.",
       },
     ]);
   }, []);
   return (
     <>
+      <Container height="145px">
+        <img src={v2} alt="" />
+      </Container>
       <Container height="1400px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
@@ -338,7 +387,7 @@ function CentralClub() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="100px"
+            marginTop="8px"
           >
             <Container
               height="50px"
@@ -428,7 +477,7 @@ function CentralClub() {
         </Container>
         <Container
           backgroundColor=""
-          width="900px"
+          width="1062px"
           fd="column"
           marginLeft="30px"
           verticalAlign="flex-start"
@@ -436,9 +485,9 @@ function CentralClub() {
           <Route exact path="/centralclub/">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -455,7 +504,7 @@ function CentralClub() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container
                 fd="column"
@@ -469,9 +518,9 @@ function CentralClub() {
           <Route path="/centralclub/physical">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -486,10 +535,14 @@ function CentralClub() {
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
-              width="840px"
+              width="1000px"
               display="block"
             >
-              <Container width="840px" height="50px" horizontalAlign="flex-end">
+              <Container
+                width="1000px"
+                height="50px"
+                horizontalAlign="flex-end"
+              >
                 <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
@@ -497,8 +550,8 @@ function CentralClub() {
               {physicalClub.map((club, index) => {
                 return (
                   <Container
-                    width="420px"
-                    height="200px"
+                    width="500px"
+                    height="210px"
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
@@ -515,7 +568,12 @@ function CentralClub() {
                         width="150px"
                         height="150px"
                       >
-                        <img src={club.clubLogo} alt="" width="150px" />
+                        <img
+                          src={club.clubLogo}
+                          alt=""
+                          width="100%"
+                          height="auto"
+                        />
                       </Container>
                       <Container
                         className="club-info-container"
@@ -524,6 +582,7 @@ function CentralClub() {
                         horizontalAlign="flex-start"
                         paddingLeft="10px"
                         paddingRight="10px"
+                        width="310px"
                       >
                         <Text clubName>{club.clubName}</Text>
                         <Text clubSummary>{club.clubSummary}</Text>
@@ -537,9 +596,9 @@ function CentralClub() {
           <Route path="/centralclub/culture">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -554,10 +613,14 @@ function CentralClub() {
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
-              width="840px"
+              width="1000px"
               display="block"
             >
-              <Container width="840px" height="50px" horizontalAlign="flex-end">
+              <Container
+                width="1000px"
+                height="50px"
+                horizontalAlign="flex-end"
+              >
                 <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
@@ -565,8 +628,8 @@ function CentralClub() {
               {cultureClub.map((club, index) => {
                 return (
                   <Container
-                    width="420px"
-                    height="200px"
+                    width="500px"
+                    height="210px"
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
@@ -575,7 +638,6 @@ function CentralClub() {
                         ? "none"
                         : "2px solid grey"
                     }
-                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -583,7 +645,12 @@ function CentralClub() {
                         width="150px"
                         height="150px"
                       >
-                        <img src={club.clubLogo} alt="" width="150px" />
+                        <img
+                          src={club.clubLogo}
+                          alt=""
+                          width="100%"
+                          height="auto"
+                        />
                       </Container>
                       <Container
                         className="club-info-container"
@@ -592,6 +659,7 @@ function CentralClub() {
                         horizontalAlign="flex-start"
                         paddingLeft="10px"
                         paddingRight="10px"
+                        width="310px"
                       >
                         <Text clubName>{club.clubName}</Text>
                         <Text clubSummary>{club.clubSummary}</Text>
@@ -605,9 +673,9 @@ function CentralClub() {
           <Route path="/centralclub/show">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -622,10 +690,14 @@ function CentralClub() {
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
-              width="840px"
+              width="1000px"
               display="block"
             >
-              <Container width="840px" height="50px" horizontalAlign="flex-end">
+              <Container
+                width="1000px"
+                height="50px"
+                horizontalAlign="flex-end"
+              >
                 <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
@@ -633,7 +705,7 @@ function CentralClub() {
               {showClub.map((club, index) => {
                 return (
                   <Container
-                    width="420px"
+                    width="500px"
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
@@ -641,7 +713,6 @@ function CentralClub() {
                     borderBottom={
                       index === showClub.length - 1 ? "none" : "2px solid grey"
                     }
-                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -649,7 +720,12 @@ function CentralClub() {
                         width="150px"
                         height="150px"
                       >
-                        <img src={club.clubLogo} alt="" width="150px" />
+                        <img
+                          src={club.clubLogo}
+                          alt=""
+                          width="100%"
+                          height="auto"
+                        />
                       </Container>
                       <Container
                         className="club-info-container"
@@ -658,6 +734,7 @@ function CentralClub() {
                         horizontalAlign="flex-start"
                         paddingLeft="10px"
                         paddingRight="10px"
+                        width="310px"
                       >
                         <Text clubName>{club.clubName}</Text>
                         <Text clubSummary>{club.clubSummary}</Text>
@@ -671,9 +748,9 @@ function CentralClub() {
           <Route path="/centralclub/academic">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -688,10 +765,14 @@ function CentralClub() {
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
-              width="840px"
+              width="1000px"
               display="block"
             >
-              <Container width="840px" height="50px" horizontalAlign="flex-end">
+              <Container
+                width="1000px"
+                height="50px"
+                horizontalAlign="flex-end"
+              >
                 <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
@@ -699,8 +780,8 @@ function CentralClub() {
               {academicClub.map((club, index) => {
                 return (
                   <Container
-                    width="420px"
-                    height="200px"
+                    width="500px"
+                    height="210px"
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
@@ -713,7 +794,12 @@ function CentralClub() {
                         width="150px"
                         height="150px"
                       >
-                        <img src={club.clubLogo} alt="" width="150px" />
+                        <img
+                          src={club.clubLogo}
+                          alt=""
+                          width="100%"
+                          height="auto"
+                        />
                       </Container>
                       <Container
                         className="club-info-container"
@@ -722,6 +808,7 @@ function CentralClub() {
                         horizontalAlign="flex-start"
                         paddingLeft="10px"
                         paddingRight="10px"
+                        width="310px"
                       >
                         <Text clubName>{club.clubName}</Text>
                         <Text clubSummary>{club.clubSummary}</Text>
@@ -735,9 +822,9 @@ function CentralClub() {
           <Route path="/centralclub/religion">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -752,10 +839,14 @@ function CentralClub() {
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
-              width="840px"
+              width="1000px"
               display="block"
             >
-              <Container width="840px" height="50px" horizontalAlign="flex-end">
+              <Container
+                width="1000px"
+                height="50px"
+                horizontalAlign="flex-end"
+              >
                 <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
@@ -763,8 +854,8 @@ function CentralClub() {
               {religionClub.map((club, index) => {
                 return (
                   <Container
-                    width="420px"
-                    height="200px"
+                    width="500px"
+                    height="210px"
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
@@ -777,7 +868,12 @@ function CentralClub() {
                         width="150px"
                         height="150px"
                       >
-                        <img src={club.clubLogo} alt="" width="150px" />
+                        <img
+                          src={club.clubLogo}
+                          alt=""
+                          width="100%"
+                          height="auto"
+                        />
                       </Container>
                       <Container
                         className="club-info-container"
@@ -786,6 +882,7 @@ function CentralClub() {
                         horizontalAlign="flex-start"
                         paddingLeft="10px"
                         paddingRight="10px"
+                        width="310px"
                       >
                         <Text clubName>{club.clubName}</Text>
                         <Text clubSummary>{club.clubSummary}</Text>
@@ -799,9 +896,9 @@ function CentralClub() {
           <Route path="/centralclub/volunteer">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -816,10 +913,14 @@ function CentralClub() {
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
-              width="840px"
+              width="1000px"
               display="block"
             >
-              <Container width="840px" height="50px" horizontalAlign="flex-end">
+              <Container
+                width="1000px"
+                height="50px"
+                horizontalAlign="flex-end"
+              >
                 <Text fontSize="21px" fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
@@ -827,8 +928,8 @@ function CentralClub() {
               {volunteerClub.map((club) => {
                 return (
                   <Container
-                    width="420px"
-                    height="200px"
+                    width="500px"
+                    height="210px"
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
@@ -841,7 +942,12 @@ function CentralClub() {
                         width="150px"
                         height="150px"
                       >
-                        <img src={club.clubLogo} alt="" width="150px" />
+                        <img
+                          src={club.clubLogo}
+                          alt=""
+                          width="100%"
+                          height="auto"
+                        />
                       </Container>
                       <Container
                         className="club-info-container"
@@ -850,6 +956,7 @@ function CentralClub() {
                         horizontalAlign="flex-start"
                         paddingLeft="10px"
                         paddingRight="10px"
+                        width="310px"
                       >
                         <Text clubName>{club.clubName}</Text>
                         <Text clubSummary>{club.clubSummary}</Text>

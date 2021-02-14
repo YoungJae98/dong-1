@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
-import logo_inversed from "../assets/logo_reversed.png";
+import logo_inversed from "../assets/images/logo_reversed.png";
 import Sejong from "../assets/images/Sejonglogo.png";
 import pdf from "../assets/documents/pdf.pdf";
 import promises from "../assets/documents/promises.pdf";
+import v3 from "../assets/images/visual/visual3.jpg";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -156,6 +157,9 @@ function Main() {
   }, []);
   return (
     <>
+      <Container height="145px">
+        <img src={v3} alt="" />
+      </Container>
       <Container height="1200px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
@@ -164,7 +168,7 @@ function Main() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="100px"
+            marginTop="8px"
           >
             <Container
               height="50px"
@@ -188,15 +192,20 @@ function Main() {
                     ></Listitem>
                   </NavLink>
                 </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/information/alliance">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="제휴사업"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
+                <Button
+                  backgroundColor="white"
+                  onClick={() => {
+                    alert("준비중입니다.");
+                  }}
+                >
+                  {/* <NavLink to="/information/alliance"> */}
+                  <Listitem
+                    height="40px"
+                    fontColor="#14406c"
+                    label="제휴사업"
+                    hoverUnderline
+                  ></Listitem>
+                  {/* </NavLink> */}
                 </Button>
                 <Button backgroundColor="white">
                   <NavLink to="/information/seoul">
@@ -233,7 +242,7 @@ function Main() {
           </Container>
         </Container>
         <Container
-          width="900px"
+          width="1062px"
           fd="column"
           marginLeft="30px"
           verticalAlign="flex-start"
@@ -241,9 +250,9 @@ function Main() {
           <Route exact path="/information/">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -259,7 +268,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container
                 height="50px"
@@ -340,7 +349,7 @@ function Main() {
                             assignment2.length +
                             assignment3.length +
                             assignment4.length)) *
-                        840
+                        1000
                       }px`}
                     >
                       <Text fontSize="21px" fontColor="#14406c">
@@ -500,7 +509,7 @@ function Main() {
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
                       width={`${
-                        (840 *
+                        (1000 *
                           assignment1.filter((act) => act.isDone === true)
                             .length) /
                         assignment1.length
@@ -575,7 +584,7 @@ function Main() {
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
                       width={`${
-                        (840 *
+                        (1000 *
                           assignment2.filter((act) => act.isDone === true)
                             .length) /
                         assignment2.length
@@ -650,7 +659,7 @@ function Main() {
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
                       width={`${
-                        (840 *
+                        (1000 *
                           assignment3.filter((act) => act.isDone === true)
                             .length) /
                         assignment3.length
@@ -725,7 +734,7 @@ function Main() {
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
                       width={`${
-                        (840 *
+                        (1000 *
                           assignment4.filter((act) => act.isDone === true)
                             .length) /
                         assignment4.length
@@ -775,11 +784,11 @@ function Main() {
             </Container>
           </Route>
           <Route exact path="/information/alliance">
-            <Container
+            {/* <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -796,7 +805,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container
                 height="100px"
@@ -842,14 +851,14 @@ function Main() {
                   &nbsp;&nbsp;보드라운 수면 양말 빌려 드립니다.
                 </Text>
               </Container>
-            </Container>
+            </Container> */}
           </Route>
           <Route exact path="/information/seoul">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -866,7 +875,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container height="250px">
                 <img src={Sejong} alt="" width="250px" />
@@ -892,7 +901,7 @@ function Main() {
                 height="600px"
                 border="2px solid #14406c"
                 borderRadius="3px"
-                marginTop="50px"
+                marginTop="20px"
                 fd="column"
                 horizontalAlign="flex-start"
                 verticalAlign="flex-start"
@@ -969,9 +978,9 @@ function Main() {
           <Route exact path="/information/report">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -988,7 +997,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container className="reports-button-container" height="40px">
                 <Button
@@ -1291,9 +1300,9 @@ function Main() {
           <Route exact path="/information/meetinglog">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -1310,7 +1319,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container className="meetinglog-button-container" height="40px">
                 <Button

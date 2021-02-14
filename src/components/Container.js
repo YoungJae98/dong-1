@@ -22,6 +22,7 @@ const StyledContainer = styled.div`
   flex-direction: ${(props) => props.fd || "row"};
   align-items: ${(props) => props.verticalAlign || "center"};
   justify-content: ${(props) => props.horizontalAlign || "center"};
+  vertical-align: top;
 
   border: ${(props) => props.border};
   border-bottom: ${(props) => props.borderBottom};

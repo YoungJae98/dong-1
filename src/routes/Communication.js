@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, Route, Switch, useHistory } from "react-router-dom";
-import logo_inversed from "../assets/logo_reversed.png";
+import logo_inversed from "../assets/images/logo_reversed.png";
+import v4 from "../assets/images/visual/visual4.jpg";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -188,6 +189,9 @@ function Main() {
   }, []);
   return (
     <>
+      <Container height="145px">
+        <img src={v4} alt="" />
+      </Container>
       <Container height="1200px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
@@ -196,7 +200,7 @@ function Main() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="100px"
+            marginTop="8px"
           >
             <Container
               height="50px"
@@ -235,7 +239,7 @@ function Main() {
           </Container>
         </Container>
         <Container
-          width="900px"
+          width="1062px"
           fd="column"
           marginLeft="30px"
           verticalAlign="flex-start"
@@ -244,9 +248,9 @@ function Main() {
             <Route exact path="/communication/">
               <Container
                 height="40px"
-                marginTop="50px"
+                marginTop="20px"
                 marginLeft="20px"
-                width="840px"
+                width="1000px"
                 horizontalAlign="left"
               >
                 <Text fontColor="#14406c" fontSize="32px">
@@ -263,7 +267,7 @@ function Main() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
-                width="840px"
+                width="1000px"
               >
                 <Container
                   className="suggestions-buttons-container"
@@ -590,9 +594,9 @@ function Main() {
             <Route exact path="/communication/petition">
               <Container
                 height="40px"
-                marginTop="50px"
+                marginTop="20px"
                 marginLeft="20px"
-                width="840px"
+                width="1000px"
                 horizontalAlign="left"
               >
                 <Text fontColor="#14406c" fontSize="32px">
@@ -609,7 +613,7 @@ function Main() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
-                width="840px"
+                width="1000px"
               >
                 <Container className="reform-buttons-container" height="40px">
                   <Button
@@ -931,9 +935,9 @@ function Main() {
             <Route exact path="/communication/suggestion/register">
               <Container
                 height="40px"
-                marginTop="50px"
+                marginTop="20px"
                 marginLeft="20px"
-                width="840px"
+                width="1000px"
                 horizontalAlign="left"
               >
                 <Text fontColor="#14406c" fontSize="32px">
@@ -950,7 +954,7 @@ function Main() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
-                width="840px"
+                width="1000px"
               >
                 <Container
                   width="100px"
@@ -967,7 +971,7 @@ function Main() {
                   <textarea
                     placeholder="건의 제목을 작성해 주세요."
                     style={{
-                      width: "816px",
+                      width: "976px",
                       height: "25px",
                       fontFamily: "SeoulBold",
                       fontSize: "24px",
@@ -982,7 +986,7 @@ function Main() {
                   <textarea
                     placeholder="건의 내용을 작성해 주세요."
                     style={{
-                      width: "816px",
+                      width: "976px",
                       height: "600px",
                       fontFamily: "SeoulBold",
                       fontSize: "24px",
@@ -1022,9 +1026,9 @@ function Main() {
             <Route exact path="/communication/petition/register">
               <Container
                 height="40px"
-                marginTop="50px"
+                marginTop="20px"
                 marginLeft="20px"
-                width="840px"
+                width="1000px"
                 horizontalAlign="left"
               >
                 <Text fontColor="#14406c" fontSize="32px">
@@ -1041,7 +1045,7 @@ function Main() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
-                width="840px"
+                width="1000px"
               >
                 <Container
                   width="100px"
@@ -1058,7 +1062,7 @@ function Main() {
                   <textarea
                     placeholder="청원 제목을 작성해 주세요."
                     style={{
-                      width: "816px",
+                      width: "976px",
                       height: "25px",
                       fontFamily: "SeoulBold",
                       fontSize: "24px",
@@ -1074,7 +1078,7 @@ function Main() {
                     type="text"
                     placeholder="청원 내용을 작성해 주세요."
                     style={{
-                      width: "816px",
+                      width: "976px",
                       height: "600px",
                       fontFamily: "SeoulBold",
                       fontSize: "24px",

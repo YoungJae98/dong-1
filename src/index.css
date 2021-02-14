@@ -1,5 +1,6 @@
 html {
   height: 100%;
+  overflow-x: hidden;
 }
 input:focus {
   outline: 0;
@@ -155,6 +156,7 @@ li {
   left: 240px;
   bottom: 35px;
   z-index: 10;
+  transform: translateX(81px);
 }
 .subProgress-downarrow {
   width: 0;
@@ -185,6 +187,7 @@ li {
   left: 240px;
   top: 25px;
   z-index: 10;
+  transform: translateX(81px);
 }
 .totalProgress-uparrow {
   width: 0;

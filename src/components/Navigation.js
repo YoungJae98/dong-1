@@ -3,8 +3,8 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import logo_reversed from "../assets/logo_reversed.png";
-import logo from "../assets/logo.png";
+import logo_reversed from "../assets/images/logo_reversed.png";
+import logo from "../assets/images/logo.png";
 import { BsFillPersonFill } from "react-icons/bs";
 
 import List from "./List";
@@ -123,7 +123,7 @@ function Navigation({
                 src={main ? logo_reversed : logo}
                 className="App-logo"
                 alt="logo"
-                height="60px"
+                height="50px"
               />
             </Container>
           </Link>
@@ -331,22 +331,20 @@ function Navigation({
                   </Link>
                 </div>
                 <div>
-                  <Link
-                    to="/information/alliance"
-                    onClick={() => setMain(false)}
+                  <Button
+                    height="40px"
+                    width="183px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    fontSize="21px"
+                    font="SeoulBold"
+                    className="navigation-submenu-button"
+                    onClick={() => {
+                      alert("준비중입니다.");
+                    }}
                   >
-                    <Button
-                      height="40px"
-                      width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
-                      className="navigation-submenu-button"
-                    >
-                      제휴 사업
-                    </Button>
-                  </Link>
+                    제휴 사업
+                  </Button>
                 </div>
                 <div>
                   <Link to="/information/seoul" onClick={() => setMain(false)}>

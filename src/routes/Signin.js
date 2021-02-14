@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-import logo from "../assets/logo.png";
+import logo from "../assets/images/logo.png";
 import Button from "../components/Button";
 
 import Container from "../components/Container";

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link, NavLink, Route } from "react-router-dom";
 
-import logo_inversed from "../assets/logo_reversed.png";
+import logo_inversed from "../assets/images/logo_reversed.png";
 import hello from "../assets/hello.png";
-import president from "../assets/images/president.png";
-import vicepresident from "../assets/images/vice.png";
-import plan1 from "../assets/images/plan1.png";
-import plan2 from "../assets/images/plan2.png";
-import communication from "../assets/images/communication.png";
-import policy_business from "../assets/images/policy-business.png";
-import promotion from "../assets/images/promotion.png";
+import president from "../assets/images/people/president.png";
+import vicepresident from "../assets/images/people/vice.png";
+import plan1 from "../assets/images/people/plan1.png";
+import plan2 from "../assets/images/people/plan2.png";
+import communication from "../assets/images/people/communication.png";
+import policy_business from "../assets/images/people/policy-business.png";
+import promotion from "../assets/images/people/promotion.png";
+import v1 from "../assets/images/visual/visual1.jpg";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -22,6 +23,9 @@ import Way2Us from "../components/Way2Us";
 function ClubUnion() {
   return (
     <>
+      <Container height="145px">
+        <img src={v1} alt="" />
+      </Container>
       <Container height="1200px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
@@ -30,7 +34,7 @@ function ClubUnion() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="100px"
+            marginTop="8px"
           >
             <Container
               width="220px"
@@ -80,17 +84,18 @@ function ClubUnion() {
           </Container>
         </Container>
         <Container
-          width="900px"
+          width="1062px"
           fd="column"
           marginLeft="30px"
           verticalAlign="flex-start"
+          className="right-container"
         >
           <Route exact path="/clubunion/">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -107,7 +112,7 @@ function ClubUnion() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container
                 fd="column"
@@ -130,9 +135,9 @@ function ClubUnion() {
           <Route path="/clubunion/introduce">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -149,7 +154,7 @@ function ClubUnion() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container
                 verticalAlign="flex-start"
@@ -162,12 +167,13 @@ function ClubUnion() {
                     fontColor="white"
                     fontSize="21px"
                     font="SeoulBold"
-                    width="120px"
-                    height="50px"
+                    width="140px"
+                    height="40px"
                     marginLeft="3px"
                     borderRadius="7px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    border="2px solid #14406c"
                   >
                     회장
                   </Button>
@@ -178,12 +184,13 @@ function ClubUnion() {
                     fontColor="white"
                     fontSize="21px"
                     font="SeoulBold"
-                    width="120px"
-                    height="50px"
+                    width="140px"
+                    height="40px"
                     marginLeft="3px"
                     borderRadius="7px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    border="2px solid #14406c"
                   >
                     부회장
                   </Button>
@@ -194,12 +201,13 @@ function ClubUnion() {
                     fontColor="white"
                     fontSize="21px"
                     font="SeoulBold"
-                    width="120px"
-                    height="50px"
+                    width="140px"
+                    height="40px"
                     marginLeft="3px"
                     borderRadius="7px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    border="2px solid #14406c"
                   >
                     기획1국
                   </Button>
@@ -210,12 +218,13 @@ function ClubUnion() {
                     fontColor="white"
                     fontSize="21px"
                     font="SeoulBold"
-                    width="120px"
-                    height="50px"
+                    width="140px"
+                    height="40px"
                     marginLeft="3px"
                     borderRadius="7px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    border="2px solid #14406c"
                   >
                     기획2국
                   </Button>
@@ -226,12 +235,13 @@ function ClubUnion() {
                     fontColor="white"
                     fontSize="21px"
                     font="SeoulBold"
-                    width="120px"
-                    height="50px"
+                    width="140px"
+                    height="40px"
                     marginLeft="3px"
                     borderRadius="7px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    border="2px solid #14406c"
                   >
                     소통국
                   </Button>
@@ -242,12 +252,13 @@ function ClubUnion() {
                     fontColor="white"
                     fontSize="21px"
                     font="SeoulBold"
-                    width="120px"
-                    height="50px"
+                    width="140px"
+                    height="40px"
                     marginLeft="3px"
                     borderRadius="7px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    border="2px solid #14406c"
                   >
                     정책/사무국
                   </Button>
@@ -258,12 +269,13 @@ function ClubUnion() {
                     fontColor="white"
                     fontSize="21px"
                     font="SeoulBold"
-                    width="120px"
-                    height="50px"
+                    width="140px"
+                    height="40px"
                     marginLeft="3px"
                     borderRadius="7px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
+                    border="2px solid #14406c"
                   >
                     홍보국
                   </Button>
@@ -365,9 +377,9 @@ function ClubUnion() {
           <Route path="/clubunion/way2us">
             <Container
               height="40px"
-              marginTop="50px"
+              marginTop="20px"
               marginLeft="20px"
-              width="840px"
+              width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
@@ -384,7 +396,7 @@ function ClubUnion() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
-              width="840px"
+              width="1000px"
             >
               <Container
                 fd="column"
@@ -392,11 +404,8 @@ function ClubUnion() {
                 verticalAlign="flex-start"
               >
                 <Way2Us />
-                <Text marginTop="20px" fontSize="32px">
-                  어린이대공원역 6번 출구
-                </Text>
-                <Text marginTop="20px" fontSize="32px">
-                  세종대학교 학생회관 000호
+                <Text marginTop="20px" fontSize="24px">
+                  지하철 7호선 어린이대공원역 6번 출구 세종대학교 학생회관 408호
                 </Text>
               </Container>
               <Container

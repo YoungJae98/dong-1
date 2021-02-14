@@ -1,9 +1,9 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
-import c1 from "../assets/carousel1.jpg";
-import c2 from "../assets/carousel2.jpg";
-import c3 from "../assets/carousel3.jpg";
+import c1 from "../assets/images/carousel/carousel1.jpg";
+import c2 from "../assets/images/carousel/carousel2.jpg";
+import c3 from "../assets/images/carousel/carousel3.jpg";
 
 function MyCarousel() {
   return (
