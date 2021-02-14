@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dong/static/css/main.04b8fed9.chunk.css",
-    "main.js": "/dong/static/js/main.5e308993.chunk.js",
-    "main.js.map": "/dong/static/js/main.5e308993.chunk.js.map",
+    "main.js": "/dong/static/js/main.dba5b7c9.chunk.js",
+    "main.js.map": "/dong/static/js/main.dba5b7c9.chunk.js.map",
     "runtime-main.js": "/dong/static/js/runtime-main.7df10508.js",
     "runtime-main.js.map": "/dong/static/js/runtime-main.7df10508.js.map",
     "static/css/2.55d8add8.chunk.css": "/dong/static/css/2.55d8add8.chunk.css",
@@ -19,6 +19,7 @@
     "static/media/carousel1.2301cdc7.jpg": "/dong/static/media/carousel1.2301cdc7.jpg",
     "static/media/carousel2.25af7dc9.jpg": "/dong/static/media/carousel2.25af7dc9.jpg",
     "static/media/carousel3.b5e49e22.jpg": "/dong/static/media/carousel3.b5e49e22.jpg",
+    "static/media/ccc.f4a71488.png": "/dong/static/media/ccc.f4a71488.png",
     "static/media/clubroomlayout.f900e7b2.png": "/dong/static/media/clubroomlayout.f900e7b2.png",
     "static/media/communication.3cf75d2c.png": "/dong/static/media/communication.3cf75d2c.png",
     "static/media/doobaqui.3a57d17f.png": "/dong/static/media/doobaqui.3a57d17f.png",
@@ -30,6 +31,7 @@
     "static/media/jiujitsu.8365674e.png": "/dong/static/media/jiujitsu.8365674e.png",
     "static/media/jump.554ff31c.png": "/dong/static/media/jump.554ff31c.png",
     "static/media/jym.d2791537.png": "/dong/static/media/jym.d2791537.png",
+    "static/media/ksgi.e292b49f.jpg": "/dong/static/media/ksgi.e292b49f.jpg",
     "static/media/kusa.d1f9f68d.png": "/dong/static/media/kusa.d1f9f68d.png",
     "static/media/logo.13ad8aa1.png": "/dong/static/media/logo.13ad8aa1.png",
     "static/media/logo_reversed.d19ef1f9.png": "/dong/static/media/logo_reversed.d19ef1f9.png",
@@ -43,6 +45,7 @@
     "static/media/policy-business.6e8bcffa.png": "/dong/static/media/policy-business.6e8bcffa.png",
     "static/media/president.6e2945e8.png": "/dong/static/media/president.6e2945e8.png",
     "static/media/promises.16c49303.pdf": "/dong/static/media/promises.16c49303.pdf",
+    "static/media/regina.2c6af89d.png": "/dong/static/media/regina.2c6af89d.png",
     "static/media/regulations.2070f065.pdf": "/dong/static/media/regulations.2070f065.pdf",
     "static/media/rush.480f6463.gif": "/dong/static/media/rush.480f6463.gif",
     "static/media/sac.68cbd318.png": "/dong/static/media/sac.68cbd318.png",
@@ -76,6 +79,6 @@
     "static/css/2.55d8add8.chunk.css",
     "static/js/2.1473129a.chunk.js",
     "static/css/main.04b8fed9.chunk.css",
-    "static/js/main.5e308993.chunk.js"
+    "static/js/main.dba5b7c9.chunk.js"
   ]
 }
