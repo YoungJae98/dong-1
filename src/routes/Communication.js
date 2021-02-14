@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, NavLink, Route, useHistory } from "react-router-dom";
+import { Link, NavLink, Route, Switch, useHistory } from "react-router-dom";
 import logo_inversed from "../assets/logo_reversed.png";
 
 import Button from "../components/Button";
@@ -240,881 +240,885 @@ function Main() {
           marginLeft="30px"
           verticalAlign="flex-start"
         >
-          <Route exact path="/communication/">
-            <Container
-              height="40px"
-              marginTop="50px"
-              marginLeft="20px"
-              width="840px"
-              horizontalAlign="left"
-            >
-              <Text fontColor="#14406c" fontSize="32px">
-                건의사항
-              </Text>
-            </Container>
-            <Container
-              backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
-              fd="column"
-              horizontalAlign="left"
-              verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              width="840px"
-            >
+          <Switch>
+            <Route exact path="/communication/">
               <Container
-                className="suggestions-buttons-container"
                 height="40px"
+                marginTop="50px"
+                marginLeft="20px"
+                width="840px"
+                horizontalAlign="left"
               >
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    const list = document.querySelector(
-                      ".suggestions-sort-options"
-                    );
-                    list.classList.toggle("invisible");
-                  }}
-                >
-                  <Text fontSize="21px">정렬 방식 ▼</Text>
-                </Button>
-                <div className="suggestions-sort-options invisible">
-                  <Container
-                    width="110px"
-                    height="120px"
-                    backgroundColor="#14406c"
-                    fd="column"
-                  >
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".suggestions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(suggestionsSearchResult)
-                        );
-                        setSuggestionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.suggestionTitle < b.suggestionTitle)
-                              return -1;
-                            else return 1;
-                          })
-                        );
-                      }}
-                    >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".suggestions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(suggestionsSearchResult)
-                        );
-                        setSuggestionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.suggestionConsensus < b.suggestionConsensus)
-                              return 1;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      동의 수
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".suggestions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(suggestionsSearchResult)
-                        );
-                        setSuggestionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.suggestionDate < b.suggestionDate) return 1;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      최근
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".suggestions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(suggestionsSearchResult)
-                        );
-                        setSuggestionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.suggestionDate > b.suggestionDate) return 1;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      오래된
-                    </Button>
-                  </Container>
-                </div>
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    document
-                      .querySelector(".suggestions-search-options")
-                      .classList.toggle("invisible");
-                  }}
-                >
-                  <Text fontSize="21px">검색 방식 ▼</Text>
-                </Button>
-                <div className="suggestions-search-options invisible">
-                  <Container
-                    width="110px"
-                    height="90px"
-                    backgroundColor="#14406c"
-                    fd="column"
-                  >
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        document
-                          .querySelector(".suggestions-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(0);
-                      }}
-                    >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        document
-                          .querySelector(".suggestions-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(1);
-                      }}
-                    >
-                      글쓴이
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        document
-                          .querySelector(".suggestions-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(2);
-                      }}
-                    >
-                      날짜
-                    </Button>
-                  </Container>
-                </div>
-                <input
-                  type="text"
-                  placeholder="검색어를 입력하세요."
-                  value={searchStr1}
-                  style={{
-                    width: "280px",
-                    height: "35px",
-                    border: "2px solid #14406c",
-                    borderRadius: "10px",
-                    fontSize: "21px",
-                    fontFamily: "SeoulBold",
-                  }}
-                  onChange={(e) => {
-                    setSearchStr1(e.target.value);
-                  }}
-                />
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginLeft="15px"
-                  onClick={() => {
-                    setSuggestionsSearchResult(() => {
-                      if (searchStr1 === "") return suggestions;
-                      switch (searchOption) {
-                        case 0: // title
-                          return suggestions.filter((suggestion) =>
-                            suggestion.suggestionTitle.includes(searchStr1)
-                          );
-                        case 1: // writer
-                          return suggestions.filter((suggestion) =>
-                            suggestion.suggestioner.includes(searchStr1)
-                          );
-                        case 2: // date
-                          return suggestions.filter((suggestion) =>
-                            suggestion.suggestionDate.includes(searchStr1)
-                          );
-                        default:
-                          return suggestions;
-                      }
-                    });
-                  }}
-                >
-                  <Text fontSize="21px">검색</Text>
-                </Button>
-                <Link to="/communication/suggestion/register">
-                  <Button
-                    width="140px"
-                    height="40px"
-                    backgroundColor="white"
-                    border="2px solid #14406c"
-                    borderRadius="10px"
-                    fontColor="#14406c"
-                    marginLeft="15px"
-                  >
-                    <Text fontSize="21px">건의하기</Text>
-                  </Button>
-                </Link>
+                <Text fontColor="#14406c" fontSize="32px">
+                  건의사항
+                </Text>
               </Container>
               <Container
-                className="suggestions-contents-container"
+                backgroundColor="white"
+                border="1px solid #14406c"
+                borderRadius="8px"
                 fd="column"
-                horizontalAlign="flex-start"
+                horizontalAlign="left"
+                verticalAlign="flex-start"
+                paddingLeft="30px"
+                paddingRight="30px"
+                paddingTop="30px"
+                width="840px"
               >
-                {suggestionsSearchResult.map((suggestion) => (
-                  <Container
-                    height="150px"
-                    horizontalAlign="flex-start"
-                    marginTop="20px"
-                    borderBottom="2px solid #14406c"
-                    key={suggestion.suggestionTitle}
+                <Container
+                  className="suggestions-buttons-container"
+                  height="40px"
+                >
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      const list = document.querySelector(
+                        ".suggestions-sort-options"
+                      );
+                      list.classList.toggle("invisible");
+                    }}
                   >
-                    <Link
-                      to={{
-                        pathname: `/communication/suggestion/${suggestion.suggestionId}`,
-                        state: {
-                          suggestion: suggestion,
-                        },
-                      }}
-                      style={{ width: "100%", height: "100%" }}
+                    <Text fontSize="21px">정렬 방식 ▼</Text>
+                  </Button>
+                  <div className="suggestions-sort-options invisible">
+                    <Container
+                      width="110px"
+                      height="120px"
+                      backgroundColor="#14406c"
+                      fd="column"
                     >
-                      <Container horizontalAlign="space-between">
-                        <Container
-                          className="petition-item-info"
-                          fd="column"
-                          verticalAlign="flex-start"
-                          marginLeft="30px"
-                        >
-                          <Text fontSize="34px">
-                            {suggestion.suggestionTitle}
-                          </Text>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".suggestions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(suggestionsSearchResult)
+                          );
+                          setSuggestionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.suggestionTitle < b.suggestionTitle)
+                                return -1;
+                              else return 1;
+                            })
+                          );
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".suggestions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(suggestionsSearchResult)
+                          );
+                          setSuggestionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.suggestionConsensus < b.suggestionConsensus)
+                                return 1;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        동의 수
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".suggestions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(suggestionsSearchResult)
+                          );
+                          setSuggestionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.suggestionDate < b.suggestionDate) return 1;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        최근
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".suggestions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(suggestionsSearchResult)
+                          );
+                          setSuggestionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.suggestionDate > b.suggestionDate) return 1;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        오래된
+                      </Button>
+                    </Container>
+                  </div>
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      document
+                        .querySelector(".suggestions-search-options")
+                        .classList.toggle("invisible");
+                    }}
+                  >
+                    <Text fontSize="21px">검색 방식 ▼</Text>
+                  </Button>
+                  <div className="suggestions-search-options invisible">
+                    <Container
+                      width="110px"
+                      height="90px"
+                      backgroundColor="#14406c"
+                      fd="column"
+                    >
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          document
+                            .querySelector(".suggestions-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(0);
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          document
+                            .querySelector(".suggestions-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(1);
+                        }}
+                      >
+                        글쓴이
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          document
+                            .querySelector(".suggestions-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(2);
+                        }}
+                      >
+                        날짜
+                      </Button>
+                    </Container>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="검색어를 입력하세요."
+                    value={searchStr1}
+                    style={{
+                      width: "280px",
+                      height: "35px",
+                      border: "2px solid #14406c",
+                      borderRadius: "10px",
+                      fontSize: "21px",
+                      fontFamily: "SeoulBold",
+                    }}
+                    onChange={(e) => {
+                      setSearchStr1(e.target.value);
+                    }}
+                  />
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginLeft="15px"
+                    onClick={() => {
+                      setSuggestionsSearchResult(() => {
+                        if (searchStr1 === "") return suggestions;
+                        switch (searchOption) {
+                          case 0: // title
+                            return suggestions.filter((suggestion) =>
+                              suggestion.suggestionTitle.includes(searchStr1)
+                            );
+                          case 1: // writer
+                            return suggestions.filter((suggestion) =>
+                              suggestion.suggestioner.includes(searchStr1)
+                            );
+                          case 2: // date
+                            return suggestions.filter((suggestion) =>
+                              suggestion.suggestionDate.includes(searchStr1)
+                            );
+                          default:
+                            return suggestions;
+                        }
+                      });
+                    }}
+                  >
+                    <Text fontSize="21px">검색</Text>
+                  </Button>
+                  <Link to="/communication/suggestion/register">
+                    <Button
+                      width="140px"
+                      height="40px"
+                      backgroundColor="white"
+                      border="2px solid #14406c"
+                      borderRadius="10px"
+                      fontColor="#14406c"
+                      marginLeft="15px"
+                    >
+                      <Text fontSize="21px">건의하기</Text>
+                    </Button>
+                  </Link>
+                </Container>
+                <Container
+                  className="suggestions-contents-container"
+                  fd="column"
+                  horizontalAlign="flex-start"
+                >
+                  {suggestionsSearchResult.map((suggestion) => (
+                    <Container
+                      height="150px"
+                      horizontalAlign="flex-start"
+                      marginTop="20px"
+                      borderBottom="2px solid #14406c"
+                      key={suggestion.suggestionTitle}
+                    >
+                      <Link
+                        to={{
+                          pathname: `/communication/suggestion/${suggestion.suggestionId}`,
+                          state: {
+                            suggestion: suggestion,
+                          },
+                        }}
+                        style={{ width: "100%", height: "100%" }}
+                      >
+                        <Container horizontalAlign="space-between">
                           <Container
-                            height="40px"
-                            className="form-item-uploadinfo"
-                            horizontalAlign="flex-start"
+                            className="petition-item-info"
+                            fd="column"
+                            verticalAlign="flex-start"
+                            marginLeft="30px"
                           >
-                            <Text fontColor="grey" fontSize="21px">
-                              {suggestion.suggestionDate}
+                            <Text fontSize="34px">
+                              {suggestion.suggestionTitle}
                             </Text>
-                            <div
-                              style={{
-                                height: "10px",
-                                borderLeft: "1px solid grey",
-                                marginLeft: "10px",
-                                marginRight: "10px",
-                                display: "inline",
-                              }}
-                            ></div>
-                            <Text fontColor="grey" fontSize="21px">
-                              {suggestion.suggestioner}
+                            <Container
+                              height="40px"
+                              className="form-item-uploadinfo"
+                              horizontalAlign="flex-start"
+                            >
+                              <Text fontColor="grey" fontSize="21px">
+                                {suggestion.suggestionDate}
+                              </Text>
+                              <div
+                                style={{
+                                  height: "10px",
+                                  borderLeft: "1px solid grey",
+                                  marginLeft: "10px",
+                                  marginRight: "10px",
+                                  display: "inline",
+                                }}
+                              ></div>
+                              <Text fontColor="grey" fontSize="21px">
+                                {suggestion.suggestioner}
+                              </Text>
+                            </Container>
+                          </Container>
+                          <Container width="200px" marginRight="30px">
+                            <Text fontColor="black" fontSize="22px">
+                              {suggestion.suggestionConsensus}명이 동의
                             </Text>
                           </Container>
                         </Container>
-                        <Container width="200px" marginRight="30px">
-                          <Text fontColor="black" fontSize="22px">
-                            {suggestion.suggestionConsensus}명이 동의
-                          </Text>
-                        </Container>
-                      </Container>
-                    </Link>
-                  </Container>
-                ))}
+                      </Link>
+                    </Container>
+                  ))}
+                </Container>
               </Container>
-            </Container>
-          </Route>
-          <Route path="/communication/petition" exact>
-            <Container
-              height="40px"
-              marginTop="50px"
-              marginLeft="20px"
-              width="840px"
-              horizontalAlign="left"
-            >
-              <Text fontColor="#14406c" fontSize="32px">
-                회칙 개정 요구 청원
-              </Text>
-            </Container>
-            <Container
-              backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
-              fd="column"
-              horizontalAlign="left"
-              verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              width="840px"
-            >
-              <Container className="reform-buttons-container" height="40px">
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    const list = document.querySelector(
-                      ".petitions-sort-options"
-                    );
-                    list.classList.toggle("invisible");
-                  }}
-                >
-                  <Text fontSize="21px">정렬 방식 ▼</Text>
-                </Button>
-                <div className="petitions-sort-options invisible">
-                  <Container
-                    width="110px"
-                    height="120px"
-                    backgroundColor="#14406c"
-                    fd="column"
-                  >
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".petitions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(petitionsSearchResult)
-                        );
-                        setPetitionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.petitionTitle < b.petitionTitle) return -1;
-                            else return 1;
-                          })
-                        );
-                      }}
-                    >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".petitions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(petitionsSearchResult)
-                        );
-                        setPetitionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.petitionConsensus < b.petitionConsensus)
-                              return 1;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      동의 수
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".petitions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(petitionsSearchResult)
-                        );
-                        setPetitionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.petitionDate < b.petitionDate) return 1;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      최근
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".petitions-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(petitionsSearchResult)
-                        );
-                        setPetitionsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.petitionDate > b.petitionDate) return 1;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      오래된
-                    </Button>
-                  </Container>
-                </div>
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    document
-                      .querySelector(".suggestions-search-options")
-                      .classList.toggle("invisible");
-                  }}
-                >
-                  <Text fontSize="21px">검색 방식 ▼</Text>
-                </Button>
-                <div className="suggestions-search-options invisible">
-                  <Container
-                    width="110px"
-                    height="90px"
-                    backgroundColor="#14406c"
-                    fd="column"
-                  >
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        document
-                          .querySelector(".suggestions-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(0);
-                      }}
-                    >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        document
-                          .querySelector(".suggestions-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(1);
-                      }}
-                    >
-                      글쓴이
-                    </Button>
-                    <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        document
-                          .querySelector(".suggestions-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(2);
-                      }}
-                    >
-                      날짜
-                    </Button>
-                  </Container>
-                </div>
-                <input
-                  type="text"
-                  placeholder="검색어를 입력하세요."
-                  style={{
-                    width: "280px",
-                    height: "35px",
-                    border: "2px solid #14406c",
-                    borderRadius: "10px",
-                    fontSize: "21px",
-                    fontFamily: "SeoulBold",
-                  }}
-                  value={searchStr2}
-                  onChange={(e) => {
-                    setSearchStr2(e.target.value);
-                  }}
-                />
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginLeft="15px"
-                  onClick={() => {
-                    setPetitionsSearchResult(() => {
-                      switch (searchOption) {
-                        case 0: // title
-                          return petitions.filter((petition) =>
-                            petition.petitionTitle.includes(searchStr2)
-                          );
-                        case 1: // writer
-                          return petitions.filter((petition) =>
-                            petition.petitioner.includes(searchStr2)
-                          );
-                        case 2: // date
-                          return petitions.filter((petition) =>
-                            petition.petitionDate.includes(searchStr2)
-                          );
-                        default:
-                          return petitions;
-                      }
-                    });
-                  }}
-                >
-                  <Text fontSize="21px">검색</Text>
-                </Button>
-                <Link to="/communication/petition/register">
-                  <Button
-                    width="140px"
-                    height="40px"
-                    backgroundColor="white"
-                    border="2px solid #14406c"
-                    borderRadius="10px"
-                    fontColor="#14406c"
-                    marginLeft="15px"
-                  >
-                    <Text fontSize="21px">청원 등록하기</Text>
-                  </Button>
-                </Link>
+            </Route>
+            <Route exact path="/communication/petition">
+              <Container
+                height="40px"
+                marginTop="50px"
+                marginLeft="20px"
+                width="840px"
+                horizontalAlign="left"
+              >
+                <Text fontColor="#14406c" fontSize="32px">
+                  회칙 개정 요구 청원
+                </Text>
               </Container>
               <Container
-                className="reform-contents-container"
+                backgroundColor="white"
+                border="1px solid #14406c"
+                borderRadius="8px"
                 fd="column"
-                horizontalAlign="flex-start"
+                horizontalAlign="left"
+                verticalAlign="flex-start"
+                paddingLeft="30px"
+                paddingRight="30px"
+                paddingTop="30px"
+                width="840px"
               >
-                {petitionsSearchResult.map((petition) => (
-                  <Container
-                    height="150px"
-                    horizontalAlign="flex-start"
-                    marginTop="20px"
-                    borderBottom="2px solid #14406c"
-                    key={petition.petitionId}
+                <Container className="reform-buttons-container" height="40px">
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      const list = document.querySelector(
+                        ".petitions-sort-options"
+                      );
+                      list.classList.toggle("invisible");
+                    }}
                   >
-                    <Link
-                      to={{
-                        pathname: `/communication/petition/${petition.petitionId}`,
-                        state: {
-                          petition: petition,
-                        },
-                      }}
-                      style={{ width: "100%", height: "100%" }}
+                    <Text fontSize="21px">정렬 방식 ▼</Text>
+                  </Button>
+                  <div className="petitions-sort-options invisible">
+                    <Container
+                      width="110px"
+                      height="120px"
+                      backgroundColor="#14406c"
+                      fd="column"
                     >
-                      <Container horizontalAlign="space-between">
-                        <Container
-                          className="petition-item-info"
-                          fd="column"
-                          verticalAlign="flex-start"
-                          marginLeft="30px"
-                        >
-                          <Text fontSize="34px">{petition.petitionTitle}</Text>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".petitions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(petitionsSearchResult)
+                          );
+                          setPetitionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.petitionTitle < b.petitionTitle) return -1;
+                              else return 1;
+                            })
+                          );
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".petitions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(petitionsSearchResult)
+                          );
+                          setPetitionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.petitionConsensus < b.petitionConsensus)
+                                return 1;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        동의 수
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".petitions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(petitionsSearchResult)
+                          );
+                          setPetitionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.petitionDate < b.petitionDate) return 1;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        최근
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".petitions-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(petitionsSearchResult)
+                          );
+                          setPetitionsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.petitionDate > b.petitionDate) return 1;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        오래된
+                      </Button>
+                    </Container>
+                  </div>
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      document
+                        .querySelector(".suggestions-search-options")
+                        .classList.toggle("invisible");
+                    }}
+                  >
+                    <Text fontSize="21px">검색 방식 ▼</Text>
+                  </Button>
+                  <div className="suggestions-search-options invisible">
+                    <Container
+                      width="110px"
+                      height="90px"
+                      backgroundColor="#14406c"
+                      fd="column"
+                    >
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          document
+                            .querySelector(".suggestions-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(0);
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          document
+                            .querySelector(".suggestions-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(1);
+                        }}
+                      >
+                        글쓴이
+                      </Button>
+                      <Button
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        hoverBackgrounColor="white"
+                        hoverFontColor="#14406c"
+                        onClick={() => {
+                          document
+                            .querySelector(".suggestions-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(2);
+                        }}
+                      >
+                        날짜
+                      </Button>
+                    </Container>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="검색어를 입력하세요."
+                    style={{
+                      width: "280px",
+                      height: "35px",
+                      border: "2px solid #14406c",
+                      borderRadius: "10px",
+                      fontSize: "21px",
+                      fontFamily: "SeoulBold",
+                    }}
+                    value={searchStr2}
+                    onChange={(e) => {
+                      setSearchStr2(e.target.value);
+                    }}
+                  />
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginLeft="15px"
+                    onClick={() => {
+                      setPetitionsSearchResult(() => {
+                        switch (searchOption) {
+                          case 0: // title
+                            return petitions.filter((petition) =>
+                              petition.petitionTitle.includes(searchStr2)
+                            );
+                          case 1: // writer
+                            return petitions.filter((petition) =>
+                              petition.petitioner.includes(searchStr2)
+                            );
+                          case 2: // date
+                            return petitions.filter((petition) =>
+                              petition.petitionDate.includes(searchStr2)
+                            );
+                          default:
+                            return petitions;
+                        }
+                      });
+                    }}
+                  >
+                    <Text fontSize="21px">검색</Text>
+                  </Button>
+                  <Link to="/communication/petition/register">
+                    <Button
+                      width="140px"
+                      height="40px"
+                      backgroundColor="white"
+                      border="2px solid #14406c"
+                      borderRadius="10px"
+                      fontColor="#14406c"
+                      marginLeft="15px"
+                    >
+                      <Text fontSize="21px">청원 등록하기</Text>
+                    </Button>
+                  </Link>
+                </Container>
+                <Container
+                  className="reform-contents-container"
+                  fd="column"
+                  horizontalAlign="flex-start"
+                >
+                  {petitionsSearchResult.map((petition) => (
+                    <Container
+                      height="150px"
+                      horizontalAlign="flex-start"
+                      marginTop="20px"
+                      borderBottom="2px solid #14406c"
+                      key={petition.petitionId}
+                    >
+                      <Link
+                        to={{
+                          pathname: `/communication/petition/${petition.petitionId}`,
+                          state: {
+                            petition: petition,
+                          },
+                        }}
+                        style={{ width: "100%", height: "100%" }}
+                      >
+                        <Container horizontalAlign="space-between">
                           <Container
-                            height="40px"
-                            className="form-item-uploadinfo"
-                            horizontalAlign="flex-start"
+                            className="petition-item-info"
+                            fd="column"
+                            verticalAlign="flex-start"
+                            marginLeft="30px"
                           >
-                            <Text fontColor="grey" fontSize="21px">
-                              {petition.petitionDate}
+                            <Text fontSize="34px">
+                              {petition.petitionTitle}
                             </Text>
-                            <div
-                              style={{
-                                height: "10px",
-                                borderLeft: "1px solid grey",
-                                marginLeft: "10px",
-                                marginRight: "10px",
-                                display: "inline",
-                              }}
-                            ></div>
-                            <Text fontColor="grey" fontSize="21px">
-                              {petition.petitioner}
+                            <Container
+                              height="40px"
+                              className="form-item-uploadinfo"
+                              horizontalAlign="flex-start"
+                            >
+                              <Text fontColor="grey" fontSize="21px">
+                                {petition.petitionDate}
+                              </Text>
+                              <div
+                                style={{
+                                  height: "10px",
+                                  borderLeft: "1px solid grey",
+                                  marginLeft: "10px",
+                                  marginRight: "10px",
+                                  display: "inline",
+                                }}
+                              ></div>
+                              <Text fontColor="grey" fontSize="21px">
+                                {petition.petitioner}
+                              </Text>
+                            </Container>
+                          </Container>
+                          <Container width="200px" marginRight="30px">
+                            <Text fontColor="black" fontSize="22px">
+                              {petition.petitionConsensus}명이 동의
                             </Text>
                           </Container>
                         </Container>
-                        <Container width="200px" marginRight="30px">
-                          <Text fontColor="black" fontSize="22px">
-                            {petition.petitionConsensus}명이 동의
-                          </Text>
-                        </Container>
-                      </Container>
-                    </Link>
+                      </Link>
+                    </Container>
+                  ))}
+                </Container>
+              </Container>
+            </Route>
+            <Route exact path="/communication/suggestion/register">
+              <Container
+                height="40px"
+                marginTop="50px"
+                marginLeft="20px"
+                width="840px"
+                horizontalAlign="left"
+              >
+                <Text fontColor="#14406c" fontSize="32px">
+                  건의하기
+                </Text>
+              </Container>
+              <Container
+                backgroundColor="white"
+                border="1px solid #14406c"
+                borderRadius="8px"
+                fd="column"
+                horizontalAlign="left"
+                verticalAlign="flex-start"
+                paddingLeft="30px"
+                paddingRight="30px"
+                paddingTop="30px"
+                width="840px"
+              >
+                <Container
+                  width="100px"
+                  height="50px"
+                  horizontalAlign="flex-start"
+                  borderBottom="2px solid #14406c"
+                  marginBottom="20px"
+                >
+                  <Text fontColor="#14406c" fontSize="28px">
+                    건의 내용
+                  </Text>
+                </Container>
+                <form>
+                  <textarea
+                    placeholder="건의 제목을 작성해 주세요."
+                    style={{
+                      width: "816px",
+                      height: "25px",
+                      fontFamily: "SeoulBold",
+                      fontSize: "24px",
+                      border: "2px solid #14406c",
+                      resize: "none",
+                      outline: "none",
+                      padding: "10px",
+                      marginBottom: "10px",
+                    }}
+                    className="suggestion-title"
+                  />
+                  <textarea
+                    placeholder="건의 내용을 작성해 주세요."
+                    style={{
+                      width: "816px",
+                      height: "600px",
+                      fontFamily: "SeoulBold",
+                      fontSize: "24px",
+                      border: "2px solid #14406c",
+                      resize: "none",
+                      outline: "none",
+                      padding: "10px",
+                    }}
+                    className="suggestion-content"
+                  />
+                  <Container
+                    height="50px"
+                    horizontalAlign="flex-end"
+                    marginTop="10px"
+                  >
+                    <Button
+                      width="100px"
+                      height="50px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      border="2px solid #14406c"
+                      borderRadius="5px"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        // do suggestion submit event
+                        alert("건의사항 등록이 완료되었습니다.");
+                        suggestionRedirect();
+                      }}
+                    >
+                      등록
+                    </Button>
                   </Container>
-                ))}
+                </form>
               </Container>
-            </Container>
-          </Route>
-          <Route path="/communication/suggestion/register">
-            <Container
-              height="40px"
-              marginTop="50px"
-              marginLeft="20px"
-              width="840px"
-              horizontalAlign="left"
-            >
-              <Text fontColor="#14406c" fontSize="32px">
-                건의하기
-              </Text>
-            </Container>
-            <Container
-              backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
-              fd="column"
-              horizontalAlign="left"
-              verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              width="840px"
-            >
+            </Route>
+            <Route exact path="/communication/petition/register">
               <Container
-                width="100px"
-                height="50px"
-                horizontalAlign="flex-start"
-                borderBottom="2px solid #14406c"
-                marginBottom="20px"
+                height="40px"
+                marginTop="50px"
+                marginLeft="20px"
+                width="840px"
+                horizontalAlign="left"
               >
-                <Text fontColor="#14406c" fontSize="28px">
-                  건의 내용
+                <Text fontColor="#14406c" fontSize="32px">
+                  회칙 개정 요구 청원 등록하기
                 </Text>
               </Container>
-              <form>
-                <textarea
-                  placeholder="건의 제목을 작성해 주세요."
-                  style={{
-                    width: "816px",
-                    height: "25px",
-                    fontFamily: "SeoulBold",
-                    fontSize: "24px",
-                    border: "2px solid #14406c",
-                    resize: "none",
-                    outline: "none",
-                    padding: "10px",
-                    marginBottom: "10px",
-                  }}
-                  className="suggestion-title"
-                />
-                <textarea
-                  placeholder="건의 내용을 작성해 주세요."
-                  style={{
-                    width: "816px",
-                    height: "600px",
-                    fontFamily: "SeoulBold",
-                    fontSize: "24px",
-                    border: "2px solid #14406c",
-                    resize: "none",
-                    outline: "none",
-                    padding: "10px",
-                  }}
-                  className="suggestion-content"
-                />
-                <Container
-                  height="50px"
-                  horizontalAlign="flex-end"
-                  marginTop="10px"
-                >
-                  <Button
-                    width="100px"
-                    height="50px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    border="2px solid #14406c"
-                    borderRadius="5px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
-                    onClick={() => {
-                      // do suggestion submit event
-                      alert("건의사항 등록이 완료되었습니다.");
-                      suggestionRedirect();
-                    }}
-                  >
-                    등록
-                  </Button>
-                </Container>
-              </form>
-            </Container>
-          </Route>
-          <Route path="/communication/petition/register">
-            <Container
-              height="40px"
-              marginTop="50px"
-              marginLeft="20px"
-              width="840px"
-              horizontalAlign="left"
-            >
-              <Text fontColor="#14406c" fontSize="32px">
-                회칙 개정 요구 청원 등록하기
-              </Text>
-            </Container>
-            <Container
-              backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
-              fd="column"
-              horizontalAlign="left"
-              verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              width="840px"
-            >
               <Container
-                width="100px"
-                height="50px"
-                horizontalAlign="flex-start"
-                borderBottom="2px solid #14406c"
-                marginBottom="20px"
+                backgroundColor="white"
+                border="1px solid #14406c"
+                borderRadius="8px"
+                fd="column"
+                horizontalAlign="left"
+                verticalAlign="flex-start"
+                paddingLeft="30px"
+                paddingRight="30px"
+                paddingTop="30px"
+                width="840px"
               >
-                <Text fontColor="#14406c" fontSize="28px">
-                  청원 내용
-                </Text>
-              </Container>
-              <form>
-                <textarea
-                  placeholder="청원 제목을 작성해 주세요."
-                  style={{
-                    width: "816px",
-                    height: "25px",
-                    fontFamily: "SeoulBold",
-                    fontSize: "24px",
-                    border: "2px solid #14406c",
-                    resize: "none",
-                    outline: "none",
-                    padding: "10px",
-                    marginBottom: "10px",
-                  }}
-                  className="suggestion-title"
-                />
-                <textarea
-                  type="text"
-                  placeholder="청원 내용을 작성해 주세요."
-                  style={{
-                    width: "816px",
-                    height: "600px",
-                    fontFamily: "SeoulBold",
-                    fontSize: "24px",
-                    border: "2px solid #14406c",
-                    resize: "none",
-                    outline: "none",
-                    padding: "10px",
-                  }}
-                />
                 <Container
+                  width="100px"
                   height="50px"
-                  horizontalAlign="flex-end"
-                  marginTop="10px"
+                  horizontalAlign="flex-start"
+                  borderBottom="2px solid #14406c"
+                  marginBottom="20px"
                 >
-                  <Button
-                    width="100px"
-                    height="50px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    border="2px solid #14406c"
-                    borderRadius="5px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
-                    onClick={() => {
-                      // do petition submit event
-                      alert("청원 등록이 완료되었습니다.");
-                      petitionRedirect();
-                    }}
-                  >
-                    등록
-                  </Button>
+                  <Text fontColor="#14406c" fontSize="28px">
+                    청원 내용
+                  </Text>
                 </Container>
-              </form>
-            </Container>
-          </Route>
-          <Route
-            path="/communication/suggestion/:suggestionId"
-            component={Suggestion}
-          />
-          <Route
-            path="/communication/petition/:petitionId"
-            component={Petition}
-          />
+                <form>
+                  <textarea
+                    placeholder="청원 제목을 작성해 주세요."
+                    style={{
+                      width: "816px",
+                      height: "25px",
+                      fontFamily: "SeoulBold",
+                      fontSize: "24px",
+                      border: "2px solid #14406c",
+                      resize: "none",
+                      outline: "none",
+                      padding: "10px",
+                      marginBottom: "10px",
+                    }}
+                    className="suggestion-title"
+                  />
+                  <textarea
+                    type="text"
+                    placeholder="청원 내용을 작성해 주세요."
+                    style={{
+                      width: "816px",
+                      height: "600px",
+                      fontFamily: "SeoulBold",
+                      fontSize: "24px",
+                      border: "2px solid #14406c",
+                      resize: "none",
+                      outline: "none",
+                      padding: "10px",
+                    }}
+                  />
+                  <Container
+                    height="50px"
+                    horizontalAlign="flex-end"
+                    marginTop="10px"
+                  >
+                    <Button
+                      width="100px"
+                      height="50px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      border="2px solid #14406c"
+                      borderRadius="5px"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        // do petition submit event
+                        alert("청원 등록이 완료되었습니다.");
+                        petitionRedirect();
+                      }}
+                    >
+                      등록
+                    </Button>
+                  </Container>
+                </form>
+              </Container>
+            </Route>
+            <Route
+              path="/communication/suggestion/:suggestionId"
+              component={Suggestion}
+            />
+            <Route
+              path="/communication/petition/:petitionId"
+              component={Petition}
+            />
+          </Switch>
         </Container>
       </Container>
     </>

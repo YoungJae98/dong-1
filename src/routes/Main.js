@@ -8,6 +8,7 @@ import Text from "../components/Text";
 
 function Main() {
   const [hotPetitions, setHotPetitions] = useState([]);
+  const [suggestions, setSuggestions] = useState([]);
   useEffect(() => {
     setHotPetitions([
       {
@@ -29,6 +30,19 @@ function Main() {
         petitionState: "진행 중",
       },
     ]);
+    setSuggestions([
+      { suggestionId: 1, suggestionTitle: "czardas", suggestionConsensus: 52 },
+      {
+        suggestionId: 2,
+        suggestionTitle: "Libertango",
+        suggestionConsensus: 12,
+      },
+      {
+        suggestionId: 3,
+        suggestionTitle: "por una cabeza",
+        suggestionConsensus: 7,
+      },
+    ]);
   }, []);
   return (
     <Container fd="column">
@@ -42,52 +56,90 @@ function Main() {
             paddingLeft="15px"
             paddingTop="30px"
           >
-            <Text fontSize="20px" fontFamily="Arial">
-              인기 청원 목록
-            </Text>
+            <Text fontSize="22px">실시간 인기 청원</Text>
+            <Container height="10px"></Container>
             {hotPetitions.map((petition) => (
               <Container
                 height="30px"
                 horizontalAlign="space-between"
                 key={petition.petitionId}
               >
-                <Text
-                  fontSize="14px"
-                  fontFamily="Arial"
-                  fontColor={
-                    petition.petitionState === "진행 중" ? "green" : "red"
-                  }
-                >
-                  [{petition.petitionState}]
-                </Text>
-                <Text fontSize="14px" fontFamily="Arial">
-                  {petition.petitionTitle}
-                </Text>
-                <Text fontSize="14px" fontFamily="Arial">
-                  👍{petition.petitionRecommendation}
-                </Text>
+                <Container width="100px">
+                  <Text
+                    fontSize="18px"
+                    fontColor={
+                      petition.petitionState === "진행 중" ? "green" : "red"
+                    }
+                  >
+                    [{petition.petitionState}]
+                  </Text>
+                </Container>
+                <Container width="100px" horizontalAlign="flex-start">
+                  <Text fontSize="18px">{petition.petitionTitle}</Text>
+                </Container>
+                <Container width="50px" horizontalAlign="flex-start">
+                  <Text fontSize="18px">
+                    👍{petition.petitionRecommendation}
+                  </Text>
+                </Container>
               </Container>
             ))}
           </Container>
         </Card>
         <Card width="599px" height="200px">
-          card2
+          <Container
+            fd="column"
+            horizontalAlign="flex-start"
+            verticalAlign="flex-start"
+            paddingLeft="15px"
+            paddingTop="30px"
+          >
+            <Text fontSize="22px">건의사항</Text>
+            <Container height="10px"></Container>
+            {suggestions.map((suggestion) => (
+              <Container
+                height="30px"
+                horizontalAlign="space-between"
+                key={suggestion.petitionId}
+              >
+                <Container width="100px">
+                  <Text fontSize="18px">[{suggestion.petitionState}]</Text>
+                </Container>
+                <Container width="100px" horizontalAlign="flex-start">
+                  <Text fontSize="18px">{suggestion.suggestionTitle}</Text>
+                </Container>
+                <Container width="50px" horizontalAlign="flex-start">
+                  <Text fontSize="18px">
+                    👍{suggestion.suggestionConsensus}
+                  </Text>
+                </Container>
+              </Container>
+            ))}
+          </Container>
         </Card>
       </Container>
       <Container marginTop="20px">
         <Card width="599px" height="200px" marginRight="20px">
-          card3
+          <Container
+            fd="column"
+            horizontalAlign="flex-start"
+            verticalAlign="flex-start"
+            paddingLeft="15px"
+            paddingTop="30px"
+          >
+            <Text fontSize="22px">회의록</Text>
+          </Container>
         </Card>
         <Card width="599px" height="200px">
-          card4
-        </Card>
-      </Container>
-      <Container marginTop="20px">
-        <Card width="599px" height="200px" marginRight="20px">
-          card5
-        </Card>
-        <Card width="599px" height="200px">
-          card6
+          <Container
+            fd="column"
+            horizontalAlign="flex-start"
+            verticalAlign="flex-start"
+            paddingLeft="15px"
+            paddingTop="30px"
+          >
+            <Text fontSize="22px">예결산 보고</Text>
+          </Container>
         </Card>
       </Container>
     </Container>
