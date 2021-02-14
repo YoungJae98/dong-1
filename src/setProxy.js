@@ -10,6 +10,21 @@ module.exports = (app) => {
     }),
     proxy("/api/account/logout", {
       target: "http://localhost:3001/",
+    }),
+    proxy("/api/pledges/getPledge", {
+      target: "http://localhost:3001/",
+    }),
+    proxy("/api/community/getCommunity", {
+      target: "http://localhost:3001/",
+    }),
+    proxy("/api/community/writeCoummunity", {
+      target: "http://localhost:3001/",
+    }),
+    proxy("/api/community/showSuggestion", {
+      target: "http://localhost:3001/",
+    }),
+    proxy("/api/community/showPetition", {
+      target: "http://localhost:3001/",
     })
   );
 };

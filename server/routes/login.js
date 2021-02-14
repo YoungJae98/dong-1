@@ -3,15 +3,6 @@ var router = express.Router();
 var { PythonShell } = require("python-shell");
 var session = require("express-session");
 var db = require("../db");
-db.connect();
-
-router.use(
-  session({
-    secret: "akdlsjai!@^$(128y1asfkjas",
-    resave: false,
-    saveUninitialized: true,
-  })
-);
 
 router.get("/isLoginCheck", (req, res) => {
   if (req.session.isLogin) {
@@ -50,6 +41,7 @@ router.post("/login", (req, res) => {
                 id: results[1],
                 name: results[2],
                 department: results[3],
+                type: 1,
               });
             } else {
               db.query(
@@ -61,6 +53,7 @@ router.post("/login", (req, res) => {
                     id: results[1],
                     name: results[2],
                     department: results[3],
+                    type: 1,
                   });
                 }
               );
