@@ -26,6 +26,9 @@ import zook from "../assets/images/clubs/volunteer/zook.jpg";
 //religion
 import ivf from "../assets/images/clubs/religion/ivf.jpg";
 import jym from "../assets/images/clubs/religion/jym.png";
+import ccc from "../assets/images/clubs/religion/ccc.png";
+import ksgi from "../assets/images/clubs/religion/ksgi.jpg";
+import regina from "../assets/images/clubs/religion/regina.png";
 //physical
 import jiujitsu from "../assets/images/clubs/physical/jiujitsu.png";
 import jump from "../assets/images/clubs/physical/jump.png";
@@ -340,7 +343,7 @@ function CentralClub() {
       {
         clubID: 2,
         clubName: "CCC",
-        clubLogo: sejong,
+        clubLogo: ccc,
         clubSummary:
           "전국 300여개 대학교에서 활동 중인 기독교 동아리 CCC입니다. 크리스천 신앙 훈련 활동들과 누구나 함께 할 수 있는 수련회, 단기선교 등 다양한 대외 활동을 하고 있습니다.",
       },
@@ -361,14 +364,14 @@ function CentralClub() {
       {
         clubID: 5,
         clubName: "KSGI",
-        clubLogo: sejong,
+        clubLogo: ksgi,
         clubSummary:
           "SGI는 1930년 창립된 이래 생명존엄의 불법을 기조로 인류의 평화와 행복을 위해 노력하는 단체로 해당 종교의 동아리입니다.",
       },
       {
         clubID: 6,
         clubName: "레지나",
-        clubLogo: sejong,
+        clubLogo: regina,
         clubSummary:
           "세종대학교 가톨릭 학생회 레지나입니다. 하느님의 사랑을 배우고, 나누며, 몸소 실천하여 학교 복음화에 기여하고자 하는 것이 기본 목적입니다.",
       },
