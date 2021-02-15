@@ -13,6 +13,7 @@ import Suggestion from "../components/Suggestion";
 import Text from "../components/Text";
 
 function Communication() {
+  const [community, setCommunity] = useState({});
   const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
 
@@ -48,7 +49,7 @@ function Communication() {
       .then((response) => response.json())
       .then((response) => {
         //response에서 1은 suggestion에서 2는 petition으로 구분
-        console.log(response);
+        setCommunity(response);
       });
   };
   const showCommunity = (id) => {
@@ -113,7 +114,7 @@ function Communication() {
       });
   };
   const writePetition = () => {
-    fetch("http://localhost:3001/api/account/writeCommunity", {
+    fetch("http://localhost:3001/api/community/writeCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -138,165 +139,16 @@ function Communication() {
       });
   };
   useEffect(() => {
-    setSuggestions([
-      {
-        suggestionId: 1,
-        suggestionTitle: "코스모스",
-        suggestionConsensus: 127,
-        suggestionDate: "2021-11-42",
-        suggestioner: "김지우",
-        suggestionContent: "코스모스 책 읽기 싫어요 바꿔 줘요",
-      },
-      {
-        suggestionId: 2,
-        suggestionTitle: "꿀호떡 무료로 배포 해주세요",
-        suggestionConsensus: 317,
-        suggestionDate: "2021-25-32",
-        suggestioner: "김지우",
-        suggestionContent: "꿀호떡 먹고 싶어요",
-      },
-      {
-        suggestionId: 3,
-        suggestionTitle: "피아노 쳐주세요",
-        suggestionConsensus: 62,
-        suggestionDate: "2021-45-73",
-        suggestioner: "김지우",
-        suggestionContent: "피아노 듣고 싶어요",
-      },
-      {
-        suggestionId: 4,
-        suggestionTitle: "기타 쳐주세요",
-        suggestionConsensus: 602,
-        suggestionDate: "2021-32-13",
-        suggestioner: "김지우",
-        suggestionContent: "기타 듣고 싶어요",
-      },
-      {
-        suggestionId: 5,
-        suggestionTitle: "책 빌려주세요",
-        suggestionConsensus: 72,
-        suggestionDate: "2021-12-23",
-        suggestioner: "김지우",
-        suggestionContent: "고전독서 하기 시러요",
-      },
-    ]);
-    setSuggestionsSearchResult([
-      {
-        suggestionId: 1,
-        suggestionTitle: "코스모스",
-        suggestionConsensus: 127,
-        suggestionDate: "2021-11-42",
-        suggestioner: "김지우",
-        suggestionContent: "코스모스 책 읽기 싫어요 바꿔 줘요",
-      },
-      {
-        suggestionId: 2,
-        suggestionTitle: "꿀호떡 무료로 배포 해주세요",
-        suggestionConsensus: 317,
-        suggestionDate: "2021-25-32",
-        suggestioner: "김지우",
-        suggestionContent: "꿀호떡 먹고 싶어요",
-      },
-      {
-        suggestionId: 3,
-        suggestionTitle: "피아노 쳐주세요",
-        suggestionConsensus: 62,
-        suggestionDate: "2021-45-73",
-        suggestioner: "김지우",
-        suggestionContent: "피아노 듣고 싶어요",
-      },
-      {
-        suggestionId: 4,
-        suggestionTitle: "기타 쳐주세요",
-        suggestionConsensus: 602,
-        suggestionDate: "2021-32-13",
-        suggestioner: "김지우",
-        suggestionContent: "코스모스 책 읽기 싫어요 바꿔 줘요",
-      },
-      {
-        suggestionId: 5,
-        suggestionTitle: "책 빌려주세요",
-        suggestionConsensus: 72,
-        suggestionDate: "2021-12-23",
-        suggestioner: "김지우",
-        suggestionContent: "고전독서 하기 시러요",
-      },
-    ]);
-    setPetitions([
-      {
-        petitionId: 1,
-        petitionTitle: "청원 1",
-        petitionConsensus: 97,
-        petitionDate: "2021-01-27",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 2,
-        petitionTitle: "청원 2",
-        petitionConsensus: 32,
-        petitionDate: "2021-02-16",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 3,
-        petitionTitle: "청원 3",
-        petitionConsensus: 17,
-        petitionDate: "2021-01-31",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 4,
-        petitionTitle: "청원 4",
-        petitionConsensus: 377,
-        petitionDate: "2021-12-22",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 5,
-        petitionTitle: "청원 5",
-        petitionConsensus: 12,
-        petitionDate: "2021-08-21",
-        petitioner: "김지우",
-      },
-    ]);
-    setPetitionsSearchResult([
-      {
-        petitionId: 1,
-        petitionTitle: "청원 1",
-        petitionConsensus: 97,
-        petitionDate: "2021-01-27",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 2,
-        petitionTitle: "청원 2",
-        petitionConsensus: 32,
-        petitionDate: "2021-02-16",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 3,
-        petitionTitle: "청원 3",
-        petitionConsensus: 17,
-        petitionDate: "2021-01-31",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 4,
-        petitionTitle: "청원 4",
-        petitionConsensus: 377,
-        petitionDate: "2021-12-22",
-        petitioner: "김지우",
-      },
-      {
-        petitionId: 5,
-        petitionTitle: "청원 5",
-        petitionConsensus: 12,
-        petitionDate: "2021-08-21",
-        petitioner: "김지우",
-      },
-    ]);
+    getCommunity();
   }, []);
+  useEffect(() => {
+    if (Object.keys(community).length !== 0) {
+      setSuggestions(community["1"]);
+      setSuggestionsSearchResult(community["1"]);
+      setPetitions(community["2"]);
+      setPetitionsSearchResult(community["2"]);
+    }
+  }, [community]);
   return (
     <>
       <Container height="145px">
@@ -423,8 +275,7 @@ function Communication() {
                           );
                           setSuggestionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.suggestionTitle < b.suggestionTitle)
-                                return -1;
+                              if (a.c_title < b.c_title) return -1;
                               else return 1;
                             })
                           );
@@ -447,8 +298,7 @@ function Communication() {
                           );
                           setSuggestionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.suggestionConsensus < b.suggestionConsensus)
-                                return 1;
+                              if (a.c_con < b.c_con) return 1;
                               else return -1;
                             })
                           );
@@ -471,7 +321,7 @@ function Communication() {
                           );
                           setSuggestionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.suggestionDate < b.suggestionDate) return 1;
+                              if (a.c_date < b.c_date) return 1;
                               else return -1;
                             })
                           );
@@ -494,7 +344,7 @@ function Communication() {
                           );
                           setSuggestionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.suggestionDate > b.suggestionDate) return 1;
+                              if (a.c_date > b.c_date) return 1;
                               else return -1;
                             })
                           );
@@ -603,15 +453,15 @@ function Communication() {
                         switch (searchOption) {
                           case 0: // title
                             return suggestions.filter((suggestion) =>
-                              suggestion.suggestionTitle.includes(searchStr1)
+                              suggestion.c_title.includes(searchStr1)
                             );
                           case 1: // writer
                             return suggestions.filter((suggestion) =>
-                              suggestion.suggestioner.includes(searchStr1)
+                              suggestion.c_user.includes(searchStr1)
                             );
                           case 2: // date
                             return suggestions.filter((suggestion) =>
-                              suggestion.suggestionDate.includes(searchStr1)
+                              suggestion.c_date.includes(searchStr1)
                             );
                           default:
                             return suggestions;
@@ -640,17 +490,17 @@ function Communication() {
                   fd="column"
                   horizontalAlign="flex-start"
                 >
-                  {suggestionsSearchResult.map((suggestion) => (
+                  {suggestionsSearchResult.map((suggestion, index) => (
                     <Container
                       height="150px"
                       horizontalAlign="flex-start"
                       marginTop="20px"
                       borderBottom="2px solid #14406c"
-                      key={suggestion.suggestionTitle}
+                      key={suggestion.c_id}
                     >
                       <Link
                         to={{
-                          pathname: `/communication/suggestion/${suggestion.suggestionId}`,
+                          pathname: `/communication/suggestion/${suggestion.c_id}`,
                           state: {
                             suggestion: suggestion,
                           },
@@ -664,16 +514,14 @@ function Communication() {
                             verticalAlign="flex-start"
                             marginLeft="30px"
                           >
-                            <Text fontSize="34px">
-                              {suggestion.suggestionTitle}
-                            </Text>
+                            <Text fontSize="34px">{suggestion.c_title}</Text>
                             <Container
                               height="40px"
                               className="form-item-uploadinfo"
                               horizontalAlign="flex-start"
                             >
                               <Text fontColor="grey" fontSize="21px">
-                                {suggestion.suggestionDate}
+                                {suggestion.c_date.slice(0, 10)}
                               </Text>
                               <div
                                 style={{
@@ -685,13 +533,13 @@ function Communication() {
                                 }}
                               ></div>
                               <Text fontColor="grey" fontSize="21px">
-                                {suggestion.suggestioner}
+                                {suggestion.c_user}
                               </Text>
                             </Container>
                           </Container>
                           <Container width="200px" marginRight="30px">
                             <Text fontColor="black" fontSize="22px">
-                              {suggestion.suggestionConsensus}명이 동의
+                              {suggestion.c_con}명이 동의
                             </Text>
                           </Container>
                         </Container>
@@ -766,7 +614,7 @@ function Communication() {
                           );
                           setPetitionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.petitionTitle < b.petitionTitle) return -1;
+                              if (a.c_title < b.c_title) return -1;
                               else return 1;
                             })
                           );
@@ -789,8 +637,7 @@ function Communication() {
                           );
                           setPetitionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.petitionConsensus < b.petitionConsensus)
-                                return 1;
+                              if (a.c_con < b.c_con) return 1;
                               else return -1;
                             })
                           );
@@ -813,7 +660,7 @@ function Communication() {
                           );
                           setPetitionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.petitionDate < b.petitionDate) return 1;
+                              if (a.c_date < b.c_date) return 1;
                               else return -1;
                             })
                           );
@@ -836,7 +683,7 @@ function Communication() {
                           );
                           setPetitionsSearchResult(
                             tmp.sort((a, b) => {
-                              if (a.petitionDate > b.petitionDate) return 1;
+                              if (a.c_date > b.c_date) return 1;
                               else return -1;
                             })
                           );
@@ -944,15 +791,15 @@ function Communication() {
                         switch (searchOption) {
                           case 0: // title
                             return petitions.filter((petition) =>
-                              petition.petitionTitle.includes(searchStr2)
+                              petition.c_title.includes(searchStr2)
                             );
                           case 1: // writer
                             return petitions.filter((petition) =>
-                              petition.petitioner.includes(searchStr2)
+                              petition.c_user.includes(searchStr2)
                             );
                           case 2: // date
                             return petitions.filter((petition) =>
-                              petition.petitionDate.includes(searchStr2)
+                              petition.c_date.includes(searchStr2)
                             );
                           default:
                             return petitions;
@@ -987,11 +834,11 @@ function Communication() {
                       horizontalAlign="flex-start"
                       marginTop="20px"
                       borderBottom="2px solid #14406c"
-                      key={petition.petitionId}
+                      key={petition.c_id}
                     >
                       <Link
                         to={{
-                          pathname: `/communication/petition/${petition.petitionId}`,
+                          pathname: `/communication/petition/${petition.c_id}`,
                           state: {
                             petition: petition,
                           },
@@ -1005,16 +852,14 @@ function Communication() {
                             verticalAlign="flex-start"
                             marginLeft="30px"
                           >
-                            <Text fontSize="34px">
-                              {petition.petitionTitle}
-                            </Text>
+                            <Text fontSize="34px">{petition.c_title}</Text>
                             <Container
                               height="40px"
                               className="form-item-uploadinfo"
                               horizontalAlign="flex-start"
                             >
                               <Text fontColor="grey" fontSize="21px">
-                                {petition.petitionDate}
+                                {petition.c_date.slice(0, 10)}
                               </Text>
                               <div
                                 style={{
@@ -1026,13 +871,13 @@ function Communication() {
                                 }}
                               ></div>
                               <Text fontColor="grey" fontSize="21px">
-                                {petition.petitioner}
+                                {petition.c_user}
                               </Text>
                             </Container>
                           </Container>
                           <Container width="200px" marginRight="30px">
                             <Text fontColor="black" fontSize="22px">
-                              {petition.petitionConsensus}명이 동의
+                              {petition.c_con}명이 동의
                             </Text>
                           </Container>
                         </Container>
@@ -1126,7 +971,10 @@ function Communication() {
                     borderRadius="5px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
-                    onClick={writeSuggestion}
+                    onClick={() => {
+                      writeSuggestion();
+                      getCommunity();
+                    }}
                   >
                     등록
                   </Button>

@@ -56,7 +56,7 @@ router.post("/writeComments", (req, res) => {
     }
   );
 });
-router.post("/writeCoummunity", (req, res) => {
+router.post("/writeCommunity", (req, res) => {
   var title = sanitizeHtml(req.body.title);
   var body = sanitizeHtml(req.body.body);
   db.query(

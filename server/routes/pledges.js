@@ -25,7 +25,7 @@ router.get("/getPledge", (req, res) => {
   });
 });
 
-routes.get("/setPledge", (req, res) => {
+router.get("/setPledge", (req, res) => {
   db.query(
     "update pledges set p_status = 1 where p_id = ?",
     [req.body.p_id],

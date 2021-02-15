@@ -20,7 +20,7 @@ module.exports = (app) => {
     proxy("/api/community/getCommunity", {
       target: "http://localhost:3001/",
     }),
-    proxy("/api/community/writeCoummunity", {
+    proxy("/api/community/writeCommunity", {
       target: "http://localhost:3001/",
     }),
     proxy("/api/community/showCommunity", {
