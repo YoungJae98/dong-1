@@ -28,6 +28,9 @@ module.exports = (app) => {
     }),
     proxy("/api/community/writeComments", {
       target: "http://localhost:3001/",
+    }),
+    proxy("/api/community/getFiles", {
+      target: "http://localhost:3001/",
     })
   );
 };

@@ -48,7 +48,7 @@ router.post("/login", (req, res) => {
                 id: results[1],
                 name: results[2],
                 department: results[3],
-                type: 1,
+                type: users[0].u_auth,
               });
             } else {
               db.query(
