@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var db = require("../db");
 
-router.get("/getFiles", (req, res) => {
+router.post("/getFiles", (req, res) => {
   db.query(
     "select * from files where f_id = ?",
     [req.body.id],
