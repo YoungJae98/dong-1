@@ -15,6 +15,8 @@ import Navigation from "./components/Navigation";
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
 import Intro from "./components/Intro";
+import MyPage from "./routes/MyPage";
+import Manage from "./routes/Manage";
 
 function App() {
   const path = useLocation().pathname;
@@ -22,6 +24,8 @@ function App() {
     return path === "/" ? true : false;
   });
   const [isLogin, setisLogin] = useState(false);
+  const [user, setUser] = useState("");
+  const [admin, setAdmin] = useState(false);
   const loginCheck = () => {
     fetch("http://localhost:3001/api/account/isLoginCheck", {
       method: "GET",
@@ -33,6 +37,10 @@ function App() {
       .then((response) => response.json())
       .then((response) => {
         if (response["isLogin"]) {
+          if (response["auth"] === 2) {
+            setAdmin(true);
+          }
+          setUser(response["name"]);
           setisLogin(true);
         } else {
           setisLogin(false);
@@ -55,6 +63,7 @@ function App() {
           setMain={setMain}
           isLogin={isLogin}
           setisLogin={setisLogin}
+          admin={admin}
         />
         <Switch>
           <Route exact path="/" component={Main} />
@@ -67,8 +76,12 @@ function App() {
             isLogin={isLogin}
           />
           <Route path="/document" component={Document} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/signup" component={Signup} />
+          <Route path="/signin" component={() => <Signin />} />
+          <Route
+            path="/mypage"
+            component={() => <MyPage isLogin={isLogin} user={user} />}
+          />
+          <Route path="/manage" component={() => <Manage admin={admin} />} />
         </Switch>
         <Footer />
       </Container>

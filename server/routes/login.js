@@ -13,6 +13,7 @@ router.get("/isLoginCheck", (req, res) => {
         res.json({
           isLogin: true,
           auth: user[0].u_auth,
+          name: user[0].u_name,
         });
       }
     );
@@ -32,12 +33,16 @@ router.post("/login", (req, res) => {
     args: [req.body.id, req.body.pw],
   };
   if (req.body.id == "20210217" && req.body.pw == "dong1298") {
-    res.json({
-      isLogin: "success",
-      id: "20210217",
-      name: "관리자",
-      department: "동아리연합회",
-      type: 2,
+    req.session.isLogin = true;
+    req.session.user = "20210217";
+    req.session.save(() => {
+      res.json({
+        isLogin: "success",
+        id: "20210217",
+        name: "관리자",
+        department: "동아리연합회",
+        type: 2,
+      });
     });
   } else {
     PythonShell.run("sejongAPI.py", options, (err, results) => {

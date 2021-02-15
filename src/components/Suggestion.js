@@ -5,6 +5,7 @@ import Text from "./Text";
 
 function Suggestion(props) {
   const suggestion = props.location.state.suggestion;
+  const suggestionId = suggestion.c_id;
   const suggestionTitle = suggestion.c_title;
   const suggestioner = suggestion.c_user;
   const suggestionDate = suggestion.c_date.slice(0, 10);
@@ -50,6 +51,7 @@ function Suggestion(props) {
         console.log(response);
       });
   };
+  showCommunity(suggestionId);
   useEffect(() => {
     setConsents([
       {

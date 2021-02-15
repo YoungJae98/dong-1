@@ -9,7 +9,7 @@ import { BsFillPersonFill } from "react-icons/bs";
 
 import List from "./List";
 import Listitem from "./Listitem";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import {} from "react-router-dom";
 import { useState, useEffect } from "react";
 import Container from "../components/Container";
@@ -78,6 +78,7 @@ function Navigation({
   setMain,
   isLogin,
   setisLogin,
+  admin,
 }) {
   const [sticky, setsticky] = useState(false);
   const logoutProcess = () => {
@@ -93,6 +94,10 @@ function Navigation({
         console.log(response);
         setisLogin(false);
       });
+  };
+  const history = useHistory();
+  const redirectToHome = () => {
+    history.push("/");
   };
   useEffect(() => {
     if (main) {
@@ -496,38 +501,55 @@ function Navigation({
               {isLogin ? (
                 <>
                   <div>
-                    <Link to="/signin/" onClick={() => setMain(false)}>
-                      <Button
-                        height="40px"
-                        width="100px"
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        fontSize="21px"
-                        font="SeoulBold"
-                        className="navigation-submenu-button"
-                        onClick={() => {
-                          logoutProcess();
-                        }}
-                      >
-                        로그아웃
-                      </Button>
-                    </Link>
+                    <Button
+                      height="40px"
+                      width="100px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="21px"
+                      font="SeoulBold"
+                      className="navigation-submenu-button"
+                      onClick={() => {
+                        logoutProcess();
+                        redirectToHome();
+                      }}
+                    >
+                      로그아웃
+                    </Button>
                   </div>
-                  <div>
-                    <Link to="/mypage/" onClick={() => setMain(false)}>
-                      <Button
-                        height="40px"
-                        width="100px"
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        fontSize="21px"
-                        font="SeoulBold"
-                        className="navigation-submenu-button"
-                      >
-                        마이페이지
-                      </Button>
-                    </Link>
-                  </div>
+                  {admin ? (
+                    <div>
+                      <Link to="/manage/" onClick={() => setMain(false)}>
+                        <Button
+                          height="40px"
+                          width="100px"
+                          backgroundColor="#14406c"
+                          fontColor="white"
+                          fontSize="21px"
+                          font="SeoulBold"
+                          className="navigation-submenu-button"
+                        >
+                          관리
+                        </Button>
+                      </Link>
+                    </div>
+                  ) : (
+                    <div>
+                      <Link to="/mypage/" onClick={() => setMain(false)}>
+                        <Button
+                          height="40px"
+                          width="100px"
+                          backgroundColor="#14406c"
+                          fontColor="white"
+                          fontSize="21px"
+                          font="SeoulBold"
+                          className="navigation-submenu-button"
+                        >
+                          마이페이지
+                        </Button>
+                      </Link>
+                    </div>
+                  )}
                 </>
               ) : (
                 <div>
