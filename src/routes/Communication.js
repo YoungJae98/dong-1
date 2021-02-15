@@ -32,7 +32,7 @@ function Main() {
     history.push("/communication/petition");
   };
   const getCommunity = () => {
-    fetch("http://18.217.248.102:3001/api/community/getCommunity", {
+    fetch("http://localhost:3001/api/community/getCommunity", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -46,7 +46,7 @@ function Main() {
       });
   };
   const writeSuggestion = () => {
-    fetch("http://18.217.248.102:3001/api/community/writeCommunity", {
+    fetch("http://localhost:3001/api/community/writeCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -71,7 +71,7 @@ function Main() {
       });
   };
   const writePetition = () => {
-    fetch("http://18.217.248.102:3001/api/account/writeCommunity", {
+    fetch("http://localhost:3001/api/account/writeCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

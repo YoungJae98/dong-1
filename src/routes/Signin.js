@@ -12,7 +12,7 @@ import Text from "../components/Text";
 로그인 체크 여부 확인 함수
 
 const loginCheck = () => {
-  fetch("http://18.217.248.102:3001/api/account/isLoginCheck", {
+  fetch("http://localhost:3001/api/account/isLoginCheck", {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -56,7 +56,7 @@ function Signin() {
   const [isLogin, setIsLogin] = useState(false);
   //login 응답 보내는 함수
   const loginProcess = () => {
-    fetch("http://18.217.248.102:3001/api/account/login", {
+    fetch("http://localhost:3001/api/account/login", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
