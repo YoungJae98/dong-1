@@ -76,8 +76,24 @@ function Navigation({
   border,
   main,
   setMain,
+  isLogin,
+  setisLogin,
 }) {
   const [sticky, setsticky] = useState(false);
+  const logoutProcess = () => {
+    fetch("http://localhost:3001/api/account/logout", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setisLogin(false);
+      });
+  };
   useEffect(() => {
     if (main) {
       window.onscroll = () => {
@@ -476,21 +492,60 @@ function Navigation({
             <BsFillPersonFill size="32" color={main ? "#14406c" : "white"} />
             <div className="submenu4">
               <div className="navigation-uparrow2"></div>
-              <div>
-                <Link to="/signin/" onClick={() => setMain(false)}>
-                  <Button
-                    height="40px"
-                    width="100px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    fontSize="21px"
-                    font="SeoulBold"
-                    className="navigation-submenu-button"
-                  >
-                    로그인
-                  </Button>
-                </Link>
-              </div>
+
+              {isLogin ? (
+                <>
+                  <div>
+                    <Link to="/signin/" onClick={() => setMain(false)}>
+                      <Button
+                        height="40px"
+                        width="100px"
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        fontSize="21px"
+                        font="SeoulBold"
+                        className="navigation-submenu-button"
+                        onClick={() => {
+                          logoutProcess();
+                        }}
+                      >
+                        로그아웃
+                      </Button>
+                    </Link>
+                  </div>
+                  <div>
+                    <Link to="/mypage/" onClick={() => setMain(false)}>
+                      <Button
+                        height="40px"
+                        width="100px"
+                        backgroundColor="#14406c"
+                        fontColor="white"
+                        fontSize="21px"
+                        font="SeoulBold"
+                        className="navigation-submenu-button"
+                      >
+                        마이페이지
+                      </Button>
+                    </Link>
+                  </div>
+                </>
+              ) : (
+                <div>
+                  <Link to="/signin/" onClick={() => setMain(false)}>
+                    <Button
+                      height="40px"
+                      width="100px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      fontSize="21px"
+                      font="SeoulBold"
+                      className="navigation-submenu-button"
+                    >
+                      로그인
+                    </Button>
+                  </Link>
+                </div>
+              )}
             </div>
           </StyledNavButton>
         </StyledNavigation>

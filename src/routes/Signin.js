@@ -33,6 +33,20 @@ const loginCheck = () => {
     });
 };
 
+  const logoutProcess = () => {
+    fetch("http://localhost:3001/api/account/logout", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //받아온 응답
+        console.log(response);
+      });
+  };
 
  */
 

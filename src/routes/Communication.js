@@ -12,7 +12,7 @@ import Remote from "../components/Remote";
 import Suggestion from "../components/Suggestion";
 import Text from "../components/Text";
 
-function Communication() {
+function Communication({ isLogin }) {
   const [community, setCommunity] = useState({});
   const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
@@ -30,7 +30,6 @@ function Communication() {
   const [petitionTitle, setPetitionTitle] = useState("");
   const [petitionBody, setPetitionBody] = useState("");
 
-  const [comment, setComment] = useState("");
   const history = useHistory();
   const suggestionRedirect = () => {
     history.push("/communication/");
@@ -50,42 +49,6 @@ function Communication() {
       .then((response) => {
         //response에서 1은 suggestion에서 2는 petition으로 구분
         setCommunity(response);
-      });
-  };
-  const showCommunity = (id) => {
-    fetch("http://localhost:3001/api/community/showCommunity", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-      body: {
-        id: id,
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        //title, body, 작성자, 날짜와 댓글이 담겨있음.
-        console.log(response);
-      });
-  };
-  const writeComments = (id) => {
-    fetch("http://localhost:3001/api/community/writeComments", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-      body: {
-        id: id,
-        body: comment,
-      },
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response["success"]) {
-          alert("댓글이 등록되었습니다.");
-        }
       });
   };
   const writeSuggestion = () => {
@@ -138,6 +101,7 @@ function Communication() {
         petitionRedirect();
       });
   };
+
   useEffect(() => {
     getCommunity();
   }, []);
@@ -471,7 +435,21 @@ function Communication() {
                   >
                     <Text fontSize="21px">검색</Text>
                   </Button>
-                  <Link to="/communication/suggestion/register">
+                  {isLogin ? (
+                    <Link to="/communication/suggestion/register">
+                      <Button
+                        width="140px"
+                        height="40px"
+                        backgroundColor="white"
+                        border="2px solid #14406c"
+                        borderRadius="10px"
+                        fontColor="#14406c"
+                        marginLeft="15px"
+                      >
+                        <Text fontSize="21px">건의하기</Text>
+                      </Button>
+                    </Link>
+                  ) : (
                     <Button
                       width="140px"
                       height="40px"
@@ -480,10 +458,11 @@ function Communication() {
                       borderRadius="10px"
                       fontColor="#14406c"
                       marginLeft="15px"
+                      onClick={() => alert("권한이 없습니다.")}
                     >
                       <Text fontSize="21px">건의하기</Text>
                     </Button>
-                  </Link>
+                  )}
                 </Container>
                 <Container
                   className="suggestions-contents-container"

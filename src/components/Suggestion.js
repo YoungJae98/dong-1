@@ -5,15 +5,51 @@ import Text from "./Text";
 
 function Suggestion(props) {
   const suggestion = props.location.state.suggestion;
-  const suggestionTitle = suggestion.suggestionTitle;
-  const suggestioner = suggestion.suggestioner;
-  const suggestionDate = suggestion.suggestionDate;
-  const suggestionContent = suggestion.suggestionContent;
-  const suggestionConsensus = suggestion.suggestionConsensus;
+  const suggestionTitle = suggestion.c_title;
+  const suggestioner = suggestion.c_user;
+  const suggestionDate = suggestion.c_date.slice(0, 10);
+  const suggestionContent = suggestion.c_body;
+  const suggestionConsensus = suggestion.c_con;
   const [consents, setConsents] = useState([]);
   const [suggestionConsentInputText, setSuggestionConsentInputText] = useState(
     ""
   );
+  const writeComments = (id) => {
+    fetch("http://localhost:3001/api/community/writeComments", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: {
+        id: id,
+        body: suggestionConsentInputText,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["success"]) {
+          alert("댓글이 등록되었습니다.");
+        }
+      });
+  };
+  const showCommunity = (id) => {
+    fetch("http://localhost:3001/api/community/showCommunity", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: {
+        id: id,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //title, body, 작성자, 날짜와 댓글이 담겨있음.
+        console.log(response);
+      });
+  };
   useEffect(() => {
     setConsents([
       {
@@ -58,9 +94,9 @@ function Suggestion(props) {
     <>
       <Container
         height="40px"
-        marginTop="50px"
+        marginTop="20px"
         marginLeft="20px"
-        width="840px"
+        width="1000px"
         horizontalAlign="left"
       >
         <Text fontColor="#14406c" fontSize="32px">
@@ -77,7 +113,7 @@ function Suggestion(props) {
         paddingLeft="30px"
         paddingRight="30px"
         paddingTop="30px"
-        width="840px"
+        width="1000px"
       >
         <Container
           verticalAlign="flex-start"
@@ -86,7 +122,6 @@ function Suggestion(props) {
         >
           <Container
             horizontalAlign="flex-start"
-            width="200px"
             borderBottom="2px solid #14406c"
           >
             <Text fontColor="#14406c" fontSize="32px">
@@ -96,6 +131,7 @@ function Suggestion(props) {
           <Container
             horizontalAlign="flex-end"
             borderBottom="2px solid #14406c"
+            width="450px"
           >
             <Text fontColor="grey" fontSize="14px">
               건의: {suggestioner} / &nbsp;
@@ -109,7 +145,7 @@ function Suggestion(props) {
           </Container>
         </Container>
         <Container
-          width="800px"
+          width="960px"
           height="500px"
           horizontalAlign="flex-start"
           verticalAlign="flex-start"
@@ -140,14 +176,13 @@ function Suggestion(props) {
                 height: "24px",
                 fontSize: "22px",
                 fontFamily: "SeoulBold",
-                width: "700px",
+                width: "870px",
                 display: "inline",
                 border: "2px solid #14406c",
               }}
               placeholder="동의합니다."
               onChange={(e) => {
                 setSuggestionConsentInputText(e.target.value);
-                console.log(e.target.value);
               }}
               className="suggestion-consent-input"
             />
@@ -179,7 +214,7 @@ function Suggestion(props) {
           </form>
         </Container>
         <Container
-          width="800px"
+          width="960px"
           height="280px"
           border="2px solid #14406c"
           marginTop="20px"
@@ -195,7 +230,7 @@ function Suggestion(props) {
         >
           {consents.map((consent) => (
             <Container
-              width="780px"
+              width="940px"
               height="30px"
               borderBottom="1px solid grey"
               horizontalAlign="space-between"

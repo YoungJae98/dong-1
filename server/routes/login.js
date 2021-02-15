@@ -85,9 +85,11 @@ router.post("/login", (req, res) => {
   }
 });
 
-router.post("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
   req.session.destroy((err) => {
-    res.send("hello");
+    res.json({
+      success: true,
+    });
   });
 });
 

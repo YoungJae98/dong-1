@@ -21,6 +21,27 @@ function App() {
   const [main, setMain] = useState(() => {
     return path === "/" ? true : false;
   });
+  const [isLogin, setisLogin] = useState(false);
+  const loginCheck = () => {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["isLogin"]) {
+          setisLogin(true);
+        } else {
+          setisLogin(false);
+        }
+      });
+  };
+  useEffect(() => {
+    loginCheck();
+  }, []);
   useEffect(() => {
     setMain(path === "/" ? true : false);
   }, [path]);
@@ -29,13 +50,22 @@ function App() {
       <Intro />
       <Container fd="column" backgroundColor="#F6F6F6">
         {main && <Header />}
-        <Navigation main={main} setMain={setMain} />
+        <Navigation
+          main={main}
+          setMain={setMain}
+          isLogin={isLogin}
+          setisLogin={setisLogin}
+        />
         <Switch>
           <Route exact path="/" component={Main} />
           <Route path="/clubunion" component={ClubUnion} />
           <Route path="/centralclub" component={CentralClub} />
           <Route path="/information" component={Information} />
-          <Route path="/communication" component={Communication} />
+          <Route
+            path="/communication"
+            component={Communication}
+            isLogin={isLogin}
+          />
           <Route path="/document" component={Document} />
           <Route path="/signin" component={Signin} />
           <Route path="/signup" component={Signup} />
