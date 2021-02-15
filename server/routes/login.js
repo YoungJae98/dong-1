@@ -31,10 +31,10 @@ router.post("/login", (req, res) => {
     scriptPath: "./server/",
     args: [req.body.id, req.body.pw],
   };
-  if (req.body.id == "admin" && req.body.pw == "dong1298") {
+  if (req.body.id == "20210217" && req.body.pw == "dong1298") {
     res.json({
       isLogin: "success",
-      id: "admin",
+      id: "20210217",
       name: "관리자",
       department: "동아리연합회",
       type: 2,
