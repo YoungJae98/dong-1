@@ -20,12 +20,80 @@ function Main() {
   const [searchOption, setSearchOption] = useState(0);
   const [suggestionsSearchResult, setSuggestionsSearchResult] = useState([]);
   const [petitionsSearchResult, setPetitionsSearchResult] = useState([]);
+  const [suggestionTitle, setSuggestionTitle] = useState("");
+  const [suggestionBody, setSuggestionBody] = useState("");
+  const [petitionTitle, setPetitionTitle] = useState("");
+  const [petitionBody, setPetitionBody] = useState("");
   const history = useHistory();
   const suggestionRedirect = () => {
     history.push("/communication/");
   };
   const petitionRedirect = () => {
     history.push("/communication/petition");
+  };
+  const getCommunity = () => {
+    fetch("http://localhost:3001/api/community/getCommunity", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //response에서 1은 suggestion에서 2는 petition으로 구분
+        console.log(response);
+      });
+  };
+  const writeSuggestion = () => {
+    fetch("http://localhost:3001/api/community/writeCommunity", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        title: suggestionTitle,
+        body: suggestionBody,
+        type: 1,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //받아온 응답
+        console.log(response);
+        if (response["success"]) {
+          alert("건의사항 등록이 완료되었습니다.");
+        } else {
+          alert("동일한 제목의 건의사항이 존재합니다.");
+        }
+        suggestionRedirect();
+      });
+  };
+  const writePetition = () => {
+    fetch("http://localhost:3001/api/account/writeCommunity", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        title: petitionTitle,
+        body: petitionBody,
+        type: 2,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //받아온 응답
+        console.log(response);
+        if (response["success"]) {
+          alert("청원 등록이 완료되었습니다.");
+        } else {
+          alert("동일한 제목의 청원이 존재합니다.");
+        }
+        petitionRedirect();
+      });
   };
   useEffect(() => {
     setSuggestions([
@@ -967,60 +1035,60 @@ function Main() {
                     건의 내용
                   </Text>
                 </Container>
-                <form>
-                  <textarea
-                    placeholder="건의 제목을 작성해 주세요."
-                    style={{
-                      width: "976px",
-                      height: "25px",
-                      fontFamily: "SeoulBold",
-                      fontSize: "24px",
-                      border: "2px solid #14406c",
-                      resize: "none",
-                      outline: "none",
-                      padding: "10px",
-                      marginBottom: "10px",
-                    }}
-                    className="suggestion-title"
-                  />
-                  <textarea
-                    placeholder="건의 내용을 작성해 주세요."
-                    style={{
-                      width: "976px",
-                      height: "600px",
-                      fontFamily: "SeoulBold",
-                      fontSize: "24px",
-                      border: "2px solid #14406c",
-                      resize: "none",
-                      outline: "none",
-                      padding: "10px",
-                    }}
-                    className="suggestion-content"
-                  />
-                  <Container
+                <textarea
+                  placeholder="건의 제목을 작성해 주세요."
+                  style={{
+                    width: "976px",
+                    height: "25px",
+                    fontFamily: "SeoulBold",
+                    fontSize: "24px",
+                    border: "2px solid #14406c",
+                    resize: "none",
+                    outline: "none",
+                    padding: "10px",
+                    marginBottom: "10px",
+                  }}
+                  className="suggestion-title"
+                  value={suggestionTitle}
+                  onChange={({ target: { value } }) =>
+                    setSuggestionTitle(value)
+                  }
+                />
+                <textarea
+                  placeholder="건의 내용을 작성해 주세요."
+                  style={{
+                    width: "976px",
+                    height: "600px",
+                    fontFamily: "SeoulBold",
+                    fontSize: "24px",
+                    border: "2px solid #14406c",
+                    resize: "none",
+                    outline: "none",
+                    padding: "10px",
+                  }}
+                  className="suggestion-content"
+                  value={suggestionBody}
+                  onChange={({ target: { value } }) => setSuggestionBody(value)}
+                />
+                <Container
+                  height="50px"
+                  horizontalAlign="flex-end"
+                  marginTop="10px"
+                >
+                  <Button
+                    width="100px"
                     height="50px"
-                    horizontalAlign="flex-end"
-                    marginTop="10px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    border="2px solid #14406c"
+                    borderRadius="5px"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    onClick={writeSuggestion}
                   >
-                    <Button
-                      width="100px"
-                      height="50px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      border="2px solid #14406c"
-                      borderRadius="5px"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        // do suggestion submit event
-                        alert("건의사항 등록이 완료되었습니다.");
-                        suggestionRedirect();
-                      }}
-                    >
-                      등록
-                    </Button>
-                  </Container>
-                </form>
+                    등록
+                  </Button>
+                </Container>
               </Container>
             </Route>
             <Route exact path="/communication/petition/register">
@@ -1058,60 +1126,58 @@ function Main() {
                     청원 내용
                   </Text>
                 </Container>
-                <form>
-                  <textarea
-                    placeholder="청원 제목을 작성해 주세요."
-                    style={{
-                      width: "976px",
-                      height: "25px",
-                      fontFamily: "SeoulBold",
-                      fontSize: "24px",
-                      border: "2px solid #14406c",
-                      resize: "none",
-                      outline: "none",
-                      padding: "10px",
-                      marginBottom: "10px",
-                    }}
-                    className="suggestion-title"
-                  />
-                  <textarea
-                    type="text"
-                    placeholder="청원 내용을 작성해 주세요."
-                    style={{
-                      width: "976px",
-                      height: "600px",
-                      fontFamily: "SeoulBold",
-                      fontSize: "24px",
-                      border: "2px solid #14406c",
-                      resize: "none",
-                      outline: "none",
-                      padding: "10px",
-                    }}
-                  />
-                  <Container
+                <textarea
+                  placeholder="청원 제목을 작성해 주세요."
+                  style={{
+                    width: "976px",
+                    height: "25px",
+                    fontFamily: "SeoulBold",
+                    fontSize: "24px",
+                    border: "2px solid #14406c",
+                    resize: "none",
+                    outline: "none",
+                    padding: "10px",
+                    marginBottom: "10px",
+                  }}
+                  className="suggestion-title"
+                  value={petitionTitle}
+                  onChange={({ target: { value } }) => setPetitionTitle(value)}
+                />
+                <textarea
+                  type="text"
+                  placeholder="청원 내용을 작성해 주세요."
+                  style={{
+                    width: "976px",
+                    height: "600px",
+                    fontFamily: "SeoulBold",
+                    fontSize: "24px",
+                    border: "2px solid #14406c",
+                    resize: "none",
+                    outline: "none",
+                    padding: "10px",
+                  }}
+                  value={petitionBody}
+                  onChange={({ target: { value } }) => setPetitionBody(value)}
+                />
+                <Container
+                  height="50px"
+                  horizontalAlign="flex-end"
+                  marginTop="10px"
+                >
+                  <Button
+                    width="100px"
                     height="50px"
-                    horizontalAlign="flex-end"
-                    marginTop="10px"
+                    backgroundColor="#14406c"
+                    fontColor="white"
+                    border="2px solid #14406c"
+                    borderRadius="5px"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    onClick={writePetition}
                   >
-                    <Button
-                      width="100px"
-                      height="50px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      border="2px solid #14406c"
-                      borderRadius="5px"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
-                      onClick={() => {
-                        // do petition submit event
-                        alert("청원 등록이 완료되었습니다.");
-                        petitionRedirect();
-                      }}
-                    >
-                      등록
-                    </Button>
-                  </Container>
-                </form>
+                    등록
+                  </Button>
+                </Container>
               </Container>
             </Route>
             <Route

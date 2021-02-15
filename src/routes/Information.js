@@ -31,6 +31,20 @@ function Main() {
   const [searchOption, setSearchOption] = useState(0);
   const [reportSearchResult, setReportSearchResult] = useState([]);
   const [meetinglogsSearchResult, setMeetinglogsSearchResult] = useState([]);
+  //공약 받아오는 부분
+  const getPledge = () => {
+    fetch("http://localhost:3001/api/pledges/getPledge", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
+  };
   useEffect(() => {
     setReports([
       {
