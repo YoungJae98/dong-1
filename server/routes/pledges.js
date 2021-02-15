@@ -25,4 +25,16 @@ router.get("/getPledge", (req, res) => {
   });
 });
 
+routes.get("/setPledge", (req, res) => {
+  db.query(
+    "update pledges set p_status = 1 where p_id = ?",
+    [req.body.p_id],
+    (err, results) => {
+      res.json({
+        success: true,
+      });
+    }
+  );
+});
+
 module.exports = router;

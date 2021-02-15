@@ -6,9 +6,16 @@ var db = require("../db");
 
 router.get("/isLoginCheck", (req, res) => {
   if (req.session.isLogin) {
-    res.json({
-      isLogin: true,
-    });
+    db.query(
+      "select * from user where u_id = ?",
+      [req.session.user],
+      (err, user) => {
+        res.json({
+          isLogin: true,
+          auth: user[0].u_auth,
+        });
+      }
+    );
   } else {
     res.json({
       isLogin: false,
