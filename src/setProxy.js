@@ -20,10 +20,10 @@ module.exports = (app) => {
     proxy("/api/community/writeCoummunity", {
       target: "http://localhost:3001/",
     }),
-    proxy("/api/community/showSuggestion", {
+    proxy("/api/community/showCommunity", {
       target: "http://localhost:3001/",
     }),
-    proxy("/api/community/showPetition", {
+    proxy("/api/community/writeComments", {
       target: "http://localhost:3001/",
     })
   );

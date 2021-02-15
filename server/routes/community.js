@@ -18,8 +18,44 @@ router.get("/getCommunity", (req, res) => {
     res.json(data);
   });
 });
-router.get("/showSuggestion", (req, res) => {});
-router.get("/showPetition", (req, res) => {});
+router.get("/showCommunity", (req, res) => {
+  db.query(
+    "select * from community where c_id = ?",
+    [req.body.id],
+    (err1, commun) => {
+      db.query(
+        "select * from comments where co_community = ?",
+        [req.body.id],
+        (err2, comments) => {
+          var data = { community: {}, comments: [] };
+          for (i = 0; i < comments.length; i++) {
+            data["comments"].push(comments[i]);
+          }
+          data["community"] = commun[0];
+
+          res.json(data);
+        }
+      );
+    }
+  );
+});
+router.post("/writeComments", (req, res) => {
+  db.query(
+    "select * from community where c_id = ?",
+    [req.body.id],
+    (err1, commun) => {
+      db.query(
+        "insert into comments(co_community, co_user, co_body, co_date) values(? ,? ,? , now())",
+        [req.body.id, req.session.user, req.body.body],
+        (err2, results) => {
+          res.json({
+            success: true,
+          });
+        }
+      );
+    }
+  );
+});
 router.post("/writeCoummunity", (req, res) => {
   var title = sanitizeHtml(req.body.title);
   var body = sanitizeHtml(req.body.body);

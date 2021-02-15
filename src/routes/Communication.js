@@ -24,6 +24,7 @@ function Main() {
   const [suggestionBody, setSuggestionBody] = useState("");
   const [petitionTitle, setPetitionTitle] = useState("");
   const [petitionBody, setPetitionBody] = useState("");
+  const [comment, setComment] = useState("");
   const history = useHistory();
   const suggestionRedirect = () => {
     history.push("/communication/");
@@ -43,6 +44,43 @@ function Main() {
       .then((response) => {
         //response에서 1은 suggestion에서 2는 petition으로 구분
         console.log(response);
+      });
+  };
+  const showCommunity = (id) => {
+    fetch("http://localhost:3001/api/community/showCommunity", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: {
+        id: id,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //title, body, 작성자, 날짜와 댓글이 담겨있음.
+        console.log(response);
+      });
+  };
+  const writeComments = (id) => {
+    fetch("http://localhost:3001/api/community/writeComments", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: {
+        id: id,
+        body: comment,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["success"]) {
+          alert("댓글이 등록되었습니다.");
+          location.reload();
+        }
       });
   };
   const writeSuggestion = () => {
