@@ -74,7 +74,7 @@ router.post("/writeCoummunity", (req, res) => {
           } else {
             db.query(
               "insert into community(c_title, c_body, c_type, c_date, c_user) values(?, ?, ?, now(), ?)",
-              [title, body, req.body.type, user[0].u_id],
+              [title, body, req.body.type, user[0].u_name],
               (err3, results) => {
                 res.json({
                   success: true,

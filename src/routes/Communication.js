@@ -12,18 +12,23 @@ import Remote from "../components/Remote";
 import Suggestion from "../components/Suggestion";
 import Text from "../components/Text";
 
-function Main() {
+function Communication() {
   const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
+
   const [searchStr1, setSearchStr1] = useState("");
   const [searchStr2, setSearchStr2] = useState("");
   const [searchOption, setSearchOption] = useState(0);
+
   const [suggestionsSearchResult, setSuggestionsSearchResult] = useState([]);
   const [petitionsSearchResult, setPetitionsSearchResult] = useState([]);
+
   const [suggestionTitle, setSuggestionTitle] = useState("");
   const [suggestionBody, setSuggestionBody] = useState("");
+
   const [petitionTitle, setPetitionTitle] = useState("");
   const [petitionBody, setPetitionBody] = useState("");
+
   const [comment, setComment] = useState("");
   const history = useHistory();
   const suggestionRedirect = () => {
@@ -79,7 +84,6 @@ function Main() {
       .then((response) => {
         if (response["success"]) {
           alert("댓글이 등록되었습니다.");
-          location.reload();
         }
       });
   };
@@ -1233,4 +1237,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default Communication;

@@ -22,6 +22,7 @@ import {
 function Main() {
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
+  const [pledges, setPledges] = useState({});
   const [assignment1, setAssignment1] = useState([]);
   const [assignment2, setAssignment2] = useState([]);
   const [assignment3, setAssignment3] = useState([]);
@@ -43,9 +44,11 @@ function Main() {
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
+        setPledges(response);
       });
   };
   useEffect(() => {
+    getPledge();
     setReports([
       {
         reportId: 1,
@@ -138,37 +141,15 @@ function Main() {
         meetinglogSource: pdf,
       },
     ]);
-    setAssignment1([
-      { actId: 1, actTitle: "동아리의 날 지정", isDone: true },
-      { actId: 2, actTitle: "워크샵/간담회 진행", isDone: false },
-      { actId: 3, actTitle: "동아리 가이드 2.0", isDone: false },
-      { actId: 4, actTitle: "피드백 제도 및 회장님과의 대화", isDone: true },
-      { actId: 5, actTitle: "중동원 알 권리 보장", isDone: true },
-      { actId: 6, actTitle: "회칙 개정 플랫폼 마련", isDone: false },
-      { actId: 7, actTitle: "회의 프로세스 재구축", isDone: false },
-    ]);
-    setAssignment2([
-      { actId: 1, actTitle: "분과 회의 활성화", isDone: true },
-      { actId: 2, actTitle: "분과별 우수 동아리 시상", isDone: false },
-      { actId: 3, actTitle: "분과별 맞춤 행사 진행", isDone: false },
-      {
-        actId: 4,
-        actTitle: "분과별 특화 활동 계획서, 내역서 제작",
-        isDone: false,
-      },
-    ]);
-    setAssignment3([
-      { actId: 1, actTitle: "동아리 대표 이미지 구축", isDone: false },
-      { actId: 2, actTitle: "동아리 알림제(가두모집 활성화)", isDone: false },
-      { actId: 3, actTitle: "웹페이지 개설", isDone: true },
-      { actId: 4, actTitle: "유튜브 채널 개설", isDone: true },
-    ]);
-    setAssignment4([
-      { actId: 1, actTitle: "서동협 활동", isDone: true },
-      { actId: 2, actTitle: "동아리 활동인증서 발급 활성화", isDone: true },
-      { actId: 3, actTitle: "우수 성장 동아리 시상", isDone: true },
-    ]);
   }, []);
+  useEffect(() => {
+    if (Object.keys(pledges).length !== 0) {
+      setAssignment1(pledges["1"]);
+      setAssignment2(pledges["2"]);
+      setAssignment3(pledges["3"]);
+      setAssignment4(pledges["4"]);
+    }
+  }, [pledges]);
   return (
     <>
       <Container height="145px">
@@ -351,13 +332,13 @@ function Main() {
                       className="progressBar-content"
                       backgroundColor="#a8bec9"
                       width={`${
-                        ((assignment1.filter((act) => act.isDone === true)
+                        ((assignment1.filter((act) => act.p_status === 1)
                           .length +
-                          assignment2.filter((act) => act.isDone === true)
+                          assignment2.filter((act) => act.p_status === 1)
                             .length +
-                          assignment3.filter((act) => act.isDone === true)
+                          assignment3.filter((act) => act.p_status === 1)
                             .length +
-                          assignment4.filter((act) => act.isDone === true)
+                          assignment4.filter((act) => act.p_status === 1)
                             .length) /
                           (assignment1.length +
                             assignment2.length +
@@ -367,19 +348,21 @@ function Main() {
                       }px`}
                     >
                       <Text fontSize="21px" fontColor="#14406c">
-                        {((assignment1.filter((act) => act.isDone === true)
-                          .length +
-                          assignment2.filter((act) => act.isDone === true)
+                        {(
+                          ((assignment1.filter((act) => act.p_status === 1)
                             .length +
-                          assignment3.filter((act) => act.isDone === true)
-                            .length +
-                          assignment4.filter((act) => act.isDone === true)
-                            .length) /
-                          (assignment1.length +
-                            assignment2.length +
-                            assignment3.length +
-                            assignment4.length)) *
-                          100}
+                            assignment2.filter((act) => act.p_status === 1)
+                              .length +
+                            assignment3.filter((act) => act.p_status === 1)
+                              .length +
+                            assignment4.filter((act) => act.p_status === 1)
+                              .length) /
+                            (assignment1.length +
+                              assignment2.length +
+                              assignment3.length +
+                              assignment4.length)) *
+                          100
+                        ).toFixed(2)}
                         %
                       </Text>
                     </Container>
@@ -405,7 +388,7 @@ function Main() {
                       >
                         과제1&nbsp;
                         {`${parseInt(
-                          (assignment1.filter((act) => act.isDone === true)
+                          (assignment1.filter((act) => act.p_status === 1)
                             .length /
                             assignment1.length) *
                             100
@@ -418,7 +401,7 @@ function Main() {
                       >
                         과제2&nbsp;
                         {`${parseInt(
-                          (assignment2.filter((act) => act.isDone === true)
+                          (assignment2.filter((act) => act.p_status === 1)
                             .length /
                             assignment2.length) *
                             100
@@ -431,7 +414,7 @@ function Main() {
                       >
                         과제3&nbsp;
                         {`${parseInt(
-                          (assignment3.filter((act) => act.isDone === true)
+                          (assignment3.filter((act) => act.p_status === 1)
                             .length /
                             assignment3.length) *
                             100
@@ -444,7 +427,7 @@ function Main() {
                       >
                         과제4&nbsp;
                         {`${parseInt(
-                          (assignment4.filter((act) => act.isDone === true)
+                          (assignment4.filter((act) => act.p_status === 1)
                             .length /
                             assignment4.length) *
                             100
@@ -457,27 +440,26 @@ function Main() {
                       >
                         합계&nbsp;
                         {`(${
-                          assignment1.filter((act) => act.isDone === true)
+                          assignment1.filter((act) => act.p_status === 1)
                             .length +
-                          assignment2.filter((act) => act.isDone === true)
+                          assignment2.filter((act) => act.p_status === 1)
                             .length +
-                          assignment3.filter((act) => act.isDone === true)
+                          assignment3.filter((act) => act.p_status === 1)
                             .length +
-                          assignment4.filter((act) => act.isDone === true)
-                            .length
+                          assignment4.filter((act) => act.p_status === 1).length
                         } / ${
                           assignment1.length +
                           assignment2.length +
                           assignment3.length +
                           assignment4.length
                         }) ${parseInt(
-                          ((assignment1.filter((act) => act.isDone === true)
+                          ((assignment1.filter((act) => act.p_status === 1)
                             .length +
-                            assignment2.filter((act) => act.isDone === true)
+                            assignment2.filter((act) => act.p_status === 1)
                               .length +
-                            assignment3.filter((act) => act.isDone === true)
+                            assignment3.filter((act) => act.p_status === 1)
                               .length +
-                            assignment4.filter((act) => act.isDone === true)
+                            assignment4.filter((act) => act.p_status === 1)
                               .length) /
                             (assignment1.length +
                               assignment2.length +
@@ -524,13 +506,13 @@ function Main() {
                       backgroundColor="#a8bec9"
                       width={`${
                         (1000 *
-                          assignment1.filter((act) => act.isDone === true)
+                          assignment1.filter((act) => act.p_status === 1)
                             .length) /
                         assignment1.length
                       }px`}
                     >
                       <Text fontColor="#14406c" fontSize="21px">{`${parseInt(
-                        (assignment1.filter((act) => act.isDone === true)
+                        (assignment1.filter((act) => act.p_status === 1)
                           .length /
                           assignment1.length) *
                           100
@@ -549,19 +531,19 @@ function Main() {
                       >
                         과제1 동아리와 총동연을 밀접하게
                       </Text>
-                      {assignment1.map((act) => (
-                        <Container horizontalAlign="flex-start" key={act.actId}>
+                      {assignment1.map((act, index) => (
+                        <Container horizontalAlign="flex-start" key={act.p_id}>
                           <Text
                             marginLeft="10px"
-                            doneAct={act.isDone}
+                            doneAct={act.p_status}
                             fontSize="21px"
                           >
-                            행동{act.actId}&nbsp;
+                            행동{index + 1}&nbsp;
                           </Text>
-                          <Text doneAct={act.isDone} fontSize="21px">
-                            {act.actTitle}
+                          <Text doneAct={act.p_status} fontSize="21px">
+                            {act.p_name}
                           </Text>
-                          {act.isDone ? <Text doneActV>V</Text> : null}
+                          {act.p_status ? <Text doneActV>V</Text> : null}
                         </Container>
                       ))}
                     </Container>
@@ -599,13 +581,13 @@ function Main() {
                       backgroundColor="#a8bec9"
                       width={`${
                         (1000 *
-                          assignment2.filter((act) => act.isDone === true)
+                          assignment2.filter((act) => act.p_status === 1)
                             .length) /
                         assignment2.length
                       }px`}
                     >
                       <Text fontColor="#14406c" fontSize="21px">{`${
-                        (assignment2.filter((act) => act.isDone === true)
+                        (assignment2.filter((act) => act.p_status === 1)
                           .length /
                           assignment2.length) *
                         100
@@ -613,8 +595,8 @@ function Main() {
                     </Container>
                   </Container>
                   <div
-                    className="subProgress"
-                    style={{ width: "360px", height: "200px" }}
+                    className="subProgress-big"
+                    style={{ width: "420px", height: "200px" }}
                   >
                     <Container fd="column" horizontalAlign="flex-start">
                       <Text
@@ -624,24 +606,24 @@ function Main() {
                       >
                         과제2 분과 살리기
                       </Text>
-                      {assignment2.map((act) => (
-                        <Container horizontalAlign="flex-start" key={act.actId}>
+                      {assignment2.map((act, index) => (
+                        <Container horizontalAlign="flex-start" key={act.p_id}>
                           <Text
                             marginLeft="10px"
-                            doneAct={act.isDone}
+                            doneAct={act.p_status}
                             fontSize="21px"
                           >
-                            행동{act.actId}&nbsp;
+                            행동{index + 1}&nbsp;
                           </Text>
-                          <Text doneAct={act.isDone} fontSize="21px">
-                            {act.actTitle}
+                          <Text doneAct={act.p_status} fontSize="21px">
+                            {act.p_name}
                           </Text>
-                          {act.isDone ? <Text doneActV>V</Text> : null}
+                          {act.p_status ? <Text doneActV>V</Text> : null}
                         </Container>
                       ))}
                     </Container>
-                    <div className="subProgress-downarrow" />
-                    <div className="subProgress-downarrow-cover" />
+                    <div className="subProgress-big-downarrow" />
+                    <div className="subProgress-big-downarrow-cover" />
                   </div>
                 </Container>
               </Container>
@@ -674,13 +656,13 @@ function Main() {
                       backgroundColor="#a8bec9"
                       width={`${
                         (1000 *
-                          assignment3.filter((act) => act.isDone === true)
+                          assignment3.filter((act) => act.p_status === 1)
                             .length) /
                         assignment3.length
                       }px`}
                     >
                       <Text fontColor="#14406c" fontSize="21px">{`${
-                        (assignment3.filter((act) => act.isDone === true)
+                        (assignment3.filter((act) => act.p_status === 1)
                           .length /
                           assignment3.length) *
                         100
@@ -699,19 +681,19 @@ function Main() {
                       >
                         과제3 동아리 알리기
                       </Text>
-                      {assignment3.map((act) => (
-                        <Container horizontalAlign="flex-start" key={act.actId}>
+                      {assignment3.map((act, index) => (
+                        <Container horizontalAlign="flex-start" key={act.p_id}>
                           <Text
                             marginLeft="10px"
-                            doneAct={act.isDone}
+                            doneAct={act.p_status}
                             fontSize="21px"
                           >
-                            행동{act.actId}&nbsp;
+                            행동{index + 1}&nbsp;
                           </Text>
-                          <Text doneAct={act.isDone} fontSize="21px">
-                            {act.actTitle}
+                          <Text doneAct={act.p_status} fontSize="21px">
+                            {act.p_name}
                           </Text>
-                          {act.isDone ? <Text doneActV>V</Text> : null}
+                          {act.p_status ? <Text doneActV>V</Text> : null}
                         </Container>
                       ))}
                     </Container>
@@ -749,13 +731,13 @@ function Main() {
                       backgroundColor="#a8bec9"
                       width={`${
                         (1000 *
-                          assignment4.filter((act) => act.isDone === true)
+                          assignment4.filter((act) => act.p_status === 1)
                             .length) /
                         assignment4.length
                       }px`}
                     >
                       <Text fontColor="#14406c" fontSize="21px">{`${
-                        (assignment4.filter((act) => act.isDone === true)
+                        (assignment4.filter((act) => act.p_status === 1)
                           .length /
                           assignment4.length) *
                         100
@@ -772,21 +754,21 @@ function Main() {
                         fontColor="#14406c"
                         marginTop="15px"
                       >
-                        과제2 분과 살리기
+                        과제4 동아리 활동성 증진
                       </Text>
-                      {assignment4.map((act) => (
-                        <Container horizontalAlign="flex-start" key={act.actId}>
+                      {assignment4.map((act, index) => (
+                        <Container horizontalAlign="flex-start" key={act.p_id}>
                           <Text
                             marginLeft="10px"
-                            doneAct={act.isDone}
+                            doneAct={act.p_status}
                             fontSize="21px"
                           >
-                            행동{act.actId}&nbsp;
+                            행동{index + 1}&nbsp;
                           </Text>
-                          <Text doneAct={act.isDone} fontSize="21px">
-                            {act.actTitle}
+                          <Text doneAct={act.p_status} fontSize="21px">
+                            {act.p_name}
                           </Text>
-                          {act.isDone ? <Text doneActV>V</Text> : null}
+                          {act.p_status ? <Text doneActV>V</Text> : null}
                         </Container>
                       ))}
                     </Container>

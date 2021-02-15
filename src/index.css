@@ -145,6 +145,9 @@ li {
 .progressBar-container:hover > .subProgress {
   display: block;
 }
+.progressBar-container:hover > .subProgress-big {
+  display: block;
+}
 .progressBar-container:hover > .totalProgress {
   display: block;
 }
@@ -158,6 +161,16 @@ li {
   z-index: 10;
   transform: translateX(81px);
 }
+.subProgress-big {
+  background-color: white;
+  border: 2px solid #14406c;
+  display: none;
+  position: absolute;
+  left: 240px;
+  bottom: 35px;
+  z-index: 10;
+  transform: translateX(51px);
+}
 .subProgress-downarrow {
   width: 0;
   height: 0;
@@ -168,6 +181,16 @@ li {
   left: 165px;
   z-index: 10;
 }
+.subProgress-big-downarrow {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid #14406c;
+  position: absolute;
+  left: 195px;
+  z-index: 10;
+}
 .subProgress-downarrow-cover {
   width: 0;
   height: 0;
@@ -176,6 +199,17 @@ li {
   border-top: 15px solid white;
   position: absolute;
   left: 165px;
+  transform: translateY(-2px);
+  z-index: 10;
+}
+.subProgress-big-downarrow-cover {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid white;
+  position: absolute;
+  left: 195px;
   transform: translateY(-2px);
   z-index: 10;
 }
