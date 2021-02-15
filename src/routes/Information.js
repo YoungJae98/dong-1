@@ -33,7 +33,7 @@ function Main() {
   const [meetinglogsSearchResult, setMeetinglogsSearchResult] = useState([]);
   //공약 받아오는 부분
   const getPledge = () => {
-    fetch("http://localhost:3001/api/pledges/getPledge", {
+    fetch("http://18.217.248.102:3001/api/pledges/getPledge", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
