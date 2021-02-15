@@ -19,6 +19,22 @@ function Main() {
   const [formsSearchResult, setFormsSearchResult] = useState([]);
   const [searchStr, setSearchStr] = useState([]);
   const [searchOption, setSearchOption] = useState(0);
+  const getFile = () => {
+    fetch("http://localhost:3001/api/files/getFiles", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: {
+        id: 3,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
+  };
   useEffect(() => {
     setForms([
       {

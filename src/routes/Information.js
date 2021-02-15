@@ -47,6 +47,22 @@ function Main() {
         setPledges(response);
       });
   };
+  const getFile = (id) => {
+    fetch("http://localhost:3001/api/files/getFiles", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: {
+        id: id,
+      },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+      });
+  };
   useEffect(() => {
     getPledge();
     setReports([
