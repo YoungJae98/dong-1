@@ -37,6 +37,9 @@ module.exports = (app) => {
     }),
     proxy("/api/community/getFiles", {
       target: "http://localhost:3001/",
+    }),
+    proxy("/api/community/uploadFile", {
+      target: "http://localhost:3001/",
     })
   );
 };
