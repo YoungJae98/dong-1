@@ -48,10 +48,11 @@ router.post("/writeComments", (req, res) => {
         [req.body.id],
         (err1, commun) => {
           db.query(
-            "search * from comments where co_community = ? and co_u_id = ?",
+            "select * from comments where co_community = ? and co_u_id = ?",
             [req.body.id, req.session.user],
-            (err4, result) => {
-              if (result.length) {
+            (err4, results) => {
+              console.log(results);
+              if (results.length) {
                 res.json({
                   success: false,
                 });
@@ -95,7 +96,7 @@ router.post("/writeCommunity", (req, res) => {
             });
           } else {
             db.query(
-              "insert into community(c_title, c_body, c_type, c_date, c_user, c_u_id) values(?, ?, ?, now(), ?)",
+              "insert into community(c_title, c_body, c_type, c_date, c_user, c_u_id) values(?, ?, ?, now(), ?, ?)",
               [title, body, req.body.type, user[0].u_name, req.session.user],
               (err3, results) => {
                 res.json({
