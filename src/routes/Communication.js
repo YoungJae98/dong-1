@@ -74,6 +74,7 @@ function Communication() {
           alert("동일한 제목의 건의사항이 존재합니다.");
         }
         suggestionRedirect();
+        getCommunity();
       });
   };
   const writePetition = () => {
@@ -97,6 +98,7 @@ function Communication() {
           alert("동일한 제목의 청원이 존재합니다.");
         }
         petitionRedirect();
+        getCommunity();
       });
   };
   const loginCheck = () => {
@@ -460,6 +462,10 @@ function Communication() {
                         borderRadius="10px"
                         fontColor="#14406c"
                         marginLeft="15px"
+                        onClick={() => {
+                          setSuggestionTitle("");
+                          setSuggestionBody("");
+                        }}
                       >
                         <Text fontSize="21px">건의하기</Text>
                       </Button>
@@ -813,6 +819,10 @@ function Communication() {
                         borderRadius="10px"
                         fontColor="#14406c"
                         marginLeft="15px"
+                        onClick={() => {
+                          setPetitionTitle("");
+                          setPetitionBody("");
+                        }}
                       >
                         <Text fontSize="21px">청원 등록하기</Text>
                       </Button>
@@ -983,7 +993,6 @@ function Communication() {
                     onClick={() => {
                       if (isLogin) {
                         writeSuggestion();
-                        getCommunity();
                       } else {
                         alert("권한이 없습니다.");
                       }
@@ -1079,7 +1088,6 @@ function Communication() {
                     onClick={() => {
                       if (isLogin) {
                         writePetition();
-                        getCommunity();
                       } else {
                         alert("권한이 없습니다.");
                       }

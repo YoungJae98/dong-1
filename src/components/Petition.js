@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Button from "./Button";
 import Container from "./Container";
 import Text from "./Text";
 
-function Suggestion() {
+function Petition() {
   const [petition, setPetition] = useState([]);
   const [isLogin, setisLogin] = useState(false);
   const [consents, setConsents] = useState([]);
-  const [petitionConsentInputText, setPetitionConsentInputText] = useState("");
+  const [petitionConsentInputText, setPetitionConsentInputText] = useState(
+    "동의합니다."
+  );
   const writeComments = (id) => {
     fetch("http://localhost:3001/api/community/writeComments", {
       method: "POST",
@@ -24,6 +27,10 @@ function Suggestion() {
       .then((response) => {
         if (response["success"]) {
           alert("댓글이 등록되었습니다.");
+          showCommunity(c_id);
+          setPetitionConsentInputText("");
+        } else {
+          alert("이미 동의한 청원입니다.");
         }
       });
   };
@@ -40,7 +47,6 @@ function Suggestion() {
     })
       .then((response) => response.json())
       .then((response) => {
-        //title, body, 작성자, 날짜와 댓글이 담겨있음.
         setConsents(response["comments"]);
         setPetition(response["community"]);
       });
@@ -62,47 +68,12 @@ function Suggestion() {
         }
       });
   };
+  const location = useLocation();
+  const c_id = parseInt(location.pathname.slice(24));
   useEffect(() => {
     loginCheck();
-    setConsents([
-      {
-        consenterID: "18011689",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011681",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011682",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011683",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011684",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011685",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-    ]);
-  }, []);
+    showCommunity(c_id);
+  }, [c_id]);
   return (
     <>
       <Container
@@ -138,7 +109,7 @@ function Suggestion() {
             borderBottom="2px solid #14406c"
           >
             <Text fontColor="#14406c" fontSize="32px">
-              {/* {petitionTitle} */}
+              {petition.c_title}
             </Text>
           </Container>
           <Container
@@ -147,13 +118,13 @@ function Suggestion() {
             width="450px"
           >
             <Text fontColor="grey" fontSize="14px">
-              {/* 건의: {petitioner} / &nbsp; */}
+              건의: {petition.c_user} / &nbsp;
             </Text>
             <Text fontColor="grey" fontSize="14px">
-              {/* 동의 수: {petitionConsensus} / &nbsp; */}
+              동의 수: {petition.c_con} / &nbsp;
             </Text>
             <Text fontColor="grey" fontSize="14px">
-              {/* 청원 날짜: {petitionDate} */}
+              청원 날짜: {petition.c_date && petition.c_date.slice(0, 10)}
             </Text>
           </Container>
         </Container>
@@ -171,7 +142,7 @@ function Suggestion() {
           scroll
         >
           <Text fontColor="black" fontSize="24px">
-            {/* {petitionContent} */}
+            {petition.c_body}
           </Text>
         </Container>
         <Container height="30px" marginTop="20px">
@@ -193,7 +164,10 @@ function Suggestion() {
                 display: "inline",
                 border: "2px solid #14406c",
               }}
-              placeholder="동의합니다."
+              value={petitionConsentInputText}
+              onClick={(e) => {
+                e.target.value = "";
+              }}
               onChange={(e) => {
                 setPetitionConsentInputText(e.target.value);
               }}
@@ -206,20 +180,13 @@ function Suggestion() {
               fontColor="white"
               borderRadius="5px"
               onClick={(e) => {
-                if (
-                  document.querySelector(".suggestion-consent-input").value ===
-                  ""
-                ) {
-                  setPetitionConsentInputText("동의합니다.");
+                if (isLogin) {
+                  writeComments(petition.c_id);
+                  e.preventDefault();
+                } else {
+                  alert("권한이 없습니다.");
+                  e.preventDefault();
                 }
-
-                //do suggestion consent submit event here
-
-                document.querySelector(".suggestion-consent-input").value = "";
-                setPetitionConsentInputText("");
-
-                e.preventDefault();
-                alert("청원에 대한 동의가 완료되었습니다.");
               }}
             >
               동의하기
@@ -247,13 +214,13 @@ function Suggestion() {
               height="30px"
               borderBottom="1px solid grey"
               horizontalAlign="space-between"
-              key={consent.consenterID}
+              key={consent.co_id}
             >
               <Text fontColor="black" fontSize="22px">
-                {consent.consenterName}:&nbsp;{consent.consentContent}
+                {consent.co_user}:&nbsp;{consent.co_body}
               </Text>
               <Text fontColor="grey" fontSize="12px">
-                {consent.consentDate}
+                {consent.co_date.slice(0, 10)}
               </Text>
             </Container>
           ))}
@@ -263,4 +230,4 @@ function Suggestion() {
   );
 }
 
-export default Suggestion;
+export default Petition;

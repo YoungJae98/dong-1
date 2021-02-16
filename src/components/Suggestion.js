@@ -28,6 +28,7 @@ function Suggestion() {
         if (response["success"]) {
           alert("댓글이 등록되었습니다.");
           showCommunity(c_id);
+          setSuggestionConsentInputText("");
         } else {
           alert("이미 동의한 건의 사항입니다.");
         }
@@ -46,7 +47,6 @@ function Suggestion() {
     })
       .then((response) => response.json())
       .then((response) => {
-        //title, body, 작성자, 날짜와 댓글이 담겨있음.
         setConsents(response["comments"]);
         setSuggestion(response["community"]);
       });
@@ -73,7 +73,7 @@ function Suggestion() {
   useEffect(() => {
     loginCheck();
     showCommunity(c_id);
-  }, []);
+  }, [c_id]);
   return (
     <>
       <Container
@@ -170,7 +170,6 @@ function Suggestion() {
               }}
               onChange={(e) => {
                 setSuggestionConsentInputText(e.target.value);
-                console.log(e.target.value);
               }}
               className="suggestion-consent-input"
             />
