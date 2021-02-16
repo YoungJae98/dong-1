@@ -48,12 +48,29 @@ router.post("/writeComments", (req, res) => {
         [req.body.id],
         (err1, commun) => {
           db.query(
-            "insert into comments(co_community, co_user, co_body, co_date, co_u_id) values(? ,? ,? , now(), ?)",
-            [req.body.id, user[0].u_name, req.body.body, req.session.user],
-            (err2, results) => {
-              res.json({
-                success: true,
-              });
+            "search * from comments where co_community = ? and co_u_id = ?",
+            [req.body.id, req.session.user],
+            (err4, result) => {
+              if (result.length) {
+                res.json({
+                  success: false,
+                });
+              } else {
+                db.query(
+                  "insert into comments(co_community, co_user, co_body, co_date, co_u_id) values(? ,? ,? , now(), ?)",
+                  [
+                    req.body.id,
+                    user[0].u_name,
+                    req.body.body,
+                    req.session.user,
+                  ],
+                  (err2, results) => {
+                    res.json({
+                      success: true,
+                    });
+                  }
+                );
+              }
             }
           );
         }
@@ -118,5 +135,8 @@ router.get("/getCommentByUser", (req, res) => {
     }
   );
 });
+router.post("/updateCommunity", (req, res) => {});
+router.post("/deleteCommunity", (req, res) => {});
+router.post("/deleteComment", (req, res) => {});
 
 module.exports = router;
