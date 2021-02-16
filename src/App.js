@@ -8,7 +8,6 @@ import Information from "./routes/Information";
 import Communication from "./routes/Communication";
 import Document from "./routes/Document";
 import Signin from "./routes/Signin";
-import Signup from "./routes/Signup";
 
 import { Route, Switch, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";

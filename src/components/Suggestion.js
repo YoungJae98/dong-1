@@ -1,20 +1,14 @@
-import { json } from "body-parser";
 import React, { useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
 import Button from "./Button";
 import Container from "./Container";
 import Text from "./Text";
 
 function Suggestion(props) {
-  const suggestion = props.location.state.suggestion;
-  const suggestionId = suggestion.c_id;
-  const suggestionTitle = suggestion.c_title;
-  const suggestioner = suggestion.c_user;
-  const suggestionDate = suggestion.c_date.slice(0, 10);
-  const suggestionContent = suggestion.c_body;
-  const suggestionConsensus = suggestion.c_con;
+  const [suggestion, setSuggestion] = useState({});
   const [consents, setConsents] = useState([]);
   const [suggestionConsentInputText, setSuggestionConsentInputText] = useState(
-    ""
+    "동의합니다."
   );
   const writeComments = (id) => {
     fetch("http://localhost:3001/api/community/writeComments", {
@@ -36,7 +30,6 @@ function Suggestion(props) {
       });
   };
   const showCommunity = (id) => {
-    console.log(id);
     fetch("http://localhost:3001/api/community/showCommunity", {
       method: "POST",
       headers: {
@@ -50,49 +43,15 @@ function Suggestion(props) {
       .then((response) => response.json())
       .then((response) => {
         //title, body, 작성자, 날짜와 댓글이 담겨있음.
+        setConsents(response["comments"]);
+        setSuggestion(response["community"]);
         console.log(response);
       });
   };
-  showCommunity(suggestionId);
+  const location = useLocation();
+  const c_id = parseInt(location.pathname.slice(26));
   useEffect(() => {
-    setConsents([
-      {
-        consenterID: "18011689",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011681",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011682",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011683",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011684",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-      {
-        consenterID: "18011685",
-        consenterName: "김훈래",
-        consentContent: "동의합니다.",
-        consentDate: "2021-02-12",
-      },
-    ]);
+    showCommunity(c_id);
   }, []);
   return (
     <>
@@ -129,7 +88,7 @@ function Suggestion(props) {
             borderBottom="2px solid #14406c"
           >
             <Text fontColor="#14406c" fontSize="32px">
-              {suggestionTitle}
+              {suggestion.c_title}
             </Text>
           </Container>
           <Container
@@ -138,13 +97,13 @@ function Suggestion(props) {
             width="450px"
           >
             <Text fontColor="grey" fontSize="14px">
-              건의: {suggestioner} / &nbsp;
+              건의: {suggestion.c_user} / &nbsp;
             </Text>
             <Text fontColor="grey" fontSize="14px">
-              동의 수: {suggestionConsensus} / &nbsp;
+              동의 수: {suggestion.c_con} / &nbsp;
             </Text>
             <Text fontColor="grey" fontSize="14px">
-              건의 날짜: {suggestionDate}
+              건의 날짜: {suggestion.c_date && suggestion.c_date.slice(0, 10)}
             </Text>
           </Container>
         </Container>
@@ -162,7 +121,7 @@ function Suggestion(props) {
           scroll
         >
           <Text fontColor="black" fontSize="24px">
-            {suggestionContent}
+            {suggestion.c_body}
           </Text>
         </Container>
         <Container height="30px" marginTop="20px">
@@ -185,8 +144,12 @@ function Suggestion(props) {
                 border: "2px solid #14406c",
               }}
               placeholder="동의합니다."
+              onClick={(e) => {
+                e.target.value = "";
+              }}
               onChange={(e) => {
                 setSuggestionConsentInputText(e.target.value);
+                console.log(e.target.value);
               }}
               className="suggestion-consent-input"
             />
@@ -197,20 +160,10 @@ function Suggestion(props) {
               fontColor="white"
               borderRadius="5px"
               onClick={(e) => {
-                if (
-                  document.querySelector(".suggestion-consent-input").value ===
-                  ""
-                ) {
-                  setSuggestionConsentInputText("동의합니다.");
-                }
-
-                //do suggestion consent submit event here
-
-                document.querySelector(".suggestion-consent-input").value = "";
-                setSuggestionConsentInputText("");
-
+                console.log(suggestionConsentInputText);
+                writeComments(suggestion.c_id);
                 e.preventDefault();
-                alert("건의사항에 대한 동의가 완료되었습니다.");
+                // history.push(`/communication/suggestion/${suggestion.c_id}`);
               }}
             >
               동의하기
@@ -232,22 +185,23 @@ function Suggestion(props) {
           fd="column"
           scroll
         >
-          {consents.map((consent) => (
-            <Container
-              width="940px"
-              height="30px"
-              borderBottom="1px solid grey"
-              horizontalAlign="space-between"
-              key={consent.consenterID}
-            >
-              <Text fontColor="black" fontSize="22px">
-                {consent.consenterName}:&nbsp;{consent.consentContent}
-              </Text>
-              <Text fontColor="grey" fontSize="12px">
-                {consent.consentDate}
-              </Text>
-            </Container>
-          ))}
+          {consents.length !== 0 &&
+            consents.map((consent) => (
+              <Container
+                width="940px"
+                height="30px"
+                borderBottom="1px solid grey"
+                horizontalAlign="space-between"
+                key={consent.co_id}
+              >
+                <Text fontColor="black" fontSize="22px">
+                  {consent.co_user}:&nbsp;{consent.co_body}
+                </Text>
+                <Text fontColor="grey" fontSize="12px">
+                  {consent.co_date.slice(0, 10)}
+                </Text>
+              </Container>
+            ))}
         </Container>
       </Container>
     </>

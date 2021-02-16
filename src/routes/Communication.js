@@ -481,7 +481,7 @@ function Communication({ isLogin }) {
                         to={{
                           pathname: `/communication/suggestion/${suggestion.c_id}`,
                           state: {
-                            suggestion: suggestion,
+                            c_id: suggestion.c_id,
                           },
                         }}
                         style={{ width: "100%", height: "100%" }}
