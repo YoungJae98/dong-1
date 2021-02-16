@@ -26,9 +26,9 @@ function Main() {
         "Content-type": "application/json",
       },
       credentials: "include",
-      body: {
+      body: JSON.stringify({
         id: 3,
-      },
+      }),
     })
       .then((response) => response.json())
       .then((response) => {

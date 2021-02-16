@@ -1,3 +1,4 @@
+import { json } from "body-parser";
 import React, { useEffect, useState } from "react";
 import Button from "./Button";
 import Container from "./Container";
@@ -22,10 +23,10 @@ function Suggestion(props) {
         "Content-type": "application/json",
       },
       credentials: "include",
-      body: {
+      body: JSON.stringify({
         id: id,
         body: suggestionConsentInputText,
-      },
+      }),
     })
       .then((response) => response.json())
       .then((response) => {
@@ -35,15 +36,16 @@ function Suggestion(props) {
       });
   };
   const showCommunity = (id) => {
+    console.log(id);
     fetch("http://localhost:3001/api/community/showCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
       },
       credentials: "include",
-      body: {
+      body: JSON.stringify({
         id: id,
-      },
+      }),
     })
       .then((response) => response.json())
       .then((response) => {
