@@ -12,7 +12,9 @@ import Remote from "../components/Remote";
 import Suggestion from "../components/Suggestion";
 import Text from "../components/Text";
 
-function Communication({ isLogin }) {
+function Communication() {
+  const [isLogin, setisLogin] = useState(false);
+
   const [community, setCommunity] = useState({});
   const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
@@ -66,8 +68,6 @@ function Communication({ isLogin }) {
     })
       .then((response) => response.json())
       .then((response) => {
-        //받아온 응답
-        console.log(response);
         if (response["success"]) {
           alert("건의사항 등록이 완료되었습니다.");
         } else {
@@ -91,8 +91,6 @@ function Communication({ isLogin }) {
     })
       .then((response) => response.json())
       .then((response) => {
-        //받아온 응답
-        console.log(response);
         if (response["success"]) {
           alert("청원 등록이 완료되었습니다.");
         } else {
@@ -101,9 +99,26 @@ function Communication({ isLogin }) {
         petitionRedirect();
       });
   };
-
+  const loginCheck = () => {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["isLogin"]) {
+          setisLogin(true);
+        } else {
+          setisLogin(false);
+        }
+      });
+  };
   useEffect(() => {
     getCommunity();
+    loginCheck();
   }, []);
   useEffect(() => {
     if (Object.keys(community).length !== 0) {
@@ -788,7 +803,21 @@ function Communication({ isLogin }) {
                   >
                     <Text fontSize="21px">검색</Text>
                   </Button>
-                  <Link to="/communication/petition/register">
+                  {isLogin ? (
+                    <Link to="/communication/petition/register">
+                      <Button
+                        width="140px"
+                        height="40px"
+                        backgroundColor="white"
+                        border="2px solid #14406c"
+                        borderRadius="10px"
+                        fontColor="#14406c"
+                        marginLeft="15px"
+                      >
+                        <Text fontSize="21px">청원 등록하기</Text>
+                      </Button>
+                    </Link>
+                  ) : (
                     <Button
                       width="140px"
                       height="40px"
@@ -797,10 +826,11 @@ function Communication({ isLogin }) {
                       borderRadius="10px"
                       fontColor="#14406c"
                       marginLeft="15px"
+                      onClick={() => alert("권한이 없습니다.")}
                     >
                       <Text fontSize="21px">청원 등록하기</Text>
                     </Button>
-                  </Link>
+                  )}
                 </Container>
                 <Container
                   className="reform-contents-container"
@@ -951,8 +981,12 @@ function Communication({ isLogin }) {
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
                     onClick={() => {
-                      writeSuggestion();
-                      getCommunity();
+                      if (isLogin) {
+                        writeSuggestion();
+                        getCommunity();
+                      } else {
+                        alert("권한이 없습니다.");
+                      }
                     }}
                   >
                     등록
@@ -1042,7 +1076,14 @@ function Communication({ isLogin }) {
                     borderRadius="5px"
                     hoverBackgrounColor="white"
                     hoverFontColor="#14406c"
-                    onClick={writePetition}
+                    onClick={() => {
+                      if (isLogin) {
+                        writePetition();
+                        getCommunity();
+                      } else {
+                        alert("권한이 없습니다.");
+                      }
+                    }}
                   >
                     등록
                   </Button>

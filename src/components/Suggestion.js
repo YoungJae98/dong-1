@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Button from "./Button";
 import Container from "./Container";
 import Text from "./Text";
 
-function Suggestion(props) {
+function Suggestion() {
   const [suggestion, setSuggestion] = useState({});
+  const [isLogin, setisLogin] = useState(false);
   const [consents, setConsents] = useState([]);
   const [suggestionConsentInputText, setSuggestionConsentInputText] = useState(
     "동의합니다."
@@ -26,6 +27,9 @@ function Suggestion(props) {
       .then((response) => {
         if (response["success"]) {
           alert("댓글이 등록되었습니다.");
+          showCommunity(c_id);
+        } else {
+          alert("이미 동의한 건의 사항입니다.");
         }
       });
   };
@@ -45,12 +49,29 @@ function Suggestion(props) {
         //title, body, 작성자, 날짜와 댓글이 담겨있음.
         setConsents(response["comments"]);
         setSuggestion(response["community"]);
-        console.log(response);
+      });
+  };
+  const loginCheck = () => {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["isLogin"]) {
+          setisLogin(true);
+        } else {
+          setisLogin(false);
+        }
       });
   };
   const location = useLocation();
   const c_id = parseInt(location.pathname.slice(26));
   useEffect(() => {
+    loginCheck();
     showCommunity(c_id);
   }, []);
   return (
@@ -143,7 +164,7 @@ function Suggestion(props) {
                 display: "inline",
                 border: "2px solid #14406c",
               }}
-              placeholder="동의합니다."
+              value={suggestionConsentInputText}
               onClick={(e) => {
                 e.target.value = "";
               }}
@@ -160,10 +181,13 @@ function Suggestion(props) {
               fontColor="white"
               borderRadius="5px"
               onClick={(e) => {
-                console.log(suggestionConsentInputText);
-                writeComments(suggestion.c_id);
-                e.preventDefault();
-                // history.push(`/communication/suggestion/${suggestion.c_id}`);
+                if (isLogin) {
+                  writeComments(suggestion.c_id);
+                  e.preventDefault();
+                } else {
+                  alert("권한이 없습니다.");
+                  e.preventDefault();
+                }
               }}
             >
               동의하기

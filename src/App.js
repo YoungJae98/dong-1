@@ -54,7 +54,7 @@ function App() {
   }, [path]);
   return (
     <>
-      <Intro />
+      {main && <Intro />}
       <Container fd="column" backgroundColor="#F6F6F6">
         {main && <Header />}
         <Navigation
@@ -69,11 +69,7 @@ function App() {
           <Route path="/clubunion" component={ClubUnion} />
           <Route path="/centralclub" component={CentralClub} />
           <Route path="/information" component={Information} />
-          <Route
-            path="/communication"
-            component={Communication}
-            isLogin={isLogin}
-          />
+          <Route path="/communication" component={Communication} />
           <Route path="/document" component={Document} />
           <Route path="/signin" component={() => <Signin />} />
           <Route

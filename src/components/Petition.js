@@ -3,16 +3,67 @@ import Button from "./Button";
 import Container from "./Container";
 import Text from "./Text";
 
-function Suggestion(props) {
-  const petition = props.location.state.petition;
-  const petitionTitle = petition.c_title;
-  const petitioner = petition.c_user;
-  const petitionDate = petition.c_date.slice(0, 10);
-  const petitionContent = petition.c_body;
-  const petitionConsensus = petition.c_con;
+function Suggestion() {
+  const [petition, setPetition] = useState([]);
+  const [isLogin, setisLogin] = useState(false);
   const [consents, setConsents] = useState([]);
   const [petitionConsentInputText, setPetitionConsentInputText] = useState("");
+  const writeComments = (id) => {
+    fetch("http://localhost:3001/api/community/writeComments", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        id: id,
+        body: petitionConsentInputText,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["success"]) {
+          alert("댓글이 등록되었습니다.");
+        }
+      });
+  };
+  const showCommunity = (id) => {
+    fetch("http://localhost:3001/api/community/showCommunity", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        id: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //title, body, 작성자, 날짜와 댓글이 담겨있음.
+        setConsents(response["comments"]);
+        setPetition(response["community"]);
+      });
+  };
+  const loginCheck = () => {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["isLogin"]) {
+          setisLogin(true);
+        } else {
+          setisLogin(false);
+        }
+      });
+  };
   useEffect(() => {
+    loginCheck();
     setConsents([
       {
         consenterID: "18011689",
@@ -87,7 +138,7 @@ function Suggestion(props) {
             borderBottom="2px solid #14406c"
           >
             <Text fontColor="#14406c" fontSize="32px">
-              {petitionTitle}
+              {/* {petitionTitle} */}
             </Text>
           </Container>
           <Container
@@ -96,13 +147,13 @@ function Suggestion(props) {
             width="450px"
           >
             <Text fontColor="grey" fontSize="14px">
-              건의: {petitioner} / &nbsp;
+              {/* 건의: {petitioner} / &nbsp; */}
             </Text>
             <Text fontColor="grey" fontSize="14px">
-              동의 수: {petitionConsensus} / &nbsp;
+              {/* 동의 수: {petitionConsensus} / &nbsp; */}
             </Text>
             <Text fontColor="grey" fontSize="14px">
-              청원 날짜: {petitionDate}
+              {/* 청원 날짜: {petitionDate} */}
             </Text>
           </Container>
         </Container>
@@ -120,7 +171,7 @@ function Suggestion(props) {
           scroll
         >
           <Text fontColor="black" fontSize="24px">
-            {petitionContent}
+            {/* {petitionContent} */}
           </Text>
         </Container>
         <Container height="30px" marginTop="20px">
