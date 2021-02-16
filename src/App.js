@@ -23,7 +23,6 @@ function App() {
     return path === "/" ? true : false;
   });
   const [isLogin, setisLogin] = useState(false);
-  const [user, setUser] = useState("");
   const [admin, setAdmin] = useState(false);
   const loginCheck = () => {
     fetch("http://localhost:3001/api/account/isLoginCheck", {
@@ -39,7 +38,6 @@ function App() {
           if (response["auth"] === 2) {
             setAdmin(true);
           }
-          setUser(response["name"]);
           setisLogin(true);
         } else {
           setisLogin(false);
@@ -71,11 +69,8 @@ function App() {
           <Route path="/information" component={Information} />
           <Route path="/communication" component={Communication} />
           <Route path="/document" component={Document} />
-          <Route path="/signin" component={() => <Signin />} />
-          <Route
-            path="/mypage"
-            component={() => <MyPage isLogin={isLogin} user={user} />}
-          />
+          <Route path="/signin" component={Signin} />
+          <Route path="/mypage" component={MyPage} />
           <Route path="/manage" component={() => <Manage admin={admin} />} />
         </Switch>
         <Footer />
