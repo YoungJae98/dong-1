@@ -18,7 +18,7 @@ router.get("/getCommunity", (req, res) => {
     res.json(data);
   });
 });
-router.get("/showCommunity", (req, res) => {
+router.post("/showCommunity", (req, res) => {
   db.query(
     "select * from community where c_id = ?",
     [req.body.id],
@@ -32,7 +32,6 @@ router.get("/showCommunity", (req, res) => {
             data["comments"].push(comments[i]);
           }
           data["community"] = commun[0];
-
           res.json(data);
         }
       );
@@ -84,6 +83,32 @@ router.post("/writeCommunity", (req, res) => {
           }
         }
       );
+    }
+  );
+});
+router.get("/getCommunityByUser", (req, res) => {
+  db.query(
+    "select * from community where c_u_id = ?",
+    [req.session.user],
+    (err, communs) => {
+      var data = { community: [] };
+      for (i = 0; i < communs.length; i++) {
+        data["community"].push(communs[i]);
+      }
+      res.json(data);
+    }
+  );
+});
+router.get("/getCommentByUser", (req, res) => {
+  db.query(
+    "select * from comments where co_u_id = ?",
+    [req.session.user],
+    (err, comments) => {
+      var data = { comments: [] };
+      for (i = 0; i < comments.length; i++) {
+        data["comments"].push(comments[i]);
+      }
+      res.json(data);
     }
   );
 });

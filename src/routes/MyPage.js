@@ -10,6 +10,33 @@ import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
 
+const getCommunityByUser = () => {
+  fetch("http://localhost:3001/api/community/getCommunityByUser", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+    },
+    credentials: "include",
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+    });
+};
+const getCommentByUser = () => {
+  fetch("http://localhost:3001/api/community/getCommentByUser", {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+    },
+    credentials: "include",
+  })
+    .then((response) => response.json())
+    .then((response) => {
+      console.log(response);
+    });
+};
+
 function MyPage({ isLogin }) {
   const history = useHistory();
   const redirectToHome = () => {
