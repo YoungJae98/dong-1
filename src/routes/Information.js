@@ -564,7 +564,12 @@ function Main() {
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
-                              <img src={pledge_checked} alt="" height="30px" />
+                              <img
+                                src={pledge_checked}
+                                alt=""
+                                height="35px"
+                                style={{ marginLeft: "5px" }}
+                              />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
                             )}
@@ -641,7 +646,12 @@ function Main() {
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
-                              <img src={pledge_checked} alt="" height="30px" />
+                              <img
+                                src={pledge_checked}
+                                alt=""
+                                height="35px"
+                                style={{ marginLeft: "5px" }}
+                              />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
                             )}
@@ -718,7 +728,12 @@ function Main() {
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
-                              <img src={pledge_checked} alt="" height="30px" />
+                              <img
+                                src={pledge_checked}
+                                alt=""
+                                height="35px"
+                                style={{ marginLeft: "5px" }}
+                              />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
                             )}
@@ -795,7 +810,12 @@ function Main() {
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
-                              <img src={pledge_checked} alt="" height="30px" />
+                              <img
+                                src={pledge_checked}
+                                alt=""
+                                height="35px"
+                                style={{ marginLeft: "5px" }}
+                              />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
                             )}
