@@ -24,14 +24,11 @@ function Main() {
   const [searchOption, setSearchOption] = useState(0);
   const getFile = () => {
     fetch("http://localhost:3001/api/files/getFiles", {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({
-        id: 3,
-      }),
     })
       .then((response) => response.json())
       .then((response) => {
