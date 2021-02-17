@@ -16,6 +16,7 @@ import { useEffect, useState } from "react";
 import Intro from "./components/Intro";
 import MyPage from "./routes/MyPage";
 import Manage from "./routes/Manage";
+import Makers from "./routes/Makers";
 
 function App() {
   const path = useLocation().pathname;
@@ -72,6 +73,7 @@ function App() {
           <Route path="/signin" component={Signin} />
           <Route path="/mypage" component={MyPage} />
           <Route path="/manage" component={() => <Manage admin={admin} />} />
+          <Route path="/makers" component={Makers} />
         </Switch>
         <Footer />
       </Container>

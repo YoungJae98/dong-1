@@ -91,7 +91,7 @@ function MyPage() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="8px"
+            marginTop="90px"
           >
             <Container
               height="50px"
@@ -99,11 +99,16 @@ function MyPage() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
+              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
                 마이 페이지
               </Text>
             </Container>
-            <Remote width="200px" paddingTop="10px" paddingBottom="10px">
+            <Remote
+              width="200px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              marginTop="10px"
+            >
               <List fd="column">
                 <Button backgroundColor="white">
                   <NavLink to="/mypage/">
@@ -130,7 +135,7 @@ function MyPage() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      label="나의 댓글"
+                      label="나의 동의 현황"
                       hoverUnderline
                     ></Listitem>
                   </NavLink>
@@ -149,7 +154,7 @@ function MyPage() {
           <Route exact path="/mypage/">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -160,7 +165,6 @@ function MyPage() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
@@ -169,6 +173,7 @@ function MyPage() {
               paddingRight="30px"
               paddingTop="30px"
               paddingBottom="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container
@@ -226,7 +231,7 @@ function MyPage() {
           <Route exact path="/mypage/mypetition">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -237,7 +242,6 @@ function MyPage() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
@@ -246,6 +250,7 @@ function MyPage() {
               paddingRight="30px"
               paddingTop="30px"
               paddingBottom="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container
@@ -289,7 +294,7 @@ function MyPage() {
           <Route exact path="/mypage/mycomments">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -300,7 +305,6 @@ function MyPage() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
@@ -309,6 +313,7 @@ function MyPage() {
               paddingRight="30px"
               paddingTop="30px"
               paddingBottom="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container

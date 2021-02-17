@@ -4,7 +4,6 @@ import styled from "styled-components";
 const StyledRemote = styled.div`
   background-color: ${(props) => props.backgroundColor || "white"};
 
-  border: 1px solid #14406c;
   border-radius: 5px;
 
   margin-top: ${(props) => props.marginTop};

@@ -78,7 +78,7 @@ function Petition() {
     <>
       <Container
         height="40px"
-        marginTop="20px"
+        marginTop="80px"
         marginLeft="20px"
         width="1000px"
         horizontalAlign="left"
@@ -89,7 +89,6 @@ function Petition() {
       </Container>
       <Container
         backgroundColor="white"
-        border="1px solid #14406c"
         borderRadius="8px"
         fd="column"
         horizontalAlign="left"
@@ -97,6 +96,7 @@ function Petition() {
         paddingLeft="30px"
         paddingRight="30px"
         paddingTop="30px"
+        marginTop="30px"
         width="1000px"
       >
         <Container

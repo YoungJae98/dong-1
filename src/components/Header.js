@@ -27,7 +27,7 @@ const StyledHeader = styled.div`
   padding-right: ${(props) => props.paddingRight};
 
   width: ${(props) => props.width || "1200px"};
-  height: ${(props) => props.height || "100px"};
+  height: ${(props) => props.height || "150px"};
 
   display: flex;
   flex-direction: ${(props) => props.fd || "row"};

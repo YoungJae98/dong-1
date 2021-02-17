@@ -17,7 +17,7 @@ function Intro() {
   return (
     <StyledIntro>
       <Container>
-        <Logo />
+        <Logo height="200px" />
       </Container>
     </StyledIntro>
   );

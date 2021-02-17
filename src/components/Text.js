@@ -5,7 +5,7 @@ import styled from "styled-components";
 const StyledText = styled.p`
   font-size: ${(props) => props.fontSize || "15px"};
   color: ${(props) => props.fontColor};
-  font-family: ${(props) => props.fontFamily || "SeoulBold"};
+  font-family: ${(props) => props.fontFamily || "SeoulMedium"};
   font-weight: ${(props) => props.fontWeight};
 
   margin: 0;
@@ -15,12 +15,10 @@ const StyledText = styled.p`
   ${(props) => props.clubName && "font-size:30px; margin-top:20px"}
   ${(props) =>
     props.clubSummary &&
-    "font-size:18px; margin-top:10px; font-family:SeoulLight"}
+    "font-size:16px; margin-top:10px; font-family:SeoulLight"}
+  ${(props) => props.more && "position:absolute; right:30px;"}
   ${(props) =>
-    props.doneAct &&
-    "text-decoration-line:line-through; text-decoration-color: pink; "}
-  ${(props) =>
-    props.doneActV && "font-weight:bold; color:pink; margin-left:5px; "}
+    props.underline && "text-decoration: underline solid #14406c 1px;"}
 `;
 
 function Text({
@@ -32,8 +30,8 @@ function Text({
   marginTop,
   clubName,
   clubSummary,
-  doneAct,
-  doneActV,
+  more,
+  underline,
   children,
 }) {
   return (
@@ -46,8 +44,8 @@ function Text({
       marginTop={marginTop}
       clubName={clubName}
       clubSummary={clubSummary}
-      doneAct={doneAct}
-      doneActV={doneActV}
+      more={more}
+      underline={underline}
     >
       {children}
     </StyledText>
