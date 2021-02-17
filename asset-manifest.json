@@ -1,17 +1,17 @@
 {
   "files": {
     "main.css": "/dong/static/css/main.93e8118a.chunk.css",
-    "main.js": "/dong/static/js/main.f2dbbdb9.chunk.js",
-    "main.js.map": "/dong/static/js/main.f2dbbdb9.chunk.js.map",
+    "main.js": "/dong/static/js/main.d8b64da4.chunk.js",
+    "main.js.map": "/dong/static/js/main.d8b64da4.chunk.js.map",
     "runtime-main.js": "/dong/static/js/runtime-main.7df10508.js",
     "runtime-main.js.map": "/dong/static/js/runtime-main.7df10508.js.map",
     "static/css/2.55d8add8.chunk.css": "/dong/static/css/2.55d8add8.chunk.css",
-    "static/js/2.86c1acfb.chunk.js": "/dong/static/js/2.86c1acfb.chunk.js",
-    "static/js/2.86c1acfb.chunk.js.map": "/dong/static/js/2.86c1acfb.chunk.js.map",
+    "static/js/2.c6a6d111.chunk.js": "/dong/static/js/2.c6a6d111.chunk.js",
+    "static/js/2.c6a6d111.chunk.js.map": "/dong/static/js/2.c6a6d111.chunk.js.map",
     "index.html": "/dong/index.html",
     "static/css/2.55d8add8.chunk.css.map": "/dong/static/css/2.55d8add8.chunk.css.map",
     "static/css/main.93e8118a.chunk.css.map": "/dong/static/css/main.93e8118a.chunk.css.map",
-    "static/js/2.86c1acfb.chunk.js.LICENSE.txt": "/dong/static/js/2.86c1acfb.chunk.js.LICENSE.txt",
+    "static/js/2.c6a6d111.chunk.js.LICENSE.txt": "/dong/static/js/2.c6a6d111.chunk.js.LICENSE.txt",
     "static/media/index.css": "/dong/static/media/Typo_SsangmunDongB.4bd085d1.ttf",
     "static/media/Sejonglogo.fb16eeb7.png": "/dong/static/media/Sejonglogo.fb16eeb7.png",
     "static/media/arom.b75a8e3b.png": "/dong/static/media/arom.b75a8e3b.png",
@@ -80,8 +80,8 @@
   "entrypoints": [
     "static/js/runtime-main.7df10508.js",
     "static/css/2.55d8add8.chunk.css",
-    "static/js/2.86c1acfb.chunk.js",
+    "static/js/2.c6a6d111.chunk.js",
     "static/css/main.93e8118a.chunk.css",
-    "static/js/main.f2dbbdb9.chunk.js"
+    "static/js/main.d8b64da4.chunk.js"
   ]
 }
