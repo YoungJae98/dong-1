@@ -382,7 +382,7 @@ function CentralClub() {
       <Container height="145px">
         <img src={v2} alt="" />
       </Container>
-      <Container height="1400px" backgroundColor="">
+      <Container height="1800px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
             width="200px"
@@ -390,7 +390,7 @@ function CentralClub() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="8px"
+            marginTop="90px"
           >
             <Container
               height="50px"
@@ -398,11 +398,16 @@ function CentralClub() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
+              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
                 중앙동아리 소개
               </Text>
             </Container>
-            <Remote width="200px" paddingTop="10px" paddingBottom="10px">
+            <Remote
+              width="200px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              marginTop="10px"
+            >
               <List fd="column">
                 <Button backgroundColor="white">
                   <NavLink to="/centralclub/">
@@ -488,7 +493,7 @@ function CentralClub() {
           <Route exact path="/centralclub/">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -499,13 +504,13 @@ function CentralClub() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
+              marginTop="30px"
               paddingTop="30px"
               width="1000px"
             >
@@ -521,7 +526,7 @@ function CentralClub() {
           <Route path="/centralclub/physical">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -532,12 +537,12 @@ function CentralClub() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
+              marginTop="30px"
               width="1000px"
               display="block"
             >
@@ -550,7 +555,7 @@ function CentralClub() {
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
-              {physicalClub.map((club, index) => {
+              {physicalClub.map((club) => {
                 return (
                   <Container
                     width="500px"
@@ -558,11 +563,7 @@ function CentralClub() {
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
-                    borderBottom={
-                      index === physicalClub.length - 1
-                        ? "none"
-                        : "2px solid grey"
-                    }
+                    marginTop="30px"
                     visual
                   >
                     <Container className="club-contents-container">
@@ -599,7 +600,7 @@ function CentralClub() {
           <Route path="/centralclub/culture">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -610,12 +611,12 @@ function CentralClub() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
+              marginTop="30px"
               width="1000px"
               display="block"
             >
@@ -636,11 +637,7 @@ function CentralClub() {
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
-                    borderBottom={
-                      index === cultureClub.length - 1
-                        ? "none"
-                        : "2px solid grey"
-                    }
+                    marginTop="30px"
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -676,7 +673,7 @@ function CentralClub() {
           <Route path="/centralclub/show">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -687,12 +684,12 @@ function CentralClub() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
+              marginTop="30px"
               width="1000px"
               display="block"
             >
@@ -713,9 +710,7 @@ function CentralClub() {
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
-                    borderBottom={
-                      index === showClub.length - 1 ? "none" : "2px solid grey"
-                    }
+                    marginTop="30px"
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -751,7 +746,7 @@ function CentralClub() {
           <Route path="/centralclub/academic">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -762,12 +757,12 @@ function CentralClub() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
+              marginTop="30px"
               width="1000px"
               display="block"
             >
@@ -787,8 +782,8 @@ function CentralClub() {
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
+                    marginTop="30px"
                     className="club-container"
-                    borderBottom="2px solid grey"
                     visual
                   >
                     <Container className="club-contents-container">
@@ -825,7 +820,7 @@ function CentralClub() {
           <Route path="/centralclub/religion">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -836,12 +831,12 @@ function CentralClub() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
+              marginTop="30px"
               width="1000px"
               display="block"
             >
@@ -862,7 +857,7 @@ function CentralClub() {
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
-                    borderBottom={"2px solid grey"}
+                    marginTop="30px"
                     visual
                   >
                     <Container className="club-contents-container">
@@ -899,7 +894,7 @@ function CentralClub() {
           <Route path="/centralclub/volunteer">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -910,12 +905,12 @@ function CentralClub() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
+              marginTop="30px"
               width="1000px"
               display="block"
             >
@@ -936,7 +931,6 @@ function CentralClub() {
                     display="inline-block"
                     key={club.clubID}
                     className="club-container"
-                    borderBottom="2px solid grey"
                     visual
                   >
                     <Container className="club-contents-container">

@@ -34,7 +34,7 @@ function ClubUnion() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="8px"
+            marginTop="90px"
           >
             <Container
               width="220px"
@@ -43,18 +43,23 @@ function ClubUnion() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
+              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
                 총동아리연합회 소개
               </Text>
             </Container>
-            <Remote width="200px" paddingTop="10px" paddingBottom="10px">
+            <Remote
+              width="200px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              marginTop="10px"
+            >
               <List fd="column">
                 <Button backgroundColor="white">
                   <NavLink to="/clubunion/">
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      label="인사말"
+                      label="총동아리연합회"
                       hoverUnderline
                     ></Listitem>
                   </NavLink>
@@ -64,7 +69,7 @@ function ClubUnion() {
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      label="회장단 및 국장 소개"
+                      label="집행부 소개"
                       hoverUnderline
                     ></Listitem>
                   </Link>
@@ -93,25 +98,25 @@ function ClubUnion() {
           <Route exact path="/clubunion/">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
-                인사말
+                총동아리연합회
               </Text>
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
+              borderRadius="5px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container
@@ -135,25 +140,25 @@ function ClubUnion() {
           <Route path="/clubunion/introduce">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
             >
               <Text fontColor="#14406c" fontSize="32px">
-                회장단 및 국장 소개
+                집행부 소개
               </Text>
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
+              borderRadius="5px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container
@@ -163,119 +168,105 @@ function ClubUnion() {
               >
                 <Link to="/clubunion/introduce/">
                   <Button
-                    backgroundColor="#14406c"
-                    fontColor="white"
+                    backgroundColor="white"
+                    fontColor="#14406c"
                     fontSize="21px"
                     font="SeoulBold"
                     width="140px"
                     height="40px"
-                    marginLeft="3px"
-                    borderRadius="7px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
                     border="2px solid #14406c"
+                    marginLeft="-2px"
+                    hoverUnderline
                   >
                     회장
                   </Button>
                 </Link>
                 <Link to="/clubunion/introduce/vicepresident">
                   <Button
-                    backgroundColor="#14406c"
-                    fontColor="white"
+                    backgroundColor="white"
+                    fontColor="#14406c"
                     fontSize="21px"
                     font="SeoulBold"
                     width="140px"
                     height="40px"
-                    marginLeft="3px"
-                    borderRadius="7px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
                     border="2px solid #14406c"
+                    marginLeft="-2px"
+                    hoverUnderline
                   >
                     부회장
                   </Button>
                 </Link>
                 <Link to="/clubunion/introduce/plan1">
                   <Button
-                    backgroundColor="#14406c"
-                    fontColor="white"
+                    backgroundColor="white"
+                    fontColor="#14406c"
                     fontSize="21px"
                     font="SeoulBold"
                     width="140px"
                     height="40px"
-                    marginLeft="3px"
-                    borderRadius="7px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
                     border="2px solid #14406c"
+                    marginLeft="-2px"
+                    hoverUnderline
                   >
                     기획1국
                   </Button>
                 </Link>
                 <Link to="/clubunion/introduce/plan2">
                   <Button
-                    backgroundColor="#14406c"
-                    fontColor="white"
+                    backgroundColor="white"
+                    fontColor="#14406c"
                     fontSize="21px"
                     font="SeoulBold"
                     width="140px"
                     height="40px"
-                    marginLeft="3px"
-                    borderRadius="7px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
                     border="2px solid #14406c"
+                    marginLeft="-2px"
+                    hoverUnderline
                   >
                     기획2국
                   </Button>
                 </Link>
                 <Link to="/clubunion/introduce/communication">
                   <Button
-                    backgroundColor="#14406c"
-                    fontColor="white"
+                    backgroundColor="white"
+                    fontColor="#14406c"
                     fontSize="21px"
                     font="SeoulBold"
                     width="140px"
                     height="40px"
-                    marginLeft="3px"
-                    borderRadius="7px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
                     border="2px solid #14406c"
+                    marginLeft="-2px"
+                    hoverUnderline
                   >
                     소통국
                   </Button>
                 </Link>
                 <Link to="/clubunion/introduce/policy-business">
                   <Button
-                    backgroundColor="#14406c"
-                    fontColor="white"
+                    backgroundColor="white"
+                    fontColor="#14406c"
                     fontSize="21px"
                     font="SeoulBold"
                     width="140px"
                     height="40px"
-                    marginLeft="3px"
-                    borderRadius="7px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
                     border="2px solid #14406c"
+                    marginLeft="-2px"
+                    hoverUnderline
                   >
                     정책/사무국
                   </Button>
                 </Link>
                 <Link to="/clubunion/introduce/promotion">
                   <Button
-                    backgroundColor="#14406c"
-                    fontColor="white"
+                    backgroundColor="white"
+                    fontColor="#14406c"
                     fontSize="21px"
                     font="SeoulBold"
                     width="140px"
                     height="40px"
-                    marginLeft="3px"
-                    borderRadius="7px"
-                    hoverBackgrounColor="white"
-                    hoverFontColor="#14406c"
                     border="2px solid #14406c"
+                    marginLeft="-2px"
+                    hoverUnderline
                   >
                     홍보국
                   </Button>
@@ -377,7 +368,7 @@ function ClubUnion() {
           <Route path="/clubunion/way2us">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -388,14 +379,14 @@ function ClubUnion() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
+              borderRadius="5px"
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container

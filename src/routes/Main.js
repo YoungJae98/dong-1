@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import logo_reversed from "../assets/images/logo_reversed.png";
+
 import Card from "../components/Card";
 import Container from "../components/Container";
 import MyCarousel from "../components/Carousel";
@@ -34,6 +36,12 @@ function Main() {
         petitionRecommendation: 14,
         petitionState: "진행 중",
       },
+      {
+        petitionId: 4,
+        petitionTitle: "shopin",
+        petitionRecommendation: 7,
+        petitionState: "진행 중",
+      },
     ]);
     setSuggestions([
       { suggestionId: 1, suggestionTitle: "czardas", suggestionConsensus: 52 },
@@ -49,33 +57,53 @@ function Main() {
       },
     ]);
     setReports([
-      { reportId: 1, reportTitle: "예산안" },
-      { reportId: 2, reportTitle: "결산안" },
+      { reportId: 1, reportTitle: "예산안", reportUploadDate: "2021-02-17" },
+      { reportId: 2, reportTitle: "결산안", reportUploadDate: "2021-02-17" },
     ]);
     setMeetinglogs([
-      { meetinglogId: 1, meetinglogTitle: "회의록1" },
-      { meetinglogId: 2, meetinglogTitle: "회의록2" },
+      {
+        meetinglogId: 1,
+        meetinglogTitle: "회의록1",
+        meetinglogUploadDate: "2021-02-17",
+      },
+      {
+        meetinglogId: 2,
+        meetinglogTitle: "회의록2",
+        meetinglogUploadDate: "2021-02-17",
+      },
     ]);
   }, []);
   return (
     <Container fd="column">
       <MyCarousel />
       <Container marginTop="20px">
-        <Card width="599px" height="200px" marginRight="20px">
+        <Card width="599px" height="210px" marginRight="20px">
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="15px"
-            paddingTop="30px"
+            paddingLeft="30px"
+            paddingTop="50px"
           >
-            <Container height="25px" horizontalAlign="flex-start">
-              <Text fontSize="22px">실시간 인기 청원</Text>
-              <Text fontSize="16px" fontColor="grey" marginLeft="400px">
+            <Container
+              height="25px"
+              horizontalAlign="flex-start"
+              position="relative"
+            >
+              <img src={logo_reversed} alt="" height="40px" />
+              <Text fontSize="22px" fontColor="#14406c">
+                &nbsp;실시간 인기 청원
+              </Text>
+              <Text
+                fontSize="16px"
+                fontColor="grey"
+                more
+                fontFamily="SeoulLight"
+              >
                 <Link to="/communication/petition">더보기</Link>
               </Text>
             </Container>
-            <Container height="10px"></Container>
+            <Container height="20px"></Container>
             {hotPetitions.map((petition) => (
               <Container
                 height="30px"
@@ -85,19 +113,28 @@ function Main() {
                 <Container width="65px">
                   <Text
                     fontSize="18px"
+                    fontFamily="SeoulLight"
                     fontColor={
-                      petition.petitionState === "진행 중" ? "green" : "red"
+                      petition.petitionState === "진행 중"
+                        ? "MediumSeaGreen"
+                        : "red"
                     }
                   >
                     [{petition.petitionState}]
                   </Text>
                 </Container>
-                <Container width="470px" horizontalAlign="flex-start">
-                  <Text fontSize="18px">{petition.petitionTitle}</Text>
+                <Container width="430px" horizontalAlign="flex-start">
+                  <Text fontSize="18px" fontFamily="SeoulLight">
+                    {petition.petitionTitle}
+                  </Text>
                 </Container>
                 <Container width="50px" horizontalAlign="flex-start">
                   <FiThumbsUp color="#14406c" />
-                  <Text fontSize="18px" marginLeft="3px">
+                  <Text
+                    fontSize="18px"
+                    fontFamily="SeoulLight"
+                    marginLeft="3px"
+                  >
                     {petition.petitionRecommendation}
                   </Text>
                 </Container>
@@ -105,33 +142,51 @@ function Main() {
             ))}
           </Container>
         </Card>
-        <Card width="599px" height="200px">
+        <Card width="599px" height="210px">
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="15px"
-            paddingTop="30px"
+            paddingLeft="30px"
+            paddingTop="50px"
           >
-            <Container height="25px" horizontalAlign="flex-start">
-              <Text fontSize="22px">건의 사항</Text>
-              <Text fontSize="16px" fontColor="grey" marginLeft="460px">
-                <Link to="/communication/">더보기</Link>
+            <Container
+              height="25px"
+              horizontalAlign="flex-start"
+              position="relative"
+            >
+              <img src={logo_reversed} alt="" height="40px" />
+              <Text fontSize="22px" fontColor="#14406c">
+                &nbsp;건의 사항
+              </Text>
+              <Text
+                fontSize="16px"
+                fontColor="grey"
+                more
+                fontFamily="SeoulLight"
+              >
+                <Link to="/communication/petition">더보기</Link>
               </Text>
             </Container>
-            <Container height="10px"></Container>
+            <Container height="20px"></Container>
             {suggestions.map((suggestion) => (
               <Container
                 height="30px"
                 horizontalAlign="space-between"
                 key={suggestion.suggestionId}
               >
-                <Container width="100%" horizontalAlign="flex-start">
-                  <Text fontSize="18px">{suggestion.suggestionTitle}</Text>
+                <Container width="430px" horizontalAlign="flex-start">
+                  <Text fontSize="18px" fontFamily="SeoulLight">
+                    {suggestion.suggestionTitle}
+                  </Text>
                 </Container>
                 <Container width="50px" horizontalAlign="flex-start">
                   <FiThumbsUp color="#14406c" />
-                  <Text fontSize="18px" marginLeft="3px">
+                  <Text
+                    fontSize="18px"
+                    marginLeft="3px"
+                    fontFamily="SeoulLight"
+                  >
                     {suggestion.suggestionConsensus}
                   </Text>
                 </Container>
@@ -141,57 +196,111 @@ function Main() {
         </Card>
       </Container>
       <Container marginTop="20px">
-        <Card width="599px" height="200px" marginRight="20px">
+        <Card width="599px" height="210px" marginRight="20px">
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="15px"
-            paddingTop="30px"
+            paddingLeft="30px"
+            paddingTop="50px"
           >
-            <Container height="25px" horizontalAlign="flex-start">
-              <Text fontSize="22px">회의록</Text>
-              <Text fontSize="16px" fontColor="grey" marginLeft="480px">
+            <Container
+              height="25px"
+              horizontalAlign="flex-start"
+              position="relative"
+            >
+              <img src={logo_reversed} alt="" height="40px" />
+              <Text fontSize="22px" fontColor="#14406c">
+                &nbsp;회의록
+              </Text>
+              <Text
+                fontSize="16px"
+                fontColor="grey"
+                more
+                fontFamily="SeoulLight"
+              >
                 <Link to="/information/meetinglog">더보기</Link>
               </Text>
             </Container>
-            <Container height="10px"></Container>
+            <Container height="20px"></Container>
             {meetinglogs.map((meetinglog) => (
               <Container
                 height="30px"
                 horizontalAlign="space-between"
                 key={meetinglog.meetinglogId}
               >
-                <Container width="100%" horizontalAlign="flex-start">
-                  <Text fontSize="18px">{meetinglog.meetinglogTitle}</Text>
+                <Container width="430px" horizontalAlign="flex-start">
+                  <Text fontSize="18px" fontFamily="SeoulLight">
+                    {meetinglog.meetinglogTitle}
+                  </Text>
+                </Container>
+                <Container
+                  width="80px"
+                  horizontalAlign="flex-start"
+                  marginRight="30px"
+                >
+                  <Text
+                    fontSize="16px"
+                    fontFamily="SeoulLight"
+                    fontColor="grey"
+                  >
+                    {meetinglog.meetinglogUploadDate}
+                  </Text>
                 </Container>
               </Container>
             ))}
           </Container>
         </Card>
-        <Card width="599px" height="200px">
+        <Card width="599px" height="210px">
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="15px"
-            paddingTop="30px"
+            paddingLeft="30px"
+            paddingTop="50px"
           >
-            <Container height="25px" horizontalAlign="flex-start">
-              <Text fontSize="22px">예결산 보고</Text>
-              <Text fontSize="16px" fontColor="grey" marginLeft="440px">
+            <Container
+              height="25px"
+              horizontalAlign="flex-start"
+              position="relative"
+            >
+              <img src={logo_reversed} alt="" height="40px" />
+              <Text fontSize="22px" fontColor="#14406c">
+                &nbsp;예결산 보고
+              </Text>
+              <Text
+                fontSize="16px"
+                fontColor="grey"
+                more
+                fontFamily="SeoulLight"
+              >
                 <Link to="/information/report">더보기</Link>
               </Text>
             </Container>
-            <Container height="10px"></Container>
+            <Container height="20px"></Container>
             {reports.map((report) => (
               <Container
                 height="30px"
                 horizontalAlign="space-between"
                 key={report.reportId}
               >
-                <Container width="100%" horizontalAlign="flex-start">
-                  <Text fontSize="18px">{report.reportTitle}</Text>
+                <Container width="430px" horizontalAlign="flex-start">
+                  <Text fontSize="18px" fontFamily="SeoulLight">
+                    {report.reportTitle}
+                  </Text>
+                </Container>
+                <Container
+                  width="80px"
+                  horizontalAlign="flex-start"
+                  marginRight="30px"
+                >
+                  <Text
+                    fontSize="16px"
+                    fontFamily="SeoulLight"
+                    fontColor="grey"
+                  >
+                    {report.reportUploadDate}
+                  </Text>
                 </Container>
               </Container>
             ))}

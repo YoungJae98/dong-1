@@ -7,7 +7,7 @@ input:focus {
 }
 body {
   margin: 0;
-  font-family: "SeoulBold";
+  font-family: "SeoulMedium";
   height: 100%;
 }
 
@@ -107,7 +107,7 @@ li {
   display: none;
   position: absolute;
   transform: translateX(-12px);
-  background-color: "#14406c";
+  background-color: #14406c;
   padding-top: 19px;
   animation: fadein 0.2s;
 }
@@ -115,7 +115,7 @@ li {
   display: none;
   position: absolute;
   transform: translateX(-30px);
-  background-color: "#14406c";
+  background-color: #14406c;
   padding-top: 19px;
   animation: fadein 0.2s;
 }
@@ -123,21 +123,21 @@ li {
   display: none;
   position: absolute;
   transform: translateX(-75px);
-  background-color: "#14406c";
+  background-color: #14406c;
   padding-top: 19px;
   animation: fadein 0.2s;
 }
 .submenu4 {
   display: none;
   position: absolute;
-  background-color: "#14406c";
+  background-color: #14406c;
   transform: translateX(-33px) translateY(-5px);
   padding-top: 18px;
   animation: fadein 0.2s;
 }
 .navigation-submenu-button:hover {
-  background-color: white;
-  color: #14406c;
+  text-decoration: underline;
+  text-underline-position: under;
 }
 .progressBar-container:hover .progressBar-content {
   border: 2px solid #14406c;
@@ -154,6 +154,7 @@ li {
 .subProgress {
   background-color: white;
   border: 2px solid #14406c;
+  border-radius: 10px;
   display: none;
   position: absolute;
   left: 240px;
@@ -164,6 +165,7 @@ li {
 .subProgress-big {
   background-color: white;
   border: 2px solid #14406c;
+  border-radius: 10px;
   display: none;
   position: absolute;
   left: 240px;
@@ -247,39 +249,48 @@ li {
 }
 .suggestions-sort-options {
   position: absolute;
-  transform: translateX(-361px) translateY(78px);
+  transform: translateX(-364px) translateY(80px);
+  border: 1px solid #14406c;
 }
 .petitions-sort-options {
   position: absolute;
-  transform: translateX(-361px) translateY(78px);
+  transform: translateX(-364px) translateY(80px);
+  border: 1px solid #14406c;
 }
 .report-sort-options {
   position: absolute;
-  transform: translateX(-361px) translateY(63px);
+  transform: translateX(-364px) translateY(65px);
+  border: 1px solid #14406c;
 }
 .meetinglogs-sort-options {
   position: absolute;
-  transform: translateX(-361px) translateY(63px);
+  transform: translateX(-364px) translateY(65px);
+  border: 1px solid #14406c;
 }
 .forms-sort-options {
   position: absolute;
-  transform: translateX(-361px) translateY(63px);
+  transform: translateX(-364px) translateY(65px);
+  border: 1px solid #14406c;
 }
 .report-search-options {
   position: absolute;
-  transform: translateX(-227px) translateY(63px);
+  transform: translateX(-229px) translateY(65px);
+  border: 1px solid #14406c;
 }
 .meetinglogs-search-options {
   position: absolute;
-  transform: translateX(-227px) translateY(63px);
+  transform: translateX(-229px) translateY(65px);
+  border: 1px solid #14406c;
 }
 .suggestions-search-options {
   position: absolute;
-  transform: translateX(-227px) translateY(63px);
+  transform: translateX(-229px) translateY(65px);
+  border: 1px solid #14406c;
 }
 .forms-search-options {
   position: absolute;
-  transform: translateX(-227px) translateY(63px);
+  transform: translateX(-229px) translateY(65px);
+  border: 1px solid #14406c;
 }
 .invisible {
   display: none;

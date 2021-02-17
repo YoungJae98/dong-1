@@ -6,6 +6,9 @@ import form1_hwp from "../assets/documents/sample2.hwp";
 import form1_docx from "../assets/documents/sample2.docx";
 import logo_inversed from "../assets/images/logo_reversed.png";
 import v5 from "../assets/images/visual/visual5.jpg";
+import pdf from "../assets/images/pdf_image.png";
+import hwp from "../assets/images/hangeul.png";
+import word from "../assets/images/word.png";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -102,7 +105,7 @@ function Main() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="8px"
+            marginTop="90px"
           >
             <Container
               height="50px"
@@ -110,11 +113,16 @@ function Main() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
+              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
                 자료
               </Text>
             </Container>
-            <Remote width="200px" paddingTop="10px" paddingBottom="10px">
+            <Remote
+              width="200px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              marginTop="10px"
+            >
               <List fd="column">
                 <Button backgroundColor="white">
                   <NavLink to="/document/">
@@ -149,7 +157,7 @@ function Main() {
           <Route exact path="/document/">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -160,7 +168,6 @@ function Main() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
@@ -169,6 +176,7 @@ function Main() {
               paddingRight="30px"
               paddingTop="30px"
               paddingBottom="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container
@@ -178,34 +186,27 @@ function Main() {
                 horizontalAlign="flex-end"
               >
                 <a href={regulations} target="_blank" rel="noreferrer">
-                  <Button
-                    width="150px"
-                    height="50px"
-                    backgroundColor="white"
-                    border="2px solid #14406c"
-                    borderRadius="5px"
-                    fontColor="#14406c"
-                    hoverBackgrounColor="#14406c"
-                    hoverFontColor="white"
-                    marginRight="15px"
-                  >
-                    <Text fontSize="21px">새 탭에서 열기</Text>
-                  </Button>
+                  <Text fontSize="21px" fontColor="#14406c" underline>
+                    새 탭에서 열기
+                  </Text>
                 </a>
-                <a href={regulations} download>
-                  <Button
-                    width="150px"
-                    height="50px"
-                    backgroundColor="white"
-                    border="2px solid #14406c"
-                    borderRadius="5px"
-                    fontColor="#14406c"
-                    hoverBackgrounColor="#14406c"
-                    hoverFontColor="white"
-                    marginRight="15px"
-                  >
-                    <Text fontSize="21px">pdf 다운로드</Text>
-                  </Button>
+                <a href={regulations} download style={{ marginLeft: "10px" }}>
+                  <Container>
+                    <img
+                      src={pdf}
+                      alt=""
+                      height="30px"
+                      style={{ display: "inline" }}
+                    />
+                    <Text
+                      fontSize="21px"
+                      fontColor="#14406c"
+                      underline
+                      marginLeft="5px"
+                    >
+                      다운로드
+                    </Text>
+                  </Container>
                 </a>
               </Container>
               <iframe
@@ -219,7 +220,7 @@ function Main() {
           <Route path="/document/form">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -230,7 +231,6 @@ function Main() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
@@ -238,6 +238,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
               className="forms-container"
             >
@@ -266,10 +267,11 @@ function Main() {
                     fd="column"
                   >
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".forms-sort-options"
@@ -289,10 +291,11 @@ function Main() {
                       제목
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".forms-sort-options"
@@ -312,10 +315,11 @@ function Main() {
                       최근
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".forms-sort-options"
@@ -361,10 +365,11 @@ function Main() {
                     fd="column"
                   >
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         document
                           .querySelector(".forms-search-options")
@@ -375,10 +380,11 @@ function Main() {
                       제목
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         document
                           .querySelector(".forms-search-options")
@@ -389,10 +395,11 @@ function Main() {
                       글쓴이
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         document
                           .querySelector(".forms-search-options")
@@ -457,14 +464,15 @@ function Main() {
                 className="forms-contents-container"
                 fd="column"
                 horizontalAlign="flex-start"
+                marginTop="30px"
               >
                 {formsSearchResult.map((form) => (
                   <Container
                     className="form-item"
-                    height="150px"
+                    height="75px"
                     horizontalAlign="flex-start"
                     marginTop="20px"
-                    borderBottom="2px solid #14406c"
+                    borderBottom="1px solid grey"
                     key={form.formId}
                   >
                     <Container
@@ -473,13 +481,13 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="34px">{form.formTitle}</Text>
+                      <Text fontSize="24px">{form.formTitle}</Text>
                       <Container
                         height="40px"
                         className="form-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontColor="grey" fontSize="21px">
+                        <Text fontColor="grey" fontSize="18px">
                           {form.formDate}
                         </Text>
                         <div
@@ -491,40 +499,40 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontColor="grey" fontSize="21px">
+                        <Text fontColor="grey" fontSize="18px">
                           {form.formUploader}
                         </Text>
                       </Container>
                     </Container>
                     <a href={form.formSourceHwp} download>
-                      <Button
-                        width="180px"
-                        height="50px"
-                        backgroundColor="white"
-                        border="2px solid #14406c"
-                        borderRadius="10px"
-                        fontColor="#14406c"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        marginRight="15px"
-                      >
-                        <Text fontSize="21px">hwp 다운로드</Text>
-                      </Button>
+                      <Container width="105px">
+                        <img src={hwp} alt="" height="30px" />
+                        <Text
+                          fontSize="21px"
+                          fontColor="#14406c"
+                          underline
+                          marginLeft="5px"
+                        >
+                          다운로드
+                        </Text>
+                      </Container>
                     </a>
-                    <a href={form.formSourceDocx} download>
-                      <Button
-                        width="180px"
-                        height="50px"
-                        backgroundColor="white"
-                        border="2px solid #14406c"
-                        borderRadius="10px"
-                        fontColor="#14406c"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        marginRight="15px"
-                      >
-                        <Text fontSize="21px">docx 다운로드</Text>
-                      </Button>
+                    <a
+                      href={form.formSourceDocx}
+                      download
+                      style={{ marginLeft: "50px", marginRight: "50px" }}
+                    >
+                      <Container width="105px">
+                        <img src={word} alt="" height="30px" />
+                        <Text
+                          fontSize="21px"
+                          fontColor="#14406c"
+                          underline
+                          marginLeft="5px"
+                        >
+                          다운로드
+                        </Text>
+                      </Container>
                     </a>
                   </Container>
                 ))}

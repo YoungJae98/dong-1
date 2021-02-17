@@ -143,7 +143,7 @@ function Communication() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="8px"
+            marginTop="90px"
           >
             <Container
               height="50px"
@@ -151,11 +151,16 @@ function Communication() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
+              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
                 소통
               </Text>
             </Container>
-            <Remote width="200px" paddingTop="10px" paddingBottom="10px">
+            <Remote
+              width="200px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              marginTop="10px"
+            >
               <List fd="column">
                 <Button backgroundColor="white">
                   <NavLink to="/communication/">
@@ -191,7 +196,7 @@ function Communication() {
             <Route exact path="/communication/">
               <Container
                 height="40px"
-                marginTop="20px"
+                marginTop="80px"
                 marginLeft="20px"
                 width="1000px"
                 horizontalAlign="left"
@@ -202,7 +207,6 @@ function Communication() {
               </Container>
               <Container
                 backgroundColor="white"
-                border="1px solid #14406c"
                 borderRadius="8px"
                 fd="column"
                 horizontalAlign="left"
@@ -210,6 +214,7 @@ function Communication() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
+                marginTop="30px"
                 width="1000px"
               >
                 <Container
@@ -242,10 +247,11 @@ function Communication() {
                       fd="column"
                     >
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -265,10 +271,11 @@ function Communication() {
                         제목
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -288,10 +295,11 @@ function Communication() {
                         동의 수
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -311,10 +319,11 @@ function Communication() {
                         최근
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -360,10 +369,11 @@ function Communication() {
                       fd="column"
                     >
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        fontSize="18px"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -374,10 +384,11 @@ function Communication() {
                         제목
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -388,10 +399,11 @@ function Communication() {
                         글쓴이
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -489,13 +501,14 @@ function Communication() {
                   className="suggestions-contents-container"
                   fd="column"
                   horizontalAlign="flex-start"
+                  marginTop="30px"
                 >
                   {suggestionsSearchResult.map((suggestion, index) => (
                     <Container
-                      height="150px"
+                      height="75px"
                       horizontalAlign="flex-start"
                       marginTop="20px"
-                      borderBottom="2px solid #14406c"
+                      borderBottom="1px solid grey"
                       key={suggestion.c_id}
                     >
                       <Link
@@ -514,13 +527,13 @@ function Communication() {
                             verticalAlign="flex-start"
                             marginLeft="30px"
                           >
-                            <Text fontSize="34px">{suggestion.c_title}</Text>
+                            <Text fontSize="24px">{suggestion.c_title}</Text>
                             <Container
                               height="40px"
                               className="form-item-uploadinfo"
                               horizontalAlign="flex-start"
                             >
-                              <Text fontColor="grey" fontSize="21px">
+                              <Text fontColor="grey" fontSize="18px">
                                 {suggestion.c_date.slice(0, 10)}
                               </Text>
                               <div
@@ -532,13 +545,13 @@ function Communication() {
                                   display: "inline",
                                 }}
                               ></div>
-                              <Text fontColor="grey" fontSize="21px">
+                              <Text fontColor="grey" fontSize="18px">
                                 {suggestion.c_user}
                               </Text>
                             </Container>
                           </Container>
                           <Container width="200px" marginRight="30px">
-                            <Text fontColor="black" fontSize="22px">
+                            <Text fontColor="grey" fontSize="20px">
                               {suggestion.c_con}명이 동의
                             </Text>
                           </Container>
@@ -552,7 +565,7 @@ function Communication() {
             <Route exact path="/communication/petition">
               <Container
                 height="40px"
-                marginTop="20px"
+                marginTop="80px"
                 marginLeft="20px"
                 width="1000px"
                 horizontalAlign="left"
@@ -563,7 +576,6 @@ function Communication() {
               </Container>
               <Container
                 backgroundColor="white"
-                border="1px solid #14406c"
                 borderRadius="8px"
                 fd="column"
                 horizontalAlign="left"
@@ -571,6 +583,7 @@ function Communication() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
+                marginTop="30px"
                 width="1000px"
               >
                 <Container className="reform-buttons-container" height="40px">
@@ -600,10 +613,11 @@ function Communication() {
                       fd="column"
                     >
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -623,10 +637,11 @@ function Communication() {
                         제목
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -646,10 +661,11 @@ function Communication() {
                         동의 수
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -669,10 +685,11 @@ function Communication() {
                         최근
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -718,10 +735,11 @@ function Communication() {
                       fd="column"
                     >
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -732,10 +750,11 @@ function Communication() {
                         제목
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -746,10 +765,11 @@ function Communication() {
                         글쓴이
                       </Button>
                       <Button
-                        backgroundColor="#14406c"
-                        fontColor="white"
-                        hoverBackgrounColor="white"
-                        hoverFontColor="#14406c"
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        fontSize="18px"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -846,13 +866,14 @@ function Communication() {
                   className="reform-contents-container"
                   fd="column"
                   horizontalAlign="flex-start"
+                  marginTop="30px"
                 >
                   {petitionsSearchResult.map((petition) => (
                     <Container
-                      height="150px"
+                      height="75px"
                       horizontalAlign="flex-start"
                       marginTop="20px"
-                      borderBottom="2px solid #14406c"
+                      borderBottom="1px solid grey"
                       key={petition.c_id}
                     >
                       <Link
@@ -871,13 +892,13 @@ function Communication() {
                             verticalAlign="flex-start"
                             marginLeft="30px"
                           >
-                            <Text fontSize="34px">{petition.c_title}</Text>
+                            <Text fontSize="24px">{petition.c_title}</Text>
                             <Container
                               height="40px"
                               className="form-item-uploadinfo"
                               horizontalAlign="flex-start"
                             >
-                              <Text fontColor="grey" fontSize="21px">
+                              <Text fontColor="grey" fontSize="18px">
                                 {petition.c_date.slice(0, 10)}
                               </Text>
                               <div
@@ -889,13 +910,13 @@ function Communication() {
                                   display: "inline",
                                 }}
                               ></div>
-                              <Text fontColor="grey" fontSize="21px">
+                              <Text fontColor="grey" fontSize="18px">
                                 {petition.c_user}
                               </Text>
                             </Container>
                           </Container>
                           <Container width="200px" marginRight="30px">
-                            <Text fontColor="black" fontSize="22px">
+                            <Text fontColor="grey" fontSize="18px">
                               {petition.c_con}명이 동의
                             </Text>
                           </Container>
@@ -909,7 +930,7 @@ function Communication() {
             <Route exact path="/communication/suggestion/register">
               <Container
                 height="40px"
-                marginTop="20px"
+                marginTop="80px"
                 marginLeft="20px"
                 width="1000px"
                 horizontalAlign="left"
@@ -920,7 +941,6 @@ function Communication() {
               </Container>
               <Container
                 backgroundColor="white"
-                border="1px solid #14406c"
                 borderRadius="8px"
                 fd="column"
                 horizontalAlign="left"
@@ -928,6 +948,7 @@ function Communication() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
+                marginTop="30px"
                 width="1000px"
               >
                 <Container
@@ -1006,7 +1027,7 @@ function Communication() {
             <Route exact path="/communication/petition/register">
               <Container
                 height="40px"
-                marginTop="20px"
+                marginTop="80px"
                 marginLeft="20px"
                 width="1000px"
                 horizontalAlign="left"
@@ -1017,7 +1038,6 @@ function Communication() {
               </Container>
               <Container
                 backgroundColor="white"
-                border="1px solid #14406c"
                 borderRadius="8px"
                 fd="column"
                 horizontalAlign="left"
@@ -1025,6 +1045,7 @@ function Communication() {
                 paddingLeft="30px"
                 paddingRight="30px"
                 paddingTop="30px"
+                marginTop="30px"
                 width="1000px"
               >
                 <Container

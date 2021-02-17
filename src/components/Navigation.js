@@ -103,7 +103,7 @@ function Navigation({
     if (main) {
       window.onscroll = () => {
         const offset = window.scrollY;
-        const stickyLimit = 100;
+        const stickyLimit = 150;
         if (offset >= stickyLimit) {
           setsticky(true);
         } else {
@@ -151,20 +151,21 @@ function Navigation({
           <List width="800px" fontColor={main ? "#14406c" : "white"}>
             <StyledNavButton>
               <Listitem label="총동아리연합회 소개" />
-              <div className="submenu">
-                <div className="navigation-uparrow"></div>
+              <div
+                className="submenu"
+                style={{ backgroundColor: main ? "white" : "#14406c" }}
+              >
                 <div>
                   <Link to="/clubunion" onClick={() => setMain(false)}>
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
-                      인사말
+                      총동아리연합회
                     </Button>
                   </Link>
                 </div>
@@ -176,13 +177,12 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
-                      회장단 및 국장 소개
+                      집행부 소개
                     </Button>
                   </Link>
                 </div>
@@ -191,10 +191,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       찾아오시는 길
@@ -205,17 +204,18 @@ function Navigation({
             </StyledNavButton>
             <StyledNavButton>
               <Listitem label="중앙동아리 소개" />
-              <div className="submenu2">
-                <div className="navigation-uparrow"></div>
+              <div
+                className="submenu2"
+                style={{ backgroundColor: main ? "white" : "#14406c" }}
+              >
                 <div>
                   <Link to="/centralclub/" onClick={() => setMain(false)}>
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       동방 배치도
@@ -227,10 +227,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       공연 분과
@@ -245,10 +244,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       문화 분과
@@ -263,10 +261,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       봉사 분과
@@ -281,10 +278,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       종교 분과
@@ -299,10 +295,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       체육 분과
@@ -317,10 +312,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       학술 분과
@@ -334,17 +328,18 @@ function Navigation({
               activeStyle={{ color: "BurlyWood" }}
             >
               <Listitem label="정보" />
-              <div className="submenu3">
-                <div className="navigation-uparrow"></div>
+              <div
+                className="submenu3"
+                style={{ backgroundColor: main ? "white" : "#14406c" }}
+              >
                 <div>
                   <Link to="/information/" onClick={() => setMain(false)}>
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       공약 이행도
@@ -355,10 +350,9 @@ function Navigation({
                   <Button
                     height="40px"
                     width="183px"
-                    backgroundColor="#14406c"
-                    fontColor="white"
-                    fontSize="21px"
-                    font="SeoulBold"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize="18px"
                     className="navigation-submenu-button"
                     onClick={() => {
                       alert("준비중입니다.");
@@ -372,10 +366,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       서동협
@@ -387,10 +380,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       예결산 보고
@@ -405,10 +397,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       회의록
@@ -419,17 +410,18 @@ function Navigation({
             </StyledNavButton>
             <StyledNavButton>
               <Listitem label="소통" />
-              <div className="submenu3">
-                <div className="navigation-uparrow"></div>
+              <div
+                className="submenu3"
+                style={{ backgroundColor: main ? "white" : "#14406c" }}
+              >
                 <div>
                   <Link to="/communication/" onClick={() => setMain(false)}>
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       건의 사항
@@ -444,10 +436,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       회칙 개정 요구 청원
@@ -458,17 +449,18 @@ function Navigation({
             </StyledNavButton>
             <StyledNavButton>
               <Listitem label="자료" />
-              <div className="submenu3">
-                <div className="navigation-uparrow"></div>
+              <div
+                className="submenu3"
+                style={{ backgroundColor: main ? "white" : "#14406c" }}
+              >
                 <div>
                   <Link to="/document/" onClick={() => setMain(false)}>
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       회칙
@@ -480,10 +472,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="183px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       제출서류 양식
@@ -495,19 +486,19 @@ function Navigation({
           </List>
           <StyledNavButton width="32px" backgroundColor="white">
             <BsFillPersonFill size="32" color={main ? "#14406c" : "white"} />
-            <div className="submenu4">
-              <div className="navigation-uparrow2"></div>
-
+            <div
+              className="submenu4"
+              style={{ backgroundColor: main ? "white" : "#14406c" }}
+            >
               {isLogin ? (
                 <>
                   <div>
                     <Button
                       height="40px"
                       width="100px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                       onClick={() => {
                         logoutProcess();
@@ -523,10 +514,9 @@ function Navigation({
                         <Button
                           height="40px"
                           width="100px"
-                          backgroundColor="#14406c"
-                          fontColor="white"
-                          fontSize="21px"
-                          font="SeoulBold"
+                          backgroundColor="white"
+                          fontColor="#14406c"
+                          fontSize="18px"
                           className="navigation-submenu-button"
                         >
                           관리
@@ -539,10 +529,9 @@ function Navigation({
                         <Button
                           height="40px"
                           width="100px"
-                          backgroundColor="#14406c"
-                          fontColor="white"
-                          fontSize="21px"
-                          font="SeoulBold"
+                          backgroundColor="white"
+                          fontColor="#14406c"
+                          fontSize="18px"
                           className="navigation-submenu-button"
                         >
                           마이페이지
@@ -557,10 +546,9 @@ function Navigation({
                     <Button
                       height="40px"
                       width="100px"
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      fontSize="21px"
-                      font="SeoulBold"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize="18px"
                       className="navigation-submenu-button"
                     >
                       로그인

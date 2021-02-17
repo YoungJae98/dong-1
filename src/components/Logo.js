@@ -1,10 +1,15 @@
 import React from "react";
-import logo from "../assets/main.png";
+import logo from "../assets/images/main.png";
 
-function Logo() {
+function Logo({ height }) {
   return (
     <div>
-      <img src={logo} className="App-logo" alt="logo" height="100px" />
+      <img
+        src={logo}
+        className="App-logo"
+        alt="logo"
+        height={height || "100px"}
+      />
     </div>
   );
 }

@@ -1,15 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import sejong from "../assets/images/sejong.png";
 
 import Container from "./Container";
 import Text from "./Text";
-
-const StyledFooter = styled.div`
-  margin-left: 20px;
-  font-size: 24px;
-`;
 
 function Footer() {
   return (
@@ -21,31 +17,55 @@ function Footer() {
       <Container
         width="1200px"
         marginTop="30px"
-        horizontalAlign="left"
         marginBottom="30px"
+        fd="column"
       >
-        <img src={sejong} alt="Sejong Logo" />
-        <StyledFooter>
-          <Text fontSize="18px" fontColor="#14406c" fontFamily="SeoulLight">
-            주소 | 05006 서울특별시 광진구 능동로 209 세종대학교 학생회관 408호
+        <Container horizontalAlign="flex-start">
+          <img src={sejong} alt="Sejong Logo" />
+          <div
+            style={{
+              width: "0px",
+              height: "30px",
+              borderLeft: "1px solid grey",
+              marginLeft: "10px",
+              marginRight: "10px",
+            }}
+          />
+          <Text fontColor="#14406c" fontFamily="SeoulLight" fontSize="28px">
+            총동아리연합회
           </Text>
+        </Container>
+        <Container horizontalAlign="left" marginTop="10px">
+          <Text fontSize="18px" fontColor="grey" fontFamily="SeoulLight">
+            05006 서울특별시 광진구 능동로 209 세종대학교 학생회관 408호
+          </Text>
+          <div
+            style={{
+              width: "0px",
+              height: "10px",
+              borderLeft: "1px solid grey",
+              marginLeft: "10px",
+              marginRight: "10px",
+            }}
+          />
+          <Container width="80px" horizontalAlign="left">
+            <Link to="/makers">
+              <Text fontSize="18px" fontColor="grey" fontFamily="SeoulLight">
+                만든 사람들
+              </Text>
+            </Link>
+          </Container>
+        </Container>
+        <Container horizontalAlign="left">
           <Text
             fontSize="18px"
-            marginTop="5px"
-            fontColor="#14406c"
-            fontFamily="SeoulLight"
-          >
-            개발 | 김영재 김훈래
-          </Text>
-          <Text
-            fontSize="18px"
-            fontColor="#14406c"
+            fontColor="grey"
             fontFamily="SeoulLight"
             marginTop="5px"
           >
             Copyright(C) 세종대학교 총동아리연합회 All rights reserved
           </Text>
-        </StyledFooter>
+        </Container>
       </Container>
     </Container>
   );

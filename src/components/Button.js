@@ -7,7 +7,7 @@ const StyledButton = styled.button`
   background-color: ${(props) => props.backgroundColor};
   color: ${(props) => props.fontColor || "black"};
 
-  font-family: ${(props) => props.font || "SeoulBold"};
+  font-family: ${(props) => props.font || "SeoulMedium"};
   font-size: ${(props) => props.fontSize || "21px"};
 
   margin-top: ${(props) => props.marginTop};
@@ -28,6 +28,9 @@ const StyledButton = styled.button`
     cursor: pointer;
     background-color: ${(props) => props.hoverBackgrounColor};
     color: ${(props) => props.hoverFontColor};
+    ${(props) =>
+      props.hoverUnderline &&
+      "text-decoration:underline; text-underline-position: under;"}
   }
 `;
 
@@ -50,6 +53,7 @@ export function Button({
   font,
   borderRadius,
   border,
+  hoverUnderline,
   children,
 }) {
   return (
@@ -72,6 +76,7 @@ export function Button({
       font={font}
       border={border}
       borderRadius={borderRadius}
+      hoverUnderline={hoverUnderline}
     >
       {children}
     </StyledButton>

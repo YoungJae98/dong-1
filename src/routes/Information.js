@@ -3,9 +3,11 @@ import { NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
 import Sejong from "../assets/images/Sejonglogo.png";
-import pdf from "../assets/documents/pdf.pdf";
+import pdf from "../assets/images/pdf_image.png";
 import promises from "../assets/documents/promises.pdf";
 import v3 from "../assets/images/visual/visual3.jpg";
+import pledge_checkbox from "../assets/images/pledge.png";
+import pledge_checked from "../assets/images/pledge_done.png";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -179,7 +181,7 @@ function Main() {
             fd="column"
             verticalAlign="baseline"
             position="sticky"
-            marginTop="8px"
+            marginTop="90px"
           >
             <Container
               height="50px"
@@ -187,11 +189,16 @@ function Main() {
               verticalAlign="flex-end"
             >
               <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" fontFamily="SeoulBold">
+              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
                 정보
               </Text>
             </Container>
-            <Remote width="200px" paddingTop="10px" paddingBottom="10px">
+            <Remote
+              width="200px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              marginTop="10px"
+            >
               <List fd="column">
                 <Button backgroundColor="white">
                   <NavLink to="/information">
@@ -261,7 +268,7 @@ function Main() {
           <Route exact path="/information/">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -272,13 +279,13 @@ function Main() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="flex-start"
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container
@@ -288,54 +295,57 @@ function Main() {
                 horizontalAlign="flex-end"
                 paddingBottom="30px"
               >
-                <Text fontColor="#14406c" fontSize="28px">
+                <Text fontColor="#14406c" fontSize="22px">
                   공약집
                 </Text>
-                <Button
-                  width="120px"
-                  height="50px"
-                  backgroundColor="white"
-                  border="2px solid #14406c"
-                  borderRadius="5px"
-                  fontColor="#14406c"
-                  hoverBackgrounColor="#14406c"
-                  hoverFontColor="white"
-                  marginLeft="15px"
-                >
-                  <a href={promises} target="_blank" rel="noreferrer">
-                    <Text fontSize="21px">바로 보기</Text>
-                  </a>
-                </Button>
-                <Button
-                  width="120px"
-                  height="50px"
-                  backgroundColor="white"
-                  border="2px solid #14406c"
-                  borderRadius="5px"
-                  fontColor="#14406c"
-                  hoverBackgrounColor="#14406c"
-                  hoverFontColor="white"
-                  marginLeft="15px"
-                >
-                  <a href={promises} download>
-                    pdf 다운로드
-                  </a>
-                </Button>
+                <div
+                  style={{
+                    width: "0px",
+                    height: "20px",
+                    borderLeft: "2px solid #14406c",
+                    marginLeft: "10px",
+                    marginRight: "10px",
+                  }}
+                />
+                <a href={promises} target="_blank" rel="noreferrer">
+                  <Text fontSize="21px" fontColor="#14406c" underline>
+                    바로 보기
+                  </Text>
+                </a>
+                <a href={promises} download style={{ marginLeft: "10px" }}>
+                  <Container>
+                    <img
+                      src={pdf}
+                      alt=""
+                      height="30px"
+                      style={{ display: "inline" }}
+                    />
+                    <Text
+                      fontSize="21px"
+                      fontColor="#14406c"
+                      underline
+                      marginLeft="5px"
+                    >
+                      다운로드
+                    </Text>
+                  </Container>
+                </a>
               </Container>
               <Container
-                height="150px"
+                height="160px"
                 className="totalPromise"
                 borderBottom="2px solid #14406c"
                 fd="column"
+                horizontalAlign="flex-start"
               >
-                <Text fontSize="28px" fontColor="#14406c">
+                <Text fontSize="28px" fontColor="#14406c" marginTop="30px">
                   전체 공약 이행도
                 </Text>
                 <Container
                   className="progressBar-container"
                   height="40px"
                   position="relative"
-                  marginTop="10px"
+                  marginTop="30px"
                 >
                   <Container
                     backgroundColor="Gainsboro"
@@ -548,18 +558,20 @@ function Main() {
                         과제1 동아리와 총동연을 밀접하게
                       </Text>
                       {assignment1.map((act, index) => (
-                        <Container horizontalAlign="flex-start" key={act.p_id}>
-                          <Text
-                            marginLeft="10px"
-                            doneAct={act.p_status}
-                            fontSize="21px"
-                          >
-                            행동{index + 1}&nbsp;
-                          </Text>
-                          <Text doneAct={act.p_status} fontSize="21px">
-                            {act.p_name}
-                          </Text>
-                          {act.p_status ? <Text doneActV>V</Text> : null}
+                        <Container key={act.p_id}>
+                          <Container horizontalAlign="flex-start">
+                            <Text marginLeft="10px" fontSize="21px">
+                              행동{index + 1}&nbsp;
+                            </Text>
+                            <Text fontSize="21px">{act.p_name}</Text>
+                          </Container>
+                          <Container width="50px">
+                            {act.p_status ? (
+                              <img src={pledge_checked} alt="" height="30px" />
+                            ) : (
+                              <img src={pledge_checkbox} alt="" height="30px" />
+                            )}
+                          </Container>
                         </Container>
                       ))}
                     </Container>
@@ -612,7 +624,7 @@ function Main() {
                   </Container>
                   <div
                     className="subProgress-big"
-                    style={{ width: "420px", height: "200px" }}
+                    style={{ width: "460px", height: "200px" }}
                   >
                     <Container fd="column" horizontalAlign="flex-start">
                       <Text
@@ -623,18 +635,20 @@ function Main() {
                         과제2 분과 살리기
                       </Text>
                       {assignment2.map((act, index) => (
-                        <Container horizontalAlign="flex-start" key={act.p_id}>
-                          <Text
-                            marginLeft="10px"
-                            doneAct={act.p_status}
-                            fontSize="21px"
-                          >
-                            행동{index + 1}&nbsp;
-                          </Text>
-                          <Text doneAct={act.p_status} fontSize="21px">
-                            {act.p_name}
-                          </Text>
-                          {act.p_status ? <Text doneActV>V</Text> : null}
+                        <Container key={act.p_id}>
+                          <Container horizontalAlign="flex-start">
+                            <Text marginLeft="10px" fontSize="21px">
+                              행동{index + 1}&nbsp;
+                            </Text>
+                            <Text fontSize="21px">{act.p_name}</Text>
+                          </Container>
+                          <Container width="50px">
+                            {act.p_status ? (
+                              <img src={pledge_checked} alt="" height="30px" />
+                            ) : (
+                              <img src={pledge_checkbox} alt="" height="30px" />
+                            )}
+                          </Container>
                         </Container>
                       ))}
                     </Container>
@@ -698,18 +712,20 @@ function Main() {
                         과제3 동아리 알리기
                       </Text>
                       {assignment3.map((act, index) => (
-                        <Container horizontalAlign="flex-start" key={act.p_id}>
-                          <Text
-                            marginLeft="10px"
-                            doneAct={act.p_status}
-                            fontSize="21px"
-                          >
-                            행동{index + 1}&nbsp;
-                          </Text>
-                          <Text doneAct={act.p_status} fontSize="21px">
-                            {act.p_name}
-                          </Text>
-                          {act.p_status ? <Text doneActV>V</Text> : null}
+                        <Container key={act.p_id}>
+                          <Container horizontalAlign="flex-start">
+                            <Text marginLeft="10px" fontSize="21px">
+                              행동{index + 1}&nbsp;
+                            </Text>
+                            <Text fontSize="21px">{act.p_name}</Text>
+                          </Container>
+                          <Container width="50px">
+                            {act.p_status ? (
+                              <img src={pledge_checked} alt="" height="30px" />
+                            ) : (
+                              <img src={pledge_checkbox} alt="" height="30px" />
+                            )}
+                          </Container>
                         </Container>
                       ))}
                     </Container>
@@ -773,18 +789,20 @@ function Main() {
                         과제4 동아리 활동성 증진
                       </Text>
                       {assignment4.map((act, index) => (
-                        <Container horizontalAlign="flex-start" key={act.p_id}>
-                          <Text
-                            marginLeft="10px"
-                            doneAct={act.p_status}
-                            fontSize="21px"
-                          >
-                            행동{index + 1}&nbsp;
-                          </Text>
-                          <Text doneAct={act.p_status} fontSize="21px">
-                            {act.p_name}
-                          </Text>
-                          {act.p_status ? <Text doneActV>V</Text> : null}
+                        <Container key={act.p_id}>
+                          <Container horizontalAlign="flex-start">
+                            <Text marginLeft="10px" fontSize="21px">
+                              행동{index + 1}&nbsp;
+                            </Text>
+                            <Text fontSize="21px">{act.p_name}</Text>
+                          </Container>
+                          <Container width="50px">
+                            {act.p_status ? (
+                              <img src={pledge_checked} alt="" height="30px" />
+                            ) : (
+                              <img src={pledge_checkbox} alt="" height="30px" />
+                            )}
+                          </Container>
                         </Container>
                       ))}
                     </Container>
@@ -868,7 +886,7 @@ function Main() {
           <Route exact path="/information/seoul">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -879,7 +897,6 @@ function Main() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="flex-start"
@@ -887,6 +904,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container height="250px">
@@ -990,7 +1008,7 @@ function Main() {
           <Route exact path="/information/report">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -1001,7 +1019,6 @@ function Main() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
@@ -1009,6 +1026,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container className="reports-button-container" height="40px">
@@ -1036,10 +1054,11 @@ function Main() {
                     fd="column"
                   >
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".report-sort-options"
@@ -1059,10 +1078,11 @@ function Main() {
                       제목
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".report-sort-options"
@@ -1082,10 +1102,11 @@ function Main() {
                       최근
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".report-sort-options"
@@ -1132,10 +1153,11 @@ function Main() {
                     fd="column"
                   >
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".report-search-options"
@@ -1147,10 +1169,11 @@ function Main() {
                       제목
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".report-search-options"
@@ -1162,10 +1185,11 @@ function Main() {
                       글쓴이
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".report-search-options"
@@ -1231,14 +1255,15 @@ function Main() {
                 className="reports-contents-container"
                 fd="column"
                 horizontalAlign="flex-start"
+                marginTop="30px"
               >
                 {reportSearchResult.map((report) => (
                   <Container
                     className="report-item"
-                    height="150px"
+                    height="75px"
                     horizontalAlign="flex-start"
                     marginTop="20px"
-                    borderBottom="2px solid #14406c"
+                    borderBottom="1px solid grey"
                     key={report.reportId}
                   >
                     <Container
@@ -1247,13 +1272,13 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="34px">{report.reportTitle}</Text>
+                      <Text fontSize="24px">{report.reportTitle}</Text>
                       <Container
                         height="40px"
                         className="report-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontColor="grey" fontSize="21px">
+                        <Text fontColor="grey" fontSize="18px">
                           {report.reportDate}
                         </Text>
                         <div
@@ -1265,7 +1290,7 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontColor="grey" fontSize="21px">
+                        <Text fontColor="grey" fontSize="18px">
                           {report.reporter}
                         </Text>
                       </Container>
@@ -1275,34 +1300,28 @@ function Main() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Button
-                        width="180px"
-                        height="50px"
-                        backgroundColor="white"
-                        border="2px solid #14406c"
-                        borderRadius="10px"
-                        fontColor="#14406c"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        marginRight="15px"
-                      >
-                        <Text fontSize="21px">바로 보기</Text>
-                      </Button>
+                      <Container width="75px">
+                        <Text fontSize="21px" fontColor="#14406c" underline>
+                          바로 보기
+                        </Text>
+                      </Container>
                     </a>
-                    <a href={report.reportSource} download>
-                      <Button
-                        width="180px"
-                        height="50px"
-                        backgroundColor="white"
-                        border="2px solid #14406c"
-                        borderRadius="10px"
-                        fontColor="#14406c"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        marginRight="15px"
-                      >
-                        <Text fontSize="21px">pdf 다운로드</Text>
-                      </Button>
+                    <a
+                      href={report.reportSource}
+                      download
+                      style={{ marginLeft: "50px", marginRight: "50px" }}
+                    >
+                      <Container width="105px">
+                        <img src={pdf} alt="" height="30px" />
+                        <Text
+                          fontSize="21px"
+                          fontColor="#14406c"
+                          underline
+                          marginLeft="5px"
+                        >
+                          다운로드
+                        </Text>
+                      </Container>
                     </a>
                   </Container>
                 ))}
@@ -1312,7 +1331,7 @@ function Main() {
           <Route exact path="/information/meetinglog">
             <Container
               height="40px"
-              marginTop="20px"
+              marginTop="80px"
               marginLeft="20px"
               width="1000px"
               horizontalAlign="left"
@@ -1323,7 +1342,6 @@ function Main() {
             </Container>
             <Container
               backgroundColor="white"
-              border="1px solid #14406c"
               borderRadius="8px"
               fd="column"
               horizontalAlign="left"
@@ -1331,6 +1349,7 @@ function Main() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              marginTop="30px"
               width="1000px"
             >
               <Container className="meetinglog-button-container" height="40px">
@@ -1360,10 +1379,11 @@ function Main() {
                     fd="column"
                   >
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".meetinglogs-sort-options"
@@ -1383,12 +1403,12 @@ function Main() {
                     >
                       제목
                     </Button>
-
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".meetinglogs-sort-options"
@@ -1408,10 +1428,11 @@ function Main() {
                       최근
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
                           ".meetinglogs-sort-options"
@@ -1457,10 +1478,11 @@ function Main() {
                     fd="column"
                   >
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         document
                           .querySelector(".meetinglogs-search-options")
@@ -1471,10 +1493,11 @@ function Main() {
                       제목
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         document
                           .querySelector(".meetinglogs-search-options")
@@ -1485,10 +1508,11 @@ function Main() {
                       글쓴이
                     </Button>
                     <Button
-                      backgroundColor="#14406c"
-                      fontColor="white"
-                      hoverBackgrounColor="white"
-                      hoverFontColor="#14406c"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
                       onClick={() => {
                         document
                           .querySelector(".meetinglogs-search-options")
@@ -1553,14 +1577,15 @@ function Main() {
                 className="meetinglogs-contents-container"
                 fd="column"
                 horizontalAlign="flex-start"
+                marginTop="30px"
               >
                 {meetinglogsSearchResult.map((meetinglog) => (
                   <Container
                     className="meetinglog-item"
-                    height="150px"
+                    height="75px"
                     horizontalAlign="flex-start"
                     marginTop="20px"
-                    borderBottom="2px solid #14406c"
+                    borderBottom="1px solid grey"
                     key={meetinglog.meetinglogId}
                   >
                     <Container
@@ -1569,13 +1594,13 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="34px">{meetinglog.meetinglogTitle}</Text>
+                      <Text fontSize="24px">{meetinglog.meetinglogTitle}</Text>
                       <Container
                         height="40px"
                         className="report-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontColor="grey" fontSize="21px">
+                        <Text fontColor="grey" fontSize="18px">
                           {meetinglog.meetinglogDate}
                         </Text>
                         <div
@@ -1587,7 +1612,7 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontColor="grey" fontSize="21px">
+                        <Text fontColor="grey" fontSize="18px">
                           {meetinglog.meetingloger}
                         </Text>
                       </Container>
@@ -1597,34 +1622,28 @@ function Main() {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      <Button
-                        width="180px"
-                        height="50px"
-                        backgroundColor="white"
-                        border="2px solid #14406c"
-                        borderRadius="10px"
-                        fontColor="#14406c"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        marginRight="15px"
-                      >
-                        <Text fontSize="21px">바로 보기</Text>
-                      </Button>
+                      <Container width="75px">
+                        <Text fontSize="21px" fontColor="#14406c" underline>
+                          바로 보기
+                        </Text>
+                      </Container>
                     </a>
-                    <a href={meetinglog.meetinglogSource} download>
-                      <Button
-                        width="180px"
-                        height="50px"
-                        backgroundColor="white"
-                        border="2px solid #14406c"
-                        borderRadius="10px"
-                        fontColor="#14406c"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        marginRight="15px"
-                      >
-                        <Text fontSize="21px">pdf 다운로드</Text>
-                      </Button>
+                    <a
+                      href={meetinglog.meetinglogSource}
+                      download
+                      style={{ marginLeft: "50px", marginRight: "50px" }}
+                    >
+                      <Container width="105px">
+                        <img src={pdf} alt="" height="30px" />
+                        <Text
+                          fontSize="21px"
+                          fontColor="#14406c"
+                          underline
+                          marginLeft="5px"
+                        >
+                          다운로드
+                        </Text>
+                      </Container>
                     </a>
                   </Container>
                 ))}
