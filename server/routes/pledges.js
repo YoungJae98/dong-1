@@ -25,9 +25,21 @@ router.get("/getPledge", (req, res) => {
   });
 });
 
-router.get("/setPledge", (req, res) => {
+router.post("/setPledge", (req, res) => {
   db.query(
-    "update pledges set p_status = 1 where p_id = ?",
+    "update pledge set p_status = 1 where p_id = ?",
+    [req.body.p_id],
+    (err, results) => {
+      res.json({
+        success: true,
+      });
+    }
+  );
+});
+
+router.post("/unsetPledge", (req, res) => {
+  db.query(
+    "update pledge set p_status = 0 where p_id = ?",
     [req.body.p_id],
     (err, results) => {
       res.json({

@@ -73,8 +73,6 @@ function MyPage() {
     if (isLogin) {
       getCommunityByUser();
       getCommentByUser();
-      console.log(mysuggestion);
-      console.log(mypetition);
     }
   }, [isLogin]);
 
@@ -196,11 +194,13 @@ function MyPage() {
               >
                 {isLogin ? (
                   mysuggestion.map((item, index) => (
-                    <Link to={`/communication/suggestion/${item.c_id}`}>
+                    <Link
+                      to={`/communication/suggestion/${item.c_id}`}
+                      key={item.c_id}
+                    >
                       <Container
                         width="940px"
-                        height="100px"
-                        key={item.c_id}
+                        height="80px"
                         backgroundColor={index % 2 === 0 ? "#FAFAFA" : "white"}
                         horizontalAlign="flex-start"
                         paddingLeft="30px"
@@ -273,15 +273,31 @@ function MyPage() {
               >
                 {isLogin ? (
                   mypetition.map((item, index) => (
-                    <Container
-                      height="100px"
+                    <Link
+                      to={`/communication/petition/${item.c_id}`}
                       key={item.c_id}
-                      backgroundColor={index % 2 === 0 ? "#FAFAFA" : "white"}
-                      horizontalAlign="flex-start"
-                      paddingLeft="30px"
                     >
-                      <Text fontSize="24px">{item.c_title}</Text>
-                    </Container>
+                      <Container
+                        width="940px"
+                        height="80px"
+                        backgroundColor={index % 2 === 0 ? "#FAFAFA" : "white"}
+                        horizontalAlign="flex-start"
+                        paddingRight="30px"
+                        paddingLeft="30px"
+                      >
+                        <Container horizontalAlign="flex-start">
+                          <Text fontSize="24px">{item.c_title}</Text>
+                        </Container>
+                        <Container width="400px">
+                          <Text fontSize="16px" fontColor="grey">
+                            등록 날짜: {item.c_date.slice(0, 10)} /
+                          </Text>
+                          <Text fontSize="16px" fontColor="grey">
+                            &nbsp; 동의 수: {item.c_con}
+                          </Text>
+                        </Container>
+                      </Container>
+                    </Link>
                   ))
                 ) : (
                   <Container>

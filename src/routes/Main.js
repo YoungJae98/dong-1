@@ -12,50 +12,27 @@ import { Link } from "react-router-dom";
 import { FiThumbsUp } from "react-icons/fi";
 
 function Main() {
-  const [hotPetitions, setHotPetitions] = useState([]);
+  const [petitions, setPetitions] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
+  const [community, setCommunity] = useState({});
+  const getCommunity = () => {
+    fetch("http://localhost:3001/api/community/getCommunity", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        //response에서 1은 suggestion에서 2는 petition으로 구분
+        setCommunity(response);
+      });
+  };
   useEffect(() => {
-    setHotPetitions([
-      {
-        petitionId: 1,
-        petitionTitle: "La crimosa",
-        petitionRecommendation: 52,
-        petitionState: "끝남",
-      },
-      {
-        petitionId: 2,
-        petitionTitle: "Winter Wind",
-        petitionRecommendation: 35,
-        petitionState: "진행 중",
-      },
-      {
-        petitionId: 3,
-        petitionTitle: "Tempest",
-        petitionRecommendation: 14,
-        petitionState: "진행 중",
-      },
-      {
-        petitionId: 4,
-        petitionTitle: "shopin",
-        petitionRecommendation: 7,
-        petitionState: "진행 중",
-      },
-    ]);
-    setSuggestions([
-      { suggestionId: 1, suggestionTitle: "czardas", suggestionConsensus: 52 },
-      {
-        suggestionId: 2,
-        suggestionTitle: "Libertango",
-        suggestionConsensus: 12,
-      },
-      {
-        suggestionId: 3,
-        suggestionTitle: "por una cabeza",
-        suggestionConsensus: 7,
-      },
-    ]);
+    getCommunity();
     setReports([
       { reportId: 1, reportTitle: "예산안", reportUploadDate: "2021-02-17" },
       { reportId: 2, reportTitle: "결산안", reportUploadDate: "2021-02-17" },
@@ -73,6 +50,16 @@ function Main() {
       },
     ]);
   }, []);
+  useEffect(() => {
+    if (Object.keys(community).length !== 0) {
+      setSuggestions(
+        community["1"].sort((a, b) => (a.con > b.con ? -1 : 1)).slice(0, 4)
+      );
+      setPetitions(
+        community["2"].sort((a, b) => (a.c_con > b.c_con ? -1 : 1)).slice(0, 4)
+      );
+    }
+  }, [community]);
   return (
     <Container fd="column">
       <MyCarousel />
@@ -104,41 +91,42 @@ function Main() {
               </Text>
             </Container>
             <Container height="20px"></Container>
-            {hotPetitions.map((petition) => (
-              <Container
-                height="30px"
-                horizontalAlign="flex-start"
-                key={petition.petitionId}
+            {petitions.map((petition) => (
+              <Link
+                to={`/communication/petition/${petition.c_id}`}
+                key={petition.c_id}
               >
-                <Container width="65px">
-                  <Text
-                    fontSize="18px"
-                    fontFamily="SeoulLight"
-                    fontColor={
-                      petition.petitionState === "진행 중"
-                        ? "MediumSeaGreen"
-                        : "red"
-                    }
-                  >
-                    [{petition.petitionState}]
-                  </Text>
+                <Container height="30px" horizontalAlign="flex-start">
+                  <Container width="65px">
+                    <Text
+                      fontSize="18px"
+                      fontFamily="SeoulLight"
+                      fontColor={
+                        petition.c_status === 1 ? "MediumSeaGreen" : "red"
+                      }
+                    >
+                      [{petition.c_status === 1 ? "진행 중" : "끝남"}]
+                    </Text>
+                  </Container>
+                  <Container width="430px" horizontalAlign="flex-start">
+                    <Text fontSize="18px" fontFamily="SeoulLight">
+                      {petition.c_title.length > 25
+                        ? `${petition.c_title.slice(0, 30)}...`
+                        : petition.c_title}
+                    </Text>
+                  </Container>
+                  <Container width="50px" horizontalAlign="flex-start">
+                    <FiThumbsUp color="#14406c" />
+                    <Text
+                      fontSize="18px"
+                      fontFamily="SeoulLight"
+                      marginLeft="3px"
+                    >
+                      {petition.c_con}
+                    </Text>
+                  </Container>
                 </Container>
-                <Container width="430px" horizontalAlign="flex-start">
-                  <Text fontSize="18px" fontFamily="SeoulLight">
-                    {petition.petitionTitle}
-                  </Text>
-                </Container>
-                <Container width="50px" horizontalAlign="flex-start">
-                  <FiThumbsUp color="#14406c" />
-                  <Text
-                    fontSize="18px"
-                    fontFamily="SeoulLight"
-                    marginLeft="3px"
-                  >
-                    {petition.petitionRecommendation}
-                  </Text>
-                </Container>
-              </Container>
+              </Link>
             ))}
           </Container>
         </Card>
@@ -170,27 +158,30 @@ function Main() {
             </Container>
             <Container height="20px"></Container>
             {suggestions.map((suggestion) => (
-              <Container
-                height="30px"
-                horizontalAlign="space-between"
-                key={suggestion.suggestionId}
+              <Link
+                to={`/communication/petition/${suggestion.c_id}`}
+                key={suggestion.c_id}
               >
-                <Container width="430px" horizontalAlign="flex-start">
-                  <Text fontSize="18px" fontFamily="SeoulLight">
-                    {suggestion.suggestionTitle}
-                  </Text>
+                <Container height="30px" horizontalAlign="flex-start">
+                  <Container width="495px" horizontalAlign="flex-start">
+                    <Text fontSize="18px" fontFamily="SeoulLight">
+                      {suggestion.c_title.length > 25
+                        ? `${suggestion.c_title.slice(0, 30)}...`
+                        : suggestion.c_title}
+                    </Text>
+                  </Container>
+                  <Container width="50px" horizontalAlign="flex-start">
+                    <FiThumbsUp color="#14406c" />
+                    <Text
+                      fontSize="18px"
+                      fontFamily="SeoulLight"
+                      marginLeft="3px"
+                    >
+                      {suggestion.c_con}
+                    </Text>
+                  </Container>
                 </Container>
-                <Container width="50px" horizontalAlign="flex-start">
-                  <FiThumbsUp color="#14406c" />
-                  <Text
-                    fontSize="18px"
-                    marginLeft="3px"
-                    fontFamily="SeoulLight"
-                  >
-                    {suggestion.suggestionConsensus}
-                  </Text>
-                </Container>
-              </Container>
+              </Link>
             ))}
           </Container>
         </Card>

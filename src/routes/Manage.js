@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink, Route, useHistory } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
@@ -11,307 +11,626 @@ import Text from "../components/Text";
 import Remote from "../components/Remote";
 import List from "../components/List";
 
-function Manage({ admin }) {
-  const history = useHistory();
-  const redirectToHome = () => {
-    history.push("/");
+function Manage() {
+  const [pledges, setPledges] = useState({});
+  const [assignment1, setAssignment1] = useState([]);
+  const [assignment2, setAssignment2] = useState([]);
+  const [assignment3, setAssignment3] = useState([]);
+  const [assignment4, setAssignment4] = useState([]);
+  const getPledge = () => {
+    fetch("http://localhost:3001/api/pledges/getPledge", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setPledges(response);
+      });
   };
-  if (admin)
-    return (
-      <>
-        <Container height="145px">
-          <img src={v2} alt="" />
-        </Container>
-        <Container height="1400px" backgroundColor="">
-          <Container width="200px" verticalAlign="baseline">
-            <Container
-              width="200px"
-              height="366px"
-              fd="column"
-              verticalAlign="baseline"
-              position="sticky"
-              marginTop="8px"
-            >
-              <Container
-                height="50px"
-                horizontalAlign="left"
-                verticalAlign="flex-end"
-              >
-                <img src={logo_inversed} alt="" width="40px" />
-                <Text
-                  fontColor="#14406c"
-                  fontSize="21px"
-                  fontFamily="SeoulBold"
-                >
-                  관리
-                </Text>
-              </Container>
-              <Remote width="200px" paddingTop="10px" paddingBottom="10px">
-                <List fd="column">
-                  <Button backgroundColor="white">
-                    <NavLink to="/manage/">
-                      <Listitem
-                        height="40px"
-                        fontColor="#14406c"
-                        label="공약 이행도"
-                        hoverUnderline
-                      ></Listitem>
-                    </NavLink>
-                  </Button>
-                  <Button backgroundColor="white">
-                    <NavLink to="/manage/report">
-                      <Listitem
-                        height="40px"
-                        fontColor="#14406c"
-                        label="예결산 보고"
-                        hoverUnderline
-                      ></Listitem>
-                    </NavLink>
-                  </Button>
-                  <Button backgroundColor="white">
-                    <NavLink to="/manage/meetinglog">
-                      <Listitem
-                        height="40px"
-                        fontColor="#14406c"
-                        label="회의록"
-                        hoverUnderline
-                      ></Listitem>
-                    </NavLink>
-                  </Button>
-                  <Button backgroundColor="white">
-                    <NavLink to="/manage/suggestion">
-                      <Listitem
-                        height="40px"
-                        fontColor="#14406c"
-                        label="건의 사항"
-                        hoverUnderline
-                      ></Listitem>
-                    </NavLink>
-                  </Button>
-                  <Button backgroundColor="white">
-                    <NavLink to="/manage/petition">
-                      <Listitem
-                        height="40px"
-                        fontColor="#14406c"
-                        label="회칙 개정 요구 청원"
-                        hoverUnderline
-                      ></Listitem>
-                    </NavLink>
-                  </Button>
-                  <Button backgroundColor="white">
-                    <NavLink to="/manage/forms">
-                      <Listitem
-                        height="40px"
-                        fontColor="#14406c"
-                        label="제출 서류 양식"
-                        hoverUnderline
-                      ></Listitem>
-                    </NavLink>
-                  </Button>
-                  <Button backgroundColor="white">
-                    <NavLink to="/manage/carousel">
-                      <Listitem
-                        height="40px"
-                        fontColor="#14406c"
-                        label="메인 슬라이드 이미지"
-                        hoverUnderline
-                      ></Listitem>
-                    </NavLink>
-                  </Button>
-                </List>
-              </Remote>
-            </Container>
-          </Container>
+  const setPledge = (p_id) => {
+    fetch("http://localhost:3001/api/pledges/setPledge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        p_id: p_id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["success"]) {
+          alert("공약을 수행상태로 변경 완료했습니다.");
+          getPledge();
+        } else {
+          alert("오류 발생");
+        }
+      });
+  };
+  const unsetPledge = (p_id) => {
+    fetch("http://localhost:3001/api/pledges/unsetPledge", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        p_id: p_id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["success"]) {
+          alert("공약을 미수행상태로 변경 완료했습니다.");
+          getPledge();
+        } else {
+          alert("오류 발생");
+        }
+      });
+  };
+  useEffect(() => {
+    getPledge();
+  }, []);
+  useEffect(() => {
+    if (Object.keys(pledges).length !== 0) {
+      setAssignment1(pledges["1"]);
+      setAssignment2(pledges["2"]);
+      setAssignment3(pledges["3"]);
+      setAssignment4(pledges["4"]);
+    }
+  }, [pledges]);
+  return (
+    <>
+      <Container height="145px">
+        <img src={v2} alt="" />
+      </Container>
+      <Container height="1400px" backgroundColor="">
+        <Container width="200px" verticalAlign="baseline">
           <Container
-            backgroundColor=""
-            width="1062px"
+            width="200px"
+            height="366px"
             fd="column"
-            marginLeft="30px"
-            verticalAlign="flex-start"
+            verticalAlign="baseline"
+            position="sticky"
+            marginTop="90px"
           >
-            <Route exact path="/manage/">
-              <Container
-                height="40px"
-                marginTop="20px"
-                marginLeft="20px"
-                width="1000px"
-                horizontalAlign="left"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  공약 이행도
-                </Text>
-              </Container>
-              <Container
-                backgroundColor="white"
-                border="1px solid #14406c"
-                borderRadius="8px"
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                paddingLeft="30px"
-                paddingRight="30px"
-                paddingTop="30px"
-                width="1000px"
-              ></Container>
-            </Route>
-            <Route exact path="/manage/report">
-              <Container
-                height="40px"
-                marginTop="20px"
-                marginLeft="20px"
-                width="1000px"
-                horizontalAlign="left"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  예결산 보고
-                </Text>
-              </Container>
-              <Container
-                backgroundColor="white"
-                border="1px solid #14406c"
-                borderRadius="8px"
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                paddingLeft="30px"
-                paddingRight="30px"
-                paddingTop="30px"
-                width="1000px"
-              ></Container>
-            </Route>
-            <Route exact path="/manage/meetinglog">
-              <Container
-                height="40px"
-                marginTop="20px"
-                marginLeft="20px"
-                width="1000px"
-                horizontalAlign="left"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  회의록
-                </Text>
-              </Container>
-              <Container
-                backgroundColor="white"
-                border="1px solid #14406c"
-                borderRadius="8px"
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                paddingLeft="30px"
-                paddingRight="30px"
-                paddingTop="30px"
-                width="1000px"
-              ></Container>
-            </Route>
-            <Route exact path="/manage/suggestion">
-              <Container
-                height="40px"
-                marginTop="20px"
-                marginLeft="20px"
-                width="1000px"
-                horizontalAlign="left"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  건의 사항
-                </Text>
-              </Container>
-              <Container
-                backgroundColor="white"
-                border="1px solid #14406c"
-                borderRadius="8px"
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                paddingLeft="30px"
-                paddingRight="30px"
-                paddingTop="30px"
-                width="1000px"
-              ></Container>
-            </Route>
-            <Route exact path="/manage/petition">
-              <Container
-                height="40px"
-                marginTop="20px"
-                marginLeft="20px"
-                width="1000px"
-                horizontalAlign="left"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  회칙 개정 요구 청원
-                </Text>
-              </Container>
-              <Container
-                backgroundColor="white"
-                border="1px solid #14406c"
-                borderRadius="8px"
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                paddingLeft="30px"
-                paddingRight="30px"
-                paddingTop="30px"
-                width="1000px"
-              ></Container>
-            </Route>
-            <Route exact path="/manage/forms">
-              <Container
-                height="40px"
-                marginTop="20px"
-                marginLeft="20px"
-                width="1000px"
-                horizontalAlign="left"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  제출 서류 양식
-                </Text>
-              </Container>
-              <Container
-                backgroundColor="white"
-                border="1px solid #14406c"
-                borderRadius="8px"
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                paddingLeft="30px"
-                paddingRight="30px"
-                paddingTop="30px"
-                width="1000px"
-              ></Container>
-            </Route>
-            <Route exact path="/manage/carousel">
-              <Container
-                height="40px"
-                marginTop="20px"
-                marginLeft="20px"
-                width="1000px"
-                horizontalAlign="left"
-              >
-                <Text fontColor="#14406c" fontSize="32px">
-                  메인 슬라이드 이미지
-                </Text>
-              </Container>
-              <Container
-                backgroundColor="white"
-                border="1px solid #14406c"
-                borderRadius="8px"
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                paddingLeft="30px"
-                paddingRight="30px"
-                paddingTop="30px"
-                width="1000px"
-              ></Container>
-            </Route>
+            <Container
+              height="50px"
+              horizontalAlign="left"
+              verticalAlign="flex-end"
+            >
+              <img src={logo_inversed} alt="" width="40px" />
+              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
+                관리
+              </Text>
+            </Container>
+            <Remote
+              width="200px"
+              paddingTop="10px"
+              paddingBottom="10px"
+              marginTop="10px"
+            >
+              <List fd="column">
+                <Button backgroundColor="white">
+                  <NavLink to="/manage/">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      label="공약 이행도"
+                      hoverUnderline
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+                <Button backgroundColor="white">
+                  <NavLink to="/manage/report">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      label="예결산 보고"
+                      hoverUnderline
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+                <Button backgroundColor="white">
+                  <NavLink to="/manage/meetinglog">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      label="회의록"
+                      hoverUnderline
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+                <Button backgroundColor="white">
+                  <NavLink to="/manage/suggestion">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      label="건의 사항"
+                      hoverUnderline
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+                <Button backgroundColor="white">
+                  <NavLink to="/manage/petition">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      label="회칙 개정 요구 청원"
+                      hoverUnderline
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+                <Button backgroundColor="white">
+                  <NavLink to="/manage/forms">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      label="제출 서류 양식"
+                      hoverUnderline
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+                <Button backgroundColor="white">
+                  <NavLink to="/manage/carousel">
+                    <Listitem
+                      height="40px"
+                      fontColor="#14406c"
+                      label="메인 슬라이드 이미지"
+                      hoverUnderline
+                    ></Listitem>
+                  </NavLink>
+                </Button>
+              </List>
+            </Remote>
           </Container>
         </Container>
-      </>
-    );
-  else {
-    alert("로그인 정보가 없습니다.");
-    redirectToHome();
-  }
+        <Container
+          backgroundColor=""
+          width="1062px"
+          fd="column"
+          marginLeft="30px"
+          verticalAlign="flex-start"
+        >
+          <Route exact path="/manage/">
+            <Container
+              height="40px"
+              marginTop="80px"
+              marginLeft="20px"
+              width="1000px"
+              horizontalAlign="left"
+            >
+              <Text fontColor="#14406c" fontSize="32px">
+                공약 이행도
+              </Text>
+            </Container>
+            <Container
+              backgroundColor="white"
+              borderRadius="8px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              marginTop="30px"
+              width="1000px"
+            >
+              <Text fontSize="22px">과제1</Text>
+              {assignment1.map((item, index) => (
+                <Container
+                  height="40px"
+                  backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                  key={item.p_id}
+                  horizontalAlign="left"
+                >
+                  <Container width="600px" horizontalAlign="left">
+                    <Text fontSize="22px">{item.p_id}</Text>
+                    <Text fontSize="22px" marginLeft="30px">
+                      {item.p_name}
+                    </Text>
+                  </Container>
+                  <Container width="100px">
+                    <Text>
+                      현재 상태: {item.p_status === 0 ? "미수행" : "수행"}
+                    </Text>
+                  </Container>
+                  <Container width="230px" marginLeft="30px">
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          setPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      수행
+                    </Button>
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      marginLeft="30px"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 미수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          unsetPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      미수행
+                    </Button>
+                  </Container>
+                </Container>
+              ))}
+              <Text fontSize="22px" marginTop="10px">
+                과제2
+              </Text>
+              {assignment2.map((item, index) => (
+                <Container
+                  height="40px"
+                  backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                  key={item.p_id}
+                  horizontalAlign="left"
+                >
+                  <Container width="600px" horizontalAlign="left">
+                    <Text fontSize="22px">{item.p_id}</Text>
+                    <Text fontSize="22px" marginLeft="30px">
+                      {item.p_name}
+                    </Text>
+                  </Container>
+                  <Container width="100px">
+                    <Text>
+                      현재 상태: {item.p_status === 0 ? "미수행" : "수행"}
+                    </Text>
+                  </Container>
+                  <Container width="230px" marginLeft="30px">
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          setPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      수행
+                    </Button>
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      marginLeft="30px"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 미수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          unsetPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      미수행
+                    </Button>
+                  </Container>
+                </Container>
+              ))}
+              <Text fontSize="22px" marginTop="10px">
+                과제3
+              </Text>
+              {assignment3.map((item, index) => (
+                <Container
+                  height="40px"
+                  backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                  key={item.p_id}
+                  horizontalAlign="left"
+                >
+                  <Container width="600px" horizontalAlign="left">
+                    <Text fontSize="22px">{item.p_id}&nbsp;</Text>
+                    <Text fontSize="22px" marginLeft="30px">
+                      {item.p_name}
+                    </Text>
+                  </Container>
+                  <Container width="100px">
+                    <Text>
+                      현재 상태: {item.p_status === 0 ? "미수행" : "수행"}
+                    </Text>
+                  </Container>
+                  <Container width="230px" marginLeft="30px">
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          setPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      수행
+                    </Button>
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      marginLeft="30px"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 미수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          unsetPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      미수행
+                    </Button>
+                  </Container>
+                </Container>
+              ))}
+              <Text fontSize="22px" marginTop="10px">
+                과제4
+              </Text>
+              {assignment4.map((item, index) => (
+                <Container
+                  height="40px"
+                  backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                  key={item.p_id}
+                  horizontalAlign="left"
+                >
+                  <Container width="600px" horizontalAlign="left">
+                    <Text fontSize="22px">{item.p_id}</Text>
+                    <Text fontSize="22px" marginLeft="30px">
+                      {item.p_name}
+                    </Text>
+                  </Container>
+                  <Container width="100px">
+                    <Text>
+                      현재 상태: {item.p_status === 0 ? "미수행" : "수행"}
+                    </Text>
+                  </Container>
+                  <Container width="230px" marginLeft="30px">
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          setPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      수행
+                    </Button>
+                    <Button
+                      width="100px"
+                      height="35px"
+                      border="2px solid #14406c"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      hoverBackgrounColor="white"
+                      hoverFontColor="#14406c"
+                      marginLeft="30px"
+                      onClick={() => {
+                        const result = window.confirm(
+                          `공약 "${item.p_name}"의 상태를 미수행으로 바꾸시겠습니까?`
+                        );
+                        if (result) {
+                          unsetPledge(item.p_id);
+                        }
+                      }}
+                    >
+                      미수행
+                    </Button>
+                  </Container>
+                </Container>
+              ))}
+            </Container>
+          </Route>
+          <Route exact path="/manage/report">
+            <Container
+              height="40px"
+              marginTop="80px"
+              marginLeft="20px"
+              width="1000px"
+              horizontalAlign="left"
+            >
+              <Text fontColor="#14406c" fontSize="32px">
+                예결산 보고
+              </Text>
+            </Container>
+            <Container
+              backgroundColor="white"
+              borderRadius="8px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              marginTop="30px"
+              width="1000px"
+            ></Container>
+          </Route>
+          <Route exact path="/manage/meetinglog">
+            <Container
+              height="40px"
+              marginTop="80px"
+              marginLeft="20px"
+              width="1000px"
+              horizontalAlign="left"
+            >
+              <Text fontColor="#14406c" fontSize="32px">
+                회의록
+              </Text>
+            </Container>
+            <Container
+              backgroundColor="white"
+              borderRadius="8px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              marginTop="30px"
+              width="1000px"
+            ></Container>
+          </Route>
+          <Route exact path="/manage/suggestion">
+            <Container
+              height="40px"
+              marginTop="80px"
+              marginLeft="20px"
+              width="1000px"
+              horizontalAlign="left"
+            >
+              <Text fontColor="#14406c" fontSize="32px">
+                건의 사항
+              </Text>
+            </Container>
+            <Container
+              backgroundColor="white"
+              borderRadius="8px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              marginTop="30px"
+              width="1000px"
+            ></Container>
+          </Route>
+          <Route exact path="/manage/petition">
+            <Container
+              height="40px"
+              marginTop="80px"
+              marginLeft="20px"
+              width="1000px"
+              horizontalAlign="left"
+            >
+              <Text fontColor="#14406c" fontSize="32px">
+                회칙 개정 요구 청원
+              </Text>
+            </Container>
+            <Container
+              backgroundColor="white"
+              borderRadius="8px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              marginTop="30px"
+              width="1000px"
+            ></Container>
+          </Route>
+          <Route exact path="/manage/forms">
+            <Container
+              height="40px"
+              marginTop="80px"
+              marginLeft="20px"
+              width="1000px"
+              horizontalAlign="left"
+            >
+              <Text fontColor="#14406c" fontSize="32px">
+                제출 서류 양식
+              </Text>
+            </Container>
+            <Container
+              backgroundColor="white"
+              borderRadius="8px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              marginTop="30px"
+              width="1000px"
+            ></Container>
+          </Route>
+          <Route exact path="/manage/carousel">
+            <Container
+              height="40px"
+              marginTop="80px"
+              marginLeft="20px"
+              width="1000px"
+              horizontalAlign="left"
+            >
+              <Text fontColor="#14406c" fontSize="32px">
+                메인 슬라이드 이미지
+              </Text>
+            </Container>
+            <Container
+              backgroundColor="white"
+              borderRadius="8px"
+              fd="column"
+              horizontalAlign="left"
+              verticalAlign="flex-start"
+              paddingLeft="30px"
+              paddingRight="30px"
+              paddingTop="30px"
+              marginTop="30px"
+              width="1000px"
+            ></Container>
+          </Route>
+        </Container>
+      </Container>
+    </>
+  );
 }
 
 export default Manage;

@@ -17,6 +17,9 @@ module.exports = (app) => {
     proxy("/api/pledges/setPledge", {
       target: "http://localhost:3001/",
     }),
+    proxy("/api/pledges/unsetPledge", {
+      target: "http://localhost:3001/",
+    }),
     proxy("/api/community/getCommunity", {
       target: "http://localhost:3001/",
     }),

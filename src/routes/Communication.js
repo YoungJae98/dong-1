@@ -417,6 +417,7 @@ function Communication() {
                   </div>
                   <input
                     type="text"
+                    maxLength="10"
                     placeholder="검색어를 입력하세요."
                     value={searchStr1}
                     style={{
@@ -783,6 +784,7 @@ function Communication() {
                   </div>
                   <input
                     type="text"
+                    maxLength="10"
                     placeholder="검색어를 입력하세요."
                     style={{
                       width: "280px",
@@ -963,6 +965,7 @@ function Communication() {
                   </Text>
                 </Container>
                 <textarea
+                  maxLength="45"
                   placeholder="건의 제목을 작성해 주세요."
                   style={{
                     width: "976px",

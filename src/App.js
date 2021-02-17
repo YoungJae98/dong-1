@@ -9,7 +9,7 @@ import Communication from "./routes/Communication";
 import Document from "./routes/Document";
 import Signin from "./routes/Signin";
 
-import { Route, Switch, useLocation } from "react-router-dom";
+import { Route, Switch, useHistory, useLocation } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import Header from "./components/Header";
 import { useEffect, useState } from "react";
@@ -25,6 +25,10 @@ function App() {
   });
   const [isLogin, setisLogin] = useState(false);
   const [admin, setAdmin] = useState(false);
+  const history = useHistory();
+  const redirectToHome = () => {
+    history.push("/");
+  };
   const loginCheck = () => {
     fetch("http://localhost:3001/api/account/isLoginCheck", {
       method: "GET",
@@ -72,8 +76,15 @@ function App() {
           <Route path="/document" component={Document} />
           <Route path="/signin" component={Signin} />
           <Route path="/mypage" component={MyPage} />
-          <Route path="/manage" component={() => <Manage admin={admin} />} />
+          {admin ? <Route path="/manage" component={Manage} /> : null}
           <Route path="/makers" component={Makers} />
+          <Route
+            component={() => {
+              redirectToHome();
+              alert("잘못된 접근입니다.");
+              return <></>;
+            }}
+          />
         </Switch>
         <Footer />
       </Container>
