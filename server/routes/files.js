@@ -15,18 +15,21 @@ var upload = multer({
   storage: storage,
 }).single();
 
-router.post("/getFiles", (req, res) => {
-  db.query(
-    "select * from files where f_id = ?",
-    [req.body.id],
-    (err, files) => {
-      var data = { files: [] };
-      for (i = 0; i < files.length; i++) {
-        data["files"].push(files[i]);
+router.get("/getFiles", (req, res) => {
+  db.query("select * from files", (err, files) => {
+    var data = { 1: [], 2: [], 3: [] };
+    for (i = 0; i < files.length; i++) {
+      if (files[i].f_type == 1) {
+        data[1].push(files[i]);
+      } else if (files[i].f_type == 2) {
+        data[2].push(files[i]);
+      } else {
+        data[3].push(files[i]);
       }
-      res.json(data);
     }
-  );
+
+    res.json(data);
+  });
 });
 
 router.post("/uploadFile", (req, res) => {

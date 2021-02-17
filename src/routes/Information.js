@@ -49,16 +49,13 @@ function Main() {
         setPledges(response);
       });
   };
-  const getFile = (id) => {
+  const getFile = () => {
     fetch("http://localhost:3001/api/files/getFiles", {
-      method: "POST",
+      method: "GET",
       headers: {
         "Content-type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({
-        id: id,
-      }),
     })
       .then((response) => response.json())
       .then((response) => {

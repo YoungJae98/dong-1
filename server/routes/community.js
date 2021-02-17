@@ -136,8 +136,52 @@ router.get("/getCommentByUser", (req, res) => {
     }
   );
 });
-router.post("/updateCommunity", (req, res) => {});
-router.post("/deleteCommunity", (req, res) => {});
-router.post("/deleteComment", (req, res) => {});
+router.post("/updateCommunity", (req, res) => {
+  var title = sanitizeHtml(req.body.title);
+  var body = sanitizeHtml(req.body.body);
+  db.query(
+    "select * from community where c_title = ?",
+    [title],
+    (err2, suggest) => {
+      if (suggest.length) {
+        res.json({
+          success: false,
+        });
+      } else {
+        db.query(
+          "update community set c_title = ?, c_body = ? where c_id = ?",
+          [title, body, req.body.id],
+          (err, results) => {
+            res.json({
+              success: true,
+            });
+          }
+        );
+      }
+    }
+  );
+});
+router.post("/deleteCommunity", (req, res) => {
+  db.query(
+    "delete from community where c_id = ?",
+    [req.body.id],
+    (err, results) => {
+      res.json({
+        success: true,
+      });
+    }
+  );
+});
+router.post("/deleteComment", (req, res) => {
+  db.query(
+    "delete from community where co_id = ?",
+    [req.body.id],
+    (err, results) => {
+      res.json({
+        success: true,
+      });
+    }
+  );
+});
 
 module.exports = router;
