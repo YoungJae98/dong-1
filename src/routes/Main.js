@@ -17,6 +17,7 @@ function Main() {
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [community, setCommunity] = useState({});
+  const [file, setFile] = useState({});
   const getCommunity = () => {
     fetch("http://localhost:3001/api/community/getCommunity", {
       method: "GET",
@@ -31,24 +32,22 @@ function Main() {
         setCommunity(response);
       });
   };
+  const getFile = () => {
+    fetch("http://localhost:3001/api/files/getFiles", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setFile(response);
+      });
+  };
   useEffect(() => {
     getCommunity();
-    setReports([
-      { reportId: 1, reportTitle: "예산안", reportUploadDate: "2021-02-17" },
-      { reportId: 2, reportTitle: "결산안", reportUploadDate: "2021-02-17" },
-    ]);
-    setMeetinglogs([
-      {
-        meetinglogId: 1,
-        meetinglogTitle: "회의록1",
-        meetinglogUploadDate: "2021-02-17",
-      },
-      {
-        meetinglogId: 2,
-        meetinglogTitle: "회의록2",
-        meetinglogUploadDate: "2021-02-17",
-      },
-    ]);
+    getFile();
   }, []);
   useEffect(() => {
     if (Object.keys(community).length !== 0) {
@@ -60,6 +59,10 @@ function Main() {
       );
     }
   }, [community]);
+  useEffect(() => {
+    if (file["1"]) setMeetinglogs(file["1"]);
+    if (file["2"]) setReports(file["2"]);
+  }, [file]);
   return (
     <Container fd="column">
       <MyCarousel />
@@ -218,11 +221,11 @@ function Main() {
               <Container
                 height="30px"
                 horizontalAlign="space-between"
-                key={meetinglog.meetinglogId}
+                key={meetinglog.f_id}
               >
                 <Container width="430px" horizontalAlign="flex-start">
                   <Text fontSize="18px" fontFamily="SeoulLight">
-                    {meetinglog.meetinglogTitle}
+                    {meetinglog.f_name}
                   </Text>
                 </Container>
                 <Container
@@ -235,7 +238,7 @@ function Main() {
                     fontFamily="SeoulLight"
                     fontColor="grey"
                   >
-                    {meetinglog.meetinglogUploadDate}
+                    {meetinglog.f_date.slice(0, 10)}
                   </Text>
                 </Container>
               </Container>
@@ -273,11 +276,11 @@ function Main() {
               <Container
                 height="30px"
                 horizontalAlign="space-between"
-                key={report.reportId}
+                key={report.f_id}
               >
                 <Container width="430px" horizontalAlign="flex-start">
                   <Text fontSize="18px" fontFamily="SeoulLight">
-                    {report.reportTitle}
+                    {report.f_name}
                   </Text>
                 </Container>
                 <Container
@@ -290,7 +293,7 @@ function Main() {
                     fontFamily="SeoulLight"
                     fontColor="grey"
                   >
-                    {report.reportUploadDate}
+                    {report.f_date.slice(0, 10)}
                   </Text>
                 </Container>
               </Container>

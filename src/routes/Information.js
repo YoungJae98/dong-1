@@ -64,6 +64,7 @@ function Main() {
   };
   useEffect(() => {
     getPledge();
+    getFile();
     setReports([
       {
         reportId: 1,

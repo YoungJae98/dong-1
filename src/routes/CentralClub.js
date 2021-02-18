@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
-import sejong from "../assets/images/Sejonglogo.png";
 import logo_inversed from "../assets/images/logo_reversed.png";
 import clubroomlayout from "../assets/images/clubroomlayout.png";
 import v2 from "../assets/images/visual/visual2.jpg";

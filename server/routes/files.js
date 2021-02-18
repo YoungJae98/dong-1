@@ -2,7 +2,9 @@ var express = require("express");
 var db = require("../db");
 var router = express.Router();
 var multer = require("multer");
-const { requirePropFactory } = require("@material-ui/core");
+var fs = require("fs");
+const path = require("path");
+
 var storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, "src/assets/documents/");
@@ -13,7 +15,7 @@ var storage = multer.diskStorage({
 });
 var upload = multer({
   storage: storage,
-}).single();
+});
 
 router.get("/getFiles", (req, res) => {
   db.query("select * from files", (err, files) => {
@@ -32,8 +34,31 @@ router.get("/getFiles", (req, res) => {
   });
 });
 
-router.post("/uploadFile", (req, res) => {
-  var reqFiles;
+router.post("/uploadFile", upload.single("document"), (req, res) => {
+  console.log(req.file);
+  db.query(
+    "insert into files(f_type, f_name, f_originalname, f_date) values (?,?,?,now())",
+    [req.body.f_type, req.body.f_name, req.file.originalname],
+    (err, result) => {
+      res.json({ success: true });
+    }
+  );
+});
+
+router.post("/deleteFile", (req, res) => {
+  var filePath = path.join("./src/assets/documents/", req.body.f_originalname);
+  fs.unlink(filePath, (err) => {
+    if (err) console.log(err);
+    else {
+      db.query(
+        "delete from files where f_id = ?",
+        [req.body.id],
+        (err, result) => {
+          res.json({ success: true });
+        }
+      );
+    }
+  });
 });
 
 module.exports = router;

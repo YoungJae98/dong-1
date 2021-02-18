@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, Route, useHistory } from "react-router-dom";
+import { NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
 import v2 from "../assets/images/visual/visual2.jpg";
@@ -17,6 +17,9 @@ function Manage() {
   const [assignment2, setAssignment2] = useState([]);
   const [assignment3, setAssignment3] = useState([]);
   const [assignment4, setAssignment4] = useState([]);
+  const [file, setFile] = useState({});
+  const [reports, setReports] = useState([]);
+  const [meetinglogs, setMeetinglogs] = useState([]);
   const getPledge = () => {
     fetch("http://localhost:3001/api/pledges/getPledge", {
       method: "GET",
@@ -27,7 +30,6 @@ function Manage() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         setPledges(response);
       });
   };
@@ -73,8 +75,84 @@ function Manage() {
         }
       });
   };
+  const getFile = () => {
+    fetch("http://localhost:3001/api/files/getFiles", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setFile(response);
+      });
+  };
+  const deleteFile = (id, originalname) => {
+    fetch("http://localhost:3001/api/files/deleteFile", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        id: id,
+        f_originalname: originalname,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        getFile();
+      });
+  };
+  const handleDocumentUpload = (e, f_type) => {
+    e.preventDefault();
+    let isAlreadtExistFileName = false;
+    if (
+      e.target.f_name.value !== "" &&
+      e.target.document.files[0] !== undefined
+    ) {
+      reports.forEach((item) => {
+        if (item.f_originalname === e.target.document.files[0].name) {
+          isAlreadtExistFileName = true;
+        }
+      });
+      meetinglogs.forEach((item) => {
+        if (item.f_originalname === e.target.document.files[0].name) {
+          isAlreadtExistFileName = true;
+        }
+      });
+      if (!isAlreadtExistFileName) {
+        const data = new FormData();
+        data.append("document", e.target.document.files[0]);
+        data.append("f_name", e.target.f_name.value);
+        data.append("f_type", f_type);
+        fetch("http://localhost:3001/api/files/uploadFile", {
+          method: "POST",
+          credentials: "include",
+          body: data,
+        })
+          .then((response) => response.json())
+          .then((response) => {
+            if (response["success"]) {
+              getFile();
+              alert("업로드 성공");
+              e.target.f_name.value = "";
+              e.target.document.value = "";
+            } else {
+              alert("업로드 실패");
+            }
+          });
+      } else {
+        alert("중복된 이름의 파일이 이미 업로드되어 있습니다.");
+      }
+    } else {
+      alert("파일 이름이 입력되지 않았거나 파일이 선택되지 않았습니다.");
+    }
+  };
   useEffect(() => {
     getPledge();
+    getFile();
   }, []);
   useEffect(() => {
     if (Object.keys(pledges).length !== 0) {
@@ -84,6 +162,10 @@ function Manage() {
       setAssignment4(pledges["4"]);
     }
   }, [pledges]);
+  useEffect(() => {
+    if (file["1"]) setMeetinglogs(file["1"]);
+    if (file["2"]) setReports(file["2"]);
+  }, [file]);
   return (
     <>
       <Container height="145px">
@@ -498,9 +580,72 @@ function Manage() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              paddingBottom="30px"
               marginTop="30px"
               width="1000px"
-            ></Container>
+            >
+              <Container height="50px" className="manage-input">
+                <form
+                  onSubmit={(e) => {
+                    handleDocumentUpload(e, 2);
+                  }}
+                >
+                  <input
+                    type="text"
+                    id="report_text"
+                    name="f_name"
+                    placeholder="예결산 보고 제목"
+                    style={{
+                      marginRight: "30px",
+                      height: "30px",
+                      width: "550px",
+                      fontSize: "24px",
+                      fontFamily: "SeoulMedium",
+                    }}
+                  />
+                  <label htmlFor="report_file" className="manage-label1">
+                    새 예결산 보고 선택
+                  </label>
+                  <input type="file" id="report_file" name="document" />
+                  <input type="submit" value="업로드" />
+                </form>
+              </Container>
+              <Container
+                border="1px solid #14406c"
+                marginTop="30px"
+                scroll
+                fd="column"
+                horizontalAlign="flex-start"
+              >
+                {reports.map((item, index) => (
+                  <Container
+                    height="50px"
+                    backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                    key={index}
+                  >
+                    <Container width="600px" horizontalAlign="left">
+                      {item.f_name}
+                    </Container>
+                    <Button
+                      width="80px"
+                      height="30px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      onClick={() => {
+                        if (
+                          window.confirm(`${item.f_name} 삭제하시겠습니까?`)
+                        ) {
+                          deleteFile(item.f_id, item.f_originalname);
+                          alert(`${item.f_name} 삭제되었습니다.`);
+                        }
+                      }}
+                    >
+                      삭제
+                    </Button>
+                  </Container>
+                ))}
+              </Container>
+            </Container>
           </Route>
           <Route exact path="/manage/meetinglog">
             <Container
@@ -523,9 +668,22 @@ function Manage() {
               paddingLeft="30px"
               paddingRight="30px"
               paddingTop="30px"
+              paddingBottom="30px"
               marginTop="30px"
               width="1000px"
-            ></Container>
+            >
+              <Container height="50px" className="manage-input">
+                <label htmlFor="meetinglog_file" className="manage-label2">
+                  새 회의록 업로드
+                </label>
+                <input type="file" id="meetinglog_file" />
+              </Container>
+              <Container
+                border="1px solid #14406c"
+                marginTop="30px"
+                scroll
+              ></Container>
+            </Container>
           </Route>
           <Route exact path="/manage/suggestion">
             <Container

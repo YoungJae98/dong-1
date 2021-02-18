@@ -38,10 +38,13 @@ module.exports = (app) => {
     proxy("/api/community/getCommentByUser", {
       target: "http://localhost:3001/",
     }),
-    proxy("/api/community/getFiles", {
+    proxy("/api/files/uploadFile", {
       target: "http://localhost:3001/",
     }),
-    proxy("/api/community/uploadFile", {
+    proxy("/api/files/getFiles", {
+      target: "http://localhost:3001/",
+    }),
+    proxy("/api/files/deleteFile", {
       target: "http://localhost:3001/",
     })
   );

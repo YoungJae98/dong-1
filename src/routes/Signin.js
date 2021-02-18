@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-import logo from "../assets/images/logo.png";
 import Button from "../components/Button";
 
 import Container from "../components/Container";
@@ -101,7 +100,13 @@ function Signin() {
         <Container fd="column" horizontalAlign="flex-start" marginTop="30px">
           <Container marginTop="30px" height="40px">
             <div className="input-container">
-              <label className="input-label" onClick={() => {}}>
+              <label
+                className="input-label"
+                onClick={({ target }) => {
+                  target.parentElement.classList.add("login-focused");
+                  document.querySelector(".student-number").focus();
+                }}
+              >
                 학번
               </label>
               <input
@@ -116,23 +121,30 @@ function Signin() {
                     target.parentElement.classList.remove("login-focused");
                   }
                 }}
-                className="login-input"
+                className="login-input student-number"
                 style={{
                   width: "230px",
-                  height: "40px",
-                  fontSize: "18px",
+                  height: "30px",
+                  fontSize: "24px",
                   fontFamily: "SeoulLight",
-                  backgroundColor: "#F6F6F6",
+                  backgroundColor: "transparent",
                   border: "1px solid #14406c",
                   borderRadius: "3px",
                   paddingLeft: "10px",
+                  paddingTop: "10px",
                 }}
               />
             </div>
           </Container>
           <Container marginTop="50px" height="40px">
             <div className="input-container">
-              <label className="input-label" onClick={() => {}}>
+              <label
+                className="input-label"
+                onClick={({ target }) => {
+                  target.parentElement.classList.add("login-focused");
+                  document.querySelector(".student-pwd").focus();
+                }}
+              >
                 세종 포탈 비밀번호
               </label>
               <input
@@ -148,16 +160,18 @@ function Signin() {
                   }
                 }}
                 name="pw"
-                className="login-input"
+                className="login-input student-pwd"
                 style={{
                   width: "230px",
-                  height: "40px",
-                  fontSize: "18px",
+                  height: "30px",
+                  fontSize: "24px",
                   fontFamily: "SeoulLight",
                   backgroundColor: "transparent",
                   border: "1px solid #14406c",
                   borderRadius: "3px",
                   paddingLeft: "10px",
+                  paddingTop: "10px",
+                  letterSpacing: "-7px",
                 }}
               />
             </div>
