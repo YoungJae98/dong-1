@@ -87,7 +87,7 @@ li {
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #14406c;
+  border-bottom: 10px solid white;
   top: 9px;
   left: 82px;
   position: absolute;
@@ -97,7 +97,7 @@ li {
   height: 0;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
-  border-bottom: 10px solid #14406c;
+  border-bottom: 10px solid white;
   top: 8px;
   left: 40px;
   position: absolute;
@@ -134,10 +134,6 @@ li {
   transform: translateX(-33px) translateY(-5px);
   padding-top: 18px;
   animation: fadein 0.2s;
-}
-.navigation-submenu-button:hover {
-  text-decoration: underline;
-  text-underline-position: under;
 }
 .progressBar-container:hover .progressBar-content {
   border: 2px solid #14406c;
@@ -294,4 +290,24 @@ li {
 }
 .invisible {
   display: none;
+}
+.input-container {
+  position: relative;
+  background-color: #f6f6f6;
+  z-index: 1;
+}
+.input-container .input-label {
+  position: absolute;
+  color: grey;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  transition: all 0.1s ease-out;
+}
+.login-focused .input-label {
+  top: 1px;
+  font-size: 12px;
+}
+.login-input {
+  z-index: 30;
 }

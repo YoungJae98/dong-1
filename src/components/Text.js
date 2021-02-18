@@ -12,7 +12,7 @@ const StyledText = styled.p`
   margin-left: ${(props) => props.marginLeft};
   margin-top: ${(props) => props.marginTop};
 
-  ${(props) => props.clubName && "font-size:30px; margin-top:20px"}
+  ${(props) => props.clubName && "font-size:24px; margin-top:40px"}
   ${(props) =>
     props.clubSummary &&
     "font-size:16px; margin-top:10px; font-family:SeoulLight"}

@@ -15,11 +15,15 @@ import sejonggeukhoi from "../assets/images/clubs/show/sejonggeukhoi.jpg";
 import soultrain from "../assets/images/clubs/show/soultrain.png";
 import ter from "../assets/images/clubs/show/ter.png";
 import theblack from "../assets/images/clubs/show/theblack.jpg";
+import sp from "../assets/images/clubs/show/sp.png";
 //culture
 import bamboo from "../assets/images/clubs/culture/bamboo.png";
 import doobaqui from "../assets/images/clubs/culture/doobaqui.png";
 import hanson from "../assets/images/clubs/culture/hanson.png";
 import master from "../assets/images/clubs/culture/master.png";
+import mis from "../assets/images/clubs/culture/mis.jpg";
+import youth from "../assets/images/clubs/culture/youth.png";
+import yool from "../assets/images/clubs/culture/yool.png";
 //volunteer
 import sels from "../assets/images/clubs/volunteer/sels.png";
 import zook from "../assets/images/clubs/volunteer/zook.jpg";
@@ -29,6 +33,7 @@ import jym from "../assets/images/clubs/religion/jym.png";
 import ccc from "../assets/images/clubs/religion/ccc.png";
 import ksgi from "../assets/images/clubs/religion/ksgi.jpg";
 import regina from "../assets/images/clubs/religion/regina.png";
+import cam from "../assets/images/clubs/religion/cam.png";
 //physical
 import jiujitsu from "../assets/images/clubs/physical/jiujitsu.png";
 import jump from "../assets/images/clubs/physical/jump.png";
@@ -39,6 +44,8 @@ import ski from "../assets/images/clubs/physical/ski.png";
 import stc from "../assets/images/clubs/physical/stc.png";
 import tsp from "../assets/images/clubs/physical/tsp.png";
 import yacht from "../assets/images/clubs/physical/yacht.png";
+import bal from "../assets/images/clubs/physical/bal.jpg";
+import choigang from "../assets/images/clubs/physical/choigang.png";
 //academic
 import interfaec from "../assets/images/clubs/academic/interface.png";
 import arom from "../assets/images/clubs/academic/arom.png";
@@ -82,9 +89,9 @@ function CentralClub() {
       {
         clubID: 3,
         clubName: "사운드플러스",
-        clubLogo: sejong,
+        clubLogo: sp,
         clubSummary:
-          "음악에 대한 열정으로 가득 찬 학생들이 모여 합주를 하며 친목을 다지는 동아리. 부원 각각의 소리가 더해져야 비로소 완전해진다는 의미의 사운드플러스. ",
+          "올해로 30기가 된 밴드 동아리입니다. 동아리명처럼 부원들이 서로 교류하며 좋은 공연을 해오고 있습니다.",
       },
       {
         clubID: 4,
@@ -161,9 +168,9 @@ function CentralClub() {
       {
         clubID: 5,
         clubName: "발파람",
-        clubLogo: sejong,
+        clubLogo: bal,
         clubSummary:
-          "우리 발파람은 전통무예인 택견을 수련 및 활성화하며 개인의 정신.신체능력 개발을 지향한다. 또 택견을 학우들에게 알리고, 보다 다양한 여가활동을 할 수 있는 기회를 마련하고자 한다. 시연 및 대회 등으로 세종대의 이름을 널리 알리는데 창립목적이 있다. ",
+          "20년 역사를 가진 택견동아리 발파람입니다. 택견은 가벼운 개인운동과 무거운 격투기 스포츠의 성격을 가진 운동입니다. 기본적으로 매주 모여 운동을 하고 있으며, 매년 열리는 서울시대회, 생활체육대회, 전국체육대회에 참가해 좋은 성적을 거두고 있습니다.",
       },
       {
         clubID: 6,
@@ -203,9 +210,9 @@ function CentralClub() {
       {
         clubID: 11,
         clubName: "최강유도",
-        clubLogo: sejong,
+        clubLogo: choigang,
         clubSummary:
-          "外柔內剛(외유내강)- 부드러움이 능히 강함을 제압한다는 유도의 정신을 바탕으로 심신을 단련하여 나 자신과, 가족과 사랑하는 사람들을 지키고 보호한다는 뜻으로 건전한 대학문화를 만드는 데 목적으로 한다. ",
+          "중앙 유도동아리 최강유도입니다. 부드러움이 강함을 제압한다는 유도의 정신을 바탕으로 심신을 단련하여 건전한 대학문화를 만드는 데 목표를 두고 있습니다.",
       },
     ]);
     setVolunteerClub([
@@ -248,22 +255,22 @@ function CentralClub() {
       },
       {
         clubID: 4,
-        clubName: "미즈",
-        clubLogo: sejong,
+        clubName: "MIS",
+        clubLogo: mis,
         clubSummary:
-          "수도권 지역이 아닌 곳에서 온 신입생들과 재학생들과 서울체험을 하고, 평소 가보지 못한 장소에 같이 여행을 다니기 위해 창립되었다 ",
+          "지방에서 고등학교를 마치고 서울로 처음 올라오는 학생들을 위한 서울탐방과, 고등학생 때 해보지 못한 활동들을 동아리를 통해서 여러 사람들과 어울려 할 수 있는 문화생활동아리!",
       },
       {
         clubID: 5,
         clubName: "유스호스텔",
-        clubLogo: sejong,
+        clubLogo: youth,
         clubSummary:
-          "유스호스텔은 여행을 통해 우리나라의 많은 지역을 체험함으로서 견문을 넓히고 관심을 갖도록 하는데 목적을 둔다 또한 상호 교류를 통해 문화적 가치에 대한 인식을 높인다 ",
+          "1967년 설립된 중앙 여행동아리 유스호스텔입니다. 국내 여러 곳 여행 및 타 대학과의 연합 또한 정기적으로 진행 중입니다.",
       },
       {
         clubID: 6,
         clubName: "율",
-        clubLogo: sejong,
+        clubLogo: yool,
         clubSummary: "몸짓패, 민중 가요를 몸으로 표현",
       },
       {
@@ -336,7 +343,7 @@ function CentralClub() {
       {
         clubID: 1,
         clubName: "CAM",
-        clubLogo: sejong,
+        clubLogo: cam,
         clubSummary:
           "CAM 이라는 이름은 그리스도의 대사 (Christ’s Ambassador Mission) 라는사명 공동체를 의미한다. 우리는 그리스도의 대사로서 개인과, 캠퍼스, 민족, 더 나아가 열방에 하나님 나라를 확장하는 선교 공동체이다.",
       },

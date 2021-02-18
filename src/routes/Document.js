@@ -254,7 +254,9 @@ function Main() {
                     list.classList.toggle("invisible");
                   }}
                 >
-                  <Text fontSize="21px">정렬 방식 ▼</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    정렬 방식 ▼
+                  </Text>
                 </Button>
                 <div className="forms-sort-options invisible">
                   <Container
@@ -352,7 +354,9 @@ function Main() {
                       .classList.toggle("invisible");
                   }}
                 >
-                  <Text fontSize="21px">검색 방식 ▼</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    검색 방식 ▼
+                  </Text>
                 </Button>
                 <div className="forms-search-options invisible">
                   <Container
@@ -418,7 +422,8 @@ function Main() {
                     border: "2px solid #14406c",
                     borderRadius: "10px",
                     fontSize: "21px",
-                    fontFamily: "SeoulBold",
+                    fontFamily: "SeoulLight",
+                    paddingLeft: "10px",
                   }}
                   onChange={(e) => {
                     setSearchStr(e.target.value);
@@ -454,7 +459,9 @@ function Main() {
                     });
                   }}
                 >
-                  <Text fontSize="21px">검색</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    검색
+                  </Text>
                 </Button>
               </Container>
               <Container
@@ -478,7 +485,9 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="24px">{form.formTitle}</Text>
+                      <Text fontSize="21px" fontFamily="SeoulLight">
+                        {form.formTitle}
+                      </Text>
                       <Container
                         height="40px"
                         className="form-item-uploadinfo"

@@ -155,6 +155,7 @@ function Navigation({
                 className="submenu"
                 style={{ backgroundColor: main ? "white" : "#14406c" }}
               >
+                <div className="navigation-uparrow" />
                 <div>
                   <Link to="/clubunion" onClick={() => setMain(false)}>
                     <Button
@@ -162,8 +163,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       총동아리연합회
                     </Button>
@@ -179,8 +183,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       집행부 소개
                     </Button>
@@ -193,8 +200,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       찾아오시는 길
                     </Button>
@@ -208,6 +218,7 @@ function Navigation({
                 className="submenu2"
                 style={{ backgroundColor: main ? "white" : "#14406c" }}
               >
+                <div className="navigation-uparrow" />
                 <div>
                   <Link to="/centralclub/" onClick={() => setMain(false)}>
                     <Button
@@ -215,8 +226,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       동방 배치도
                     </Button>
@@ -229,8 +243,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       공연 분과
                     </Button>
@@ -246,8 +263,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       문화 분과
                     </Button>
@@ -263,8 +283,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       봉사 분과
                     </Button>
@@ -280,8 +303,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       종교 분과
                     </Button>
@@ -297,8 +323,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       체육 분과
                     </Button>
@@ -314,8 +343,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       학술 분과
                     </Button>
@@ -323,15 +355,13 @@ function Navigation({
                 </div>
               </div>
             </StyledNavButton>
-            <StyledNavButton
-              to="/information"
-              activeStyle={{ color: "BurlyWood" }}
-            >
+            <StyledNavButton>
               <Listitem label="정보" />
               <div
                 className="submenu3"
                 style={{ backgroundColor: main ? "white" : "#14406c" }}
               >
+                <div className="navigation-uparrow" />
                 <div>
                   <Link to="/information/" onClick={() => setMain(false)}>
                     <Button
@@ -339,8 +369,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       공약 이행도
                     </Button>
@@ -352,8 +385,11 @@ function Navigation({
                     width="183px"
                     backgroundColor="white"
                     fontColor="#14406c"
+                    hoverBackgrounColor="#14406c"
+                    hoverFontColor="white"
                     fontSize="18px"
                     className="navigation-submenu-button"
+                    font="SeoulLight"
                     onClick={() => {
                       alert("준비중입니다.");
                     }}
@@ -368,8 +404,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       서동협
                     </Button>
@@ -382,8 +421,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       예결산 보고
                     </Button>
@@ -399,8 +441,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       회의록
                     </Button>
@@ -414,6 +459,7 @@ function Navigation({
                 className="submenu3"
                 style={{ backgroundColor: main ? "white" : "#14406c" }}
               >
+                <div className="navigation-uparrow" />
                 <div>
                   <Link to="/communication/" onClick={() => setMain(false)}>
                     <Button
@@ -421,8 +467,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       건의 사항
                     </Button>
@@ -438,8 +487,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       회칙 개정 요구 청원
                     </Button>
@@ -453,6 +505,7 @@ function Navigation({
                 className="submenu3"
                 style={{ backgroundColor: main ? "white" : "#14406c" }}
               >
+                <div className="navigation-uparrow" />
                 <div>
                   <Link to="/document/" onClick={() => setMain(false)}>
                     <Button
@@ -460,8 +513,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       회칙
                     </Button>
@@ -474,8 +530,11 @@ function Navigation({
                       width="183px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       제출서류 양식
                     </Button>
@@ -490,6 +549,7 @@ function Navigation({
               className="submenu4"
               style={{ backgroundColor: main ? "white" : "#14406c" }}
             >
+              <div className="navigation-uparrow2" />
               {isLogin ? (
                 <>
                   <div>
@@ -498,8 +558,11 @@ function Navigation({
                       width="100px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                       onClick={() => {
                         logoutProcess();
                         redirectToHome();
@@ -516,8 +579,11 @@ function Navigation({
                           width="100px"
                           backgroundColor="white"
                           fontColor="#14406c"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
                           fontSize="18px"
                           className="navigation-submenu-button"
+                          font="SeoulLight"
                         >
                           관리
                         </Button>
@@ -531,8 +597,11 @@ function Navigation({
                           width="100px"
                           backgroundColor="white"
                           fontColor="#14406c"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
                           fontSize="18px"
                           className="navigation-submenu-button"
+                          font="SeoulLight"
                         >
                           마이페이지
                         </Button>
@@ -548,8 +617,11 @@ function Navigation({
                       width="100px"
                       backgroundColor="white"
                       fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
                       fontSize="18px"
                       className="navigation-submenu-button"
+                      font="SeoulLight"
                     >
                       로그인
                     </Button>

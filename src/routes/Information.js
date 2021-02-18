@@ -830,76 +830,7 @@ function Main() {
               </Container>
             </Container>
           </Route>
-          <Route exact path="/information/alliance">
-            {/* <Container
-              height="40px"
-              marginTop="20px"
-              marginLeft="20px"
-              width="1000px"
-              horizontalAlign="left"
-            >
-              <Text fontColor="#14406c" fontSize="32px">
-                제휴사업
-              </Text>
-            </Container>
-            <Container
-              backgroundColor="white"
-              border="1px solid #14406c"
-              borderRadius="8px"
-              fd="column"
-              horizontalAlign="left"
-              verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              width="1000px"
-            >
-              <Container
-                height="100px"
-                fd="column"
-                verticalAlign="flex-start"
-                horizontalAlign="flex-start"
-              >
-                <Text fontSize="32px">1. 이불 대여</Text>
-                <Text fontSize="21px" marginTop="10px">
-                  &nbsp;&nbsp;따뜻한 이불 빌려 드립니다.
-                </Text>
-              </Container>
-              <Container
-                height="100px"
-                fd="column"
-                verticalAlign="flex-start"
-                horizontalAlign="flex-start"
-              >
-                <Text fontSize="32px">2. 베개 대여</Text>
-                <Text fontSize="21px" marginTop="10px">
-                  &nbsp;&nbsp;푹신한 베개 빌려 드립니다.
-                </Text>
-              </Container>
-              <Container
-                height="100px"
-                fd="column"
-                verticalAlign="flex-start"
-                horizontalAlign="flex-start"
-              >
-                <Text fontSize="32px">3. 난로 대여</Text>
-                <Text fontSize="21px" marginTop="10px">
-                  &nbsp;&nbsp;화끈한 난로 빌려 드립니다.
-                </Text>
-              </Container>
-              <Container
-                height="100px"
-                fd="column"
-                verticalAlign="flex-start"
-                horizontalAlign="flex-start"
-              >
-                <Text fontSize="32px">4. 수면 양말 대여</Text>
-                <Text fontSize="21px" marginTop="10px">
-                  &nbsp;&nbsp;보드라운 수면 양말 빌려 드립니다.
-                </Text>
-              </Container>
-            </Container> */}
-          </Route>
+          <Route exact path="/information/alliance"></Route>
           <Route exact path="/information/seoul">
             <Container
               height="40px"
@@ -1061,7 +992,9 @@ function Main() {
                     list.classList.toggle("invisible");
                   }}
                 >
-                  <Text fontSize="21px">정렬 방식 ▼</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    정렬 방식 ▼
+                  </Text>
                 </Button>
                 <div className="report-sort-options invisible">
                   <Container
@@ -1160,7 +1093,9 @@ function Main() {
                     list.classList.toggle("invisible");
                   }}
                 >
-                  <Text fontSize="21px">검색 방식 ▼</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    검색 방식 ▼
+                  </Text>
                 </Button>
                 <div className="report-search-options invisible">
                   <Container
@@ -1228,7 +1163,8 @@ function Main() {
                     border: "2px solid #14406c",
                     borderRadius: "10px",
                     fontSize: "21px",
-                    fontFamily: "SeoulBold",
+                    fontFamily: "SeoulLight",
+                    paddingLeft: "10px",
                   }}
                   value={searchStr1}
                   onChange={(e) => {
@@ -1265,7 +1201,9 @@ function Main() {
                     });
                   }}
                 >
-                  <Text fontSize="21px">검색</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    검색
+                  </Text>
                 </Button>
               </Container>
               <Container
@@ -1289,7 +1227,9 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="24px">{report.reportTitle}</Text>
+                      <Text fontSize="21px" fontFamily="SeoulLight">
+                        {report.reportTitle}
+                      </Text>
                       <Container
                         height="40px"
                         className="report-item-uploadinfo"
@@ -1386,7 +1326,9 @@ function Main() {
                     list.classList.toggle("invisible");
                   }}
                 >
-                  <Text fontSize="21px">정렬 방식 ▼</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    정렬 방식 ▼
+                  </Text>
                 </Button>
                 <div className="meetinglogs-sort-options invisible">
                   <Container
@@ -1485,7 +1427,9 @@ function Main() {
                       .classList.toggle("invisible");
                   }}
                 >
-                  <Text fontSize="21px">검색 방식 ▼</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    검색 방식 ▼
+                  </Text>
                 </Button>
                 <div className="meetinglogs-search-options invisible">
                   <Container
@@ -1550,7 +1494,8 @@ function Main() {
                     border: "2px solid #14406c",
                     borderRadius: "10px",
                     fontSize: "21px",
-                    fontFamily: "SeoulBold",
+                    fontFamily: "SeoulLight",
+                    paddingLeft: "10px",
                   }}
                   value={searchStr2}
                   onChange={(e) => {
@@ -1587,7 +1532,9 @@ function Main() {
                     });
                   }}
                 >
-                  <Text fontSize="21px">검색</Text>
+                  <Text fontSize="21px" fontFamily="SeoulLight">
+                    검색
+                  </Text>
                 </Button>
               </Container>
               <Container
@@ -1611,7 +1558,9 @@ function Main() {
                       verticalAlign="flex-start"
                       marginLeft="30px"
                     >
-                      <Text fontSize="24px">{meetinglog.meetinglogTitle}</Text>
+                      <Text fontSize="21px" fontFamily="SeoulLight">
+                        {meetinglog.meetinglogTitle}
+                      </Text>
                       <Container
                         height="40px"
                         className="report-item-uploadinfo"

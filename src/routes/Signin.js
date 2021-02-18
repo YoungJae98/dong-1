@@ -50,16 +50,9 @@ const loginCheck = () => {
 
  */
 
-const StyledLogo = styled.img`
-  opacity: 0;
-  animation: logo_fadein 1.8s forwards;
-  animation-delay: 0.2s;
-`;
-
 const StyledContainer = styled(Container)`
   opacity: 0;
   animation: fadein 0.9s forwards;
-  animation-delay: 1.4s;
 `;
 
 function Signin() {
@@ -92,56 +85,90 @@ function Signin() {
       });
   };
   return (
-    <Container height="100vh" backgroundColor="#14406c">
-      <StyledLogo src={logo} alt="" />
+    <Container height="100vh" backgroundColor="#F6F6F6">
       <StyledContainer
         width="400px"
-        height="500px"
+        height="450px"
         backgroundColor="white"
         borderRadius="5px"
         fd="column"
         horizontalAlign="flex-start"
+        border="1px solid #14406c"
       >
-        <Text fontSize="36px" marginTop="50px">
+        <Text fontSize="36px" marginTop="50px" fontColor="#14406c">
           로그인
         </Text>
-        <Container fd="column">
+        <Container fd="column" horizontalAlign="flex-start" marginTop="30px">
           <Container marginTop="30px" height="40px">
-            <input
-              type="text"
-              placeholder="학번"
-              value={id}
-              onChange={({ target: { value } }) => setId(value)}
-              style={{
-                width: "230px",
-                height: "40px",
-                fontSize: "21px",
-                fontFamily: "SeoulBold",
-                backgroundColor: "#FAFAFA",
-                border: "1px solid black",
-                borderRadius: "5px",
-              }}
-            />
+            <div className="input-container">
+              <label className="input-label" onClick={() => {}}>
+                학번
+              </label>
+              <input
+                type="text"
+                value={id}
+                onChange={({ target: { value } }) => setId(value)}
+                onFocus={({ target }) =>
+                  target.parentElement.classList.add("login-focused")
+                }
+                onBlur={({ target }) => {
+                  if (target.value === "") {
+                    target.parentElement.classList.remove("login-focused");
+                  }
+                }}
+                className="login-input"
+                style={{
+                  width: "230px",
+                  height: "40px",
+                  fontSize: "18px",
+                  fontFamily: "SeoulLight",
+                  backgroundColor: "#F6F6F6",
+                  border: "1px solid #14406c",
+                  borderRadius: "3px",
+                  paddingLeft: "10px",
+                }}
+              />
+            </div>
           </Container>
-          <Container marginTop="30px" height="40px">
-            <input
-              type="password"
-              placeholder="비밀번호"
-              value={pw}
-              onChange={({ target: { value } }) => setPw(value)}
-              name="pw"
-              style={{
-                width: "230px",
-                height: "40px",
-                fontSize: "21px",
-                fontFamily: "SeoulBold",
-                backgroundColor: "#FAFAFA",
-                border: "1px solid black",
-                borderRadius: "5px",
-              }}
-            />
+          <Container marginTop="50px" height="40px">
+            <div className="input-container">
+              <label className="input-label" onClick={() => {}}>
+                세종 포탈 비밀번호
+              </label>
+              <input
+                type="password"
+                value={pw}
+                onChange={({ target: { value } }) => setPw(value)}
+                onFocus={({ target }) =>
+                  target.parentElement.classList.add("login-focused")
+                }
+                onBlur={({ target }) => {
+                  if (target.value === "") {
+                    target.parentElement.classList.remove("login-focused");
+                  }
+                }}
+                name="pw"
+                className="login-input"
+                style={{
+                  width: "230px",
+                  height: "40px",
+                  fontSize: "18px",
+                  fontFamily: "SeoulLight",
+                  backgroundColor: "transparent",
+                  border: "1px solid #14406c",
+                  borderRadius: "3px",
+                  paddingLeft: "10px",
+                }}
+              />
+            </div>
+          </Container>
+          <Container height="20px" width="230px" horizontalAlign="left">
+            <Text fontFamily="SeoulLight" fontSize="15px" fontColor="grey">
+              포탈 비밀번호는 저장되지 않습니다.
+            </Text>
           </Container>
           <Button
+            width="230px"
             height="40px"
             marginTop="30px"
             fontSize="21px"

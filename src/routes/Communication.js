@@ -237,7 +237,9 @@ function Communication() {
                       list.classList.toggle("invisible");
                     }}
                   >
-                    <Text fontSize="21px">정렬 방식 ▼</Text>
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      정렬 방식 ▼
+                    </Text>
                   </Button>
                   <div className="suggestions-sort-options invisible">
                     <Container
@@ -359,7 +361,9 @@ function Communication() {
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text fontSize="21px">검색 방식 ▼</Text>
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색 방식 ▼
+                    </Text>
                   </Button>
                   <div className="suggestions-search-options invisible">
                     <Container
@@ -426,7 +430,8 @@ function Communication() {
                       border: "2px solid #14406c",
                       borderRadius: "10px",
                       fontSize: "21px",
-                      fontFamily: "SeoulBold",
+                      fontFamily: "SeoulLight",
+                      paddingLeft: "10px",
                     }}
                     onChange={(e) => {
                       setSearchStr1(e.target.value);
@@ -463,7 +468,9 @@ function Communication() {
                       });
                     }}
                   >
-                    <Text fontSize="21px">검색</Text>
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색
+                    </Text>
                   </Button>
                   {isLogin ? (
                     <Link to="/communication/suggestion/register">
@@ -494,7 +501,9 @@ function Communication() {
                       marginLeft="15px"
                       onClick={() => alert("권한이 없습니다.")}
                     >
-                      <Text fontSize="21px">건의하기</Text>
+                      <Text fontSize="21px" fontFamily="SeoulLight">
+                        건의하기
+                      </Text>
                     </Button>
                   )}
                 </Container>
@@ -528,7 +537,9 @@ function Communication() {
                             verticalAlign="flex-start"
                             marginLeft="30px"
                           >
-                            <Text fontSize="24px">{suggestion.c_title}</Text>
+                            <Text fontSize="21px" fontFamily="SeoulLight">
+                              {suggestion.c_title}
+                            </Text>
                             <Container
                               height="40px"
                               className="form-item-uploadinfo"
@@ -604,7 +615,9 @@ function Communication() {
                       list.classList.toggle("invisible");
                     }}
                   >
-                    <Text fontSize="21px">정렬 방식 ▼</Text>
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      정렬 방식 ▼
+                    </Text>
                   </Button>
                   <div className="petitions-sort-options invisible">
                     <Container
@@ -726,7 +739,9 @@ function Communication() {
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text fontSize="21px">검색 방식 ▼</Text>
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색 방식 ▼
+                    </Text>
                   </Button>
                   <div className="suggestions-search-options invisible">
                     <Container
@@ -792,7 +807,8 @@ function Communication() {
                       border: "2px solid #14406c",
                       borderRadius: "10px",
                       fontSize: "21px",
-                      fontFamily: "SeoulBold",
+                      fontFamily: "SeoulLight",
+                      paddingLeft: "10px",
                     }}
                     value={searchStr2}
                     onChange={(e) => {
@@ -829,7 +845,9 @@ function Communication() {
                       });
                     }}
                   >
-                    <Text fontSize="21px">검색</Text>
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색
+                    </Text>
                   </Button>
                   {isLogin ? (
                     <Link to="/communication/petition/register">
@@ -846,7 +864,9 @@ function Communication() {
                           setPetitionBody("");
                         }}
                       >
-                        <Text fontSize="21px">청원 등록하기</Text>
+                        <Text fontSize="21px" fontFamily="SeoulLight">
+                          청원 등록하기
+                        </Text>
                       </Button>
                     </Link>
                   ) : (
@@ -894,7 +914,9 @@ function Communication() {
                             verticalAlign="flex-start"
                             marginLeft="30px"
                           >
-                            <Text fontSize="24px">{petition.c_title}</Text>
+                            <Text fontSize="21px" fontFamily="SeoulLight">
+                              {petition.c_title}
+                            </Text>
                             <Container
                               height="40px"
                               className="form-item-uploadinfo"
