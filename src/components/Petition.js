@@ -102,13 +102,13 @@ function Petition() {
         <Container
           verticalAlign="flex-start"
           horizontalAlign="space-between"
-          height="50px"
+          height="80px"
         >
           <Container
             horizontalAlign="flex-start"
             borderBottom="2px solid #14406c"
           >
-            <Text fontColor="#14406c" fontSize="32px">
+            <Text fontColor="#14406c" fontSize="32px" fontFamily="SeoulLight">
               {petition.c_title}
             </Text>
           </Container>
@@ -117,13 +117,13 @@ function Petition() {
             borderBottom="2px solid #14406c"
             width="450px"
           >
-            <Text fontColor="grey" fontSize="14px">
+            <Text fontColor="grey" fontSize="14px" fontFamily="SeoulLight">
               건의: {petition.c_user} / &nbsp;
             </Text>
-            <Text fontColor="grey" fontSize="14px">
+            <Text fontColor="grey" fontSize="14px" fontFamily="SeoulLight">
               동의 수: {petition.c_con} / &nbsp;
             </Text>
-            <Text fontColor="grey" fontSize="14px">
+            <Text fontColor="grey" fontSize="14px" fontFamily="SeoulLight">
               청원 날짜: {petition.c_date && petition.c_date.slice(0, 10)}
             </Text>
           </Container>
@@ -141,7 +141,7 @@ function Petition() {
           paddingTop="20px"
           scroll
         >
-          <Text fontColor="black" fontSize="24px">
+          <Text fontColor="black" fontSize="24px" fontFamily="SeoulLight">
             {petition.c_body}
           </Text>
         </Container>
@@ -159,7 +159,7 @@ function Petition() {
               style={{
                 height: "24px",
                 fontSize: "22px",
-                fontFamily: "SeoulBold",
+                fontFamily: "SeoulLight",
                 width: "870px",
                 display: "inline",
                 border: "2px solid #14406c",
@@ -178,6 +178,7 @@ function Petition() {
               height="30px"
               backgroundColor="#14406c"
               fontColor="white"
+              font="SeoulLight"
               borderRadius="5px"
               onClick={(e) => {
                 if (isLogin) {
@@ -216,10 +217,10 @@ function Petition() {
               horizontalAlign="space-between"
               key={consent.co_id}
             >
-              <Text fontColor="black" fontSize="22px">
+              <Text fontColor="black" fontSize="22px" fontFamily="SeoulLight">
                 {consent.co_user}:&nbsp;{consent.co_body}
               </Text>
-              <Text fontColor="grey" fontSize="12px">
+              <Text fontColor="grey" fontSize="12px" fontFamily="SeoulLight">
                 {consent.co_date.slice(0, 10)}
               </Text>
             </Container>

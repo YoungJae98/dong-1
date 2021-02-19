@@ -214,6 +214,7 @@ li {
 .totalProgress {
   background-color: white;
   border: 2px solid #14406c;
+  border-radius: 10px;
   display: none;
   position: absolute;
   left: 240px;
@@ -245,47 +246,52 @@ li {
 }
 .suggestions-sort-options {
   position: absolute;
-  transform: translateX(-364px) translateY(80px);
+  transform: translateX(-368px) translateY(80px);
   border: 1px solid #14406c;
 }
 .petitions-sort-options {
   position: absolute;
-  transform: translateX(-364px) translateY(80px);
+  transform: translateX(-368px) translateY(80px);
   border: 1px solid #14406c;
 }
 .report-sort-options {
   position: absolute;
-  transform: translateX(-364px) translateY(65px);
+  transform: translateX(-368px) translateY(65px);
   border: 1px solid #14406c;
 }
 .meetinglogs-sort-options {
   position: absolute;
-  transform: translateX(-364px) translateY(65px);
+  transform: translateX(-368px) translateY(65px);
   border: 1px solid #14406c;
 }
 .forms-sort-options {
   position: absolute;
-  transform: translateX(-364px) translateY(65px);
+  transform: translateX(-368px) translateY(65px);
   border: 1px solid #14406c;
 }
 .report-search-options {
   position: absolute;
-  transform: translateX(-229px) translateY(65px);
+  transform: translateX(-233px) translateY(50px);
   border: 1px solid #14406c;
 }
 .meetinglogs-search-options {
   position: absolute;
-  transform: translateX(-229px) translateY(65px);
+  transform: translateX(-233px) translateY(50px);
   border: 1px solid #14406c;
 }
 .suggestions-search-options {
   position: absolute;
-  transform: translateX(-229px) translateY(65px);
+  transform: translateX(-233px) translateY(65px);
+  border: 1px solid #14406c;
+}
+.petitions-search-options {
+  position: absolute;
+  transform: translateX(-233px) translateY(65px);
   border: 1px solid #14406c;
 }
 .forms-search-options {
   position: absolute;
-  transform: translateX(-229px) translateY(65px);
+  transform: translateX(-233px) translateY(50px);
   border: 1px solid #14406c;
 }
 .invisible {

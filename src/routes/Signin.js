@@ -106,6 +106,7 @@ function Signin() {
                   target.parentElement.classList.add("login-focused");
                   document.querySelector(".student-number").focus();
                 }}
+                style={{ fontFamily: "SeoulLight" }}
               >
                 학번
               </label>
@@ -144,6 +145,7 @@ function Signin() {
                   target.parentElement.classList.add("login-focused");
                   document.querySelector(".student-pwd").focus();
                 }}
+                style={{ fontFamily: "SeoulLight" }}
               >
                 세종 포탈 비밀번호
               </label>
@@ -176,7 +178,12 @@ function Signin() {
               />
             </div>
           </Container>
-          <Container height="20px" width="230px" horizontalAlign="left">
+          <Container
+            height="20px"
+            width="240px"
+            horizontalAlign="left"
+            marginTop="15px"
+          >
             <Text fontFamily="SeoulLight" fontSize="15px" fontColor="grey">
               포탈 비밀번호는 저장되지 않습니다.
             </Text>

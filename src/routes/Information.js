@@ -22,6 +22,7 @@ import {
 } from "react-icons/ai";
 
 function Main() {
+  const [file, setFile] = useState({});
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [pledges, setPledges] = useState({});
@@ -34,7 +35,6 @@ function Main() {
   const [searchOption, setSearchOption] = useState(0);
   const [reportSearchResult, setReportSearchResult] = useState([]);
   const [meetinglogsSearchResult, setMeetinglogsSearchResult] = useState([]);
-  //공약 받아오는 부분
   const getPledge = () => {
     fetch("http://localhost:3001/api/pledges/getPledge", {
       method: "GET",
@@ -45,7 +45,6 @@ function Main() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
         setPledges(response);
       });
   };
@@ -59,104 +58,12 @@ function Main() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        setFile(response);
       });
   };
   useEffect(() => {
     getPledge();
     getFile();
-    setReports([
-      {
-        reportId: 1,
-        reportTitle: "예산안 1",
-        reportDate: "2022-32-14",
-        reporter: "김지우",
-        reportSource: pdf,
-      },
-      {
-        reportId: 2,
-        reportTitle: "결산안 1",
-        reportDate: "2024-25-39",
-        reporter: "김지우",
-        reportSource: pdf,
-      },
-      {
-        reportId: 3,
-        reportTitle: "예산안 2",
-        reportDate: "2027-73-58",
-        reporter: "김지우",
-        reportSource: pdf,
-      },
-    ]);
-    setReportSearchResult([
-      {
-        reportId: 1,
-        reportTitle: "예산안 1",
-        reportDate: "2022-32-14",
-        reporter: "김지우",
-        reportSource: pdf,
-      },
-      {
-        reportId: 2,
-        reportTitle: "결산안 1",
-        reportDate: "2024-25-39",
-        reporter: "김지우",
-        reportSource: pdf,
-      },
-      {
-        reportId: 3,
-        reportTitle: "예산안 2",
-        reportDate: "2027-73-58",
-        reporter: "김지우",
-        reportSource: pdf,
-      },
-    ]);
-    setMeetinglogs([
-      {
-        meetinglogId: 1,
-        meetinglogTitle: "회의록 1",
-        meetinglogDate: "2022-32-14",
-        meetingloger: "김지우",
-        meetinglogSource: pdf,
-      },
-      {
-        meetinglogId: 2,
-        meetinglogTitle: "회의록 2",
-        meetinglogDate: "2029-56-30",
-        meetingloger: "김지우",
-        meetinglogSource: pdf,
-      },
-      {
-        meetinglogId: 3,
-        meetinglogTitle: "회의록 3",
-        meetinglogDate: "2069-57-89",
-        meetingloger: "김지우",
-        meetinglogSource: pdf,
-      },
-    ]);
-    setMeetinglogsSearchResult([
-      {
-        meetinglogId: 1,
-        meetinglogTitle: "회의록 1",
-        meetinglogDate: "2022-32-14",
-        meetingloger: "김지우",
-        meetinglogSource: pdf,
-      },
-      {
-        meetinglogId: 2,
-        meetinglogTitle: "회의록 2",
-        meetinglogDate: "2029-56-30",
-        meetingloger: "김지우",
-        meetinglogSource: pdf,
-      },
-      {
-        meetinglogId: 3,
-        meetinglogTitle: "회의록 3",
-        meetinglogDate: "2069-57-89",
-        meetingloger: "김지우",
-        meetinglogSource: pdf,
-      },
-    ]);
   }, []);
   useEffect(() => {
     if (Object.keys(pledges).length !== 0) {
@@ -166,6 +73,26 @@ function Main() {
       setAssignment4(pledges["4"]);
     }
   }, [pledges]);
+  useEffect(() => {
+    if (Object.keys(file).length !== 0) {
+      setMeetinglogs(file["1"]);
+      setMeetinglogsSearchResult(
+        file["1"].sort((a, b) => {
+          if (a.f_date > b.f_date) return 1;
+          else if (a.f_date === b.f_date) return 0;
+          else return -1;
+        })
+      );
+      setReports(file["2"]);
+      setReportSearchResult(
+        file["2"].sort((a, b) => {
+          if (a.f_date > b.f_date) return 1;
+          else if (a.f_date === b.f_date) return 0;
+          else return -1;
+        })
+      );
+    }
+  }, [file]);
   return (
     <>
       <Container height="145px">
@@ -397,70 +324,82 @@ function Main() {
                   >
                     <div className="totalProgress-uparrow" />
                     <div className="totalProgress-uparrow-cover" />
-                    <Container fd="column" horizontalAlign="flex-start">
-                      <Text
-                        fontSize="21px"
-                        fontColor="#14406c"
-                        marginTop="15px"
-                      >
+                    <Container fd="column">
+                      <Text fontSize="21px" fontColor="#14406c">
                         전체 공약 이행도
                       </Text>
+                      <Container height="22px" marginTop="20px">
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            과제1&nbsp;
+                          </Text>
+                        </Container>
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            {`${parseInt(
+                              (assignment1.filter((act) => act.p_status === 1)
+                                .length /
+                                assignment1.length) *
+                                100
+                            )}%`}
+                          </Text>
+                        </Container>
+                      </Container>
+                      <Container height="22px" marginTop="3px">
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            과제2&nbsp;
+                          </Text>
+                        </Container>
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            {`${parseInt(
+                              (assignment2.filter((act) => act.p_status === 1)
+                                .length /
+                                assignment2.length) *
+                                100
+                            )}%`}
+                          </Text>
+                        </Container>
+                      </Container>
+                      <Container height="22px" marginTop="3px">
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            과제3&nbsp;
+                          </Text>
+                        </Container>
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            {`${parseInt(
+                              (assignment3.filter((act) => act.p_status === 1)
+                                .length /
+                                assignment3.length) *
+                                100
+                            )}%`}
+                          </Text>
+                        </Container>
+                      </Container>
+                      <Container height="22px" marginTop="3px">
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            과제4&nbsp;
+                          </Text>
+                        </Container>
+                        <Container width="55px">
+                          <Text fontColor="#14406c" fontSize="21px">
+                            {`${parseInt(
+                              (assignment4.filter((act) => act.p_status === 1)
+                                .length /
+                                assignment4.length) *
+                                100
+                            )}%`}
+                          </Text>
+                        </Container>
+                      </Container>
                       <Text
                         fontColor="#14406c"
                         fontSize="21px"
-                        marginTop="10px"
-                      >
-                        과제1&nbsp;
-                        {`${parseInt(
-                          (assignment1.filter((act) => act.p_status === 1)
-                            .length /
-                            assignment1.length) *
-                            100
-                        )}%`}
-                      </Text>
-                      <Text
-                        fontColor="#14406c"
-                        fontSize="21px"
-                        marginTop="10px"
-                      >
-                        과제2&nbsp;
-                        {`${parseInt(
-                          (assignment2.filter((act) => act.p_status === 1)
-                            .length /
-                            assignment2.length) *
-                            100
-                        )}%`}
-                      </Text>
-                      <Text
-                        fontColor="#14406c"
-                        fontSize="21px"
-                        marginTop="10px"
-                      >
-                        과제3&nbsp;
-                        {`${parseInt(
-                          (assignment3.filter((act) => act.p_status === 1)
-                            .length /
-                            assignment3.length) *
-                            100
-                        )}%`}
-                      </Text>
-                      <Text
-                        fontColor="#14406c"
-                        fontSize="21px"
-                        marginTop="10px"
-                      >
-                        과제4&nbsp;
-                        {`${parseInt(
-                          (assignment4.filter((act) => act.p_status === 1)
-                            .length /
-                            assignment4.length) *
-                            100
-                        )}%`}
-                      </Text>
-                      <Text
-                        fontColor="#14406c"
-                        fontSize="21px"
-                        marginTop="10px"
+                        marginTop="20px"
                       >
                         합계&nbsp;
                         {`(${
@@ -551,6 +490,7 @@ function Main() {
                       <Text
                         fontSize="21px"
                         fontColor="#14406c"
+                        fontFamily="SeoulLight"
                         marginTop="15px"
                       >
                         과제1 동아리와 총동연을 밀접하게
@@ -558,10 +498,16 @@ function Main() {
                       {assignment1.map((act, index) => (
                         <Container key={act.p_id}>
                           <Container horizontalAlign="flex-start">
-                            <Text marginLeft="10px" fontSize="21px">
+                            <Text
+                              marginLeft="10px"
+                              fontSize="18px"
+                              fontFamily="SeoulLight"
+                            >
                               행동{index + 1}&nbsp;
                             </Text>
-                            <Text fontSize="21px">{act.p_name}</Text>
+                            <Text fontSize="18px" fontFamily="SeoulLight">
+                              {act.p_name}
+                            </Text>
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
@@ -569,7 +515,10 @@ function Main() {
                                 src={pledge_checked}
                                 alt=""
                                 height="35px"
-                                style={{ marginLeft: "5px" }}
+                                style={{
+                                  marginLeft: "5px",
+                                  marginTop: "-5px",
+                                }}
                               />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
@@ -633,6 +582,7 @@ function Main() {
                       <Text
                         fontSize="21px"
                         fontColor="#14406c"
+                        fontFamily="SeoulLight"
                         marginTop="15px"
                       >
                         과제2 분과 살리기
@@ -640,10 +590,16 @@ function Main() {
                       {assignment2.map((act, index) => (
                         <Container key={act.p_id}>
                           <Container horizontalAlign="flex-start">
-                            <Text marginLeft="10px" fontSize="21px">
+                            <Text
+                              marginLeft="10px"
+                              fontSize="18px"
+                              fontFamily="SeoulLight"
+                            >
                               행동{index + 1}&nbsp;
                             </Text>
-                            <Text fontSize="21px">{act.p_name}</Text>
+                            <Text fontSize="18px" fontFamily="SeoulLight">
+                              {act.p_name}
+                            </Text>
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
@@ -651,7 +607,7 @@ function Main() {
                                 src={pledge_checked}
                                 alt=""
                                 height="35px"
-                                style={{ marginLeft: "5px" }}
+                                style={{ marginLeft: "5px", marginTop: "-5px" }}
                               />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
@@ -716,16 +672,23 @@ function Main() {
                         fontSize="21px"
                         fontColor="#14406c"
                         marginTop="15px"
+                        fontFamily="SeoulLight"
                       >
                         과제3 동아리 알리기
                       </Text>
                       {assignment3.map((act, index) => (
                         <Container key={act.p_id}>
                           <Container horizontalAlign="flex-start">
-                            <Text marginLeft="10px" fontSize="21px">
+                            <Text
+                              marginLeft="10px"
+                              fontSize="18px"
+                              fontFamily="SeoulLight"
+                            >
                               행동{index + 1}&nbsp;
                             </Text>
-                            <Text fontSize="21px">{act.p_name}</Text>
+                            <Text fontSize="18px" fontFamily="SeoulLight">
+                              {act.p_name}
+                            </Text>
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
@@ -733,7 +696,10 @@ function Main() {
                                 src={pledge_checked}
                                 alt=""
                                 height="35px"
-                                style={{ marginLeft: "5px" }}
+                                style={{
+                                  marginLeft: "5px",
+                                  marginTop: "-5px",
+                                }}
                               />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
@@ -798,16 +764,23 @@ function Main() {
                         fontSize="21px"
                         fontColor="#14406c"
                         marginTop="15px"
+                        fontFamily="SeoulLight"
                       >
                         과제4 동아리 활동성 증진
                       </Text>
                       {assignment4.map((act, index) => (
                         <Container key={act.p_id}>
                           <Container horizontalAlign="flex-start">
-                            <Text marginLeft="10px" fontSize="21px">
+                            <Text
+                              marginLeft="10px"
+                              fontSize="18px"
+                              fontFamily="SeoulLight"
+                            >
                               행동{index + 1}&nbsp;
                             </Text>
-                            <Text fontSize="21px">{act.p_name}</Text>
+                            <Text fontSize="18px" fontFamily="SeoulLight">
+                              {act.p_name}
+                            </Text>
                           </Container>
                           <Container width="50px">
                             {act.p_status ? (
@@ -815,7 +788,10 @@ function Main() {
                                 src={pledge_checked}
                                 alt=""
                                 height="35px"
-                                style={{ marginLeft: "5px" }}
+                                style={{
+                                  marginLeft: "5px",
+                                  marginTop: "-5px",
+                                }}
                               />
                             ) : (
                               <img src={pledge_checkbox} alt="" height="30px" />
@@ -1009,6 +985,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1020,7 +997,7 @@ function Main() {
                         );
                         setReportSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.reportTitle < b.reportTitle) return -1;
+                            if (a.f_name < b.f_name) return -1;
                             else return 1;
                           })
                         );
@@ -1033,6 +1010,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1044,7 +1022,8 @@ function Main() {
                         );
                         setReportSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.reportDate < b.reportDate) return 1;
+                            if (a.f_date < b.f_date) return 1;
+                            if (a.f_date === b.f_date) return 0;
                             else return -1;
                           })
                         );
@@ -1057,6 +1036,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1068,7 +1048,8 @@ function Main() {
                         );
                         setReportSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.reportDate > b.reportDate) return 1;
+                            if (a.f_date > b.f_date) return 1;
+                            if (a.f_date === b.f_date) return 0;
                             else return -1;
                           })
                         );
@@ -1101,7 +1082,7 @@ function Main() {
                 <div className="report-search-options invisible">
                   <Container
                     width="110px"
-                    height="90px"
+                    height="60px"
                     backgroundColor="#14406c"
                     fd="column"
                   >
@@ -1110,6 +1091,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1126,6 +1108,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1133,22 +1116,6 @@ function Main() {
                         );
                         list.classList.toggle("invisible");
                         setSearchOption(1);
-                      }}
-                    >
-                      글쓴이
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".report-search-options"
-                        );
-                        list.classList.toggle("invisible");
-                        setSearchOption(2);
                       }}
                     >
                       날짜
@@ -1186,15 +1153,11 @@ function Main() {
                       switch (searchOption) {
                         case 0: // title
                           return reports.filter((report) =>
-                            report.reportTitle.includes(searchStr1)
+                            report.f_name.includes(searchStr1)
                           );
-                        case 1: // writer
+                        case 1: // date
                           return reports.filter((report) =>
-                            report.reporter.includes(searchStr1)
-                          );
-                        case 2: // date
-                          return reports.filter((report) =>
-                            report.reportDate.includes(searchStr1)
+                            report.f_date.slice(0, 10).includes(searchStr1)
                           );
                         default:
                           return reports;
@@ -1220,7 +1183,7 @@ function Main() {
                     horizontalAlign="flex-start"
                     marginTop="20px"
                     borderBottom="1px solid grey"
-                    key={report.reportId}
+                    key={report.f_id}
                   >
                     <Container
                       className="report-item-info"
@@ -1229,15 +1192,19 @@ function Main() {
                       marginLeft="30px"
                     >
                       <Text fontSize="21px" fontFamily="SeoulLight">
-                        {report.reportTitle}
+                        {report.f_name}
                       </Text>
                       <Container
                         height="40px"
                         className="report-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontColor="grey" fontSize="18px">
-                          {report.reportDate}
+                        <Text
+                          fontColor="grey"
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                        >
+                          {report.f_date.slice(0, 10)}
                         </Text>
                         <div
                           style={{
@@ -1248,13 +1215,17 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontColor="grey" fontSize="18px">
-                          {report.reporter}
+                        <Text
+                          fontColor="grey"
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                        >
+                          관리자
                         </Text>
                       </Container>
                     </Container>
                     <a
-                      href={report.reportSource}
+                      href={`../assets/documents/${report.f_originalname}`}
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -1265,7 +1236,7 @@ function Main() {
                       </Container>
                     </a>
                     <a
-                      href={report.reportSource}
+                      href={`../assets/documents/${report.f_originalname}`}
                       download
                       style={{ marginLeft: "50px", marginRight: "50px" }}
                     >
@@ -1343,6 +1314,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1354,8 +1326,7 @@ function Main() {
                         );
                         setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.meetinglogTitle < b.meetinglogTitle)
-                              return -1;
+                            if (a.f_name < b.f_name) return -1;
                             else return 1;
                           })
                         );
@@ -1368,6 +1339,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1379,7 +1351,8 @@ function Main() {
                         );
                         setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.meetinglogDate < b.meetinglogDate) return 1;
+                            if (a.f_date < b.f_date) return 1;
+                            if (a.f_date === b.f_date) return 0;
                             else return -1;
                           })
                         );
@@ -1392,6 +1365,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -1403,7 +1377,8 @@ function Main() {
                         );
                         setMeetinglogsSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.meetinglogDate > b.meetinglogDate) return 1;
+                            if (a.f_date > b.f_date) return 1;
+                            if (a.f_date === b.f_date) return 0;
                             else return -1;
                           })
                         );
@@ -1435,7 +1410,7 @@ function Main() {
                 <div className="meetinglogs-search-options invisible">
                   <Container
                     width="110px"
-                    height="90px"
+                    height="60px"
                     backgroundColor="#14406c"
                     fd="column"
                   >
@@ -1444,6 +1419,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         document
@@ -1459,27 +1435,13 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         document
                           .querySelector(".meetinglogs-search-options")
                           .classList.toggle("invisible");
                         setSearchOption(1);
-                      }}
-                    >
-                      글쓴이
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      fontSize="18px"
-                      onClick={() => {
-                        document
-                          .querySelector(".meetinglogs-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(2);
                       }}
                     >
                       날짜
@@ -1517,15 +1479,11 @@ function Main() {
                       switch (searchOption) {
                         case 0: // title
                           return meetinglogs.filter((log) =>
-                            log.meetinglogTitle.includes(searchStr2)
+                            log.f_name.includes(searchStr2)
                           );
-                        case 1: // writer
+                        case 1: //date
                           return meetinglogs.filter((log) =>
-                            log.meetingloger.includes(searchStr2)
-                          );
-                        case 2: //date
-                          return meetinglogs.filter((log) =>
-                            log.meetinglogDate.includes(searchStr2)
+                            log.f_date.slice(0, 10).includes(searchStr2)
                           );
                         default:
                           return meetinglogs;
@@ -1551,7 +1509,7 @@ function Main() {
                     horizontalAlign="flex-start"
                     marginTop="20px"
                     borderBottom="1px solid grey"
-                    key={meetinglog.meetinglogId}
+                    key={meetinglog.f_id}
                   >
                     <Container
                       className="meetinglog-item-info"
@@ -1560,15 +1518,19 @@ function Main() {
                       marginLeft="30px"
                     >
                       <Text fontSize="21px" fontFamily="SeoulLight">
-                        {meetinglog.meetinglogTitle}
+                        {meetinglog.f_name}
                       </Text>
                       <Container
                         height="40px"
                         className="report-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontColor="grey" fontSize="18px">
-                          {meetinglog.meetinglogDate}
+                        <Text
+                          fontColor="grey"
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                        >
+                          {meetinglog.f_date.slice(0, 10)}
                         </Text>
                         <div
                           style={{
@@ -1579,8 +1541,12 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontColor="grey" fontSize="18px">
-                          {meetinglog.meetingloger}
+                        <Text
+                          fontColor="grey"
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                        >
+                          관리자
                         </Text>
                       </Container>
                     </Container>

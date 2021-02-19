@@ -18,6 +18,7 @@ import Remote from "../components/Remote";
 import Text from "../components/Text";
 
 function Main() {
+  const [file, setFile] = useState([]);
   const [forms, setForms] = useState([]);
   const [formsSearchResult, setFormsSearchResult] = useState([]);
   const [searchStr, setSearchStr] = useState([]);
@@ -32,64 +33,24 @@ function Main() {
     })
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        setFile(response);
       });
   };
   useEffect(() => {
     getFile();
-    setForms([
-      {
-        formId: 1,
-        formTitle: "양식 1",
-        formDate: "2021-01-28",
-        formUploader: "김지우",
-        formSourceHwp: form1_hwp,
-        formSourceDocx: form1_docx,
-      },
-      {
-        formId: 2,
-        formTitle: "양식 2",
-        formDate: "2021-02-42",
-        formUploader: "김지우",
-        formSourceHwp: form1_hwp,
-        formSourceDocx: form1_docx,
-      },
-      {
-        formId: 3,
-        formTitle: "양식 3",
-        formDate: "2021-18-95",
-        formUploader: "김지우",
-        formSourceHwp: form1_hwp,
-        formSourceDocx: form1_docx,
-      },
-    ]);
-    setFormsSearchResult([
-      {
-        formId: 1,
-        formTitle: "양식 1",
-        formDate: "2021-01-28",
-        formUploader: "김지우",
-        formSourceHwp: form1_hwp,
-        formSourceDocx: form1_docx,
-      },
-      {
-        formId: 2,
-        formTitle: "양식 2",
-        formDate: "2021-02-42",
-        formUploader: "김지우",
-        formSourceHwp: form1_hwp,
-        formSourceDocx: form1_docx,
-      },
-      {
-        formId: 3,
-        formTitle: "양식 3",
-        formDate: "2021-18-95",
-        formUploader: "김지우",
-        formSourceHwp: form1_hwp,
-        formSourceDocx: form1_docx,
-      },
-    ]);
   }, []);
+  useEffect(() => {
+    if (Object.keys(file).length !== 0) {
+      setForms(file["3"]);
+      setFormsSearchResult(
+        file["3"].sort((a, b) => {
+          if (a.f_date > b.f_date) return 1;
+          else if (a.f_date === b.f_date) return 0;
+          else return -1;
+        })
+      );
+    }
+  }, [file]);
   return (
     <>
       <Container height="145px">
@@ -282,7 +243,7 @@ function Main() {
                         );
                         setFormsSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.formTitle < b.formTitle) return -1;
+                            if (a.f_name < b.f_name) return -1;
                             else return 1;
                           })
                         );
@@ -306,7 +267,8 @@ function Main() {
                         );
                         setFormsSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.formDate < b.formDate) return 1;
+                            if (a.f_date < b.f_name) return 1;
+                            else if (a.f_date === b.f_name) return 0;
                             else return -1;
                           })
                         );
@@ -330,7 +292,8 @@ function Main() {
                         );
                         setFormsSearchResult(
                           tmp.sort((a, b) => {
-                            if (a.formDate > b.formDate) return 1;
+                            if (a.f_name > b.f_name) return 1;
+                            else if (a.f_name === b.f_name) return 0;
                             else return -1;
                           })
                         );
@@ -362,7 +325,7 @@ function Main() {
                 <div className="forms-search-options invisible">
                   <Container
                     width="110px"
-                    height="90px"
+                    height="60px"
                     backgroundColor="#14406c"
                     fd="column"
                   >
@@ -392,21 +355,6 @@ function Main() {
                           .querySelector(".forms-search-options")
                           .classList.toggle("invisible");
                         setSearchOption(1);
-                      }}
-                    >
-                      글쓴이
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      fontSize="18px"
-                      onClick={() => {
-                        document
-                          .querySelector(".forms-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(2);
                       }}
                     >
                       날짜
@@ -444,15 +392,11 @@ function Main() {
                       switch (searchOption) {
                         case 0: // title
                           return forms.filter((form) =>
-                            form.formTitle.includes(searchStr)
+                            form.f_name.includes(searchStr)
                           );
-                        case 1: // writer
+                        case 1: // date
                           return forms.filter((form) =>
-                            form.formUploader.includes(searchStr)
-                          );
-                        case 2: // date
-                          return forms.filter((form) =>
-                            form.formDate.includes(searchStr)
+                            form.f_date.includes(searchStr)
                           );
                         default:
                           return forms;
@@ -478,7 +422,7 @@ function Main() {
                     horizontalAlign="flex-start"
                     marginTop="20px"
                     borderBottom="1px solid grey"
-                    key={form.formId}
+                    key={form.f_id}
                   >
                     <Container
                       className="form-item-info"
@@ -487,15 +431,19 @@ function Main() {
                       marginLeft="30px"
                     >
                       <Text fontSize="21px" fontFamily="SeoulLight">
-                        {form.formTitle}
+                        {form.f_name}
                       </Text>
                       <Container
                         height="40px"
                         className="form-item-uploadinfo"
                         horizontalAlign="flex-start"
                       >
-                        <Text fontColor="grey" fontSize="18px">
-                          {form.formDate}
+                        <Text
+                          fontColor="grey"
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                        >
+                          {form.f_date.slice(0, 10)}
                         </Text>
                         <div
                           style={{
@@ -506,8 +454,12 @@ function Main() {
                             display: "inline",
                           }}
                         ></div>
-                        <Text fontColor="grey" fontSize="18px">
-                          {form.formUploader}
+                        <Text
+                          fontColor="grey"
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                        >
+                          관리자
                         </Text>
                       </Container>
                     </Container>

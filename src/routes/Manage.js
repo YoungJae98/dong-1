@@ -20,6 +20,10 @@ function Manage() {
   const [file, setFile] = useState({});
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
+  const [forms, setForms] = useState([]);
+  const [community, setCommunity] = useState({});
+  const [suggestions, setSuggestions] = useState([]);
+  const [petitions, setPetitions] = useState([]);
   const getPledge = () => {
     fetch("http://localhost:3001/api/pledges/getPledge", {
       method: "GET",
@@ -150,9 +154,44 @@ function Manage() {
       alert("파일 이름이 입력되지 않았거나 파일이 선택되지 않았습니다.");
     }
   };
+  const getCommunity = () => {
+    fetch("http://localhost:3001/api/community/getCommunity", {
+      method: "GET",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        setCommunity(response);
+      });
+  };
+  const deleteCommunity = (id) => {
+    fetch("http://localhost:3001/api/community/deleteCommunity", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        id: id,
+      }),
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response["success"]) {
+          getCommunity();
+          alert("삭제 성공");
+        } else {
+          alert("삭제 실패");
+        }
+      });
+  };
   useEffect(() => {
     getPledge();
     getFile();
+    getCommunity();
   }, []);
   useEffect(() => {
     if (Object.keys(pledges).length !== 0) {
@@ -165,7 +204,12 @@ function Manage() {
   useEffect(() => {
     if (file["1"]) setMeetinglogs(file["1"]);
     if (file["2"]) setReports(file["2"]);
+    if (file["3"]) setForms(file["3"]);
   }, [file]);
+  useEffect(() => {
+    if (community["1"]) setSuggestions(community["1"]);
+    if (community["2"]) setPetitions(community["2"]);
+  }, [community]);
   return (
     <>
       <Container height="145px">
@@ -673,16 +717,66 @@ function Manage() {
               width="1000px"
             >
               <Container height="50px" className="manage-input">
-                <label htmlFor="meetinglog_file" className="manage-label2">
-                  새 회의록 업로드
-                </label>
-                <input type="file" id="meetinglog_file" />
+                <form
+                  onSubmit={(e) => {
+                    handleDocumentUpload(e, 1);
+                  }}
+                >
+                  <input
+                    type="text"
+                    id="report_text"
+                    name="f_name"
+                    placeholder="회의록 제목"
+                    style={{
+                      marginRight: "30px",
+                      height: "30px",
+                      width: "550px",
+                      fontSize: "24px",
+                      fontFamily: "SeoulMedium",
+                    }}
+                  />
+                  <label htmlFor="report_file" className="manage-label1">
+                    새 회의록 선택
+                  </label>
+                  <input type="file" id="report_file" name="document" />
+                  <input type="submit" value="업로드" />
+                </form>
               </Container>
               <Container
                 border="1px solid #14406c"
                 marginTop="30px"
                 scroll
-              ></Container>
+                fd="column"
+                horizontalAlign="flex-start"
+              >
+                {meetinglogs.map((item, index) => (
+                  <Container
+                    height="50px"
+                    backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                    key={index}
+                  >
+                    <Container width="600px" horizontalAlign="left">
+                      {item.f_name}
+                    </Container>
+                    <Button
+                      width="80px"
+                      height="30px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      onClick={() => {
+                        if (
+                          window.confirm(`${item.f_name} 삭제하시겠습니까?`)
+                        ) {
+                          deleteFile(item.f_id, item.f_originalname);
+                          alert(`${item.f_name} 삭제되었습니다.`);
+                        }
+                      }}
+                    >
+                      삭제
+                    </Button>
+                  </Container>
+                ))}
+              </Container>
             </Container>
           </Route>
           <Route exact path="/manage/suggestion">
@@ -708,7 +802,49 @@ function Manage() {
               paddingTop="30px"
               marginTop="30px"
               width="1000px"
-            ></Container>
+            >
+              <Container
+                border="1px solid #14406c"
+                marginTop="30px"
+                scroll
+                fd="column"
+                horizontalAlign="flex-start"
+              >
+                {suggestions.map((item, index) => (
+                  <Container
+                    height="50px"
+                    backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                    key={index}
+                  >
+                    <Container width="750px" horizontalAlign="left">
+                      <Text fontSize="20px" fontFamily="SeoulLight">
+                        {item.c_title}
+                      </Text>
+                    </Container>
+                    <Container width="100px" horizontalAlign="left">
+                      <Text fontSize="20px" fontFamily="SeoulLight">
+                        {item.c_user}
+                      </Text>
+                    </Container>
+                    <Button
+                      width="80px"
+                      height="30px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      onClick={() => {
+                        if (
+                          window.confirm(`${item.c_title} 삭제하시겠습니까?`)
+                        ) {
+                          deleteCommunity(item.c_id);
+                        }
+                      }}
+                    >
+                      삭제
+                    </Button>
+                  </Container>
+                ))}
+              </Container>
+            </Container>
           </Route>
           <Route exact path="/manage/petition">
             <Container
@@ -733,7 +869,49 @@ function Manage() {
               paddingTop="30px"
               marginTop="30px"
               width="1000px"
-            ></Container>
+            >
+              <Container
+                border="1px solid #14406c"
+                marginTop="30px"
+                scroll
+                fd="column"
+                horizontalAlign="flex-start"
+              >
+                {petitions.map((item, index) => (
+                  <Container
+                    height="50px"
+                    backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                    key={index}
+                  >
+                    <Container width="750px" horizontalAlign="left">
+                      <Text fontSize="20px" fontFamily="SeoulLight">
+                        {item.c_title}
+                      </Text>
+                    </Container>
+                    <Container width="100px" horizontalAlign="left">
+                      <Text fontSize="20px" fontFamily="SeoulLight">
+                        {item.c_user}
+                      </Text>
+                    </Container>
+                    <Button
+                      width="80px"
+                      height="30px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      onClick={() => {
+                        if (
+                          window.confirm(`${item.c_title} 삭제하시겠습니까?`)
+                        ) {
+                          deleteCommunity(item.c_id);
+                        }
+                      }}
+                    >
+                      삭제
+                    </Button>
+                  </Container>
+                ))}
+              </Container>
+            </Container>
           </Route>
           <Route exact path="/manage/forms">
             <Container
@@ -758,7 +936,69 @@ function Manage() {
               paddingTop="30px"
               marginTop="30px"
               width="1000px"
-            ></Container>
+            >
+              <Container height="50px" className="manage-input">
+                <form
+                  onSubmit={(e) => {
+                    handleDocumentUpload(e, 3);
+                  }}
+                >
+                  <input
+                    type="text"
+                    id="report_text"
+                    name="f_name"
+                    placeholder="양식 제목"
+                    style={{
+                      marginRight: "30px",
+                      height: "30px",
+                      width: "550px",
+                      fontSize: "24px",
+                      fontFamily: "SeoulMedium",
+                    }}
+                  />
+                  <label htmlFor="report_file" className="manage-label1">
+                    새 양식 선택
+                  </label>
+                  <input type="file" id="report_file" name="document" />
+                  <input type="submit" value="업로드" />
+                </form>
+              </Container>
+              <Container
+                border="1px solid #14406c"
+                marginTop="30px"
+                scroll
+                fd="column"
+                horizontalAlign="flex-start"
+              >
+                {forms.map((item, index) => (
+                  <Container
+                    height="50px"
+                    backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                    key={index}
+                  >
+                    <Container width="600px" horizontalAlign="left">
+                      {item.f_name}
+                    </Container>
+                    <Button
+                      width="80px"
+                      height="30px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      onClick={() => {
+                        if (
+                          window.confirm(`${item.f_name} 삭제하시겠습니까?`)
+                        ) {
+                          deleteFile(item.f_id, item.f_originalname);
+                          alert(`${item.f_name} 삭제되었습니다.`);
+                        }
+                      }}
+                    >
+                      삭제
+                    </Button>
+                  </Container>
+                ))}
+              </Container>
+            </Container>
           </Route>
           <Route exact path="/manage/carousel">
             <Container

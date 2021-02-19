@@ -125,9 +125,21 @@ function Communication() {
   useEffect(() => {
     if (Object.keys(community).length !== 0) {
       setSuggestions(community["1"]);
-      setSuggestionsSearchResult(community["1"]);
+      setSuggestionsSearchResult(
+        community["1"].sort((a, b) => {
+          if (a.c_date > b.c_date) return 1;
+          if (a.c_date === b.c_date) return 0;
+          else return -1;
+        })
+      );
       setPetitions(community["2"]);
-      setPetitionsSearchResult(community["2"]);
+      setPetitionsSearchResult(
+        community["2"].sort((a, b) => {
+          if (a.c_date > b.c_date) return 1;
+          if (a.c_date === b.c_date) return 0;
+          else return -1;
+        })
+      );
     }
   }, [community]);
   return (
@@ -135,7 +147,7 @@ function Communication() {
       <Container height="145px">
         <img src={v4} alt="" />
       </Container>
-      <Container height="1200px" backgroundColor="">
+      <Container height="1400px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
             width="200px"
@@ -512,6 +524,7 @@ function Communication() {
                   fd="column"
                   horizontalAlign="flex-start"
                   marginTop="30px"
+                  height="1000px"
                 >
                   {suggestionsSearchResult.map((suggestion, index) => (
                     <Container
@@ -545,7 +558,11 @@ function Communication() {
                               className="form-item-uploadinfo"
                               horizontalAlign="flex-start"
                             >
-                              <Text fontColor="grey" fontSize="18px">
+                              <Text
+                                fontColor="grey"
+                                fontSize="18px"
+                                fontFamily="SeoulLight"
+                              >
                                 {suggestion.c_date.slice(0, 10)}
                               </Text>
                               <div
@@ -557,13 +574,21 @@ function Communication() {
                                   display: "inline",
                                 }}
                               ></div>
-                              <Text fontColor="grey" fontSize="18px">
+                              <Text
+                                fontColor="grey"
+                                fontSize="18px"
+                                fontFamily="SeoulLight"
+                              >
                                 {suggestion.c_user}
                               </Text>
                             </Container>
                           </Container>
                           <Container width="200px" marginRight="30px">
-                            <Text fontColor="grey" fontSize="20px">
+                            <Text
+                              fontColor="grey"
+                              fontSize="18px"
+                              fontFamily="SeoulLight"
+                            >
                               {suggestion.c_con}명이 동의
                             </Text>
                           </Container>
@@ -735,7 +760,7 @@ function Communication() {
                     marginRight="15px"
                     onClick={() => {
                       document
-                        .querySelector(".suggestions-search-options")
+                        .querySelector(".petitions-search-options")
                         .classList.toggle("invisible");
                     }}
                   >
@@ -743,7 +768,7 @@ function Communication() {
                       검색 방식 ▼
                     </Text>
                   </Button>
-                  <div className="suggestions-search-options invisible">
+                  <div className="petitions-search-options invisible">
                     <Container
                       width="110px"
                       height="90px"
@@ -758,7 +783,7 @@ function Communication() {
                         fontSize="18px"
                         onClick={() => {
                           document
-                            .querySelector(".suggestions-search-options")
+                            .querySelector(".petitions-search-options")
                             .classList.toggle("invisible");
                           setSearchOption(0);
                         }}
@@ -773,7 +798,7 @@ function Communication() {
                         fontSize="18px"
                         onClick={() => {
                           document
-                            .querySelector(".suggestions-search-options")
+                            .querySelector(".petitions-search-options")
                             .classList.toggle("invisible");
                           setSearchOption(1);
                         }}
@@ -788,7 +813,7 @@ function Communication() {
                         fontSize="18px"
                         onClick={() => {
                           document
-                            .querySelector(".suggestions-search-options")
+                            .querySelector(".petitions-search-options")
                             .classList.toggle("invisible");
                           setSearchOption(2);
                         }}
@@ -922,7 +947,11 @@ function Communication() {
                               className="form-item-uploadinfo"
                               horizontalAlign="flex-start"
                             >
-                              <Text fontColor="grey" fontSize="18px">
+                              <Text
+                                fontColor="grey"
+                                fontSize="18px"
+                                fontFamily="SeoulLight"
+                              >
                                 {petition.c_date.slice(0, 10)}
                               </Text>
                               <div
@@ -934,13 +963,21 @@ function Communication() {
                                   display: "inline",
                                 }}
                               ></div>
-                              <Text fontColor="grey" fontSize="18px">
+                              <Text
+                                fontColor="grey"
+                                fontSize="18px"
+                                fontFamily="SeoulLight"
+                              >
                                 {petition.c_user}
                               </Text>
                             </Container>
                           </Container>
                           <Container width="200px" marginRight="30px">
-                            <Text fontColor="grey" fontSize="18px">
+                            <Text
+                              fontColor="grey"
+                              fontSize="18px"
+                              fontFamily="SeoulLight"
+                            >
                               {petition.c_con}명이 동의
                             </Text>
                           </Container>

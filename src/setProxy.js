@@ -46,6 +46,9 @@ module.exports = (app) => {
     }),
     proxy("/api/files/deleteFile", {
       target: "http://localhost:3001/",
+    }),
+    proxy("/api/community/deleteCommunity", {
+      target: "http://localhost:3001/",
     })
   );
 };
