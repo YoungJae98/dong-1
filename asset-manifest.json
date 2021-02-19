@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/dong/static/css/main.d6afea79.chunk.css",
-    "main.js": "/dong/static/js/main.a13565c0.chunk.js",
-    "main.js.map": "/dong/static/js/main.a13565c0.chunk.js.map",
+    "main.css": "/dong/static/css/main.2390644d.chunk.css",
+    "main.js": "/dong/static/js/main.a6a679d8.chunk.js",
+    "main.js.map": "/dong/static/js/main.a6a679d8.chunk.js.map",
     "runtime-main.js": "/dong/static/js/runtime-main.7df10508.js",
     "runtime-main.js.map": "/dong/static/js/runtime-main.7df10508.js.map",
     "static/css/2.55d8add8.chunk.css": "/dong/static/css/2.55d8add8.chunk.css",
@@ -10,7 +10,7 @@
     "static/js/2.c6a6d111.chunk.js.map": "/dong/static/js/2.c6a6d111.chunk.js.map",
     "index.html": "/dong/index.html",
     "static/css/2.55d8add8.chunk.css.map": "/dong/static/css/2.55d8add8.chunk.css.map",
-    "static/css/main.d6afea79.chunk.css.map": "/dong/static/css/main.d6afea79.chunk.css.map",
+    "static/css/main.2390644d.chunk.css.map": "/dong/static/css/main.2390644d.chunk.css.map",
     "static/js/2.c6a6d111.chunk.js.LICENSE.txt": "/dong/static/js/2.c6a6d111.chunk.js.LICENSE.txt",
     "static/media/index.css": "/dong/static/media/Typo_SsangmunDongB.4bd085d1.ttf",
     "static/media/Sejonglogo.fb16eeb7.png": "/dong/static/media/Sejonglogo.fb16eeb7.png",
@@ -53,8 +53,6 @@
     "static/media/regulations.2070f065.pdf": "/dong/static/media/regulations.2070f065.pdf",
     "static/media/rush.480f6463.gif": "/dong/static/media/rush.480f6463.gif",
     "static/media/sac.68cbd318.png": "/dong/static/media/sac.68cbd318.png",
-    "static/media/sample2.b2e5ab5e.hwp": "/dong/static/media/sample2.b2e5ab5e.hwp",
-    "static/media/sample2.ddac4d39.docx": "/dong/static/media/sample2.ddac4d39.docx",
     "static/media/sejong.df1675eb.png": "/dong/static/media/sejong.df1675eb.png",
     "static/media/sejonggeukhoi.5d42f4c2.jpg": "/dong/static/media/sejonggeukhoi.5d42f4c2.jpg",
     "static/media/sejongkings.e4785c3c.jpg": "/dong/static/media/sejongkings.e4785c3c.jpg",
@@ -85,7 +83,7 @@
     "static/js/runtime-main.7df10508.js",
     "static/css/2.55d8add8.chunk.css",
     "static/js/2.c6a6d111.chunk.js",
-    "static/css/main.d6afea79.chunk.css",
-    "static/js/main.a13565c0.chunk.js"
+    "static/css/main.2390644d.chunk.css",
+    "static/js/main.a6a679d8.chunk.js"
   ]
 }
