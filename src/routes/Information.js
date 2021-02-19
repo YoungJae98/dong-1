@@ -36,7 +36,7 @@ function Main() {
   const [reportSearchResult, setReportSearchResult] = useState([]);
   const [meetinglogsSearchResult, setMeetinglogsSearchResult] = useState([]);
   const getPledge = () => {
-    fetch("http://localhost:3001/api/pledges/getPledge", {
+    fetch("http://18.217.248.102:3001/api/pledges/getPledge", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -49,7 +49,7 @@ function Main() {
       });
   };
   const getFile = () => {
-    fetch("http://localhost:3001/api/files/getFiles", {
+    fetch("http://18.217.248.102:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
