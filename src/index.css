@@ -57,6 +57,16 @@ li {
     z-index: -100;
   }
 }
+@keyframes club-container-animation {
+  from {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
 @font-face {
   font-family: "Bamin";
   src: url(./assets/fonts/BMJUA_ttf.ttf) format("truetype");
@@ -295,7 +305,7 @@ li {
   border: 1px solid #14406c;
 }
 .invisible {
-  display: none;
+  display: none !important;
 }
 .input-container {
   position: relative;

@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
 import regulations from "../assets/documents/regulations.pdf";
-import form1_hwp from "../assets/documents/sample2.hwp";
-import form1_docx from "../assets/documents/sample2.docx";
 import logo_inversed from "../assets/images/logo_reversed.png";
 import v5 from "../assets/images/visual/visual5.jpg";
 import pdf from "../assets/images/pdf_image.png";
