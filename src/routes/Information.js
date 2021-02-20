@@ -63,7 +63,7 @@ function Main() {
       });
   };
   const downloadFile = (name) => {
-    fetch("http://localhost:3001/api/files/downloadFile", {
+    fetch("http://18.217.248.102:3001/api/files/downloadFile", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
