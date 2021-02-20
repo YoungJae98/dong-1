@@ -25,6 +25,7 @@ import {
 function Main() {
   const [file, setFile] = useState({});
   const [files, setFiles] = useState({});
+  const [isLoaded, setIsLoaded] = useState(false);
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [pledges, setPledges] = useState({});
@@ -93,6 +94,7 @@ function Main() {
         let data = files;
         data[name] = response;
         setFiles(data);
+        setIsLoaded(true);
       });
   };
   const downloadFile = (name) => {
@@ -1302,7 +1304,9 @@ function Main() {
                         width="75px"
                         height="20px"
                         onClick={() => {
-                          openFile(report.f_originalname);
+                          if (isLoaded) {
+                            openFile(report.f_originalname);
+                          }
                         }}
                       >
                         <Container width="75px">
@@ -1318,7 +1322,9 @@ function Main() {
                         height="20px"
                         backgroundColor="white"
                         onClick={() => {
-                          downloadFile(report.f_originalname);
+                          if (isLoaded) {
+                            downloadFile(report.f_originalname);
+                          }
                         }}
                       >
                         <Container width="105px">
@@ -1696,7 +1702,9 @@ function Main() {
                         width="75px"
                         height="20px"
                         onClick={() => {
-                          openFile(meetinglog.f_originalname);
+                          if (isLoaded) {
+                            openFile(meetinglog.f_originalname);
+                          }
                         }}
                       >
                         <Container width="75px">
@@ -1712,7 +1720,9 @@ function Main() {
                         height="20px"
                         backgroundColor="white"
                         onClick={() => {
-                          downloadFile(meetinglog.f_originalname);
+                          if (isLoaded) {
+                            downloadFile(meetinglog.f_originalname);
+                          }
                         }}
                       >
                         <Container width="105px">
