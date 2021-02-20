@@ -3,6 +3,7 @@ var db = require("../db");
 var router = express.Router();
 var multer = require("multer");
 var fs = require("fs");
+var mime = require("mime");
 const path = require("path");
 
 var storage = multer.diskStorage({
@@ -59,6 +60,11 @@ router.post("/deleteFile", (req, res) => {
       );
     }
   });
+});
+
+router.post("/downloadFile", (req, res) => {
+  var file = path.join("./src/assets/documents/", req.body.f_originalname);
+  res.download(file);
 });
 
 module.exports = router;
