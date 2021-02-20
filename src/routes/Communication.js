@@ -43,7 +43,7 @@ function Communication() {
     history.push("/communication/petition");
   };
   const getCommunity = () => {
-    fetch("http://localhost:3001/api/community/getCommunity", {
+    fetch("http://18.217.248.102:3001/api/community/getCommunity", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -57,7 +57,7 @@ function Communication() {
       });
   };
   const writeSuggestion = () => {
-    fetch("http://localhost:3001/api/community/writeCommunity", {
+    fetch("http://18.217.248.102:3001/api/community/writeCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -81,7 +81,7 @@ function Communication() {
       });
   };
   const writePetition = () => {
-    fetch("http://localhost:3001/api/community/writeCommunity", {
+    fetch("http://18.217.248.102:3001/api/community/writeCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -105,7 +105,7 @@ function Communication() {
       });
   };
   const loginCheck = () => {
-    fetch("http://localhost:3001/api/account/isLoginCheck", {
+    fetch("http://18.217.248.102:3001/api/account/isLoginCheck", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
