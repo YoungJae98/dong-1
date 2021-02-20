@@ -19,8 +19,12 @@ function Main() {
   const [file, setFile] = useState([]);
   const [forms, setForms] = useState([]);
   const [formsSearchResult, setFormsSearchResult] = useState([]);
+
   const [searchStr, setSearchStr] = useState([]);
   const [searchOption, setSearchOption] = useState(0);
+
+  const [formPageArr, setFormPageArr] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
   const getFile = () => {
     fetch("http://localhost:3001/api/files/getFiles", {
       method: "GET",
@@ -49,12 +53,19 @@ function Main() {
       );
     }
   }, [file]);
+  useEffect(() => {
+    let arr = [];
+    for (let i = 0; i < formsSearchResult.length / 10; i++) {
+      arr.push(i);
+    }
+    setFormPageArr(arr);
+  }, [formsSearchResult]);
   return (
     <>
       <Container height="145px">
         <img src={v5} alt="" />
       </Container>
-      <Container height="1200px" backgroundColor="">
+      <Container height="1400px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
             width="200px"
@@ -230,6 +241,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -254,6 +266,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -279,6 +292,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -332,6 +346,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         document
@@ -347,6 +362,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         document
@@ -412,87 +428,147 @@ function Main() {
                 fd="column"
                 horizontalAlign="flex-start"
                 marginTop="30px"
+                height="1000px"
               >
-                {formsSearchResult.map((form) => (
-                  <Container
-                    className="form-item"
-                    height="75px"
-                    horizontalAlign="flex-start"
-                    marginTop="20px"
-                    borderBottom="1px solid grey"
-                    key={form.f_id}
-                  >
+                {formsSearchResult
+                  .slice(pageNum * 10, (pageNum + 1) * 10)
+                  .map((form) => (
                     <Container
-                      className="form-item-info"
-                      fd="column"
-                      verticalAlign="flex-start"
-                      marginLeft="30px"
+                      className="form-item"
+                      height="75px"
+                      horizontalAlign="flex-start"
+                      marginTop="20px"
+                      borderBottom="1px solid grey"
+                      key={form.f_id}
                     >
-                      <Text fontSize="21px" fontFamily="SeoulLight">
-                        {form.f_name}
-                      </Text>
                       <Container
-                        height="40px"
-                        className="form-item-uploadinfo"
-                        horizontalAlign="flex-start"
+                        className="form-item-info"
+                        fd="column"
+                        verticalAlign="flex-start"
+                        marginLeft="30px"
                       >
-                        <Text
-                          fontColor="grey"
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
-                        >
-                          {form.f_date.slice(0, 10)}
+                        <Text fontSize="21px" fontFamily="SeoulLight">
+                          {form.f_name}
                         </Text>
-                        <div
-                          style={{
-                            height: "10px",
-                            borderLeft: "1px solid grey",
-                            marginLeft: "10px",
-                            marginRight: "10px",
-                            display: "inline",
-                          }}
-                        ></div>
-                        <Text
-                          fontColor="grey"
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
+                        <Container
+                          height="40px"
+                          className="form-item-uploadinfo"
+                          horizontalAlign="flex-start"
                         >
-                          관리자
-                        </Text>
+                          <Text
+                            fontColor="grey"
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                          >
+                            {form.f_date.slice(0, 10)}
+                          </Text>
+                          <div
+                            style={{
+                              height: "10px",
+                              borderLeft: "1px solid grey",
+                              marginLeft: "10px",
+                              marginRight: "10px",
+                              display: "inline",
+                            }}
+                          ></div>
+                          <Text
+                            fontColor="grey"
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                          >
+                            관리자
+                          </Text>
+                        </Container>
                       </Container>
+                      <a href={form.formSourceHwp} download>
+                        <Container width="105px">
+                          <img src={hwp} alt="" height="30px" />
+                          <Text
+                            fontSize="21px"
+                            fontColor="#14406c"
+                            underline
+                            marginLeft="5px"
+                          >
+                            다운로드
+                          </Text>
+                        </Container>
+                      </a>
+                      <a
+                        href={form.formSourceDocx}
+                        download
+                        style={{ marginLeft: "50px", marginRight: "50px" }}
+                      >
+                        <Container width="105px">
+                          <img src={word} alt="" height="30px" />
+                          <Text
+                            fontSize="21px"
+                            fontColor="#14406c"
+                            underline
+                            marginLeft="5px"
+                          >
+                            다운로드
+                          </Text>
+                        </Container>
+                      </a>
                     </Container>
-                    <a href={form.formSourceHwp} download>
-                      <Container width="105px">
-                        <img src={hwp} alt="" height="30px" />
-                        <Text
-                          fontSize="21px"
-                          fontColor="#14406c"
-                          underline
-                          marginLeft="5px"
-                        >
-                          다운로드
-                        </Text>
-                      </Container>
-                    </a>
-                    <a
-                      href={form.formSourceDocx}
-                      download
-                      style={{ marginLeft: "50px", marginRight: "50px" }}
-                    >
-                      <Container width="105px">
-                        <img src={word} alt="" height="30px" />
-                        <Text
-                          fontSize="21px"
-                          fontColor="#14406c"
-                          underline
-                          marginLeft="5px"
-                        >
-                          다운로드
-                        </Text>
-                      </Container>
-                    </a>
-                  </Container>
+                  ))}
+              </Container>
+              <Container className="page-container" height="20px">
+                <Button
+                  width="60px"
+                  height="20px"
+                  backgroundColor="white"
+                  fontColor="#14406c"
+                  fontSize="20px"
+                  font="SeoulLight"
+                  onClick={() => {
+                    if (pageNum === 0) {
+                      setPageNum(0);
+                    } else {
+                      document.documentElement.scrollTop = 0;
+                      setPageNum(pageNum - 1);
+                    }
+                  }}
+                >
+                  {`<이전`}
+                </Button>
+                {formPageArr.map((item) => (
+                  <Button
+                    width="20px"
+                    height="20px"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize={pageNum === item ? "20px" : "14px"}
+                    font="SeoulLight"
+                    key={item}
+                    onClick={() => {
+                      if (pageNum !== item) {
+                        document.documentElement.scrollTop = 0;
+                        setPageNum(item);
+                      }
+                    }}
+                  >
+                    {item + 1}
+                  </Button>
                 ))}
+                <Button
+                  width="60px"
+                  height="20px"
+                  backgroundColor="white"
+                  fontColor="#14406c"
+                  fontSize="20px"
+                  font="SeoulLight"
+                  onClick={() => {
+                    if (pageNum === parseInt(formsSearchResult.length / 10)) {
+                      setPageNum(pageNum);
+                    } else {
+                      document.documentElement.scrollTop = 0;
+                      setPageNum(pageNum + 1);
+                    }
+                  }}
+                >
+                  {`다음>`}
+                </Button>
               </Container>
             </Container>
           </Route>

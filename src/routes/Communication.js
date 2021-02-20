@@ -25,6 +25,9 @@ function Communication() {
 
   const [suggestionsSearchResult, setSuggestionsSearchResult] = useState([]);
   const [petitionsSearchResult, setPetitionsSearchResult] = useState([]);
+  const [suggestionPageArr, setSuggestionPageArr] = useState([]);
+  const [petitionPageArr, setPetitionPageArr] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
 
   const [suggestionTitle, setSuggestionTitle] = useState("");
   const [suggestionBody, setSuggestionBody] = useState("");
@@ -142,6 +145,20 @@ function Communication() {
       );
     }
   }, [community]);
+  useEffect(() => {
+    let arr = [];
+    for (let i = 0; i < suggestionsSearchResult.length / 10; i++) {
+      arr.push(i);
+    }
+    setSuggestionPageArr(arr);
+  }, [suggestionsSearchResult]);
+  useEffect(() => {
+    let arr = [];
+    for (let i = 0; i < petitionsSearchResult.length / 10; i++) {
+      arr.push(i);
+    }
+    setPetitionPageArr(arr);
+  }, [petitionsSearchResult]);
   return (
     <>
       <Container height="145px">
@@ -174,7 +191,12 @@ function Communication() {
               marginTop="10px"
             >
               <List fd="column">
-                <Button backgroundColor="white">
+                <Button
+                  backgroundColor="white"
+                  onClick={() => {
+                    setPageNum(0);
+                  }}
+                >
                   <NavLink to="/communication/">
                     <Listitem
                       height="40px"
@@ -184,7 +206,12 @@ function Communication() {
                     ></Listitem>
                   </NavLink>
                 </Button>
-                <Button backgroundColor="white">
+                <Button
+                  backgroundColor="white"
+                  onClick={() => {
+                    setPageNum(0);
+                  }}
+                >
                   <NavLink to="/communication/petition">
                     <Listitem
                       height="40px"
@@ -266,6 +293,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -290,6 +318,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -314,6 +343,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -338,6 +368,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".suggestions-sort-options"
@@ -390,6 +421,7 @@ function Communication() {
                         fontSize="18px"
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
+                        font="SeoulLight"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -405,6 +437,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -420,6 +453,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           document
                             .querySelector(".suggestions-search-options")
@@ -526,76 +560,138 @@ function Communication() {
                   marginTop="30px"
                   height="1000px"
                 >
-                  {suggestionsSearchResult.map((suggestion, index) => (
-                    <Container
-                      height="75px"
-                      horizontalAlign="flex-start"
-                      marginTop="20px"
-                      borderBottom="1px solid grey"
-                      key={suggestion.c_id}
-                    >
-                      <Link
-                        to={{
-                          pathname: `/communication/suggestion/${suggestion.c_id}`,
-                          state: {
-                            c_id: suggestion.c_id,
-                          },
-                        }}
-                        style={{ width: "100%", height: "100%" }}
+                  {suggestionsSearchResult
+                    .slice(pageNum * 10, (pageNum + 1) * 10)
+                    .map((suggestion) => (
+                      <Container
+                        height="75px"
+                        horizontalAlign="flex-start"
+                        marginTop="20px"
+                        borderBottom="1px solid grey"
+                        key={suggestion.c_id}
                       >
-                        <Container horizontalAlign="space-between">
-                          <Container
-                            className="petition-item-info"
-                            fd="column"
-                            verticalAlign="flex-start"
-                            marginLeft="30px"
-                          >
-                            <Text fontSize="21px" fontFamily="SeoulLight">
-                              {suggestion.c_title}
-                            </Text>
+                        <Link
+                          to={{
+                            pathname: `/communication/suggestion/${suggestion.c_id}`,
+                            state: {
+                              c_id: suggestion.c_id,
+                            },
+                          }}
+                          style={{ width: "100%", height: "100%" }}
+                        >
+                          <Container horizontalAlign="space-between">
                             <Container
-                              height="40px"
-                              className="form-item-uploadinfo"
-                              horizontalAlign="flex-start"
+                              className="petition-item-info"
+                              fd="column"
+                              verticalAlign="flex-start"
+                              marginLeft="30px"
                             >
-                              <Text
-                                fontColor="grey"
-                                fontSize="18px"
-                                fontFamily="SeoulLight"
-                              >
-                                {suggestion.c_date.slice(0, 10)}
+                              <Text fontSize="21px" fontFamily="SeoulLight">
+                                {suggestion.c_title}
                               </Text>
-                              <div
-                                style={{
-                                  height: "10px",
-                                  borderLeft: "1px solid grey",
-                                  marginLeft: "10px",
-                                  marginRight: "10px",
-                                  display: "inline",
-                                }}
-                              ></div>
+                              <Container
+                                height="40px"
+                                className="form-item-uploadinfo"
+                                horizontalAlign="flex-start"
+                              >
+                                <Text
+                                  fontColor="grey"
+                                  fontSize="18px"
+                                  fontFamily="SeoulLight"
+                                >
+                                  {suggestion.c_date.slice(0, 10)}
+                                </Text>
+                                <div
+                                  style={{
+                                    height: "10px",
+                                    borderLeft: "1px solid grey",
+                                    marginLeft: "10px",
+                                    marginRight: "10px",
+                                    display: "inline",
+                                  }}
+                                ></div>
+                                <Text
+                                  fontColor="grey"
+                                  fontSize="18px"
+                                  fontFamily="SeoulLight"
+                                >
+                                  {suggestion.c_user}
+                                </Text>
+                              </Container>
+                            </Container>
+                            <Container width="200px" marginRight="30px">
                               <Text
                                 fontColor="grey"
                                 fontSize="18px"
                                 fontFamily="SeoulLight"
                               >
-                                {suggestion.c_user}
+                                {suggestion.c_con}명이 동의
                               </Text>
                             </Container>
                           </Container>
-                          <Container width="200px" marginRight="30px">
-                            <Text
-                              fontColor="grey"
-                              fontSize="18px"
-                              fontFamily="SeoulLight"
-                            >
-                              {suggestion.c_con}명이 동의
-                            </Text>
-                          </Container>
-                        </Container>
-                      </Link>
-                    </Container>
+                        </Link>
+                      </Container>
+                    ))}
+                </Container>
+                <Container className="page-container" height="20px">
+                  <Button
+                    width="60px"
+                    height="20px"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize="20px"
+                    font="SeoulLight"
+                    onClick={() => {
+                      if (pageNum === 0) {
+                        setPageNum(0);
+                      } else {
+                        document.documentElement.scrollTop = 0;
+                        setPageNum(pageNum - 1);
+                      }
+                    }}
+                  >
+                    {`<이전`}
+                  </Button>
+                  {suggestionPageArr.map((item) => (
+                    <Button
+                      width="20px"
+                      height="20px"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize={pageNum === item ? "20px" : "14px"}
+                      font="SeoulLight"
+                      key={item}
+                      onClick={() => {
+                        if (pageNum !== item) {
+                          document.documentElement.scrollTop = 0;
+                          setPageNum(item);
+                        }
+                      }}
+                    >
+                      {item + 1}
+                    </Button>
                   ))}
+                  <Button
+                    width="60px"
+                    height="20px"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize="20px"
+                    font="SeoulLight"
+                    onClick={() => {
+                      if (
+                        pageNum ===
+                        parseInt(suggestionsSearchResult.length / 10)
+                      ) {
+                        setPageNum(pageNum);
+                      } else {
+                        document.documentElement.scrollTop = 0;
+                        setPageNum(pageNum + 1);
+                      }
+                    }}
+                  >
+                    {`다음>`}
+                  </Button>
                 </Container>
               </Container>
             </Route>
@@ -657,6 +753,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -681,6 +778,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -705,6 +803,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -729,6 +828,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           const list = document.querySelector(
                             ".petitions-sort-options"
@@ -781,6 +881,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           document
                             .querySelector(".petitions-search-options")
@@ -796,6 +897,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           document
                             .querySelector(".petitions-search-options")
@@ -811,6 +913,7 @@ function Communication() {
                         hoverBackgrounColor="#14406c"
                         hoverFontColor="white"
                         fontSize="18px"
+                        font="SeoulLight"
                         onClick={() => {
                           document
                             .querySelector(".petitions-search-options")
@@ -914,77 +1017,139 @@ function Communication() {
                   fd="column"
                   horizontalAlign="flex-start"
                   marginTop="30px"
+                  height="1000px"
                 >
-                  {petitionsSearchResult.map((petition) => (
-                    <Container
-                      height="75px"
-                      horizontalAlign="flex-start"
-                      marginTop="20px"
-                      borderBottom="1px solid grey"
-                      key={petition.c_id}
-                    >
-                      <Link
-                        to={{
-                          pathname: `/communication/petition/${petition.c_id}`,
-                          state: {
-                            petition: petition,
-                          },
-                        }}
-                        style={{ width: "100%", height: "100%" }}
+                  {petitionsSearchResult
+                    .slice(pageNum * 10, (pageNum + 1) * 10)
+                    .map((petition) => (
+                      <Container
+                        height="75px"
+                        horizontalAlign="flex-start"
+                        marginTop="20px"
+                        borderBottom="1px solid grey"
+                        key={petition.c_id}
                       >
-                        <Container horizontalAlign="space-between">
-                          <Container
-                            className="petition-item-info"
-                            fd="column"
-                            verticalAlign="flex-start"
-                            marginLeft="30px"
-                          >
-                            <Text fontSize="21px" fontFamily="SeoulLight">
-                              {petition.c_title}
-                            </Text>
+                        <Link
+                          to={{
+                            pathname: `/communication/petition/${petition.c_id}`,
+                            state: {
+                              petition: petition,
+                            },
+                          }}
+                          style={{ width: "100%", height: "100%" }}
+                        >
+                          <Container horizontalAlign="space-between">
                             <Container
-                              height="40px"
-                              className="form-item-uploadinfo"
-                              horizontalAlign="flex-start"
+                              className="petition-item-info"
+                              fd="column"
+                              verticalAlign="flex-start"
+                              marginLeft="30px"
                             >
-                              <Text
-                                fontColor="grey"
-                                fontSize="18px"
-                                fontFamily="SeoulLight"
-                              >
-                                {petition.c_date.slice(0, 10)}
+                              <Text fontSize="21px" fontFamily="SeoulLight">
+                                {petition.c_title}
                               </Text>
-                              <div
-                                style={{
-                                  height: "10px",
-                                  borderLeft: "1px solid grey",
-                                  marginLeft: "10px",
-                                  marginRight: "10px",
-                                  display: "inline",
-                                }}
-                              ></div>
+                              <Container
+                                height="40px"
+                                className="form-item-uploadinfo"
+                                horizontalAlign="flex-start"
+                              >
+                                <Text
+                                  fontColor="grey"
+                                  fontSize="18px"
+                                  fontFamily="SeoulLight"
+                                >
+                                  {petition.c_date.slice(0, 10)}
+                                </Text>
+                                <div
+                                  style={{
+                                    height: "10px",
+                                    borderLeft: "1px solid grey",
+                                    marginLeft: "10px",
+                                    marginRight: "10px",
+                                    display: "inline",
+                                  }}
+                                ></div>
+                                <Text
+                                  fontColor="grey"
+                                  fontSize="18px"
+                                  fontFamily="SeoulLight"
+                                >
+                                  {petition.c_user}
+                                </Text>
+                              </Container>
+                            </Container>
+                            <Container width="200px" marginRight="30px">
                               <Text
                                 fontColor="grey"
                                 fontSize="18px"
                                 fontFamily="SeoulLight"
                               >
-                                {petition.c_user}
+                                {petition.c_con}명이 동의
                               </Text>
                             </Container>
                           </Container>
-                          <Container width="200px" marginRight="30px">
-                            <Text
-                              fontColor="grey"
-                              fontSize="18px"
-                              fontFamily="SeoulLight"
-                            >
-                              {petition.c_con}명이 동의
-                            </Text>
-                          </Container>
-                        </Container>
-                      </Link>
-                    </Container>
+                        </Link>
+                      </Container>
+                    ))}
+                </Container>
+                <Container className="page-container" height="20px">
+                  <Button
+                    width="60px"
+                    height="20px"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize="20px"
+                    font="SeoulLight"
+                    onClick={() => {
+                      if (pageNum === 0) {
+                        setPageNum(0);
+                      } else {
+                        setPageNum(pageNum - 1);
+                        document.documentElement.scrollTop = 0;
+                      }
+                    }}
+                  >
+                    {`<이전`}
+                  </Button>
+                  {petitionPageArr.map((item) => (
+                    <Button
+                      width="20px"
+                      height="20px"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      fontSize={pageNum === item ? "20px" : "14px"}
+                      font="SeoulLight"
+                      key={item}
+                      onClick={() => {
+                        if (pageNum !== item) {
+                          document.documentElement.scrollTop = 0;
+                          setPageNum(item);
+                        }
+                      }}
+                    >
+                      {item + 1}
+                    </Button>
                   ))}
+                  <Button
+                    width="60px"
+                    height="20px"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize="20px"
+                    font="SeoulLight"
+                    onClick={() => {
+                      if (
+                        pageNum === parseInt(petitionsSearchResult.length / 10)
+                      ) {
+                        setPageNum(pageNum);
+                      } else {
+                        document.documentElement.scrollTop = 0;
+                        setPageNum(pageNum + 1);
+                      }
+                    }}
+                  >
+                    {`다음>`}
+                  </Button>
                 </Container>
               </Container>
             </Route>
