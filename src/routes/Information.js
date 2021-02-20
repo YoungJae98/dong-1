@@ -98,6 +98,10 @@ function Main() {
   const downloadFile = (name) => {
     download(files[name], name);
   };
+  const openFile = (name) => {
+    let url = URL.createObjectURL(files[name]);
+    window.open(url);
+  };
   useEffect(() => {
     getPledge();
     getFile();
@@ -284,11 +288,19 @@ function Main() {
                     marginRight: "10px",
                   }}
                 />
-                <a href={promises} target="_blank" rel="noreferrer">
+
+                <button
+                  onClick={() => {
+                    //여기서 인자로 f_originalname 넘겨주기
+                    openFile("결산안1.pdf");
+                  }}
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <Text fontSize="21px" fontColor="#14406c" underline>
                     바로 보기
                   </Text>
-                </a>
+                </button>
                 <button
                   onClick={() => {
                     //여기 인자로 f_originalname 넘겨주면 됨.
