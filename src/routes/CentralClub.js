@@ -383,6 +383,44 @@ function CentralClub() {
       },
     ]);
   }, []);
+  let flag1 = false;
+  let flag2 = false;
+  let flag3 = false;
+  let flag4 = false;
+  window.addEventListener("scroll", (e) => {
+    if (document.documentElement.scrollTop >= 200 && flag1 === false) {
+      flag1 = true;
+      document.querySelectorAll(".club-container").forEach((item, index) => {
+        if (index === 4 || index === 5) {
+          item.classList.remove("invisible");
+        }
+      });
+    }
+    if (document.documentElement.scrollTop >= 400 && flag2 === false) {
+      flag2 = true;
+      document.querySelectorAll(".club-container").forEach((item, index) => {
+        if (index === 6 || index === 7) {
+          item.classList.remove("invisible");
+        }
+      });
+    }
+    if (document.documentElement.scrollTop >= 600 && flag3 === false) {
+      flag2 = true;
+      document.querySelectorAll(".club-container").forEach((item, index) => {
+        if (index === 8 || index === 9) {
+          item.classList.remove("invisible");
+        }
+      });
+    }
+    if (document.documentElement.scrollTop >= 800 && flag4 === false) {
+      flag2 = true;
+      document.querySelectorAll(".club-container").forEach((item, index) => {
+        if (index === 10 || index === 11) {
+          item.classList.remove("invisible");
+        }
+      });
+    }
+  });
   return (
     <>
       <Container height="145px">
@@ -561,16 +599,18 @@ function CentralClub() {
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
-              {physicalClub.map((club) => {
+              {physicalClub.map((club, index) => {
                 return (
                   <Container
                     width="500px"
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
-                    className="club-container"
+                    className={
+                      index <= 3 ? "club-container" : "club-container invisible"
+                    }
                     marginTop="30px"
-                    visual
+                    animation="club-container-animation 0.5s forwards"
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -642,8 +682,11 @@ function CentralClub() {
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
-                    className="club-container"
+                    className={
+                      index <= 3 ? "club-container" : "club-container invisible"
+                    }
                     marginTop="30px"
+                    animation="club-container-animation 0.5s forwards"
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -715,8 +758,11 @@ function CentralClub() {
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
-                    className="club-container"
+                    className={
+                      index <= 3 ? "club-container" : "club-container invisible"
+                    }
                     marginTop="30px"
+                    animation="club-container-animation 0.5s forwards"
                   >
                     <Container className="club-contents-container">
                       <Container
@@ -788,8 +834,11 @@ function CentralClub() {
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
+                    className={
+                      index <= 3 ? "club-container" : "club-container invisible"
+                    }
                     marginTop="30px"
-                    className="club-container"
+                    animation="club-container-animation 0.5s forwards"
                     visual
                   >
                     <Container className="club-contents-container">
@@ -862,8 +911,11 @@ function CentralClub() {
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
-                    className="club-container"
+                    className={
+                      index <= 3 ? "club-container" : "club-container invisible"
+                    }
                     marginTop="30px"
+                    animation="club-container-animation 0.5s forwards"
                     visual
                   >
                     <Container className="club-contents-container">
@@ -929,15 +981,18 @@ function CentralClub() {
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
-              {volunteerClub.map((club) => {
+              {volunteerClub.map((club, index) => {
                 return (
                   <Container
                     width="500px"
                     height="210px"
                     display="inline-block"
                     key={club.clubID}
-                    className="club-container"
-                    visual
+                    className={
+                      index <= 3 ? "club-container" : "club-container invisible"
+                    }
+                    marginTop="30px"
+                    animation="club-container-animation 0.5s forwards"
                   >
                     <Container className="club-contents-container">
                       <Container

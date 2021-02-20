@@ -49,6 +49,9 @@ module.exports = (app) => {
     }),
     proxy("/api/community/deleteCommunity", {
       target: "http://18.217.248.102:3001/",
+    }),
+    proxy("/api/files/downloadFile", {
+      target: "http://18.217.248.102:3001/",
     })
   );
 };

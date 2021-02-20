@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import download from "downloadjs";
 import { NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
@@ -61,6 +62,22 @@ function Main() {
         setFile(response);
       });
   };
+  const downloadFile = (name) => {
+    fetch("http://localhost:3001/api/files/downloadFile", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        f_originalname: name,
+      }),
+    })
+      .then((response) => response.blob())
+      .then((response) => {
+        download(response, name);
+      });
+  };
   useEffect(() => {
     getPledge();
     getFile();
@@ -93,6 +110,7 @@ function Main() {
       );
     }
   }, [file]);
+
   return (
     <>
       <Container height="145px">
@@ -232,12 +250,17 @@ function Main() {
                     marginRight: "10px",
                   }}
                 />
-                <a href={promises} target="_blank" rel="noreferrer">
+                <a href="../">
                   <Text fontSize="21px" fontColor="#14406c" underline>
                     바로 보기
                   </Text>
                 </a>
-                <a href={promises} download style={{ marginLeft: "10px" }}>
+                <button
+                  onClick={() => {
+                    downloadFile("promises.pdf");
+                  }}
+                  style={{ marginLeft: "10px" }}
+                >
                   <Container>
                     <img
                       src={pdf}
@@ -254,7 +277,7 @@ function Main() {
                       다운로드
                     </Text>
                   </Container>
-                </a>
+                </button>
               </Container>
               <Container
                 height="160px"
@@ -1224,11 +1247,7 @@ function Main() {
                         </Text>
                       </Container>
                     </Container>
-                    <a
-                      href={`../assets/documents/${report.f_originalname}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href={"../"} target="_blank" rel="noreferrer">
                       <Container width="75px">
                         <Text fontSize="21px" fontColor="#14406c" underline>
                           바로 보기

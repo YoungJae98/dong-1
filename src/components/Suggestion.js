@@ -104,17 +104,14 @@ function Suggestion() {
           horizontalAlign="space-between"
           height="80px"
         >
-          <Container
-            horizontalAlign="flex-start"
-            borderBottom="2px solid #14406c"
-          >
+          <Container horizontalAlign="flex-start" borderBottom="1px solid grey">
             <Text fontColor="#14406c" fontSize="32px" fontFamily="SeoulLight">
               {suggestion.c_title}
             </Text>
           </Container>
           <Container
             horizontalAlign="flex-end"
-            borderBottom="2px solid #14406c"
+            borderBottom="1px solid grey"
             width="450px"
           >
             <Text fontColor="grey" fontSize="14px" fontFamily="SeoulLight">
@@ -133,7 +130,7 @@ function Suggestion() {
           height="500px"
           horizontalAlign="flex-start"
           verticalAlign="flex-start"
-          border="2px solid #14406c"
+          border="1px solid grey"
           marginTop="20px"
           paddingLeft="20px"
           paddingRight="20px"
@@ -162,7 +159,7 @@ function Suggestion() {
                 fontFamily: "SeoulLight",
                 width: "870px",
                 display: "inline",
-                border: "2px solid #14406c",
+                border: "1px solid grey",
               }}
               value={suggestionConsentInputText}
               onClick={(e) => {
@@ -197,7 +194,7 @@ function Suggestion() {
         <Container
           width="960px"
           height="280px"
-          border="2px solid #14406c"
+          border="1px solid grey"
           marginTop="20px"
           paddingLeft="20px"
           paddingRight="20px"
