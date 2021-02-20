@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
@@ -14,9 +15,11 @@ import List from "../components/List";
 import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
+import download from "downloadjs";
 
 function Main() {
   const [file, setFile] = useState([]);
+  const [files, setFiles] = useState({});
   const [forms, setForms] = useState([]);
   const [formsSearchResult, setFormsSearchResult] = useState([]);
 
@@ -38,11 +41,40 @@ function Main() {
         setFile(response);
       });
   };
+  const getFileData = () => {
+    for (let i = 1; i < 4; i++) {
+      for (let j = 0; j < file[i].length; j++) {
+        getFileBlob(file[i][j]["f_originalname"]);
+      }
+    }
+  };
+  const getFileBlob = (name) => {
+    fetch("http://localhost:3001/api/files/getFileData", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        f_originalname: name,
+      }),
+    })
+      .then((response) => response.blob())
+      .then((response) => {
+        let data = files;
+        data[name] = response;
+        setFiles(data);
+      });
+  };
+  const downloadFile = (name) => {
+    download(files[name], name);
+  };
   useEffect(() => {
     getFile();
   }, []);
   useEffect(() => {
     if (Object.keys(file).length !== 0) {
+      getFileData();
       setForms(file["3"]);
       setFormsSearchResult(
         file["3"].sort((a, b) => {
@@ -480,7 +512,7 @@ function Main() {
                           </Text>
                         </Container>
                       </Container>
-                      <a href={form.formSourceHwp} download>
+                      <Button>
                         <Container width="105px">
                           <img src={hwp} alt="" height="30px" />
                           <Text
@@ -492,7 +524,7 @@ function Main() {
                             다운로드
                           </Text>
                         </Container>
-                      </a>
+                      </Button>
                       <a
                         href={form.formSourceDocx}
                         download

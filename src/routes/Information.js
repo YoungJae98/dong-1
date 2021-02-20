@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import download from "downloadjs";
 import { NavLink, Route } from "react-router-dom";
@@ -5,7 +6,6 @@ import { NavLink, Route } from "react-router-dom";
 import logo_inversed from "../assets/images/logo_reversed.png";
 import Sejong from "../assets/images/Sejonglogo.png";
 import pdf from "../assets/images/pdf_image.png";
-import promises from "../assets/documents/promises.pdf";
 import v3 from "../assets/images/visual/visual3.jpg";
 import pledge_checkbox from "../assets/images/pledge.png";
 import pledge_checked from "../assets/images/pledge_done.png";
@@ -1297,17 +1297,29 @@ function Main() {
                           </Text>
                         </Container>
                       </Container>
-                      <a href={"../"} target="_blank" rel="noreferrer">
+                      <Button
+                        backgroundColor="white"
+                        width="75px"
+                        height="20px"
+                        onClick={() => {
+                          openFile(report.f_originalname);
+                        }}
+                      >
                         <Container width="75px">
                           <Text fontSize="21px" fontColor="#14406c" underline>
                             바로 보기
                           </Text>
                         </Container>
-                      </a>
-                      <a
-                        href={`../assets/documents/${report.f_originalname}`}
-                        download
-                        style={{ marginLeft: "50px", marginRight: "50px" }}
+                      </Button>
+                      <Button
+                        marginLeft="50px"
+                        marginRight="50px"
+                        width="120px"
+                        height="20px"
+                        backgroundColor="white"
+                        onClick={() => {
+                          downloadFile(report.f_originalname);
+                        }}
                       >
                         <Container width="105px">
                           <img src={pdf} alt="" height="30px" />
@@ -1320,7 +1332,7 @@ function Main() {
                             다운로드
                           </Text>
                         </Container>
-                      </a>
+                      </Button>
                     </Container>
                   ))}
               </Container>
@@ -1679,21 +1691,29 @@ function Main() {
                           </Text>
                         </Container>
                       </Container>
-                      <a
-                        href={meetinglog.meetinglogSource}
-                        target="_blank"
-                        rel="noreferrer"
+                      <Button
+                        backgroundColor="white"
+                        width="75px"
+                        height="20px"
+                        onClick={() => {
+                          openFile(meetinglog.f_originalname);
+                        }}
                       >
                         <Container width="75px">
                           <Text fontSize="21px" fontColor="#14406c" underline>
                             바로 보기
                           </Text>
                         </Container>
-                      </a>
-                      <a
-                        href={meetinglog.meetinglogSource}
-                        download
-                        style={{ marginLeft: "50px", marginRight: "50px" }}
+                      </Button>
+                      <Button
+                        marginLeft="50px"
+                        marginRight="50px"
+                        width="120px"
+                        height="20px"
+                        backgroundColor="white"
+                        onClick={() => {
+                          downloadFile(meetinglog.f_originalname);
+                        }}
                       >
                         <Container width="105px">
                           <img src={pdf} alt="" height="30px" />
@@ -1706,7 +1726,7 @@ function Main() {
                             다운로드
                           </Text>
                         </Container>
-                      </a>
+                      </Button>
                     </Container>
                   ))}
               </Container>
