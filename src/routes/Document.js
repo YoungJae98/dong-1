@@ -230,6 +230,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -254,6 +255,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -279,6 +281,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         const list = document.querySelector(
@@ -332,6 +335,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         document
@@ -347,6 +351,7 @@ function Main() {
                       fontColor="#14406c"
                       hoverBackgrounColor="#14406c"
                       hoverFontColor="white"
+                      font="SeoulLight"
                       fontSize="18px"
                       onClick={() => {
                         document
