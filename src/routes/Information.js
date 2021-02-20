@@ -72,11 +72,12 @@ function Main() {
       });
   };
   const getFileData = () => {
-    for (let i = 1; i < 4; i++) {
+    for (let i = 1; i < 3; i++) {
       for (let j = 0; j < file[i].length; j++) {
         getFileBlob(file[i][j]["f_originalname"]);
       }
     }
+    setIsLoaded(true);
   };
   const getFileBlob = (name) => {
     fetch("http://localhost:3001/api/files/getFileData", {
@@ -94,7 +95,6 @@ function Main() {
         let data = files;
         data[name] = response;
         setFiles(data);
-        setIsLoaded(true);
       });
   };
   const downloadFile = (name) => {
