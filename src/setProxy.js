@@ -50,7 +50,7 @@ module.exports = (app) => {
     proxy("/api/community/deleteCommunity", {
       target: "http://localhost:3001/",
     }),
-    proxy("/api/files/downloadFile", {
+    proxy("/api/files/getFileData", {
       target: "http://localhost:3001/",
     })
   );

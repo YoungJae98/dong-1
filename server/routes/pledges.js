@@ -24,7 +24,6 @@ router.get("/getPledge", (req, res) => {
     res.json(data);
   });
 });
-
 router.post("/setPledge", (req, res) => {
   db.query(
     "update pledge set p_status = 1 where p_id = ?",

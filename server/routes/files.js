@@ -62,7 +62,7 @@ router.post("/deleteFile", (req, res) => {
   });
 });
 
-router.post("/downloadFile", (req, res) => {
+router.post("/getFileData", (req, res) => {
   var file = path.join("./src/assets/documents/", req.body.f_originalname);
   res.download(file);
 });
