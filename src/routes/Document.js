@@ -22,7 +22,7 @@ function Main() {
   const [searchStr, setSearchStr] = useState([]);
   const [searchOption, setSearchOption] = useState(0);
   const getFile = () => {
-    fetch("http://18.217.248.102:3001/api/files/getFiles", {
+    fetch("http://localhost:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

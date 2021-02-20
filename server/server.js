@@ -19,7 +19,6 @@ app.use(
     saveUninitialized: true,
   })
 );
-app.use(express.static("../src/assets/documents"));
 
 app.use(cors(corsOptions));
 app.use(bodyParser.json());
