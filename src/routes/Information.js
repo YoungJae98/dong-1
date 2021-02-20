@@ -24,6 +24,7 @@ import {
 
 function Main() {
   const [file, setFile] = useState({});
+  const [files, setFiles] = useState({});
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [pledges, setPledges] = useState({});
@@ -69,8 +70,15 @@ function Main() {
         setFile(response);
       });
   };
-  const downloadFile = (name) => {
-    fetch("http://localhost:3001/api/files/downloadFile", {
+  const getFileData = () => {
+    for (let i = 1; i < 4; i++) {
+      for (let j = 0; j < file[i].length; j++) {
+        getFileBlob(file[i][j]["f_originalname"]);
+      }
+    }
+  };
+  const getFileBlob = (name) => {
+    fetch("http://localhost:3001/api/files/getFileData", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -82,8 +90,13 @@ function Main() {
     })
       .then((response) => response.blob())
       .then((response) => {
-        download(response, name);
+        let data = files;
+        data[name] = response;
+        setFiles(data);
       });
+  };
+  const downloadFile = (name) => {
+    download(files[name], name);
   };
   useEffect(() => {
     getPledge();
@@ -99,6 +112,7 @@ function Main() {
   }, [pledges]);
   useEffect(() => {
     if (Object.keys(file).length !== 0) {
+      getFileData();
       setMeetinglogs(file["1"]);
       setMeetinglogsSearchResult(
         file["1"].sort((a, b) => {
@@ -275,7 +289,13 @@ function Main() {
                     바로 보기
                   </Text>
                 </a>
-                <a href={promises} download style={{ marginLeft: "10px" }}>
+                <button
+                  onClick={() => {
+                    //여기 인자로 f_originalname 넘겨주면 됨.
+                    downloadFile("결산안1.pdf");
+                  }}
+                  style={{ marginLeft: "10px" }}
+                >
                   <Container>
                     <img
                       src={pdf}
@@ -292,7 +312,7 @@ function Main() {
                       다운로드
                     </Text>
                   </Container>
-                </a>
+                </button>
               </Container>
               <Container
                 height="160px"
