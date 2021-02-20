@@ -977,7 +977,7 @@ function Manage() {
                     key={index}
                   >
                     <Container width="600px" horizontalAlign="left">
-                      {item.f_name}
+                      {item.f_originalname}
                     </Container>
                     <Button
                       width="80px"
