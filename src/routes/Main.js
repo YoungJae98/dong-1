@@ -19,7 +19,7 @@ function Main() {
   const [community, setCommunity] = useState({});
   const [file, setFile] = useState({});
   const getCommunity = () => {
-    fetch("http://18.217.248.102:3001/api/community/getCommunity", {
+    fetch("http://localhost:3001/api/community/getCommunity", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -33,7 +33,7 @@ function Main() {
       });
   };
   const getFile = () => {
-    fetch("http://18.217.248.102:3001/api/files/getFiles", {
+    fetch("http://localhost:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

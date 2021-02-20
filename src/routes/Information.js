@@ -27,17 +27,24 @@ function Main() {
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [pledges, setPledges] = useState({});
+
   const [assignment1, setAssignment1] = useState([]);
   const [assignment2, setAssignment2] = useState([]);
   const [assignment3, setAssignment3] = useState([]);
   const [assignment4, setAssignment4] = useState([]);
+
   const [searchStr1, setSearchStr1] = useState("");
   const [searchStr2, setSearchStr2] = useState("");
   const [searchOption, setSearchOption] = useState(0);
   const [reportSearchResult, setReportSearchResult] = useState([]);
   const [meetinglogsSearchResult, setMeetinglogsSearchResult] = useState([]);
+
+  const [reportPageArr, setReportPageArr] = useState([]);
+  const [meetinglogPageArr, setMeetinglogPageArr] = useState([]);
+  const [pageNum, setPageNum] = useState(0);
+
   const getPledge = () => {
-    fetch("http://18.217.248.102:3001/api/pledges/getPledge", {
+    fetch("http://localhost:3001/api/pledges/getPledge", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +57,7 @@ function Main() {
       });
   };
   const getFile = () => {
-    fetch("http://18.217.248.102:3001/api/files/getFiles", {
+    fetch("http://localhost:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -63,7 +70,7 @@ function Main() {
       });
   };
   const downloadFile = (name) => {
-    fetch("http://18.217.248.102:3001/api/files/downloadFile", {
+    fetch("http://localhost:3001/api/files/downloadFile", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -95,7 +102,7 @@ function Main() {
       setMeetinglogs(file["1"]);
       setMeetinglogsSearchResult(
         file["1"].sort((a, b) => {
-          if (a.f_date > b.f_date) return 1;
+          if (a.f_date < b.f_date) return 1;
           else if (a.f_date === b.f_date) return 0;
           else return -1;
         })
@@ -103,20 +110,33 @@ function Main() {
       setReports(file["2"]);
       setReportSearchResult(
         file["2"].sort((a, b) => {
-          if (a.f_date > b.f_date) return 1;
+          if (a.f_date < b.f_date) return 1;
           else if (a.f_date === b.f_date) return 0;
           else return -1;
         })
       );
     }
   }, [file]);
-
+  useEffect(() => {
+    let arr = [];
+    for (let i = 0; i < reportSearchResult.length / 10; i++) {
+      arr.push(i);
+    }
+    setReportPageArr(arr);
+  }, [reportSearchResult]);
+  useEffect(() => {
+    let arr = [];
+    for (let i = 0; i < meetinglogsSearchResult.length / 10; i++) {
+      arr.push(i);
+    }
+    setMeetinglogPageArr(arr);
+  }, [meetinglogsSearchResult]);
   return (
     <>
       <Container height="145px">
         <img src={v3} alt="" />
       </Container>
-      <Container height="1200px" backgroundColor="">
+      <Container height="1400px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
           <Container
             width="200px"
@@ -250,17 +270,12 @@ function Main() {
                     marginRight: "10px",
                   }}
                 />
-                <a href="../">
+                <a href={promises} target="_blank" rel="noreferrer">
                   <Text fontSize="21px" fontColor="#14406c" underline>
                     바로 보기
                   </Text>
                 </a>
-                <button
-                  onClick={() => {
-                    downloadFile("promises.pdf");
-                  }}
-                  style={{ marginLeft: "10px" }}
-                >
+                <a href={promises} download style={{ marginLeft: "10px" }}>
                   <Container>
                     <img
                       src={pdf}
@@ -277,7 +292,7 @@ function Main() {
                       다운로드
                     </Text>
                   </Container>
-                </button>
+                </a>
               </Container>
               <Container
                 height="160px"
@@ -322,7 +337,7 @@ function Main() {
                       }px`}
                     >
                       <Text fontSize="21px" fontColor="#14406c">
-                        {(
+                        {parseInt(
                           ((assignment1.filter((act) => act.p_status === 1)
                             .length +
                             assignment2.filter((act) => act.p_status === 1)
@@ -335,8 +350,8 @@ function Main() {
                               assignment2.length +
                               assignment3.length +
                               assignment4.length)) *
-                          100
-                        ).toFixed(2)}
+                            100
+                        )}
                         %
                       </Text>
                     </Container>
@@ -589,12 +604,12 @@ function Main() {
                         assignment2.length
                       }px`}
                     >
-                      <Text fontColor="#14406c" fontSize="21px">{`${
+                      <Text fontColor="#14406c" fontSize="21px">{`${parseInt(
                         (assignment2.filter((act) => act.p_status === 1)
                           .length /
                           assignment2.length) *
-                        100
-                      }%`}</Text>
+                          100
+                      )}%`}</Text>
                     </Container>
                   </Container>
                   <div
@@ -678,12 +693,12 @@ function Main() {
                         assignment3.length
                       }px`}
                     >
-                      <Text fontColor="#14406c" fontSize="21px">{`${
+                      <Text fontColor="#14406c" fontSize="21px">{`${parseInt(
                         (assignment3.filter((act) => act.p_status === 1)
                           .length /
                           assignment3.length) *
-                        100
-                      }%`}</Text>
+                          100
+                      )}%`}</Text>
                     </Container>
                   </Container>
                   <div
@@ -770,12 +785,12 @@ function Main() {
                         assignment4.length
                       }px`}
                     >
-                      <Text fontColor="#14406c" fontSize="21px">{`${
+                      <Text fontColor="#14406c" fontSize="21px">{`${parseInt(
                         (assignment4.filter((act) => act.p_status === 1)
                           .length /
                           assignment4.length) *
-                        100
-                      }%`}</Text>
+                          100
+                      )}%`}</Text>
                     </Container>
                   </Container>
                   <div
@@ -1198,81 +1213,141 @@ function Main() {
                 fd="column"
                 horizontalAlign="flex-start"
                 marginTop="30px"
+                height="1000px"
               >
-                {reportSearchResult.map((report) => (
-                  <Container
-                    className="report-item"
-                    height="75px"
-                    horizontalAlign="flex-start"
-                    marginTop="20px"
-                    borderBottom="1px solid grey"
-                    key={report.f_id}
-                  >
+                {reportSearchResult
+                  .slice(pageNum * 10, (pageNum + 1) * 10)
+                  .map((report) => (
                     <Container
-                      className="report-item-info"
-                      fd="column"
-                      verticalAlign="flex-start"
-                      marginLeft="30px"
+                      className="report-item"
+                      height="75px"
+                      horizontalAlign="flex-start"
+                      marginTop="20px"
+                      borderBottom="1px solid grey"
+                      key={report.f_id}
                     >
-                      <Text fontSize="21px" fontFamily="SeoulLight">
-                        {report.f_name}
-                      </Text>
                       <Container
-                        height="40px"
-                        className="report-item-uploadinfo"
-                        horizontalAlign="flex-start"
+                        className="report-item-info"
+                        fd="column"
+                        verticalAlign="flex-start"
+                        marginLeft="30px"
                       >
-                        <Text
-                          fontColor="grey"
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
-                        >
-                          {report.f_date.slice(0, 10)}
+                        <Text fontSize="21px" fontFamily="SeoulLight">
+                          {report.f_name}
                         </Text>
-                        <div
-                          style={{
-                            height: "10px",
-                            borderLeft: "1px solid grey",
-                            marginLeft: "10px",
-                            marginRight: "10px",
-                            display: "inline",
-                          }}
-                        ></div>
-                        <Text
-                          fontColor="grey"
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
+                        <Container
+                          height="40px"
+                          className="report-item-uploadinfo"
+                          horizontalAlign="flex-start"
                         >
-                          관리자
-                        </Text>
+                          <Text
+                            fontColor="grey"
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                          >
+                            {report.f_date.slice(0, 10)}
+                          </Text>
+                          <div
+                            style={{
+                              height: "10px",
+                              borderLeft: "1px solid grey",
+                              marginLeft: "10px",
+                              marginRight: "10px",
+                              display: "inline",
+                            }}
+                          ></div>
+                          <Text
+                            fontColor="grey"
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                          >
+                            관리자
+                          </Text>
+                        </Container>
                       </Container>
+                      <a href={"../"} target="_blank" rel="noreferrer">
+                        <Container width="75px">
+                          <Text fontSize="21px" fontColor="#14406c" underline>
+                            바로 보기
+                          </Text>
+                        </Container>
+                      </a>
+                      <a
+                        href={`../assets/documents/${report.f_originalname}`}
+                        download
+                        style={{ marginLeft: "50px", marginRight: "50px" }}
+                      >
+                        <Container width="105px">
+                          <img src={pdf} alt="" height="30px" />
+                          <Text
+                            fontSize="21px"
+                            fontColor="#14406c"
+                            underline
+                            marginLeft="5px"
+                          >
+                            다운로드
+                          </Text>
+                        </Container>
+                      </a>
                     </Container>
-                    <a href={"../"} target="_blank" rel="noreferrer">
-                      <Container width="75px">
-                        <Text fontSize="21px" fontColor="#14406c" underline>
-                          바로 보기
-                        </Text>
-                      </Container>
-                    </a>
-                    <a
-                      href={`../assets/documents/${report.f_originalname}`}
-                      download
-                      style={{ marginLeft: "50px", marginRight: "50px" }}
-                    >
-                      <Container width="105px">
-                        <img src={pdf} alt="" height="30px" />
-                        <Text
-                          fontSize="21px"
-                          fontColor="#14406c"
-                          underline
-                          marginLeft="5px"
-                        >
-                          다운로드
-                        </Text>
-                      </Container>
-                    </a>
-                  </Container>
+                  ))}
+              </Container>
+              <Container className="page-container" height="20px">
+                <Button
+                  width="60px"
+                  height="20px"
+                  backgroundColor="white"
+                  fontColor="#14406c"
+                  fontSize="20px"
+                  font="SeoulLight"
+                  onClick={() => {
+                    if (pageNum === 0) {
+                      setPageNum(0);
+                    } else {
+                      document.documentElement.scrollTop = 0;
+                      setPageNum(pageNum - 1);
+                    }
+                  }}
+                >
+                  {`<이전`}
+                </Button>
+                {reportPageArr.map((item) => (
+                  <Button
+                    width="20px"
+                    height="20px"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize={pageNum === item ? "20px" : "14px"}
+                    font="SeoulLight"
+                    key={item}
+                    onClick={() => {
+                      if (pageNum !== item) {
+                        document.documentElement.scrollTop = 0;
+                        setPageNum(item);
+                      }
+                    }}
+                  >
+                    {item + 1}
+                  </Button>
                 ))}
+                <Button
+                  width="60px"
+                  height="20px"
+                  backgroundColor="white"
+                  fontColor="#14406c"
+                  fontSize="20px"
+                  font="SeoulLight"
+                  onClick={() => {
+                    if (pageNum === parseInt(reportSearchResult.length / 10)) {
+                      setPageNum(pageNum);
+                    } else {
+                      document.documentElement.scrollTop = 0;
+                      setPageNum(pageNum + 1);
+                    }
+                  }}
+                >
+                  {`다음>`}
+                </Button>
               </Container>
             </Container>
           </Route>
@@ -1520,85 +1595,147 @@ function Main() {
                 fd="column"
                 horizontalAlign="flex-start"
                 marginTop="30px"
+                height="1000px"
               >
-                {meetinglogsSearchResult.map((meetinglog) => (
-                  <Container
-                    className="meetinglog-item"
-                    height="75px"
-                    horizontalAlign="flex-start"
-                    marginTop="20px"
-                    borderBottom="1px solid grey"
-                    key={meetinglog.f_id}
-                  >
+                {meetinglogsSearchResult
+                  .slice(pageNum * 10, (pageNum + 1) * 10)
+                  .map((meetinglog) => (
                     <Container
-                      className="meetinglog-item-info"
-                      fd="column"
-                      verticalAlign="flex-start"
-                      marginLeft="30px"
+                      className="meetinglog-item"
+                      height="75px"
+                      horizontalAlign="flex-start"
+                      marginTop="20px"
+                      borderBottom="1px solid grey"
+                      key={meetinglog.f_id}
                     >
-                      <Text fontSize="21px" fontFamily="SeoulLight">
-                        {meetinglog.f_name}
-                      </Text>
                       <Container
-                        height="40px"
-                        className="report-item-uploadinfo"
-                        horizontalAlign="flex-start"
+                        className="meetinglog-item-info"
+                        fd="column"
+                        verticalAlign="flex-start"
+                        marginLeft="30px"
                       >
-                        <Text
-                          fontColor="grey"
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
-                        >
-                          {meetinglog.f_date.slice(0, 10)}
+                        <Text fontSize="21px" fontFamily="SeoulLight">
+                          {meetinglog.f_name}
                         </Text>
-                        <div
-                          style={{
-                            height: "10px",
-                            borderLeft: "1px solid grey",
-                            marginLeft: "10px",
-                            marginRight: "10px",
-                            display: "inline",
-                          }}
-                        ></div>
-                        <Text
-                          fontColor="grey"
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
+                        <Container
+                          height="40px"
+                          className="report-item-uploadinfo"
+                          horizontalAlign="flex-start"
                         >
-                          관리자
-                        </Text>
+                          <Text
+                            fontColor="grey"
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                          >
+                            {meetinglog.f_date.slice(0, 10)}
+                          </Text>
+                          <div
+                            style={{
+                              height: "10px",
+                              borderLeft: "1px solid grey",
+                              marginLeft: "10px",
+                              marginRight: "10px",
+                              display: "inline",
+                            }}
+                          ></div>
+                          <Text
+                            fontColor="grey"
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                          >
+                            관리자
+                          </Text>
+                        </Container>
                       </Container>
+                      <a
+                        href={meetinglog.meetinglogSource}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <Container width="75px">
+                          <Text fontSize="21px" fontColor="#14406c" underline>
+                            바로 보기
+                          </Text>
+                        </Container>
+                      </a>
+                      <a
+                        href={meetinglog.meetinglogSource}
+                        download
+                        style={{ marginLeft: "50px", marginRight: "50px" }}
+                      >
+                        <Container width="105px">
+                          <img src={pdf} alt="" height="30px" />
+                          <Text
+                            fontSize="21px"
+                            fontColor="#14406c"
+                            underline
+                            marginLeft="5px"
+                          >
+                            다운로드
+                          </Text>
+                        </Container>
+                      </a>
                     </Container>
-                    <a
-                      href={meetinglog.meetinglogSource}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      <Container width="75px">
-                        <Text fontSize="21px" fontColor="#14406c" underline>
-                          바로 보기
-                        </Text>
-                      </Container>
-                    </a>
-                    <a
-                      href={meetinglog.meetinglogSource}
-                      download
-                      style={{ marginLeft: "50px", marginRight: "50px" }}
-                    >
-                      <Container width="105px">
-                        <img src={pdf} alt="" height="30px" />
-                        <Text
-                          fontSize="21px"
-                          fontColor="#14406c"
-                          underline
-                          marginLeft="5px"
-                        >
-                          다운로드
-                        </Text>
-                      </Container>
-                    </a>
-                  </Container>
+                  ))}
+              </Container>
+              <Container className="page-container" height="20px">
+                <Button
+                  width="60px"
+                  height="20px"
+                  backgroundColor="white"
+                  fontColor="#14406c"
+                  fontSize="20px"
+                  font="SeoulLight"
+                  onClick={() => {
+                    if (pageNum === 0) {
+                      setPageNum(0);
+                    } else {
+                      document.documentElement.scrollTop = 0;
+                      setPageNum(pageNum - 1);
+                    }
+                  }}
+                >
+                  {`<이전`}
+                </Button>
+                {meetinglogPageArr.map((item) => (
+                  <Button
+                    width="20px"
+                    height="20px"
+                    backgroundColor="white"
+                    fontColor="#14406c"
+                    fontSize={pageNum === item ? "20px" : "14px"}
+                    font="SeoulLight"
+                    key={item}
+                    onClick={() => {
+                      if (pageNum !== item) {
+                        document.documentElement.scrollTop = 0;
+                        setPageNum(item);
+                      }
+                    }}
+                  >
+                    {item + 1}
+                  </Button>
                 ))}
+                <Button
+                  width="60px"
+                  height="20px"
+                  backgroundColor="white"
+                  fontColor="#14406c"
+                  fontSize="20px"
+                  font="SeoulLight"
+                  onClick={() => {
+                    if (
+                      pageNum === parseInt(meetinglogsSearchResult.length / 10)
+                    ) {
+                      setPageNum(pageNum);
+                    } else {
+                      document.documentElement.scrollTop = 0;
+                      setPageNum(pageNum + 1);
+                    }
+                  }}
+                >
+                  {`다음>`}
+                </Button>
               </Container>
             </Container>
           </Route>
