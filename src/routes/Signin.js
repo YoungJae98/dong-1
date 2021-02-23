@@ -78,6 +78,7 @@ function Signin() {
       .then((response) => {
         if (response["isLogin"] === "success") {
           redirectToHome();
+          console.log(response);
         } else {
           alert("학번 혹은 비밀번호가 틀렸습니다!");
         }
