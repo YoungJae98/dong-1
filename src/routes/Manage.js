@@ -25,7 +25,7 @@ function Manage() {
   const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
   const getPledge = () => {
-    fetch("http://www.sejongclubunion.com:3001/api/pledges/getPledge", {
+    fetch("http://sejongclubunion.com:3001/api/pledges/getPledge", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ function Manage() {
       });
   };
   const setPledge = (p_id) => {
-    fetch("http://www.sejongclubunion.com:3001/api/pledges/setPledge", {
+    fetch("http://sejongclubunion.com:3001/api/pledges/setPledge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ function Manage() {
       });
   };
   const unsetPledge = (p_id) => {
-    fetch("http://www.sejongclubunion.com:3001/api/pledges/unsetPledge", {
+    fetch("http://sejongclubunion.com:3001/api/pledges/unsetPledge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +80,7 @@ function Manage() {
       });
   };
   const getFile = () => {
-    fetch("http://www.sejongclubunion.com:3001/api/files/getFiles", {
+    fetch("http://sejongclubunion.com:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -93,7 +93,7 @@ function Manage() {
       });
   };
   const deleteFile = (id, originalname) => {
-    fetch("http://www.sejongclubunion.com:3001/api/files/deleteFile", {
+    fetch("http://sejongclubunion.com:3001/api/files/deleteFile", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -131,7 +131,7 @@ function Manage() {
         data.append("document", e.target.document.files[0]);
         data.append("f_name", e.target.f_name.value);
         data.append("f_type", f_type);
-        fetch("http://www.sejongclubunion.com:3001/api/files/uploadFile", {
+        fetch("http://sejongclubunion.com:3001/api/files/uploadFile", {
           method: "POST",
           credentials: "include",
           body: data,
@@ -155,7 +155,7 @@ function Manage() {
     }
   };
   const getCommunity = () => {
-    fetch("http://www.sejongclubunion.com:3001/api/community/getCommunity", {
+    fetch("http://sejongclubunion.com:3001/api/community/getCommunity", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -168,7 +168,7 @@ function Manage() {
       });
   };
   const deleteCommunity = (id) => {
-    fetch("http://www.sejongclubunion.com:3001/api/community/deleteCommunity", {
+    fetch("http://sejongclubunion.com:3001/api/community/deleteCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

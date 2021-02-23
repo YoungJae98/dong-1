@@ -82,7 +82,7 @@ function Navigation({
 }) {
   const [sticky, setsticky] = useState(false);
   const logoutProcess = () => {
-    fetch("http://www.sejongclubunion.com:3001/api/account/logout", {
+    fetch("http://sejongclubunion.com:3001/api/account/logout", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
