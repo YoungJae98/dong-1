@@ -6,7 +6,6 @@ const api_files = require("./routes/files");
 const api_pledges = require("./routes/pledges");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const FileStore = require("session-file-store")(session);
 const cors = require("cors");
 const corsOptions = {
   origin: true,
@@ -18,7 +17,6 @@ app.use(
     secret: "akdlsjai!@^$(128y1asfkjas",
     resave: false,
     saveUninitialized: true,
-    store: new FileStore(),
   })
 );
 app.use(express.static("../src/assets/documents"));
