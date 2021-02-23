@@ -30,7 +30,7 @@ function App() {
     history.push("/");
   };
   const loginCheck = () => {
-    fetch("http://18.217.248.102:3001/api/account/isLoginCheck", {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
