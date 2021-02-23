@@ -193,21 +193,6 @@ function Main() {
                     ></Listitem>
                   </NavLink>
                 </Button>
-                <Button
-                  backgroundColor="white"
-                  onClick={() => {
-                    alert("준비중입니다.");
-                  }}
-                >
-                  {/* <NavLink to="/information/alliance"> */}
-                  <Listitem
-                    height="40px"
-                    fontColor="#14406c"
-                    label="제휴사업"
-                    hoverUnderline
-                  ></Listitem>
-                  {/* </NavLink> */}
-                </Button>
                 <Button backgroundColor="white">
                   <NavLink to="/information/seoul">
                     <Listitem
