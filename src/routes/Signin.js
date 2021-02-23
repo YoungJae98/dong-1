@@ -60,7 +60,6 @@ function Signin() {
   const history = useHistory();
   const redirectToHome = () => {
     history.push("/");
-    history.go(0);
   };
   const loginProcess = () => {
     fetch("http://18.217.248.102:3001/api/account/login", {
