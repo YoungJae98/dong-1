@@ -18,13 +18,16 @@ function MyPage() {
   const [mypetition, setMypetition] = useState([]);
   const [mycomment, setMycomment] = useState([]);
   const getCommunityByUser = () => {
-    fetch("http://18.217.248.102:3001/api/community/getCommunityByUser", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-    })
+    fetch(
+      "http://www.sejongclubunion.com:3001/api/community/getCommunityByUser",
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+        credentials: "include",
+      }
+    )
       .then((response) => response.json())
       .then((response) => {
         setMysuggestion(
@@ -36,20 +39,23 @@ function MyPage() {
       });
   };
   const getCommentByUser = () => {
-    fetch("http://18.217.248.102:3001/api/community/getCommentByUser", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-    })
+    fetch(
+      "http://www.sejongclubunion.com:3001/api/community/getCommentByUser",
+      {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+        },
+        credentials: "include",
+      }
+    )
       .then((response) => response.json())
       .then((response) => {
         setMycomment(response["comments"]);
       });
   };
   const loginCheck = () => {
-    fetch("http://18.217.248.102:3001/api/account/isLoginCheck", {
+    fetch("http://www.sejongclubunion.com:3001/api/account/isLoginCheck", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
