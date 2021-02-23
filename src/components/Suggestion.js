@@ -12,7 +12,7 @@ function Suggestion() {
     "동의합니다."
   );
   const writeComments = (id) => {
-    fetch("http://18.217.248.102:3001/api/community/writeComments", {
+    fetch("http://localhost:3001/api/community/writeComments", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -35,7 +35,7 @@ function Suggestion() {
       });
   };
   const showCommunity = (id) => {
-    fetch("http://18.217.248.102:3001/api/community/showCommunity", {
+    fetch("http://localhost:3001/api/community/showCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -52,7 +52,7 @@ function Suggestion() {
       });
   };
   const loginCheck = () => {
-    fetch("http://18.217.248.102:3001/api/account/isLoginCheck", {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
