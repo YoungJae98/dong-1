@@ -38,7 +38,7 @@ router.get("/getFiles", (req, res) => {
 router.post("/uploadFile", upload.single("document"), (req, res) => {
   console.log(req.file);
   db.query(
-    "insert into files(f_type, f_name, f_date, f_originalname) values(?,?,now(),?)",
+    "insert into files(f_type, f_name, f_date, f_originalname) values(?,?,date_format(now(),'%Y-%m-%d'),?)",
     [req.body.f_type, req.body.f_name, req.file.originalname],
     (err, result) => {
       res.json({ success: true });

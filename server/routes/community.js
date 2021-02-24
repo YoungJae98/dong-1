@@ -58,7 +58,7 @@ router.post("/writeComments", (req, res) => {
                 });
               } else {
                 db.query(
-                  "insert into comments(co_community, co_user, co_body, co_date, co_u_id) values(? ,? ,? , now(), ?)",
+                  "insert into comments(co_community, co_user, co_body, co_date, co_u_id) values(? ,? ,? , date_format(now(),'%Y-%m-%d'), ?)",
                   [
                     req.body.id,
                     user[0].u_name,
@@ -96,7 +96,7 @@ router.post("/writeCommunity", (req, res) => {
             });
           } else {
             db.query(
-              "insert into community(c_title, c_body, c_type, c_date, c_user, c_u_id) values(?, ?, ?, now(), ?, ?)",
+              "insert into community(c_title, c_body, c_type, c_date, c_user, c_u_id) values(?, ?, ?, date_format(now(),'%Y-%m-%d'), ?, ?)",
               [title, body, req.body.type, user[0].u_name, req.session.user],
               (err3, results) => {
                 res.json({
