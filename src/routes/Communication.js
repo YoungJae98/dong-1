@@ -80,22 +80,19 @@ function Communication() {
         getCommunity();
       });
   };
-  const writePetition = async () => {
-    let res = await fetch(
-      "http://sejongclubunion.com:3001/api/community/writeCommunity",
-      {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        credentials: "include",
-        body: JSON.stringify({
-          title: petitionTitle,
-          body: petitionBody,
-          type: 2,
-        }),
-      }
-    )
+  const writePetition = () => {
+    fetch("http://sejongclubunion.com:3001/api/community/writeCommunity", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        title: petitionTitle,
+        body: petitionBody,
+        type: 2,
+      }),
+    })
       .then((response) => response.json())
       .then((response) => {
         if (response["success"]) {
@@ -106,7 +103,6 @@ function Communication() {
         petitionRedirect();
         getCommunity();
       });
-    console.log(res);
   };
   const loginCheck = () => {
     fetch("http://sejongclubunion.com:3001/api/account/isLoginCheck", {
