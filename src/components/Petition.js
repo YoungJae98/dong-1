@@ -12,7 +12,7 @@ function Petition() {
     "동의합니다."
   );
   const writeComments = (id) => {
-    fetch("http://sejongclubunion.com:3001/api/community/writeComments", {
+    fetch("http://localhost:3001/api/community/writeComments", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -35,7 +35,7 @@ function Petition() {
       });
   };
   const showCommunity = (id) => {
-    fetch("http://sejongclubunion.com:3001/api/community/showCommunity", {
+    fetch("http://localhost:3001/api/community/showCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -52,7 +52,7 @@ function Petition() {
       });
   };
   const loginCheck = () => {
-    fetch("http://sejongclubunion.com:3001/api/account/isLoginCheck", {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

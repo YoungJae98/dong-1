@@ -18,7 +18,7 @@ function MyPage() {
   const [mypetition, setMypetition] = useState([]);
   const [mycomment, setMycomment] = useState([]);
   const getCommunityByUser = () => {
-    fetch("http://sejongclubunion.com:3001/api/community/getCommunityByUser", {
+    fetch("http://localhost:3001/api/community/getCommunityByUser", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -36,7 +36,7 @@ function MyPage() {
       });
   };
   const getCommentByUser = () => {
-    fetch("http://sejongclubunion.com:3001/api/community/getCommentByUser", {
+    fetch("http://localhost:3001/api/community/getCommentByUser", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -49,7 +49,7 @@ function MyPage() {
       });
   };
   const loginCheck = () => {
-    fetch("http://sejongclubunion.com:3001/api/account/isLoginCheck", {
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
