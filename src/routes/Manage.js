@@ -131,6 +131,7 @@ function Manage() {
         data.append("document", e.target.document.files[0]);
         data.append("f_name", e.target.f_name.value);
         data.append("f_type", f_type);
+        console.log(e.target.document.files[0]);
         fetch("http://sejongclubunion.com:3001/api/files/uploadFile", {
           method: "POST",
           credentials: "include",
