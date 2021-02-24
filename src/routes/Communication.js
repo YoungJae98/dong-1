@@ -81,7 +81,7 @@ function Communication() {
       });
   };
   const writePetition = async () => {
-    res = await fetch(
+    let res = await fetch(
       "http://sejongclubunion.com:3001/api/community/writeCommunity",
       {
         method: "POST",
