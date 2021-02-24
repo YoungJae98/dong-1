@@ -92,7 +92,7 @@ function Manage() {
         setFile(response);
       });
   };
-  const deleteFile = (id, originalname) => {
+  const deleteFile = async (id, originalname) => {
     fetch("http://sejongclubunion.com:3001/api/files/deleteFile", {
       method: "POST",
       headers: {
@@ -108,6 +108,7 @@ function Manage() {
       .then((response) => {
         getFile();
       });
+    console.log(res);
   };
   const handleDocumentUpload = (e, f_type) => {
     e.preventDefault();
