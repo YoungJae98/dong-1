@@ -108,7 +108,6 @@ function Manage() {
       .then((response) => {
         getFile();
       });
-    console.log(res);
   };
   const handleDocumentUpload = (e, f_type) => {
     e.preventDefault();
