@@ -21,11 +21,12 @@ function Manage() {
   const [reports, setReports] = useState([]);
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [forms, setForms] = useState([]);
+  const [images, setImages] = useState([]);
   const [community, setCommunity] = useState({});
   const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
   const getPledge = () => {
-    fetch("http://localhost:3001/api/pledges/getPledge", {
+    fetch("http://18.217.248.102:3001/api/pledges/getPledge", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +39,7 @@ function Manage() {
       });
   };
   const setPledge = (p_id) => {
-    fetch("http://localhost:3001/api/pledges/setPledge", {
+    fetch("http://18.217.248.102:3001/api/pledges/setPledge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +60,7 @@ function Manage() {
       });
   };
   const unsetPledge = (p_id) => {
-    fetch("http://localhost:3001/api/pledges/unsetPledge", {
+    fetch("http://18.217.248.102:3001/api/pledges/unsetPledge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -80,7 +81,7 @@ function Manage() {
       });
   };
   const getFile = () => {
-    fetch("http://localhost:3001/api/files/getFiles", {
+    fetch("http://18.217.248.102:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -93,7 +94,7 @@ function Manage() {
       });
   };
   const deleteFile = (id, originalname) => {
-    fetch("http://localhost:3001/api/files/deleteFile", {
+    fetch("http://18.217.248.102:3001/api/files/deleteFile", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -131,7 +132,7 @@ function Manage() {
         data.append("document", e.target.document.files[0]);
         data.append("f_name", e.target.f_name.value);
         data.append("f_type", f_type);
-        fetch("http://localhost:3001/api/files/uploadFile", {
+        fetch("http://18.217.248.102:3001/api/files/uploadFile", {
           method: "POST",
           credentials: "include",
           body: data,
@@ -146,6 +147,9 @@ function Manage() {
             } else {
               alert("업로드 실패");
             }
+          })
+          .catch((err) => {
+            alert(err);
           });
       } else {
         alert("중복된 이름의 파일이 이미 업로드되어 있습니다.");
@@ -155,7 +159,7 @@ function Manage() {
     }
   };
   const getCommunity = () => {
-    fetch("http://localhost:3001/api/community/getCommunity", {
+    fetch("http://18.217.248.102:3001/api/community/getCommunity", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -168,7 +172,7 @@ function Manage() {
       });
   };
   const deleteCommunity = (id) => {
-    fetch("http://localhost:3001/api/community/deleteCommunity", {
+    fetch("http://18.217.248.102:3001/api/community/deleteCommunity", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -205,6 +209,7 @@ function Manage() {
     if (file["1"]) setMeetinglogs(file["1"]);
     if (file["2"]) setReports(file["2"]);
     if (file["3"]) setForms(file["3"]);
+    if (file["4"]) setImages(file["4"]);
   }, [file]);
   useEffect(() => {
     if (community["1"]) setSuggestions(community["1"]);
@@ -1023,7 +1028,69 @@ function Manage() {
               paddingTop="30px"
               marginTop="30px"
               width="1000px"
-            ></Container>
+            >
+              <Container height="50px" className="manage-input">
+                <form
+                  onSubmit={(e) => {
+                    handleDocumentUpload(e, 4);
+                  }}
+                >
+                  <input
+                    type="text"
+                    id="report_text"
+                    name="f_name"
+                    placeholder="이미지 제목"
+                    style={{
+                      marginRight: "30px",
+                      height: "30px",
+                      width: "550px",
+                      fontSize: "24px",
+                      fontFamily: "SeoulMedium",
+                    }}
+                  />
+                  <label htmlFor="report_file" className="manage-label1">
+                    새 이미지 선택
+                  </label>
+                  <input type="file" id="report_file" name="document" />
+                  <input type="submit" value="업로드" />
+                </form>
+              </Container>
+              <Container
+                border="1px solid #14406c"
+                marginTop="30px"
+                scroll
+                fd="column"
+                horizontalAlign="flex-start"
+              >
+                {images.map((item, index) => (
+                  <Container
+                    height="50px"
+                    backgroundColor={index % 2 === 0 ? "#F6F6F6" : "white"}
+                    key={index}
+                  >
+                    <Container width="600px" horizontalAlign="left">
+                      {item.f_name}
+                    </Container>
+                    <Button
+                      width="80px"
+                      height="30px"
+                      backgroundColor="#14406c"
+                      fontColor="white"
+                      onClick={() => {
+                        if (
+                          window.confirm(`${item.f_name} 삭제하시겠습니까?`)
+                        ) {
+                          deleteFile(item.f_id, item.f_originalname);
+                          alert(`${item.f_name} 삭제되었습니다.`);
+                        }
+                      }}
+                    >
+                      삭제
+                    </Button>
+                  </Container>
+                ))}
+              </Container>
+            </Container>
           </Route>
         </Container>
       </Container>

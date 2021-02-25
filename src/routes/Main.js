@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
 import logo_reversed from "../assets/images/logo_reversed.png";
@@ -10,6 +11,7 @@ import Text from "../components/Text";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import { FiThumbsUp } from "react-icons/fi";
+import MoonLoader from "react-spinners/MoonLoader";
 
 function Main() {
   const [petitions, setPetitions] = useState([]);
@@ -21,7 +23,7 @@ function Main() {
   const [images, setImages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const getCommunity = () => {
-    fetch("http://localhost:3001/api/community/getCommunity", {
+    fetch("http://18.217.248.102:3001/api/community/getCommunity", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -35,7 +37,7 @@ function Main() {
       });
   };
   const getFile = () => {
-    fetch("http://localhost:3001/api/files/getFiles", {
+    fetch("http://18.217.248.102:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -48,6 +50,7 @@ function Main() {
       });
   };
   const getImageData = () => {
+    console.log(file[4]);
     for (let j = 0; j < file[4].length; j++) {
       getImageBlob(file[4][j]["f_originalname"]);
     }
@@ -56,7 +59,7 @@ function Main() {
     }, 2000);
   };
   const getImageBlob = (name) => {
-    fetch("http://localhost:3001/api/files/getFileData", {
+    fetch("http://18.217.248.102:3001/api/files/getFileData", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -97,7 +100,15 @@ function Main() {
   }, [file]);
   return (
     <Container fd="column">
-      <MyCarousel images={isLoaded ? images : []} />
+      <Container height="600px">
+        {isLoaded ? (
+          <Container>
+            <MyCarousel images={images} />
+          </Container>
+        ) : (
+          <MoonLoader color="#14406c" />
+        )}
+      </Container>
       <Container marginTop="20px">
         <Card width="599px" height="210px" marginRight="20px">
           <Container
