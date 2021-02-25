@@ -25,11 +25,7 @@ function Manage() {
   const [suggestions, setSuggestions] = useState([]);
   const [petitions, setPetitions] = useState([]);
   const getPledge = () => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/pledges/getPledge", {
-=======
-    fetch("http://localhost:3001/api/pledges/getPledge", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -42,11 +38,7 @@ function Manage() {
       });
   };
   const setPledge = (p_id) => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/pledges/setPledge", {
-=======
-    fetch("http://localhost:3001/api/pledges/setPledge", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -67,11 +59,7 @@ function Manage() {
       });
   };
   const unsetPledge = (p_id) => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/pledges/unsetPledge", {
-=======
-    fetch("http://localhost:3001/api/pledges/unsetPledge", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,11 +80,7 @@ function Manage() {
       });
   };
   const getFile = () => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/files/getFiles", {
-=======
-    fetch("http://localhost:3001/api/files/getFiles", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -108,13 +92,8 @@ function Manage() {
         setFile(response);
       });
   };
-<<<<<<< HEAD
   const deleteFile = async (id, originalname) => {
     fetch("http://sejongclubunion.com:3001/api/files/deleteFile", {
-=======
-  const deleteFile = (id, originalname) => {
-    fetch("http://localhost:3001/api/files/deleteFile", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -152,12 +131,8 @@ function Manage() {
         data.append("document", e.target.document.files[0]);
         data.append("f_name", e.target.f_name.value);
         data.append("f_type", f_type);
-<<<<<<< HEAD
         console.log(e.target.document.files[0]);
         fetch("http://sejongclubunion.com:3001/api/files/uploadFile", {
-=======
-        fetch("http://localhost:3001/api/files/uploadFile", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
           method: "POST",
           credentials: "include",
           body: data,
@@ -181,11 +156,7 @@ function Manage() {
     }
   };
   const getCommunity = () => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/community/getCommunity", {
-=======
-    fetch("http://localhost:3001/api/community/getCommunity", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -198,11 +169,7 @@ function Manage() {
       });
   };
   const deleteCommunity = (id) => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/community/deleteCommunity", {
-=======
-    fetch("http://localhost:3001/api/community/deleteCommunity", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-type": "application/json",

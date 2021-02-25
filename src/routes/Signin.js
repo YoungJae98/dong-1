@@ -11,11 +11,7 @@ import Text from "../components/Text";
 로그인 체크 여부 확인 함수
 
 const loginCheck = () => {
-<<<<<<< HEAD
   fetch("http://sejongclubunion.com:3001/api/account/isLoginCheck", {
-=======
-  fetch("http://localhost:3001/api/account/isLoginCheck", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -37,11 +33,7 @@ const loginCheck = () => {
 };
 
   const logoutProcess = () => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/account/logout", {
-=======
-    fetch("http://localhost:3001/api/account/logout", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -71,11 +63,7 @@ function Signin() {
     history.go(0);
   };
   const loginProcess = () => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/account/login", {
-=======
-    fetch("http://localhost:3001/api/account/login", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-type": "application/json",

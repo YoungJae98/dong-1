@@ -21,11 +21,7 @@ function Main() {
   const [images, setImages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const getCommunity = () => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/community/getCommunity", {
-=======
-    fetch("http://localhost:3001/api/community/getCommunity", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -39,11 +35,7 @@ function Main() {
       });
   };
   const getFile = () => {
-<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/files/getFiles", {
-=======
-    fetch("http://localhost:3001/api/files/getFiles", {
->>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-type": "application/json",
