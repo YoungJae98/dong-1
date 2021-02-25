@@ -12,7 +12,11 @@ function Suggestion() {
     "동의합니다."
   );
   const writeComments = (id) => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/community/writeComments", {
+=======
+    fetch("http://localhost:3001/api/community/writeComments", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -35,7 +39,11 @@ function Suggestion() {
       });
   };
   const showCommunity = (id) => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/community/showCommunity", {
+=======
+    fetch("http://localhost:3001/api/community/showCommunity", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -52,7 +60,11 @@ function Suggestion() {
       });
   };
   const loginCheck = () => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/account/isLoginCheck", {
+=======
+    fetch("http://localhost:3001/api/account/isLoginCheck", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-Type": "application/json",

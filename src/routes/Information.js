@@ -46,7 +46,11 @@ function Main() {
   const [pageNum, setPageNum] = useState(0);
 
   const getPledge = () => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/pledges/getPledge", {
+=======
+    fetch("http://localhost:3001/api/pledges/getPledge", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -59,7 +63,11 @@ function Main() {
       });
   };
   const getFile = () => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/files/getFiles", {
+=======
+    fetch("http://localhost:3001/api/files/getFiles", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -77,12 +85,14 @@ function Main() {
         getFileBlob(file[i][j]["f_originalname"]);
       }
     }
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 2000);
+    setIsLoaded(true);
   };
   const getFileBlob = (name) => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/files/getFileData", {
+=======
+    fetch("http://localhost:3001/api/files/getFileData", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-type": "application/json",

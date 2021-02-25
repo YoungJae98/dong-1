@@ -29,7 +29,11 @@ function Main() {
   const [formPageArr, setFormPageArr] = useState([]);
   const [pageNum, setPageNum] = useState(0);
   const getFile = () => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/files/getFiles", {
+=======
+    fetch("http://localhost:3001/api/files/getFiles", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -49,7 +53,11 @@ function Main() {
     }
   };
   const getFileBlob = (name) => {
+<<<<<<< HEAD
     fetch("http://sejongclubunion.com:3001/api/files/getFileData", {
+=======
+    fetch("http://localhost:3001/api/files/getFileData", {
+>>>>>>> 55e7dcf040cf4281d5574404c4673fae65db0f8d
       method: "POST",
       headers: {
         "Content-type": "application/json",

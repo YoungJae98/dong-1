@@ -20,17 +20,18 @@ var upload = multer({
 
 router.get("/getFiles", (req, res) => {
   db.query("select * from files", (err, files) => {
-    var data = { 1: [], 2: [], 3: [] };
+    var data = { 1: [], 2: [], 3: [], 4: [] };
     for (i = 0; i < files.length; i++) {
       if (files[i].f_type == 1) {
         data[1].push(files[i]);
       } else if (files[i].f_type == 2) {
         data[2].push(files[i]);
-      } else {
+      } else if (files[i].f_type == 3) {
         data[3].push(files[i]);
+      } else {
+        data[4].push(files[i]);
       }
     }
-
     res.json(data);
   });
 });
