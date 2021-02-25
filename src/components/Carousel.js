@@ -5,7 +5,7 @@ import c1 from "../assets/images/carousel/carousel1.jpg";
 import c2 from "../assets/images/carousel/carousel2.jpg";
 import c3 from "../assets/images/carousel/carousel3.jpg";
 
-function MyCarousel() {
+function MyCarousel(images) {
   return (
     <Carousel
       showThumbs={false}
@@ -16,7 +16,7 @@ function MyCarousel() {
       interval={2000}
     >
       <div>
-        <img src={c1} alt="" />
+        <img src={images[0]} alt="" />
       </div>
       <div>
         <img src={c2} alt="" />
