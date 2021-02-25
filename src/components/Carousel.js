@@ -5,7 +5,8 @@ import c1 from "../assets/images/carousel/carousel1.jpg";
 import c2 from "../assets/images/carousel/carousel2.jpg";
 import c3 from "../assets/images/carousel/carousel3.jpg";
 
-function MyCarousel(images) {
+function MyCarousel({ images }) {
+  console.log(images);
   return (
     <Carousel
       showThumbs={false}

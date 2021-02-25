@@ -32,7 +32,6 @@ router.get("/getFiles", (req, res) => {
         data[4].push(files[i]);
       }
     }
-    console.log(data);
     res.json(data);
   });
 });

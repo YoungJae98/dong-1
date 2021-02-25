@@ -77,9 +77,7 @@ function Main() {
         getFileBlob(file[i][j]["f_originalname"]);
       }
     }
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 2000);
+    setIsLoaded(true);
   };
   const getFileBlob = (name) => {
     fetch("http://localhost:3001/api/files/getFileData", {
