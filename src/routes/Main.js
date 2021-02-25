@@ -18,7 +18,6 @@ function Main() {
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [community, setCommunity] = useState({});
   const [file, setFile] = useState({});
-  const [images, setImages] = useState({});
   const getCommunity = () => {
     fetch("http://sejongclubunion.com:3001/api/community/getCommunity", {
       method: "GET",
@@ -60,38 +59,9 @@ function Main() {
       );
     }
   }, [community]);
-
-  const getImageData = () => {
-    for (let i = 0; i < file[4].length; i++) {
-      getImageBlob(file[4][i]["f_originalname"]);
-    }
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 2000);
-  };
-
-  const getImageBlob = (name) => {
-    fetch("http://sejongclubunion.com:3001/api/files/getFileData", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        f_originalname: name,
-      }),
-    })
-      .then((response) => response.blob())
-      .then((response) => {
-        let data = Images;
-        data[name] = response;
-        setImages(data);
-      });
-  };
   useEffect(() => {
     if (file["1"]) setMeetinglogs(file["1"]);
     if (file["2"]) setReports(file["2"]);
-    getImageData();
   }, [file]);
   return (
     <Container fd="column">
