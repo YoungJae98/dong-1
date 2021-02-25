@@ -56,7 +56,7 @@ function Main() {
     }, 2000);
   };
   const getImageBlob = (name) => {
-    fetch("http://localhost:3001/api/files/getFileData", {
+    fetch("http://sejongclubunion.com:3001/api/files/getFileData", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
