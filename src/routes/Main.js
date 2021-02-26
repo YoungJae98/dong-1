@@ -18,6 +18,8 @@ function Main() {
   const [meetinglogs, setMeetinglogs] = useState([]);
   const [community, setCommunity] = useState({});
   const [file, setFile] = useState({});
+  const [images, setImages] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const getCommunity = () => {
     fetch("http://localhost:3001/api/community/getCommunity", {
       method: "GET",
@@ -45,6 +47,33 @@ function Main() {
         setFile(response);
       });
   };
+  const getImageData = () => {
+    for (let j = 0; j < file[4].length; j++) {
+      getImageBlob(file[4][j]["f_originalname"]);
+    }
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 2000);
+  };
+  const getImageBlob = (name) => {
+    fetch("http://localhost:3001/api/files/getFileData", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({
+        f_originalname: name,
+      }),
+    })
+      .then((response) => response.blob())
+      .then((response) => {
+        let url = URL.createObjectURL(response);
+        let data = images;
+        data.push(url);
+        setImages(data);
+      });
+  };
   useEffect(() => {
     getCommunity();
     getFile();
@@ -60,12 +89,15 @@ function Main() {
     }
   }, [community]);
   useEffect(() => {
-    if (file["1"]) setMeetinglogs(file["1"]);
-    if (file["2"]) setReports(file["2"]);
+    if (Object.keys(file).length !== 0) {
+      getImageData();
+      if (file["1"]) setMeetinglogs(file["1"]);
+      if (file["2"]) setReports(file["2"]);
+    }
   }, [file]);
   return (
     <Container fd="column">
-      <MyCarousel />
+      <MyCarousel images={isLoaded ? images : []} />
       <Container marginTop="20px">
         <Card width="599px" height="210px" marginRight="20px">
           <Container
