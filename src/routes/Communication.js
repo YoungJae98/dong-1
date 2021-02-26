@@ -1167,7 +1167,7 @@ function Communication() {
               </Container>
               <Container
                 backgroundColor="white"
-                borderRadius="8px"
+                borderRadius="5px"
                 fd="column"
                 horizontalAlign="left"
                 verticalAlign="flex-start"
@@ -1181,10 +1181,14 @@ function Communication() {
                   width="100px"
                   height="50px"
                   horizontalAlign="flex-start"
-                  borderBottom="2px solid #14406c"
+                  borderBottom="1px solid grey"
                   marginBottom="20px"
                 >
-                  <Text fontColor="#14406c" fontSize="28px">
+                  <Text
+                    fontColor="#14406c"
+                    fontSize="28px"
+                    fontFamily="SeoulLight"
+                  >
                     건의 내용
                   </Text>
                 </Container>
@@ -1192,11 +1196,11 @@ function Communication() {
                   maxLength="45"
                   placeholder="건의 제목을 작성해 주세요."
                   style={{
-                    width: "976px",
+                    width: "978px",
                     height: "25px",
-                    fontFamily: "SeoulBold",
+                    fontFamily: "SeoulLight",
                     fontSize: "24px",
-                    border: "2px solid #14406c",
+                    border: "1px solid #14406c",
                     resize: "none",
                     outline: "none",
                     padding: "10px",
@@ -1211,11 +1215,11 @@ function Communication() {
                 <textarea
                   placeholder="건의 내용을 작성해 주세요."
                   style={{
-                    width: "976px",
+                    width: "978px",
                     height: "600px",
-                    fontFamily: "SeoulBold",
+                    fontFamily: "SeoulLight",
                     fontSize: "24px",
-                    border: "2px solid #14406c",
+                    border: "1px solid #14406c",
                     resize: "none",
                     outline: "none",
                     padding: "10px",
@@ -1225,10 +1229,14 @@ function Communication() {
                   onChange={({ target: { value } }) => setSuggestionBody(value)}
                 />
                 <Container
+                  width="1000px"
                   height="50px"
-                  horizontalAlign="flex-end"
+                  horizontalAlign="space-between"
                   marginTop="10px"
                 >
+                  <Text fontFamily="SeoulLight" fontSize="16px">
+                    무분별한 게시글 작성은 관리자에 의해 제재될 수 있습니다.
+                  </Text>
                   <Button
                     width="100px"
                     height="50px"
@@ -1279,21 +1287,25 @@ function Communication() {
                   width="100px"
                   height="50px"
                   horizontalAlign="flex-start"
-                  borderBottom="2px solid #14406c"
+                  borderBottom="1px solid #14406c"
                   marginBottom="20px"
                 >
-                  <Text fontColor="#14406c" fontSize="28px">
+                  <Text
+                    fontColor="#14406c"
+                    fontSize="28px"
+                    fontFamily="SeoulLight"
+                  >
                     청원 내용
                   </Text>
                 </Container>
                 <textarea
                   placeholder="청원 제목을 작성해 주세요."
                   style={{
-                    width: "976px",
+                    width: "978px",
                     height: "25px",
-                    fontFamily: "SeoulBold",
+                    fontFamily: "SeoulLight",
                     fontSize: "24px",
-                    border: "2px solid #14406c",
+                    border: "1px solid #14406c",
                     resize: "none",
                     outline: "none",
                     padding: "10px",
@@ -1307,11 +1319,11 @@ function Communication() {
                   type="text"
                   placeholder="청원 내용을 작성해 주세요."
                   style={{
-                    width: "976px",
+                    width: "978px",
                     height: "600px",
-                    fontFamily: "SeoulBold",
+                    fontFamily: "SeoulLight",
                     fontSize: "24px",
-                    border: "2px solid #14406c",
+                    border: "1px solid #14406c",
                     resize: "none",
                     outline: "none",
                     padding: "10px",
@@ -1320,10 +1332,14 @@ function Communication() {
                   onChange={({ target: { value } }) => setPetitionBody(value)}
                 />
                 <Container
+                  width="1000px"
                   height="50px"
-                  horizontalAlign="flex-end"
+                  horizontalAlign="space-between"
                   marginTop="10px"
                 >
+                  <Text fontFamily="SeoulLight" fontSize="16px">
+                    무분별한 게시글 작성은 관리자에 의해 제재될 수 있습니다.
+                  </Text>
                   <Button
                     width="100px"
                     height="50px"

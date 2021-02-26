@@ -24,8 +24,11 @@ const StyledButton = styled.button`
   border-radius: ${(props) => props.borderRadius};
 
   transition: 0.2s;
+
+  padding: ${(props) => props.padding};
+
   &:hover {
-    cursor: pointer;
+    cursor: ${(props) => props.cursor || "pointer"};
     background-color: ${(props) => props.hoverBackgrounColor};
     color: ${(props) => props.hoverFontColor};
     ${(props) =>
@@ -54,6 +57,8 @@ export function Button({
   borderRadius,
   border,
   hoverUnderline,
+  cursor,
+  padding,
   children,
 }) {
   return (
@@ -76,6 +81,8 @@ export function Button({
       font={font}
       border={border}
       borderRadius={borderRadius}
+      cursor={cursor}
+      padding={padding}
       hoverUnderline={hoverUnderline}
     >
       {children}

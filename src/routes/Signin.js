@@ -3,51 +3,10 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import Button from "../components/Button";
+import MoonLoader from "react-spinners/MoonLoader";
 
 import Container from "../components/Container";
 import Text from "../components/Text";
-
-/*
-로그인 체크 여부 확인 함수
-
-const loginCheck = () => {
-  fetch("http://18.217.248.102:3001/api/account/isLoginCheck", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    credentials: "include",
-  })
-    .then((response) => response.json())
-    .then((response) => {
-      //받아온 응답
-      console.log(response);
-      //받아온 값 중 isLogin이 true 일때
-      if (response["isLogin"]) {
-        console.log("true");
-        //로그인 실패일때
-      } else {
-        console.log("false");
-      }
-    });
-};
-
-  const logoutProcess = () => {
-    fetch("http://18.217.248.102:3001/api/account/logout", {
-      method: "GET",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        //받아온 응답
-        console.log(response);
-      });
-  };
-
- */
 
 const StyledContainer = styled(Container)`
   opacity: 0;
@@ -57,31 +16,38 @@ const StyledContainer = styled(Container)`
 function Signin() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
   const redirectToHome = () => {
     history.push("/");
     history.go(0);
   };
   const loginProcess = () => {
-    fetch("http://18.217.248.102:3001/api/account/login", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        id: id,
-        pw: pw,
-      }),
-    })
-      .then((response) => response.json())
-      .then((response) => {
-        if (response["isLogin"] === "success") {
-          redirectToHome();
-        } else {
-          alert("학번 혹은 비밀번호가 틀렸습니다!");
-        }
-      });
+    if (id === "" || pw === "") {
+      alert("학번 또는 비밀번호를 입력해 주세요");
+      setLoading(false);
+    } else {
+      fetch("http://18.217.248.102:3001/api/account/login", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          id: id,
+          pw: pw,
+        }),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if (response["isLogin"] === "success") {
+            redirectToHome();
+          } else {
+            alert("학번 혹은 비밀번호가 틀렸습니다!");
+          }
+          setLoading(false);
+        });
+    }
   };
   return (
     <Container height="100vh" backgroundColor="#F6F6F6">
@@ -188,22 +154,29 @@ function Signin() {
               포탈 비밀번호는 저장되지 않습니다.
             </Text>
           </Container>
-          <Button
-            width="230px"
-            height="40px"
-            marginTop="30px"
-            fontSize="21px"
-            backgroundColor="#14406c"
-            fontColor="white"
-            hoverBackgrounColor="white"
-            hoverFontColor="#14406c"
-            borderRadius="5px"
-            onClick={() => {
-              loginProcess();
-            }}
-          >
-            로그인
-          </Button>
+          <Container height="70px">
+            {loading ? (
+              <MoonLoader color="#14406c" size="32" />
+            ) : (
+              <Button
+                width="230px"
+                height="40px"
+                marginTop="30px"
+                fontSize="21px"
+                backgroundColor="#14406c"
+                fontColor="white"
+                hoverBackgrounColor="white"
+                hoverFontColor="#14406c"
+                borderRadius="5px"
+                onClick={() => {
+                  setLoading(true);
+                  loginProcess();
+                }}
+              >
+                로그인
+              </Button>
+            )}
+          </Container>
         </Container>
       </StyledContainer>
     </Container>
