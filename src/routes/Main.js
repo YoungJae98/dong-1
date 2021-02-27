@@ -33,7 +33,7 @@ function Main() {
       .then((response) => response.json())
       .then((response) => {
         //response에서 1은 suggestion에서 2는 petition으로 구분
-        setCommuWnity(response);
+        setCommunity(response);
       });
   };
   const getFile = () => {
