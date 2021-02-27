@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
 import Button from "../components/Button";
+import MoonLoader from "react-spinners/MoonLoader";
 
 import Container from "../components/Container";
 import Text from "../components/Text";
@@ -57,6 +58,7 @@ const StyledContainer = styled(Container)`
 function Signin() {
   const [id, setId] = useState("");
   const [pw, setPw] = useState("");
+  const [loading, setLoading] = useState(false);
   const history = useHistory();
   const redirectToHome = () => {
     history.push("/");
@@ -188,22 +190,29 @@ function Signin() {
               포탈 비밀번호는 저장되지 않습니다.
             </Text>
           </Container>
-          <Button
-            width="230px"
-            height="40px"
-            marginTop="30px"
-            fontSize="21px"
-            backgroundColor="#14406c"
-            fontColor="white"
-            hoverBackgrounColor="white"
-            hoverFontColor="#14406c"
-            borderRadius="5px"
-            onClick={() => {
-              loginProcess();
-            }}
-          >
-            로그인
-          </Button>
+          <Container height="70px">
+            {loading ? (
+              <MoonLoader color="#14406c" size="32" />
+            ) : (
+              <Button
+                width="230px"
+                height="40px"
+                marginTop="30px"
+                fontSize="21px"
+                backgroundColor="#14406c"
+                fontColor="white"
+                hoverBackgrounColor="white"
+                hoverFontColor="#14406c"
+                borderRadius="5px"
+                onClick={() => {
+                  setLoading(true);
+                  loginProcess();
+                }}
+              >
+                로그인
+              </Button>
+            )}
+          </Container>
         </Container>
       </StyledContainer>
     </Container>

@@ -27,6 +27,8 @@ const StyledContainer = styled.div`
   border: ${(props) => props.border};
   border-bottom: ${(props) => props.borderBottom};
   border-top: ${(props) => props.borderTop};
+  border-left: ${(props) => props.borderLeft};
+  border-right: ${(props) => props.borderRight};
   border-radius: ${(props) => props.borderRadius};
 
   position: ${(props) => props.position};
@@ -60,6 +62,8 @@ export function Container({
   border,
   borderRadius,
   borderBottom,
+  borderLeft,
+  borderRight,
   borderTop,
   position,
   zIndex,
@@ -92,6 +96,8 @@ export function Container({
       border={border}
       borderRadius={borderRadius}
       borderBottom={borderBottom}
+      borderLeft={borderLeft}
+      borderRight={borderRight}
       borderTop={borderTop}
       position={position}
       zIndex={zIndex}

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
@@ -62,6 +63,8 @@ import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
 
+import { GiStairs, GiElevator } from "react-icons/gi";
+
 function CentralClub() {
   const [showClub, setShowClub] = useState([]);
   const [physicalClub, setPhysicalClub] = useState([]);
@@ -69,6 +72,98 @@ function CentralClub() {
   const [cultureClub, setCultureClub] = useState([]);
   const [academicClub, setAcademicClub] = useState([]);
   const [religionClub, setReligionClub] = useState([]);
+  const [five_leftup, setFive_leftup] = useState([
+    { number: 501, name: "KSGI", link: "https://www.youtube.com/" },
+    { number: 502, name: "", link: "" },
+    { number: 503, name: "발파람", link: "https://www.youtube.com/" },
+    { number: 504, name: "SELS", link: "https://www.youtube.com/" },
+    { number: 505, name: "", link: "" },
+    { number: 506, name: "율", link: "https://www.youtube.com/" },
+    { number: 507, name: "밤부", link: "https://www.youtube.com/" },
+  ]);
+  const [five_rightup, setFive_rightup] = useState([
+    { number: 508, name: "STC", link: "https://www.youtube.com/" },
+    { number: 509, name: "유스 호스텔", link: "https://www.youtube.com/" },
+    { number: 510, name: "늘혬", link: "https://www.youtube.com/" },
+    { number: 511, name: "TSP", link: "https://www.youtube.com/" },
+    { number: 512, name: "세종 서회", link: "https://www.youtube.com/" },
+    { number: 513, name: "", link: "" },
+    { number: 514, name: "한울림", link: "https://www.youtube.com/" },
+    { number: 515, name: "KUSA", link: "https://www.youtube.com/" },
+    { number: 516, name: "RUSH", link: "https://www.youtube.com/" },
+    { number: 517, name: "JYM", link: "https://www.youtube.com/" },
+    { number: 518, name: "인터 페이스", link: "https://www.youtube.com/" },
+  ]);
+  const [five_leftdown, setFive_leftdown] = useState([
+    { number: 532, name: "죽순회", link: "https://www.youtube.com/" },
+    { number: 531, name: "Boyz", link: "https://www.youtube.com/" },
+    { number: 530, name: "", link: "" },
+    { number: 529, name: "최강 유도", link: "https://www.youtube.com/" },
+    { number: 528, name: "요트부", link: "https://www.youtube.com/" },
+  ]);
+  const [five_rightdown, setFive_rightdown] = useState([
+    { number: 527, name: "동연 연습실", link: "" },
+    { number: 526, name: "세종 극회", link: "https://www.youtube.com/" },
+    { number: 525, name: "", link: "" },
+    { number: 524, name: "별무리", link: "https://www.youtube.com/" },
+    { number: 523, name: "IVF", link: "https://www.youtube.com/" },
+    { number: 522, name: "한손", link: "https://www.youtube.com/" },
+    { number: 521, name: "UNSA", link: "https://www.youtube.com/" },
+    { number: 520, name: "레지나", link: "https://www.youtube.com/" },
+    { number: 519, name: "세종 킹스", link: "https://www.youtube.com/" },
+  ]);
+  const [six_leftup, setSix_leftup] = useState([
+    { number: 601, name: "", link: "" },
+    { number: 602, name: "미즈", link: "https://www.youtube.com/" },
+    { number: 603, name: "마스터", link: "https://www.youtube.com/" },
+    { number: 604, name: "점프", link: "https://www.youtube.com/" },
+    { number: 605, name: "PAGE7", link: "https://www.youtube.com/" },
+    { number: 606, name: "유마 프렌", link: "https://www.youtube.com/" },
+    { number: 607, name: "", link: "" },
+  ]);
+  const [six_rightup, setSix_rightup] = useState([
+    { number: 608, name: "", link: "" },
+    { number: 609, name: "", link: "" },
+    { number: 610, name: "", link: "" },
+    { number: 611, name: "", link: "" },
+    { number: 612, name: "", link: "" },
+    { number: 613, name: "지음", link: "https://www.youtube.com/" },
+    { number: 614, name: "", link: "" },
+    { number: 615, name: "", link: "" },
+    { number: 616, name: "", link: "" },
+    { number: 617, name: "", link: "" },
+    { number: 618, name: "", link: "" },
+  ]);
+  const [six_leftdown, setsix_leftdown] = useState([
+    { number: 632, name: "", link: "" },
+    { number: 631, name: "", link: "" },
+    { number: 630, name: "", link: "" },
+    { number: 629, name: "", link: "" },
+    { number: 628, name: "", link: "" },
+  ]);
+  const [six_rightdown, setsix_rightdown] = useState([
+    { number: 627, name: "", link: "" },
+    { number: 625, name: "", link: "" },
+    { number: 626, name: "", link: "" },
+    { number: 624, name: "두바퀴", link: "https://www.youtube.com/" },
+    { number: 623, name: "CCC", link: "https://www.youtube.com/" },
+    { number: 622, name: "CAM", link: "https://www.youtube.com/" },
+    { number: 621, name: "터벌림", link: "https://www.youtube.com/" },
+    { number: 620, name: "더블랙", link: "https://www.youtube.com/" },
+    { number: 619, name: "", link: "" },
+  ]);
+
+  const [minus2_leftup, setminus2_leftup] = useState([
+    { number: 624, name: "소울트레인", link: "https://www.youtube.com/" },
+    { number: 623, name: "인트로", link: "https://www.youtube.com/" },
+    { number: 622, name: "터벌림", link: "https://www.youtube.com/" },
+  ]);
+  const [minus2_rightdown, setminus2_rightdown] = useState([
+    { number: 624, name: "늘혬", link: "https://www.youtube.com/" },
+    { number: 623, name: "PAGE7", link: "https://www.youtube.com/" },
+    { number: 622, name: "인트로", link: "https://www.youtube.com/" },
+    { number: 621, name: "사운드 플러스", link: "https://www.youtube.com/" },
+  ]);
   useEffect(() => {
     setShowClub([
       {
@@ -562,8 +657,758 @@ function CentralClub() {
                 fd="column"
                 horizontalAlign="left"
                 verticalAlign="flex-start"
+                height="400px"
+                className="fifth-floor"
               >
-                <img src={clubroomlayout} alt="sejong" width="500px" />
+                <Text fontColor="#14406c" fontSize="24px">
+                  학생회관 5층
+                </Text>
+                <Container fd="column" horizontalAlign="flex-start">
+                  <Container height="125px">
+                    {five_leftup.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="45px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                height: "18px",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="40px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "16px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                    <Container width="90px" />
+                    {five_rightup.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="50px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                width: "39px",
+                                height: "18px",
+                                margin: "auto",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="45px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                  </Container>
+                  <Container height="80px"></Container>
+                  <Container height="125px">
+                    {five_leftdown.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="45px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                height: "18px",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="40px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "16px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                    <Container width="315px">
+                      <Container>
+                        <Text
+                          fontSize="18px"
+                          fontColor="#14406c"
+                          fontFamily="SeoulLight"
+                        >
+                          계단
+                        </Text>
+                      </Container>
+                      <Container width="420px">
+                        <Text
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                          fontColor="#14406c"
+                        >
+                          엘리베이터
+                        </Text>
+                      </Container>
+                      <Container>
+                        <Text
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                          fontColor="#14406c"
+                        >
+                          게시판
+                        </Text>
+                      </Container>
+                      <Container>
+                        <Text
+                          fontSize="18px"
+                          fontFamily="SeoulLight"
+                          fontColor="#14406c"
+                        >
+                          화장실
+                        </Text>
+                      </Container>
+                    </Container>
+                    {five_rightdown.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="45px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                height: "18px",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="40px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "16px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                  </Container>
+                </Container>
+              </Container>
+              <Container
+                fd="column"
+                horizontalAlign="left"
+                verticalAlign="flex-start"
+                height="400px"
+                className="sixth-floor"
+              >
+                <Text fontColor="#14406c" fontSize="24px">
+                  학생회관 6층
+                </Text>
+                <Container fd="column" horizontalAlign="flex-start">
+                  <Container height="125px">
+                    {six_leftup.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="45px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                height: "18px",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="40px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "16px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                    <Container width="90px" />
+                    {six_rightup.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="50px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                width: "39px",
+                                height: "18px",
+                                margin: "auto",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="45px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                  </Container>
+                  <Container height="80px"></Container>
+                  <Container height="125px">
+                    {six_leftdown.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="45px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                height: "18px",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="40px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "16px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                    <Container width="315px">
+                      <Container>
+                        <Text
+                          fontSize="18px"
+                          fontColor="#14406c"
+                          fontFamily="SeoulLight"
+                        >
+                          계단
+                        </Text>
+                      </Container>
+                      <Container width="420px">
+                        <Text
+                          fontSize="18px"
+                          fontColor="#14406c"
+                          fontFamily="SeoulLight"
+                        >
+                          엘리베이터
+                        </Text>
+                      </Container>
+                      <Container>
+                        <Text
+                          fontSize="18px"
+                          fontColor="#14406c"
+                          fontFamily="SeoulLight"
+                        >
+                          게시판
+                        </Text>
+                      </Container>
+                      <Container>
+                        <Text
+                          fontSize="18px"
+                          fontColor="#14406c"
+                          fontFamily="SeoulLight"
+                        >
+                          화장실
+                        </Text>
+                      </Container>
+                    </Container>
+                    {six_rightdown.map((club, index) =>
+                      club.link !== "" ? (
+                        <a
+                          href={club.link}
+                          target="_blank"
+                          rel="noreferrer"
+                          key={index}
+                        >
+                          <Button
+                            width="45px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            marginLeft="-1px"
+                            padding={0}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                                height: "18px",
+                              }}
+                            >
+                              {club.name}
+                            </div>
+                          </Button>
+                        </a>
+                      ) : (
+                        <Button
+                          width="40px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          cursor="unset"
+                          marginLeft="-1px"
+                        >
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "18px",
+                            }}
+                          >
+                            {club.number}
+                          </div>
+                          <div
+                            style={{
+                              fontFamily: "SeoulLight",
+                              fontSize: "16px",
+                            }}
+                          >
+                            &nbsp;
+                          </div>
+                        </Button>
+                      )
+                    )}
+                  </Container>
+                </Container>
+              </Container>
+              <Container
+                fd="column"
+                horizontalAlign="left"
+                verticalAlign="flex-start"
+                height="400px"
+                className="minus-two-floor"
+              >
+                <Text fontColor="#14406c" fontSize="24px">
+                  학생회관 지하 2층
+                </Text>
+                <Container>
+                  {minus2_leftup.map((club, index) => (
+                    <a
+                      href={club.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      key={index}
+                    >
+                      <Button
+                        width="100px"
+                        height="80px"
+                        backgroundColor="white"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        border="1px solid #14406c"
+                        marginLeft="-1px"
+                        padding={0}
+                        font="SeoulLight"
+                      >
+                        {club.name}
+                      </Button>
+                    </a>
+                  ))}
+                  <Container width="90px" />
+                  <Container
+                    width="500px"
+                    height="80px"
+                    borderLeft="1px solid #14406c"
+                    borderBottom="1px solid #14406c"
+                  />
+                </Container>
+                <Container height="80px" />
+                <Container>
+                  <Container
+                    width="270px"
+                    height="80px"
+                    borderTop="1px solid #14406c"
+                    borderRight="1px solid #14406c"
+                    horizontalAlign="flex-end"
+                    paddingRight="30px"
+                  >
+                    <Text
+                      fontSize="18px"
+                      fontColor="#14406c"
+                      fontFamily="SeoulLight"
+                    >
+                      계단
+                    </Text>
+                  </Container>
+                  <Container width="90px" />
+                  <Container
+                    height="79px"
+                    width="220px"
+                    borderTop="1px solid #14406c"
+                    borderLeft="1px solid #14406c"
+                    marginRight="-1px"
+                    horizontalAlign="flex-start"
+                  >
+                    <Text
+                      fontSize="18px"
+                      fontColor="#14406c"
+                      fontFamily="SeoulLight"
+                      marginLeft="30px"
+                    >
+                      엘리베이터
+                    </Text>
+                  </Container>
+                  <Container width="280px" height="80px">
+                    {minus2_rightdown.map((club, index) => (
+                      <a
+                        href={club.link}
+                        target="_blank"
+                        rel="noreferrer"
+                        key={index}
+                      >
+                        <Button
+                          width="70px"
+                          height="80px"
+                          backgroundColor="white"
+                          hoverBackgrounColor="#14406c"
+                          hoverFontColor="white"
+                          border="1px solid #14406c"
+                          marginLeft="-1px"
+                          padding={0}
+                          font="SeoulLight"
+                        >
+                          {club.name}
+                        </Button>
+                      </a>
+                    ))}
+                  </Container>
+                </Container>
               </Container>
             </Container>
           </Route>

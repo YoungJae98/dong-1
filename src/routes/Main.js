@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 
 import logo_reversed from "../assets/images/logo_reversed.png";
@@ -10,6 +11,7 @@ import Text from "../components/Text";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import { FiThumbsUp } from "react-icons/fi";
+import MoonLoader from "react-spinners/MoonLoader";
 
 function Main() {
   const [petitions, setPetitions] = useState([]);
@@ -31,7 +33,7 @@ function Main() {
       .then((response) => response.json())
       .then((response) => {
         //response에서 1은 suggestion에서 2는 petition으로 구분
-        setCommunity(response);
+        setCommuWnity(response);
       });
   };
   const getFile = () => {
@@ -48,6 +50,7 @@ function Main() {
       });
   };
   const getImageData = () => {
+    console.log(file[4]);
     for (let j = 0; j < file[4].length; j++) {
       getImageBlob(file[4][j]["f_originalname"]);
     }
@@ -97,7 +100,15 @@ function Main() {
   }, [file]);
   return (
     <Container fd="column">
-      <MyCarousel images={isLoaded ? images : []} />
+      <Container height="600px">
+        {isLoaded ? (
+          <Container>
+            <MyCarousel images={images} />
+          </Container>
+        ) : (
+          <MoonLoader color="#14406c" />
+        )}
+      </Container>
       <Container marginTop="20px">
         <Card width="599px" height="210px" marginRight="20px">
           <Container

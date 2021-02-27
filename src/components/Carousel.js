@@ -1,10 +1,6 @@
 import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
-import c1 from "../assets/images/carousel/carousel1.jpg";
-import c2 from "../assets/images/carousel/carousel2.jpg";
-import c3 from "../assets/images/carousel/carousel3.jpg";
-
 function MyCarousel({ images }) {
   console.log(images);
   return (
@@ -16,15 +12,11 @@ function MyCarousel({ images }) {
       dynamicHeight={true}
       interval={2000}
     >
-      <div>
-        <img src={images[0]} alt="" />
-      </div>
-      <div>
-        <img src={c2} alt="" />
-      </div>
-      <div>
-        <img src={c3} alt="" />
-      </div>
+      {images.map((image, index) => (
+        <div key={index}>
+          <img src={image} alt="" height="600px" />
+        </div>
+      ))}
     </Carousel>
   );
 }

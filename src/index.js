@@ -11,7 +11,7 @@ const ScrollToTop = () => {
 };
 
 ReactDOM.render(
-  <BrowserRouter basename="/dong/">
+  <BrowserRouter>
     <Route component={ScrollToTop} />
     <App />
   </BrowserRouter>,
