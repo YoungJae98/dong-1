@@ -75,9 +75,7 @@ function Main() {
           setImages(data);
         });
     }
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 2000);
+    setIsLoaded(true);
   };
   useEffect(() => {
     getCommunity();
