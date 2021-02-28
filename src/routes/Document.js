@@ -4,7 +4,7 @@ import { NavLink, Route } from "react-router-dom";
 
 import regulations from "../assets/documents/regulations.pdf";
 import logo_inversed from "../assets/images/logo_reversed.png";
-import v5 from "../assets/images/visual/visual5.jpg";
+import v5 from "../assets/images/visual/visual5.png";
 import pdf from "../assets/images/pdf_image.png";
 import hwp from "../assets/images/hangeul.png";
 import word from "../assets/images/word.png";
@@ -75,9 +75,17 @@ function Main() {
   useEffect(() => {
     if (Object.keys(file).length !== 0) {
       getFileData();
-      setForms(file["3"]);
+      const tmp = file["3"];
+      let result = [];
+      for (let i = 0; i < tmp.length; i += 2) {
+        if (i + 1 < tmp.length && tmp[i].f_name === tmp[i + 1].f_name) {
+          result.push(tmp[i]);
+          console.log(i);
+        }
+      }
+      setForms(result);
       setFormsSearchResult(
-        file["3"].sort((a, b) => {
+        result.sort((a, b) => {
           if (a.f_date > b.f_date) return 1;
           else if (a.f_date === b.f_date) return 0;
           else return -1;
@@ -512,7 +520,13 @@ function Main() {
                           </Text>
                         </Container>
                       </Container>
-                      <Button>
+                      <Button
+                        backgroundColor="white"
+                        width="300px"
+                        onClick={() => {
+                          downloadFile(`${form.f_name}.hwp`);
+                        }}
+                      >
                         <Container width="105px">
                           <img src={hwp} alt="" height="30px" />
                           <Text
@@ -525,10 +539,12 @@ function Main() {
                           </Text>
                         </Container>
                       </Button>
-                      <a
-                        href={form.formSourceDocx}
-                        download
-                        style={{ marginLeft: "50px", marginRight: "50px" }}
+                      <Button
+                        backgroundColor="white"
+                        width="300px"
+                        onClick={() => {
+                          downloadFile(`${form.f_name}.docx`);
+                        }}
                       >
                         <Container width="105px">
                           <img src={word} alt="" height="30px" />
@@ -541,7 +557,7 @@ function Main() {
                             다운로드
                           </Text>
                         </Container>
-                      </a>
+                      </Button>
                     </Container>
                   ))}
               </Container>

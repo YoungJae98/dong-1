@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 
 import logo_reversed from "../assets/images/logo_reversed.png";
 
@@ -22,6 +23,11 @@ function Main() {
   const [file, setFile] = useState({});
   const [images, setImages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
+  const isPC = useMediaQuery({ query: "(min-width : 1240px)" });
+  const isTablet = useMediaQuery({
+    query: "(min-width : 501px) and (max-width :1240px)",
+  });
+  const isMobile = useMediaQuery({ query: "(max-width: 501px)" });
   const getCommunity = () => {
     fetch("http://18.217.248.102:3001/api/community/getCommunity", {
       method: "GET",
@@ -49,33 +55,26 @@ function Main() {
         setFile(response);
       });
   };
-  const getImageData = () => {
-    console.log(file[4]);
+  const getImageData = async () => {
     for (let j = 0; j < file[4].length; j++) {
-      getImageBlob(file[4][j]["f_originalname"]);
+      await fetch("http://18.217.248.102:3001/api/files/getFileData", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify({
+          f_originalname: file[4][j]["f_originalname"],
+        }),
+      })
+        .then((response) => response.blob())
+        .then((response) => {
+          let url = URL.createObjectURL(response);
+          let data = images;
+          data.push(url);
+          setImages(data);
+        });
     }
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 2000);
-  };
-  const getImageBlob = (name) => {
-    fetch("http://18.217.248.102:3001/api/files/getFileData", {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      credentials: "include",
-      body: JSON.stringify({
-        f_originalname: name,
-      }),
-    })
-      .then((response) => response.blob())
-      .then((response) => {
-        let url = URL.createObjectURL(response);
-        let data = images;
-        data.push(url);
-        setImages(data);
-      });
   };
   useEffect(() => {
     getCommunity();
@@ -93,29 +92,43 @@ function Main() {
   }, [community]);
   useEffect(() => {
     if (Object.keys(file).length !== 0) {
-      getImageData();
+      getImageData().then(() => {
+        setIsLoaded(true);
+      });
       if (file["1"]) setMeetinglogs(file["1"]);
       if (file["2"]) setReports(file["2"]);
     }
   }, [file]);
   return (
-    <Container fd="column">
-      <Container height="600px">
-        {isLoaded ? (
-          <Container>
+    <Container fd="column" horizontalAlign="flex-start">
+      {isPC || isTablet ? (
+        <>
+          {isLoaded ? (
             <MyCarousel images={images} />
-          </Container>
-        ) : (
-          <MoonLoader color="#14406c" />
-        )}
-      </Container>
-      <Container marginTop="20px">
-        <Card width="599px" height="210px" marginRight="20px">
+          ) : (
+            <Container height="600px">
+              <MoonLoader color="#14406c" />
+            </Container>
+          )}
+        </>
+      ) : (
+        <></>
+      )}
+      <Container
+        marginTop="20px"
+        fd={isPC ? null : "column"}
+        height={isPC ? "210px" : "450px"}
+      >
+        <Card
+          width={isMobile ? "100%" : "599px"}
+          height="210px"
+          marginRight={isPC && "20px"}
+        >
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="30px"
+            paddingLeft="3%"
             paddingTop="50px"
           >
             <Container
@@ -123,12 +136,20 @@ function Main() {
               horizontalAlign="flex-start"
               position="relative"
             >
-              <img src={logo_reversed} alt="" height="40px" />
-              <Text fontSize="22px" fontColor="#14406c">
+              <img
+                src={logo_reversed}
+                alt=""
+                height={isMobile ? "30px" : "40px"}
+              />
+              <Text
+                fontSize={isMobile ? "18px" : "22px"}
+                fontColor="#14406c"
+                fontFamily={isMobile ? "SeoulLight" : ""}
+              >
                 &nbsp;실시간 인기 청원
               </Text>
               <Text
-                fontSize="16px"
+                fontSize={isMobile ? "14px" : "16px"}
                 fontColor="grey"
                 more
                 fontFamily="SeoulLight"
@@ -141,30 +162,37 @@ function Main() {
               <Link
                 to={`/communication/petition/${petition.c_id}`}
                 key={petition.c_id}
+                style={{ width: "100%" }}
               >
                 <Container height="30px" horizontalAlign="flex-start">
-                  <Container width="65px">
+                  <Container width={isMobile ? "20%" : "10%"}>
                     <Text
-                      fontSize="18px"
+                      fontSize={isMobile ? "16px" : "18px"}
                       fontFamily="SeoulLight"
                       fontColor={
                         petition.c_status === 1 ? "MediumSeaGreen" : "red"
                       }
                     >
-                      [{petition.c_status === 1 ? "진행 중" : "끝남"}]
+                      [{petition.c_status === 1 ? "진행중" : "끝남"}]
                     </Text>
                   </Container>
-                  <Container width="430px" horizontalAlign="flex-start">
-                    <Text fontSize="18px" fontFamily="SeoulLight">
-                      {petition.c_title.length > 25
-                        ? `${petition.c_title.slice(0, 30)}...`
+                  <Container
+                    width={isMobile ? "60%" : "80%"}
+                    horizontalAlign="flex-start"
+                  >
+                    <Text
+                      fontSize={isMobile ? "16px" : "18px"}
+                      fontFamily="SeoulLight"
+                    >
+                      {petition.c_title.length > (isMobile ? 12 : 25)
+                        ? `${petition.c_title.slice(0, isMobile ? 12 : 30)}..`
                         : petition.c_title}
                     </Text>
                   </Container>
-                  <Container width="50px" horizontalAlign="flex-start">
+                  <Container width="10%" horizontalAlign="flex-start">
                     <FiThumbsUp color="#14406c" />
                     <Text
-                      fontSize="18px"
+                      fontSize={isMobile ? "16px" : "18px"}
                       fontFamily="SeoulLight"
                       marginLeft="3px"
                     >
@@ -176,12 +204,16 @@ function Main() {
             ))}
           </Container>
         </Card>
-        <Card width="599px" height="210px">
+        <Card
+          width={isMobile ? "100%" : "599px"}
+          height="210px"
+          marginTop={!isPC && "20px"}
+        >
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="30px"
+            paddingLeft="3%"
             paddingTop="50px"
           >
             <Container
@@ -189,12 +221,20 @@ function Main() {
               horizontalAlign="flex-start"
               position="relative"
             >
-              <img src={logo_reversed} alt="" height="40px" />
-              <Text fontSize="22px" fontColor="#14406c">
+              <img
+                src={logo_reversed}
+                alt=""
+                height={isMobile ? "30px" : "40px"}
+              />
+              <Text
+                fontSize={isMobile ? "18px" : "22px"}
+                fontColor="#14406c"
+                fontFamily={isMobile ? "SeoulLight" : ""}
+              >
                 &nbsp;건의 사항
               </Text>
               <Text
-                fontSize="16px"
+                fontSize={isMobile ? "14px" : "16px"}
                 fontColor="grey"
                 more
                 fontFamily="SeoulLight"
@@ -207,19 +247,30 @@ function Main() {
               <Link
                 to={`/communication/petition/${suggestion.c_id}`}
                 key={suggestion.c_id}
+                style={{ width: "100%" }}
               >
                 <Container height="30px" horizontalAlign="flex-start">
-                  <Container width="495px" horizontalAlign="flex-start">
-                    <Text fontSize="18px" fontFamily="SeoulLight">
-                      {suggestion.c_title.length > 25
-                        ? `${suggestion.c_title.slice(0, 30)}...`
+                  <Container
+                    marginLeft={isMobile ? "3%" : ""}
+                    width={isMobile ? "80%" : "90%"}
+                    horizontalAlign="flex-start"
+                  >
+                    <Text
+                      fontSize={isMobile ? "16px" : "18px"}
+                      fontFamily="SeoulLight"
+                    >
+                      {suggestion.c_title.length > (isMobile ? 20 : 25)
+                        ? `${suggestion.c_title.slice(
+                            0,
+                            isMobile ? 20 : 30
+                          )}...`
                         : suggestion.c_title}
                     </Text>
                   </Container>
-                  <Container width="50px" horizontalAlign="flex-start">
+                  <Container width="10%" horizontalAlign="flex-start">
                     <FiThumbsUp color="#14406c" />
                     <Text
-                      fontSize="18px"
+                      fontSize={isMobile ? "16px" : "18px"}
                       fontFamily="SeoulLight"
                       marginLeft="3px"
                     >
@@ -232,13 +283,21 @@ function Main() {
           </Container>
         </Card>
       </Container>
-      <Container marginTop="20px">
-        <Card width="599px" height="210px" marginRight="20px">
+      <Container
+        marginTop="20px"
+        fd={isPC ? null : "column"}
+        height={isPC ? "210px" : "450px"}
+      >
+        <Card
+          width={isMobile ? "100%" : "599px"}
+          height="210px"
+          marginRight={isPC && "20px"}
+        >
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="30px"
+            paddingLeft="3%"
             paddingTop="50px"
           >
             <Container
@@ -246,12 +305,20 @@ function Main() {
               horizontalAlign="flex-start"
               position="relative"
             >
-              <img src={logo_reversed} alt="" height="40px" />
-              <Text fontSize="22px" fontColor="#14406c">
+              <img
+                src={logo_reversed}
+                alt=""
+                height={isMobile ? "30px" : "40px"}
+              />
+              <Text
+                fontSize={isMobile ? "18px" : "22px"}
+                fontColor="#14406c"
+                fontFamily={isMobile ? "SeoulLight" : ""}
+              >
                 &nbsp;회의록
               </Text>
               <Text
-                fontSize="16px"
+                fontSize={isMobile ? "14px" : "16px"}
                 fontColor="grey"
                 more
                 fontFamily="SeoulLight"
@@ -266,13 +333,16 @@ function Main() {
                 horizontalAlign="space-between"
                 key={meetinglog.f_id}
               >
-                <Container width="430px" horizontalAlign="flex-start">
-                  <Text fontSize="18px" fontFamily="SeoulLight">
+                <Container width="90%" horizontalAlign="flex-start">
+                  <Text
+                    fontSize={isMobile ? "16px" : "18px"}
+                    fontFamily="SeoulLight"
+                  >
                     {meetinglog.f_name}
                   </Text>
                 </Container>
                 <Container
-                  width="80px"
+                  width={isMobile ? "35%" : "15%"}
                   horizontalAlign="flex-start"
                   marginRight="30px"
                 >
@@ -288,12 +358,16 @@ function Main() {
             ))}
           </Container>
         </Card>
-        <Card width="599px" height="210px">
+        <Card
+          width={isMobile ? "100%" : "599px"}
+          height="210px"
+          marginTop={!isPC && "20px"}
+        >
           <Container
             fd="column"
             horizontalAlign="flex-start"
             verticalAlign="flex-start"
-            paddingLeft="30px"
+            paddingLeft="3%"
             paddingTop="50px"
           >
             <Container
@@ -301,12 +375,20 @@ function Main() {
               horizontalAlign="flex-start"
               position="relative"
             >
-              <img src={logo_reversed} alt="" height="40px" />
-              <Text fontSize="22px" fontColor="#14406c">
+              <img
+                src={logo_reversed}
+                alt=""
+                height={isMobile ? "30px" : "40px"}
+              />
+              <Text
+                fontSize={isMobile ? "18px" : "22px"}
+                fontColor="#14406c"
+                fontFamily={isMobile ? "SeoulLight" : ""}
+              >
                 &nbsp;예결산 보고
               </Text>
               <Text
-                fontSize="16px"
+                fontSize={isMobile ? "14px" : "16px"}
                 fontColor="grey"
                 more
                 fontFamily="SeoulLight"
@@ -321,15 +403,18 @@ function Main() {
                 horizontalAlign="space-between"
                 key={report.f_id}
               >
-                <Container width="430px" horizontalAlign="flex-start">
-                  <Text fontSize="18px" fontFamily="SeoulLight">
+                <Container horizontalAlign="flex-start" width="90%">
+                  <Text
+                    fontSize={isMobile ? "16px" : "18px"}
+                    fontFamily="SeoulLight"
+                  >
                     {report.f_name}
                   </Text>
                 </Container>
                 <Container
-                  width="80px"
                   horizontalAlign="flex-start"
                   marginRight="30px"
+                  width={isMobile ? "35%" : "15%"}
                 >
                   <Text
                     fontSize="16px"

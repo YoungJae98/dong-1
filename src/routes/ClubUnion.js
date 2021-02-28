@@ -33,7 +33,7 @@ import promotion from "../assets/images/people/promotion.jpg";
 import introduce_promotion from "../assets/images/people/introduce_promotion.png";
 import introduce_promotion_roll from "../assets/images/people/introduce_promotion_roll.png";
 
-import v1 from "../assets/images/visual/visual1.jpg";
+import v1 from "../assets/images/visual/visual1.png";
 
 import Button from "../components/Button";
 import Container from "../components/Container";
@@ -42,91 +42,97 @@ import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
 import Way2Us from "../components/Way2Us";
+import { useMediaQuery } from "react-responsive";
 
 function ClubUnion() {
+  const isMobile = useMediaQuery({ query: "(max-width: 501px)" });
   return (
     <>
-      <Container height="145px">
-        <img src={v1} alt="" />
-      </Container>
-      <Container height="2100px" backgroundColor="">
-        <Container width="200px" verticalAlign="baseline">
-          <Container
-            width="200px"
-            height="198px"
-            fd="column"
-            verticalAlign="baseline"
-            position="sticky"
-            marginTop="90px"
-          >
-            <Container
-              width="220px"
-              height="50px"
-              horizontalAlign="left"
-              verticalAlign="flex-end"
-            >
-              <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
-                총동아리연합회 소개
-              </Text>
-            </Container>
-            <Remote
-              width="200px"
-              paddingTop="10px"
-              paddingBottom="10px"
-              marginTop="10px"
-            >
-              <List fd="column">
-                <Button backgroundColor="white">
-                  <NavLink to="/clubunion/">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="총동아리연합회"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <Link to="/clubunion/introduce">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="집행부 소개"
-                      hoverUnderline
-                    ></Listitem>
-                  </Link>
-                </Button>
-                <Button backgroundColor="white">
-                  <Link to="/clubunion/way2us">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="찾아오시는 길"
-                      hoverUnderline
-                    ></Listitem>
-                  </Link>
-                </Button>
-              </List>
-            </Remote>
-          </Container>
+      {!isMobile && (
+        <Container height="145px">
+          <img src={v1} alt="" />
         </Container>
+      )}
+      <Container height={isMobile ? "700px" : "2100px"} backgroundColor="">
+        {!isMobile && (
+          <Container width="200px" verticalAlign="baseline">
+            <Container
+              width="200px"
+              height="198px"
+              fd="column"
+              verticalAlign="baseline"
+              position="sticky"
+              marginTop="90px"
+            >
+              <Container
+                width="220px"
+                height="50px"
+                horizontalAlign="left"
+                verticalAlign="flex-end"
+              >
+                <img src={logo_inversed} alt="" width="40px" />
+                <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
+                  총동아리연합회 소개
+                </Text>
+              </Container>
+              <Remote
+                width="200px"
+                paddingTop="10px"
+                paddingBottom="10px"
+                marginTop="10px"
+              >
+                <List fd="column">
+                  <Button backgroundColor="white">
+                    <NavLink to="/clubunion/">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="총동아리연합회"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <Link to="/clubunion/introduce">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="집행부 소개"
+                        hoverUnderline
+                      ></Listitem>
+                    </Link>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <Link to="/clubunion/way2us">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="찾아오시는 길"
+                        hoverUnderline
+                      ></Listitem>
+                    </Link>
+                  </Button>
+                </List>
+              </Remote>
+            </Container>
+          </Container>
+        )}
         <Container
-          width="1062px"
+          width={isMobile ? "100%" : "1062px"}
           fd="column"
-          marginLeft="30px"
+          marginLeft={isMobile ? "" : "30px"}
           verticalAlign="flex-start"
           className="right-container"
         >
           <Route exact path="/clubunion/">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "10px" : "80px"}
+              marginLeft={isMobile ? "" : "20px"}
+              width={isMobile ? "100%" : "1000px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text fontColor="#14406c" fontSize={isMobile ? "18px" : "32px"}>
                 총동아리연합회
               </Text>
             </Container>
@@ -136,11 +142,11 @@ function ClubUnion() {
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
             >
               <Container
                 fd="column"

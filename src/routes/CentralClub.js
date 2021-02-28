@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
-import clubroomlayout from "../assets/images/clubroomlayout.png";
 import v2 from "../assets/images/visual/visual2.jpg";
 
 //show
@@ -62,8 +61,6 @@ import List from "../components/List";
 import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
-
-import { GiStairs, GiElevator } from "react-icons/gi";
 
 function CentralClub() {
   const [showClub, setShowClub] = useState([]);
@@ -712,6 +709,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{
@@ -782,6 +780,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{
@@ -852,6 +851,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{
@@ -957,6 +957,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{
@@ -1039,6 +1040,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{
@@ -1109,6 +1111,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{
@@ -1179,6 +1182,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{
@@ -1284,6 +1288,7 @@ function CentralClub() {
                           border="1px solid #14406c"
                           cursor="unset"
                           marginLeft="-1px"
+                          key={index}
                         >
                           <div
                             style={{

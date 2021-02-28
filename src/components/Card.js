@@ -16,6 +16,7 @@ const StyledCard = styled.div`
   display: flex;
   align-items: ${(props) => props.verticalAlign || "center"};
   justify-content: ${(props) => props.horizontalAlign || "center"};
+  overflow-x: "hidden";
 
   animation: fadein 0.5s;
 `;
