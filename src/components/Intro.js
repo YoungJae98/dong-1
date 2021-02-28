@@ -1,4 +1,5 @@
 import React from "react";
+import { useMediaQuery } from "react-responsive";
 import styled from "styled-components";
 import Container from "./Container";
 import Logo from "./Logo";
@@ -14,10 +15,11 @@ const StyledIntro = styled.div`
 `;
 
 function Intro() {
+  const isMobile = useMediaQuery({ query: "(max-width: 501px)" });
   return (
     <StyledIntro>
       <Container>
-        <Logo height="200px" />
+        <Logo height={isMobile ? " 100px" : "200px"} />
       </Container>
     </StyledIntro>
   );

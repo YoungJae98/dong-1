@@ -34,6 +34,7 @@ const StyledContainer = styled.div`
   position: ${(props) => props.position};
   top: ${(props) => (props.position === "fixed" ? 0 : null)};
   top: ${(props) => (props.position === "sticky" ? "80px" : null)};
+  top: ${(props) => props.top};
   z-index: ${(props) => props.zIndex};
 
   overflow-y: ${(props) => props.scroll && "scroll"};

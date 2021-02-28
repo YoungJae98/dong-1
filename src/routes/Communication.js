@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, Route, Switch, useHistory } from "react-router-dom";
 import logo_inversed from "../assets/images/logo_reversed.png";
-import v4 from "../assets/images/visual/visual4.jpg";
+import v4 from "../assets/images/visual/visual4.png";
 
 import Button from "../components/Button";
 import Container from "../components/Container";

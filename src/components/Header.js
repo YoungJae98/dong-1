@@ -11,6 +11,7 @@ import {
   AiOutlineYoutube,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 
 const StyledHeader = styled.div`
   background-color: ${(props) => props.backgroundColor || "#14406c"};
@@ -51,7 +52,14 @@ function Header({
   verticalAlign,
   horizontalAlign,
 }) {
-  return (
+  const isPC = useMediaQuery({ query: "(min-width : 1240px)" });
+  const isTablet = useMediaQuery({
+    query: "(min-width : 500px) and (max-width :1240px)",
+  });
+  const isMobile = useMediaQuery({ query: "(max-width: 500px)" });
+  return isMobile ? (
+    <></>
+  ) : (
     <Container backgroundColor="#14406c" zIndex={10}>
       <StyledHeader
         backgroundColor={backgroundColor}
@@ -66,6 +74,9 @@ function Header({
         width={width}
         height={height}
         fd={fd}
+        isPC={isPC}
+        isTablet={isTablet}
+        isMobile={isMobile}
         verticalAlign={verticalAlign}
         horizontalAlign={horizontalAlign}
       >

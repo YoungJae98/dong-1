@@ -2,7 +2,6 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
 function MyCarousel({ images }) {
-  console.log(images);
   return (
     <Carousel
       showThumbs={false}
@@ -14,7 +13,7 @@ function MyCarousel({ images }) {
     >
       {images.map((image, index) => (
         <div key={index}>
-          <img src={image} alt="" height="600px" />
+          <img src={image} alt="" />
         </div>
       ))}
     </Carousel>
