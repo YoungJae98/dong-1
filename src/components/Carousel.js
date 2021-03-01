@@ -2,17 +2,16 @@ import React from "react";
 import { Carousel } from "react-responsive-carousel";
 
 function MyCarousel({ images }) {
-  const reverse_images = images.reverse();
   return (
     <Carousel
       showThumbs={false}
-      // autoPlay
+      autoPlay
       infiniteLoop={true}
       showStatus={false}
       dynamicHeight={true}
-      interval={2000}
+      interval={4000}
     >
-      {reverse_images.map((image, index) => (
+      {images.map((image, index) => (
         <div key={index}>
           <img src={image} alt="" />
         </div>

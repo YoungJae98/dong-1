@@ -108,8 +108,8 @@ function Main() {
   }, [formsSearchResult]);
   return (
     <>
-      <Container height="145px">
-        <img src={v5} alt="" />
+      <Container height="145px" verticalAlign="flex-start">
+        <img src={v5} alt="" width="100%" />
       </Container>
       <Container height="1400px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">

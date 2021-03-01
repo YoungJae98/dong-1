@@ -6,7 +6,7 @@ import PropTypes from "prop-types";
 import logo_reversed from "../assets/images/logo_reversed.png";
 import logo from "../assets/images/logo.png";
 import { BsFillPersonFill } from "react-icons/bs";
-import { AiOutlineMenu } from "react-icons/ai";
+import { AiFillHome, AiOutlineMenu } from "react-icons/ai";
 
 import List from "./List";
 import Listitem from "./Listitem";
@@ -122,7 +122,7 @@ function Navigation({
       <Container
         width="100%"
         height="60px"
-        backgroundColor={main ? "white" : "#14406c"}
+        backgroundColor={!isPC ? "#14406c" : main ? "white" : "#14406c"}
         zIndex={10}
         position={isMobile ? "fixed" : main ? (sticky ? "fixed" : "") : "fixed"}
       >
@@ -642,25 +642,24 @@ function Navigation({
             </StyledNavButton>
           </StyledNavigation>
         ) : (
-          <Container horizontalAlign="space-between" position="relative">
+          <Container horizontalAlign="space-between">
             <Button
               width="50px"
               height="50px"
-              backgroundColor="white"
-              borderRadius="50%"
+              backgroundColor="#14406c"
               className="mobile-menu-btn"
-              marginLeft="30px"
               onClick={() => {
                 document
                   .querySelector(".mobile-menu-container")
                   .classList.toggle("invisible");
               }}
+              padding="0"
             >
-              <AiOutlineMenu size="32" color="#14406c" />
+              <AiOutlineMenu size="24" color="white" />
             </Button>
             <Container
               className="mobile-menu-container invisible"
-              backgroundColor="#F6F6F6"
+              backgroundColor="#14406c"
               position="absolute"
               top="60px"
               height="400px"
@@ -672,9 +671,9 @@ function Navigation({
                 marginTop="10px"
                 width="80%"
                 height="60px"
-                borderBottom="1px solid grey"
+                borderBottom="1px solid white"
               >
-                <Text fontFamily="SeoulLight" fontSize="18px">
+                <Text fontFamily="SeoulLight" fontColor="white" fontSize="18px">
                   총동아리연합회 소개
                 </Text>
                 <Container height="40px">
@@ -686,7 +685,9 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text fontFamily="SeoulLight">총동아리연합회</Text>
+                    <Text fontFamily="SeoulLight" fontColor="white">
+                      총동아리연합회
+                    </Text>
                   </Link>
                   <Link
                     to="/clubunion/introduce"
@@ -696,7 +697,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       집행부소개
                     </Text>
                   </Link>
@@ -708,7 +713,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       찾아오시는길
                     </Text>
                   </Link>
@@ -720,9 +729,9 @@ function Navigation({
                 marginTop="10px"
                 width="80%"
                 height="80px"
-                borderBottom="1px solid grey"
+                borderBottom="1px solid white"
               >
-                <Text fontFamily="SeoulLight" fontSize="18px">
+                <Text fontFamily="SeoulLight" fontColor="white" fontSize="18px">
                   중앙동아리 소개
                 </Text>
                 <Container height="30px">
@@ -734,7 +743,9 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text fontFamily="SeoulLight">동방배치도</Text>
+                    <Text fontFamily="SeoulLight" fontColor="white">
+                      동방배치도
+                    </Text>
                   </Link>
                   <Link
                     to="/centralclub/show"
@@ -744,7 +755,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       공연분과
                     </Text>
                   </Link>
@@ -756,7 +771,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       문화분과
                     </Text>
                   </Link>
@@ -768,7 +787,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       봉사 분과
                     </Text>
                   </Link>
@@ -782,7 +805,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       종교분과
                     </Text>
                   </Link>
@@ -794,7 +821,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       체육분과
                     </Text>
                   </Link>
@@ -806,7 +837,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       학술분과
                     </Text>
                   </Link>
@@ -818,9 +853,9 @@ function Navigation({
                 marginTop="10px"
                 width="80%"
                 height="60px"
-                borderBottom="1px solid grey"
+                borderBottom="1px solid white"
               >
-                <Text fontFamily="SeoulLight" fontSize="18px">
+                <Text fontFamily="SeoulLight" fontColor="white" fontSize="18px">
                   정보
                 </Text>
                 <Container height="40px">
@@ -832,7 +867,9 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text fontFamily="SeoulLight">공약이행도</Text>
+                    <Text fontFamily="SeoulLight" fontColor="white">
+                      공약이행도
+                    </Text>
                   </Link>
                   <Link
                     to="/information/report"
@@ -842,7 +879,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       예결산보고
                     </Text>
                   </Link>
@@ -854,7 +895,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       회의록
                     </Text>
                   </Link>
@@ -866,9 +911,9 @@ function Navigation({
                 marginTop="10px"
                 width="80%"
                 height="60px"
-                borderBottom="1px solid grey"
+                borderBottom="1px solid white"
               >
-                <Text fontFamily="SeoulLight" fontSize="18px">
+                <Text fontFamily="SeoulLight" fontColor="white" fontSize="18px">
                   소통
                 </Text>
                 <Container height="40px">
@@ -880,7 +925,9 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text fontFamily="SeoulLight">건의사항</Text>
+                    <Text fontFamily="SeoulLight" fontColor="white">
+                      건의사항
+                    </Text>
                   </Link>
                   <Link
                     to="/communication/petition"
@@ -890,7 +937,11 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       회칙개정요구청원
                     </Text>
                   </Link>
@@ -903,7 +954,7 @@ function Navigation({
                 width="80%"
                 height="60px"
               >
-                <Text fontFamily="SeoulLight" fontSize="18px">
+                <Text fontFamily="SeoulLight" fontColor="white" fontSize="18px">
                   자료
                 </Text>
                 <Container height="40px">
@@ -915,7 +966,9 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text fontFamily="SeoulLight">회칙</Text>
+                    <Text fontFamily="SeoulLight" fontColor="white">
+                      회칙
+                    </Text>
                   </Link>
                   <Link
                     to="/document/form"
@@ -925,27 +978,43 @@ function Navigation({
                         .classList.toggle("invisible");
                     }}
                   >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
+                    <Text
+                      marginLeft="10px"
+                      fontFamily="SeoulLight"
+                      fontColor="white"
+                    >
                       제출서류양식
                     </Text>
                   </Link>
                 </Container>
               </Container>
             </Container>
+            <Link to="/">
+              <Button
+                width="50px"
+                height="50px"
+                backgroundColor="#14406c"
+                borderRadius="50%"
+                className="mobile-login-btn"
+                onClick={() => {}}
+                padding="0"
+              >
+                <AiFillHome size="24" color="white" />
+              </Button>
+            </Link>
             <Button
               width="50px"
               height="50px"
-              backgroundColor="white"
-              borderRadius="50%"
+              backgroundColor="#14406c"
               className="mobile-login-btn"
-              marginRight="30px"
               onClick={() => {
                 document
                   .querySelector(".mobile-login-container")
                   .classList.toggle("invisible");
               }}
+              padding="0"
             >
-              <BsFillPersonFill size="32" color="#14406c" />
+              <BsFillPersonFill size="24" color="white" />
               <Container
                 className="mobile-login-container invisible"
                 backgroundColor="white"
