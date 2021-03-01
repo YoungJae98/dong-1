@@ -14,7 +14,6 @@ function Footer() {
       backgroundColor="#F6F6F6"
       marginTop="50px"
       borderTop="1px solid #14406c"
-      paddingLeft="10px"
     >
       <Container
         width={isMobile ? "100%" : "1200px"}

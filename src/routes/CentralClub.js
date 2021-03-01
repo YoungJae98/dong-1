@@ -61,6 +61,7 @@ import List from "../components/List";
 import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
+import { useMediaQuery } from "react-responsive";
 
 function CentralClub() {
   const [showClub, setShowClub] = useState([]);
@@ -70,52 +71,176 @@ function CentralClub() {
   const [academicClub, setAcademicClub] = useState([]);
   const [religionClub, setReligionClub] = useState([]);
   const [five_leftup, setFive_leftup] = useState([
-    { number: 501, name: "KSGI", link: "https://www.youtube.com/" },
+    {
+      number: 501,
+      name: "KSGI",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 502, name: "", link: "" },
-    { number: 503, name: "발파람", link: "https://www.youtube.com/" },
-    { number: 504, name: "SELS", link: "https://www.youtube.com/" },
+    {
+      number: 503,
+      name: "발파람",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 504,
+      name: "SELS",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 505, name: "", link: "" },
-    { number: 506, name: "율", link: "https://www.youtube.com/" },
-    { number: 507, name: "밤부", link: "https://www.youtube.com/" },
+    {
+      number: 506,
+      name: "율",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 507,
+      name: "밤부",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
   ]);
   const [five_rightup, setFive_rightup] = useState([
-    { number: 508, name: "STC", link: "https://www.youtube.com/" },
-    { number: 509, name: "유스 호스텔", link: "https://www.youtube.com/" },
-    { number: 510, name: "늘혬", link: "https://www.youtube.com/" },
-    { number: 511, name: "TSP", link: "https://www.youtube.com/" },
-    { number: 512, name: "세종 서회", link: "https://www.youtube.com/" },
+    {
+      number: 508,
+      name: "STC",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 509,
+      name: "유스 호스텔",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 510,
+      name: "늘혬",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 511,
+      name: "TSP",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 512,
+      name: "세종 서회",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 513, name: "", link: "" },
-    { number: 514, name: "한울림", link: "https://www.youtube.com/" },
-    { number: 515, name: "KUSA", link: "https://www.youtube.com/" },
-    { number: 516, name: "RUSH", link: "https://www.youtube.com/" },
-    { number: 517, name: "JYM", link: "https://www.youtube.com/" },
-    { number: 518, name: "인터 페이스", link: "https://www.youtube.com/" },
+    {
+      number: 514,
+      name: "한울림",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 515,
+      name: "KUSA",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 516,
+      name: "RUSH",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 517,
+      name: "JYM",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 518,
+      name: "인터 페이스",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
   ]);
   const [five_leftdown, setFive_leftdown] = useState([
-    { number: 532, name: "죽순회", link: "https://www.youtube.com/" },
-    { number: 531, name: "Boyz", link: "https://www.youtube.com/" },
+    {
+      number: 532,
+      name: "죽순회",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 531,
+      name: "Boyz",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 530, name: "", link: "" },
-    { number: 529, name: "최강 유도", link: "https://www.youtube.com/" },
-    { number: 528, name: "요트부", link: "https://www.youtube.com/" },
+    {
+      number: 529,
+      name: "최강 유도",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 528,
+      name: "요트부",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
   ]);
   const [five_rightdown, setFive_rightdown] = useState([
     { number: 527, name: "동연 연습실", link: "" },
-    { number: 526, name: "세종 극회", link: "https://www.youtube.com/" },
+    {
+      number: 526,
+      name: "세종 극회",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 525, name: "", link: "" },
-    { number: 524, name: "별무리", link: "https://www.youtube.com/" },
-    { number: 523, name: "IVF", link: "https://www.youtube.com/" },
-    { number: 522, name: "한손", link: "https://www.youtube.com/" },
-    { number: 521, name: "UNSA", link: "https://www.youtube.com/" },
-    { number: 520, name: "레지나", link: "https://www.youtube.com/" },
-    { number: 519, name: "세종 킹스", link: "https://www.youtube.com/" },
+    {
+      number: 524,
+      name: "별무리",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 523,
+      name: "IVF",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 522,
+      name: "한손",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 521,
+      name: "UNSA",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 520,
+      name: "레지나",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 519,
+      name: "세종 킹스",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
   ]);
   const [six_leftup, setSix_leftup] = useState([
     { number: 601, name: "", link: "" },
-    { number: 602, name: "미즈", link: "https://www.youtube.com/" },
-    { number: 603, name: "마스터", link: "https://www.youtube.com/" },
-    { number: 604, name: "점프", link: "https://www.youtube.com/" },
-    { number: 605, name: "PAGE7", link: "https://www.youtube.com/" },
-    { number: 606, name: "유마 프렌", link: "https://www.youtube.com/" },
+    {
+      number: 602,
+      name: "미즈",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 603,
+      name: "마스터",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 604,
+      name: "점프",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 605,
+      name: "PAGE7",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 606,
+      name: "유마 프렌",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 607, name: "", link: "" },
   ]);
   const [six_rightup, setSix_rightup] = useState([
@@ -124,7 +249,11 @@ function CentralClub() {
     { number: 610, name: "", link: "" },
     { number: 611, name: "", link: "" },
     { number: 612, name: "", link: "" },
-    { number: 613, name: "지음", link: "https://www.youtube.com/" },
+    {
+      number: 613,
+      name: "지음",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 614, name: "", link: "" },
     { number: 615, name: "", link: "" },
     { number: 616, name: "", link: "" },
@@ -142,24 +271,71 @@ function CentralClub() {
     { number: 627, name: "", link: "" },
     { number: 625, name: "", link: "" },
     { number: 626, name: "", link: "" },
-    { number: 624, name: "두바퀴", link: "https://www.youtube.com/" },
-    { number: 623, name: "CCC", link: "https://www.youtube.com/" },
-    { number: 622, name: "CAM", link: "https://www.youtube.com/" },
-    { number: 621, name: "터벌림", link: "https://www.youtube.com/" },
-    { number: 620, name: "더블랙", link: "https://www.youtube.com/" },
+    {
+      number: 624,
+      name: "두바퀴",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 623,
+      name: "CCC",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 622,
+      name: "CAM",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 621,
+      name: "터벌림",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 620,
+      name: "더블랙",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
     { number: 619, name: "", link: "" },
   ]);
-
   const [minus2_leftup, setminus2_leftup] = useState([
-    { number: 624, name: "소울트레인", link: "https://www.youtube.com/" },
-    { number: 623, name: "인트로", link: "https://www.youtube.com/" },
-    { number: 622, name: "터벌림", link: "https://www.youtube.com/" },
+    {
+      number: 624,
+      name: "소울트레인",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 623,
+      name: "인트로",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 622,
+      name: "터벌림",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
   ]);
   const [minus2_rightdown, setminus2_rightdown] = useState([
-    { number: 624, name: "늘혬", link: "https://www.youtube.com/" },
-    { number: 623, name: "PAGE7", link: "https://www.youtube.com/" },
-    { number: 622, name: "인트로", link: "https://www.youtube.com/" },
-    { number: 621, name: "사운드 플러스", link: "https://www.youtube.com/" },
+    {
+      number: 624,
+      name: "늘혬",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 623,
+      name: "PAGE7",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 622,
+      name: "인트로",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
+    {
+      number: 621,
+      name: "사운드 플러스",
+      link: "https://www.youtube.com/channel/UCE7mWkYZTEkFsVzADtcGWQg",
+    },
   ]);
   useEffect(() => {
     setShowClub([
@@ -513,128 +689,135 @@ function CentralClub() {
       });
     }
   });
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   return (
     <>
-      <Container height="145px">
-        <img src={v2} alt="" />
+      <Container verticalAlign="flex-start">
+        <img src={v2} alt="" width="100%" />
       </Container>
-      <Container height="1800px" backgroundColor="">
-        <Container width="200px" verticalAlign="baseline">
-          <Container
-            width="200px"
-            height="366px"
-            fd="column"
-            verticalAlign="baseline"
-            position="sticky"
-            marginTop="90px"
-          >
+      <Container height={isMobile ? "1000vw" : "1800px"} backgroundColor="">
+        {!isMobile && (
+          <Container width="200px" verticalAlign="baseline">
             <Container
-              height="50px"
-              horizontalAlign="left"
-              verticalAlign="flex-end"
-            >
-              <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
-                중앙동아리 소개
-              </Text>
-            </Container>
-            <Remote
               width="200px"
-              paddingTop="10px"
-              paddingBottom="10px"
-              marginTop="10px"
+              height="366px"
+              fd="column"
+              verticalAlign="baseline"
+              position="sticky"
+              marginTop="90px"
             >
-              <List fd="column">
-                <Button backgroundColor="white">
-                  <NavLink to="/centralclub/">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="동방 배치도"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/centralclub/show">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="공연 분과"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/centralclub/culture">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="문화 분과"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/centralclub/volunteer">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="봉사 분과"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/centralclub/religion">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="종교 분과"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/centralclub/physical">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="체육 분과"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/centralclub/academic">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="학술 분과"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-              </List>
-            </Remote>
+              <Container
+                height="50px"
+                horizontalAlign="left"
+                verticalAlign="flex-end"
+              >
+                <img src={logo_inversed} alt="" width="40px" />
+                <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
+                  중앙동아리 소개
+                </Text>
+              </Container>
+              <Remote
+                width="200px"
+                paddingTop="10px"
+                paddingBottom="10px"
+                marginTop="10px"
+              >
+                <List fd="column">
+                  <Button backgroundColor="white">
+                    <NavLink to="/centralclub/">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="동방 배치도"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/centralclub/show">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="공연 분과"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/centralclub/culture">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="문화 분과"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/centralclub/volunteer">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="봉사 분과"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/centralclub/religion">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="종교 분과"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/centralclub/physical">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="체육 분과"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/centralclub/academic">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="학술 분과"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                </List>
+              </Remote>
+            </Container>
           </Container>
-        </Container>
+        )}
         <Container
           backgroundColor=""
-          width="1062px"
+          width={isMobile ? "100%" : "1062px"}
           fd="column"
-          marginLeft="30px"
+          marginLeft={isMobile ? "" : "30px"}
           verticalAlign="flex-start"
         >
           <Route exact path="/centralclub/">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 동방 배치도
               </Text>
             </Container>
@@ -644,11 +827,11 @@ function CentralClub() {
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              marginTop="30px"
-              paddingTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
             >
               <Container
                 fd="column"
@@ -657,7 +840,11 @@ function CentralClub() {
                 height="400px"
                 className="fifth-floor"
               >
-                <Text fontColor="#14406c" fontSize="24px">
+                <Text
+                  marginLeft={isMobile ? "10px" : ""}
+                  fontColor="#14406c"
+                  fontSize={isMobile ? "18px" : "24px"}
+                >
                   학생회관 5층
                 </Text>
                 <Container fd="column" horizontalAlign="flex-start">
@@ -1420,12 +1607,16 @@ function CentralClub() {
           <Route path="/centralclub/physical">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 체육 분과
               </Text>
             </Container>
@@ -1434,10 +1625,11 @@ function CentralClub() {
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
               display="block"
             >
               <Container
@@ -1496,12 +1688,16 @@ function CentralClub() {
           <Route path="/centralclub/culture">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 문화 분과
               </Text>
             </Container>
@@ -1510,10 +1706,11 @@ function CentralClub() {
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
               display="block"
             >
               <Container
@@ -1572,12 +1769,16 @@ function CentralClub() {
           <Route path="/centralclub/show">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 공연 분과
               </Text>
             </Container>
@@ -1586,10 +1787,11 @@ function CentralClub() {
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
               display="block"
             >
               <Container
@@ -1648,12 +1850,16 @@ function CentralClub() {
           <Route path="/centralclub/academic">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 학술 분과
               </Text>
             </Container>
@@ -1662,10 +1868,11 @@ function CentralClub() {
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
               display="block"
             >
               <Container
@@ -1725,12 +1932,16 @@ function CentralClub() {
           <Route path="/centralclub/religion">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 종교 분과
               </Text>
             </Container>
@@ -1739,10 +1950,11 @@ function CentralClub() {
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
               display="block"
             >
               <Container
@@ -1802,12 +2014,16 @@ function CentralClub() {
           <Route path="/centralclub/volunteer">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 봉사 분과
               </Text>
             </Container>
@@ -1816,10 +2032,11 @@ function CentralClub() {
               borderRadius="8px"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
               display="block"
             >
               <Container

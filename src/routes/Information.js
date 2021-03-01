@@ -153,7 +153,7 @@ function Main() {
   return (
     <>
       <Container height="145px">
-        <img src={v3} alt="" height="100%" />
+        <img src={v3} alt="" width="100%" height="100%" />
       </Container>
       <Container height="1400px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">

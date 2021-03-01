@@ -45,15 +45,13 @@ import Way2Us from "../components/Way2Us";
 import { useMediaQuery } from "react-responsive";
 
 function ClubUnion() {
-  const isMobile = useMediaQuery({ query: "(max-width: 501px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   return (
     <>
-      {!isMobile && (
-        <Container height="145px">
-          <img src={v1} alt="" />
-        </Container>
-      )}
-      <Container height={isMobile ? "700px" : "2100px"} backgroundColor="">
+      <Container verticalAlign="flex-start">
+        <img src={v1} alt="" width="100%" />
+      </Container>
+      <Container height={isMobile ? "270vw" : "2100px"} backgroundColor="">
         {!isMobile && (
           <Container width="200px" verticalAlign="baseline">
             <Container
@@ -127,12 +125,16 @@ function ClubUnion() {
           <Route exact path="/clubunion/">
             <Container
               height="40px"
-              marginTop={isMobile ? "10px" : "80px"}
-              marginLeft={isMobile ? "" : "20px"}
+              marginTop={isMobile ? "20px" : "80px"}
               width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize={isMobile ? "18px" : "32px"}>
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 총동아리연합회
               </Text>
             </Container>
@@ -161,12 +163,16 @@ function ClubUnion() {
           <Route path="/clubunion/introduce">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 집행부 소개
               </Text>
             </Container>
@@ -176,23 +182,24 @@ function ClubUnion() {
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
             >
               <Container
                 verticalAlign="flex-start"
                 height="50px"
                 className="introduce-buttons"
+                marginTop="10px"
               >
                 <Link to="/clubunion/introduce/">
                   <Button
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize="21px"
-                    width="140px"
+                    fontSize={isMobile ? "10px" : "21px"}
+                    width={isMobile ? "60px" : "140px"}
                     height="40px"
                     border="2px solid #14406c"
                     marginLeft="-2px"
@@ -205,8 +212,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize="21px"
-                    width="140px"
+                    fontSize={isMobile ? "10px" : "21px"}
+                    width={isMobile ? "60px" : "140px"}
                     height="40px"
                     border="2px solid #14406c"
                     marginLeft="-2px"
@@ -219,8 +226,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize="21px"
-                    width="140px"
+                    fontSize={isMobile ? "10px" : "21px"}
+                    width={isMobile ? "60px" : "140px"}
                     height="40px"
                     border="2px solid #14406c"
                     marginLeft="-2px"
@@ -233,8 +240,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize="21px"
-                    width="140px"
+                    fontSize={isMobile ? "10px" : "21px"}
+                    width={isMobile ? "60px" : "140px"}
                     height="40px"
                     border="2px solid #14406c"
                     marginLeft="-2px"
@@ -247,8 +254,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize="21px"
-                    width="140px"
+                    fontSize={isMobile ? "10px" : "21px"}
+                    width={isMobile ? "60px" : "140px"}
                     height="40px"
                     border="2px solid #14406c"
                     marginLeft="-2px"
@@ -261,8 +268,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize="21px"
-                    width="140px"
+                    fontSize={isMobile ? "8px" : "21px"}
+                    width={isMobile ? "60px" : "140px"}
                     height="40px"
                     border="2px solid #14406c"
                     marginLeft="-2px"
@@ -275,8 +282,8 @@ function ClubUnion() {
                   <Button
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize="21px"
-                    width="140px"
+                    fontSize={isMobile ? "10px" : "21px"}
+                    width={isMobile ? "60px" : "140px"}
                     height="40px"
                     border="2px solid #14406c"
                     marginLeft="-2px"
@@ -292,14 +299,22 @@ function ClubUnion() {
                   horizontalAlign="flex-start"
                   marginTop="30px"
                 >
-                  <img src={introduce_president} alt="" width="800px" />
+                  <img
+                    src={introduce_president}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                   <img
                     src={president}
                     alt=""
                     width="300px"
                     style={{ marginTop: "30px", marginBottom: "30px" }}
                   />
-                  <img src={introduce_president_roll} alt="" width="800px" />
+                  <img
+                    src={introduce_president_roll}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                 </Container>
               </Route>
               <Route path="/clubunion/introduce/vicepresident">
@@ -308,14 +323,22 @@ function ClubUnion() {
                   horizontalAlign="flex-start"
                   marginTop="30px"
                 >
-                  <img src={introduce_vice} alt="" width="800px" />
+                  <img
+                    src={introduce_vice}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                   <img
                     src={vicepresident}
                     alt=""
                     width="300px"
                     style={{ marginTop: "30px", marginBottom: "30px" }}
                   />
-                  <img src={introduce_vice_roll} alt="" width="800px" />
+                  <img
+                    src={introduce_vice_roll}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                 </Container>
               </Route>
               <Route path="/clubunion/introduce/plan1">
@@ -324,14 +347,22 @@ function ClubUnion() {
                   horizontalAlign="flex-start"
                   marginTop="30px"
                 >
-                  <img src={introduce_plan1} alt="" width="800px" />
+                  <img
+                    src={introduce_plan1}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                   <img
                     src={plan1}
                     alt=""
                     width="300px"
                     style={{ marginTop: "30px", marginBottom: "30px" }}
                   />
-                  <img src={introduce_plan1_roll} alt="" width="800px" />
+                  <img
+                    src={introduce_plan1_roll}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                 </Container>
               </Route>
               <Route path="/clubunion/introduce/plan2">
@@ -340,14 +371,22 @@ function ClubUnion() {
                   horizontalAlign="flex-start"
                   marginTop="30px"
                 >
-                  <img src={introduce_plan2} alt="" width="800px" />
+                  <img
+                    src={introduce_plan2}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                   <img
                     src={plan2}
                     alt=""
                     width="300px"
                     style={{ marginTop: "30px", marginBottom: "30px" }}
                   />
-                  <img src={introduce_plan2_roll} alt="" width="800px" />
+                  <img
+                    src={introduce_plan2_roll}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                 </Container>
               </Route>
               <Route path="/clubunion/introduce/communication">
@@ -356,7 +395,11 @@ function ClubUnion() {
                   horizontalAlign="flex-start"
                   marginTop="30px"
                 >
-                  <img src={introduce_communication} alt="" width="800px" />
+                  <img
+                    src={introduce_communication}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                   <img
                     src={communication}
                     alt=""
@@ -366,7 +409,7 @@ function ClubUnion() {
                   <img
                     src={introduce_communication_roll}
                     alt=""
-                    width="800px"
+                    width={isMobile ? "100%" : "800px"}
                   />
                 </Container>
               </Route>
@@ -376,14 +419,22 @@ function ClubUnion() {
                   horizontalAlign="flex-start"
                   marginTop="30px"
                 >
-                  <img src={introduce_policy} alt="" width="800px" />
+                  <img
+                    src={introduce_policy}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                   <img
                     src={policy_business}
                     alt=""
                     width="300px"
                     style={{ marginTop: "30px", marginBottom: "30px" }}
                   />
-                  <img src={introduce_policy_roll} alt="" width="800px" />
+                  <img
+                    src={introduce_policy_roll}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                 </Container>
               </Route>
               <Route path="/clubunion/introduce/promotion">
@@ -392,14 +443,22 @@ function ClubUnion() {
                   horizontalAlign="flex-start"
                   marginTop="30px"
                 >
-                  <img src={introduce_promotion} alt="" width="800px" />
+                  <img
+                    src={introduce_promotion}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                   <img
                     src={promotion}
                     alt=""
                     width="300px"
                     style={{ marginTop: "30px", marginBottom: "30px" }}
                   />
-                  <img src={introduce_promotion_roll} alt="" width="800px" />
+                  <img
+                    src={introduce_promotion_roll}
+                    alt=""
+                    width={isMobile ? "100%" : "800px"}
+                  />
                 </Container>
               </Route>
             </Container>
@@ -407,12 +466,16 @@ function ClubUnion() {
           <Route path="/clubunion/way2us">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 찾아오시는 길
               </Text>
             </Container>
@@ -422,11 +485,11 @@ function ClubUnion() {
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
             >
               <Container
                 fd="column"
@@ -434,15 +497,14 @@ function ClubUnion() {
                 verticalAlign="flex-start"
               >
                 <Way2Us />
-                <Text marginTop="20px" fontSize="24px">
+                <Text
+                  marginTop="20px"
+                  fontSize={isMobile ? "16px" : "24px"}
+                  fontFamily="SeoulLight"
+                >
                   지하철 7호선 어린이대공원역 6번 출구 세종대학교 학생회관 408호
                 </Text>
               </Container>
-              <Container
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                fd="column"
-              ></Container>
             </Container>
           </Route>
         </Container>

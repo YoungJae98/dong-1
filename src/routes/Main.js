@@ -24,10 +24,7 @@ function Main() {
   const [images, setImages] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const isPC = useMediaQuery({ query: "(min-width : 1240px)" });
-  const isTablet = useMediaQuery({
-    query: "(min-width : 501px) and (max-width :1240px)",
-  });
-  const isMobile = useMediaQuery({ query: "(max-width: 501px)" });
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const getCommunity = () => {
     fetch("http://sejongclubunion.com:3001/api/community/getCommunity", {
       method: "GET",
@@ -56,8 +53,13 @@ function Main() {
       });
   };
   const getImageData = async () => {
+<<<<<<< HEAD
     for (let j = 0; j < file[4].length; j++) {
       await fetch("http://sejongclubunion.com:3001/api/files/getFileData", {
+=======
+    for (let j = file[4].length - 1; j >= 0; j--) {
+      await fetch("http://18.217.248.102:3001/api/files/getFileData", {
+>>>>>>> abfc96f54384c8e1a359fffc1cb1efdbad6c7571
         method: "POST",
         headers: {
           "Content-type": "application/json",
@@ -108,19 +110,15 @@ function Main() {
   }, [file]);
   return (
     <Container fd="column" horizontalAlign="flex-start">
-      {isPC || isTablet ? (
-        <>
-          {isLoaded ? (
-            <MyCarousel images={images} />
-          ) : (
-            <Container height="600px">
-              <MoonLoader color="#14406c" />
-            </Container>
-          )}
-        </>
-      ) : (
-        <></>
-      )}
+      <>
+        {isLoaded ? (
+          <MyCarousel images={images} />
+        ) : (
+          <Container height="600px">
+            <MoonLoader color="#14406c" />
+          </Container>
+        )}
+      </>
       <Container
         marginTop="20px"
         fd={isPC ? null : "column"}

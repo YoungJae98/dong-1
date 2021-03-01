@@ -161,8 +161,8 @@ function Communication() {
   }, [petitionsSearchResult]);
   return (
     <>
-      <Container height="145px">
-        <img src={v4} alt="" />
+      <Container height="145px" verticalAlign="flex-start">
+        <img src={v4} alt="" width="100%" />
       </Container>
       <Container height="1400px" backgroundColor="">
         <Container width="200px" verticalAlign="baseline">
