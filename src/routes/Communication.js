@@ -73,11 +73,11 @@ function Communication() {
       .then((response) => {
         if (response["success"]) {
           alert("건의사항 등록이 완료되었습니다.");
+          suggestionRedirect();
+          getCommunity();
         } else {
-          alert("동일한 제목의 건의사항이 존재합니다.");
+          alert("동일한 제목의 건의사항 또는 청원이 존재합니다.");
         }
-        suggestionRedirect();
-        getCommunity();
       });
   };
   const writePetition = () => {
@@ -97,11 +97,11 @@ function Communication() {
       .then((response) => {
         if (response["success"]) {
           alert("청원 등록이 완료되었습니다.");
+          petitionRedirect();
+          getCommunity();
         } else {
-          alert("동일한 제목의 청원이 존재합니다.");
+          alert("동일한 제목의 건의사항 또는 청원이 존재합니다.");
         }
-        petitionRedirect();
-        getCommunity();
       });
   };
   const loginCheck = () => {
@@ -130,16 +130,16 @@ function Communication() {
       setSuggestions(community["1"]);
       setSuggestionsSearchResult(
         community["1"].sort((a, b) => {
-          if (a.c_date > b.c_date) return 1;
-          if (a.c_date === b.c_date) return 0;
+          if (a.c_id < b.c_id) return 1;
+          if (a.c_id === b.c_id) return 0;
           else return -1;
         })
       );
       setPetitions(community["2"]);
       setPetitionsSearchResult(
         community["2"].sort((a, b) => {
-          if (a.c_date > b.c_date) return 1;
-          if (a.c_date === b.c_date) return 0;
+          if (a.c_id < b.c_id) return 1;
+          if (a.c_id === b.c_id) return 0;
           else return -1;
         })
       );

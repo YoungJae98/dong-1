@@ -7,6 +7,7 @@ import logo_inversed from "../assets/images/logo_reversed.png";
 import v5 from "../assets/images/visual/visual5.png";
 import pdf from "../assets/images/pdf_image.png";
 import hwp from "../assets/images/hangeul.png";
+import excel from "../assets/images/excel_image.png";
 import word from "../assets/images/word.png";
 
 import Button from "../components/Button";
@@ -77,10 +78,15 @@ function Main() {
       getFileData();
       const tmp = file["3"];
       let result = [];
-      for (let i = 0; i < tmp.length; i += 2) {
+      for (let i = 0; i < tmp.length; i++) {
         if (i + 1 < tmp.length && tmp[i].f_name === tmp[i + 1].f_name) {
           result.push(tmp[i]);
-          console.log(i);
+        }
+        if (
+          tmp[i].f_originalname.includes("xlsx") ||
+          tmp[i].f_originalname.includes("csv")
+        ) {
+          result.push(tmp[i]);
         }
       }
       setForms(result);
@@ -520,44 +526,72 @@ function Main() {
                           </Text>
                         </Container>
                       </Container>
-                      <Button
-                        backgroundColor="white"
-                        width="300px"
-                        onClick={() => {
-                          downloadFile(`${form.f_name}.hwp`);
-                        }}
-                      >
-                        <Container width="105px">
-                          <img src={hwp} alt="" height="30px" />
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            underline
-                            marginLeft="5px"
+                      {form.f_originalname.includes("xlsx") ||
+                      form.f_originalname.includes("xlsx") ? (
+                        <>
+                          <Container width="300px" />
+                          <Button
+                            backgroundColor="white"
+                            width="300px"
+                            onClick={() => {
+                              downloadFile(`${form.f_originalname}`);
+                            }}
                           >
-                            다운로드
-                          </Text>
-                        </Container>
-                      </Button>
-                      <Button
-                        backgroundColor="white"
-                        width="300px"
-                        onClick={() => {
-                          downloadFile(`${form.f_name}.docx`);
-                        }}
-                      >
-                        <Container width="105px">
-                          <img src={word} alt="" height="30px" />
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            underline
-                            marginLeft="5px"
+                            <Container width="105px">
+                              <img src={excel} alt="" height="30px" />
+                              <Text
+                                fontSize="21px"
+                                fontColor="#14406c"
+                                underline
+                                marginLeft="5px"
+                              >
+                                다운로드
+                              </Text>
+                            </Container>
+                          </Button>
+                        </>
+                      ) : (
+                        <>
+                          <Button
+                            backgroundColor="white"
+                            width="300px"
+                            onClick={() => {
+                              downloadFile(`${form.f_name}.hwp`);
+                            }}
                           >
-                            다운로드
-                          </Text>
-                        </Container>
-                      </Button>
+                            <Container width="105px">
+                              <img src={hwp} alt="" height="30px" />
+                              <Text
+                                fontSize="21px"
+                                fontColor="#14406c"
+                                underline
+                                marginLeft="5px"
+                              >
+                                다운로드
+                              </Text>
+                            </Container>
+                          </Button>
+                          <Button
+                            backgroundColor="white"
+                            width="300px"
+                            onClick={() => {
+                              downloadFile(`${form.f_name}.docx`);
+                            }}
+                          >
+                            <Container width="105px">
+                              <img src={word} alt="" height="30px" />
+                              <Text
+                                fontSize="21px"
+                                fontColor="#14406c"
+                                underline
+                                marginLeft="5px"
+                              >
+                                다운로드
+                              </Text>
+                            </Container>
+                          </Button>
+                        </>
+                      )}
                     </Container>
                   ))}
               </Container>

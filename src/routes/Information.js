@@ -4,7 +4,6 @@ import download from "downloadjs";
 import { NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
-import Sejong from "../assets/images/Sejonglogo.png";
 import pdf from "../assets/images/pdf_image.png";
 import v3 from "../assets/images/visual/visual3.jpg";
 import pledge_checkbox from "../assets/images/pledge.png";
@@ -19,11 +18,6 @@ import List from "../components/List";
 import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
-import {
-  AiOutlineFacebook,
-  AiOutlineInstagram,
-  AiOutlineYoutube,
-} from "react-icons/ai";
 
 function Main() {
   const [file, setFile] = useState({});
@@ -127,16 +121,16 @@ function Main() {
       setMeetinglogs(file["1"]);
       setMeetinglogsSearchResult(
         file["1"].sort((a, b) => {
-          if (a.f_date < b.f_date) return 1;
-          else if (a.f_date === b.f_date) return 0;
+          if (a.f_id < b.f_id) return 1;
+          else if (a.f_id === b.f_id) return 0;
           else return -1;
         })
       );
       setReports(file["2"]);
       setReportSearchResult(
         file["2"].sort((a, b) => {
-          if (a.f_date < b.f_date) return 1;
-          else if (a.f_date === b.f_date) return 0;
+          if (a.f_id < b.f_id) return 1;
+          else if (a.f_id === b.f_id) return 0;
           else return -1;
         })
       );
@@ -213,15 +207,20 @@ function Main() {
                   ></Listitem>
                   {/* </NavLink> */}
                 </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/information/seoul">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="서동협"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
+                <Button
+                  backgroundColor="white"
+                  onClick={() => {
+                    alert("준비중입니다.");
+                  }}
+                >
+                  {/* <NavLink to="/information/seoul"> */}
+                  <Listitem
+                    height="40px"
+                    fontColor="#14406c"
+                    label="서동협"
+                    hoverUnderline
+                  ></Listitem>
+                  {/* </NavLink> */}
                 </Button>
                 <Button backgroundColor="white">
                   <NavLink to="/information/report">
@@ -913,7 +912,7 @@ function Main() {
               )}
             </Container>
           </Route>
-          <Route exact path="/information/alliance"></Route>
+          {/* <Route exact path="/information/alliance"></Route>
           <Route exact path="/information/seoul">
             <Container
               height="40px"
@@ -1035,7 +1034,7 @@ function Main() {
                 </Container>
               </Container>
             </Container>
-          </Route>
+          </Route> */}
           <Route exact path="/information/report">
             <Container
               height="40px"
