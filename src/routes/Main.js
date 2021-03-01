@@ -53,13 +53,8 @@ function Main() {
       });
   };
   const getImageData = async () => {
-<<<<<<< HEAD
     for (let j = 0; j < file[4].length; j++) {
       await fetch("http://sejongclubunion.com:3001/api/files/getFileData", {
-=======
-    for (let j = file[4].length - 1; j >= 0; j--) {
-      await fetch("http://18.217.248.102:3001/api/files/getFileData", {
->>>>>>> abfc96f54384c8e1a359fffc1cb1efdbad6c7571
         method: "POST",
         headers: {
           "Content-type": "application/json",
