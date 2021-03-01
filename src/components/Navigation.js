@@ -85,7 +85,7 @@ function Navigation({
 }) {
   const [sticky, setsticky] = useState(false);
   const logoutProcess = () => {
-    fetch("http://18.217.248.102:3001/api/account/logout", {
+    fetch("http://sejongclubunion.com:3001/api/account/logout", {
       method: "GET",
       headers: {
         "Content-type": "application/json",

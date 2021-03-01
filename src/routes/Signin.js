@@ -27,7 +27,7 @@ function Signin() {
       alert("학번 또는 비밀번호를 입력해 주세요");
       setLoading(false);
     } else {
-      fetch("http://18.217.248.102:3001/api/account/login", {
+      fetch("http://sejongclubunion.com:3001/api/account/login", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

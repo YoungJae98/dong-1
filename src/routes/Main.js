@@ -26,7 +26,7 @@ function Main() {
   const isPC = useMediaQuery({ query: "(min-width : 1240px)" });
   const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   const getCommunity = () => {
-    fetch("http://18.217.248.102:3001/api/community/getCommunity", {
+    fetch("http://sejongclubunion.com:3001/api/community/getCommunity", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -40,7 +40,7 @@ function Main() {
       });
   };
   const getFile = () => {
-    fetch("http://18.217.248.102:3001/api/files/getFiles", {
+    fetch("http://sejongclubunion.com:3001/api/files/getFiles", {
       method: "GET",
       headers: {
         "Content-type": "application/json",
@@ -54,7 +54,7 @@ function Main() {
   };
   const getImageData = async () => {
     for (let j = file[4].length - 1; j >= 0; j--) {
-      await fetch("http://18.217.248.102:3001/api/files/getFileData", {
+      await fetch("http://sejongclubunion.com:3001/api/files/getFileData", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
