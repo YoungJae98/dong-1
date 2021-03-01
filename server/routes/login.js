@@ -55,7 +55,7 @@ router.post("/login", (req, res) => {
         req.session.user = results[1];
         req.session.save(() => {
           db.query(
-            "select * from user where u_id = ?",
+            "select * from user where u_id = ? ",
             [results[1]],
             (logErr, users) => {
               if (users.length) {
