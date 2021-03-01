@@ -55,6 +55,10 @@ import star from "../assets/images/clubs/academic/star.png";
 import unsa from "../assets/images/clubs/academic/unsa.png";
 import youma from "../assets/images/clubs/academic/youma.png";
 
+import floor5 from "../assets/images/clubs/floor5.jpg";
+import floor6 from "../assets/images/clubs/floor6.jpg";
+import basement2 from "../assets/images/clubs/basement2floor.jpg";
+
 import Button from "../components/Button";
 import Container from "../components/Container";
 import List from "../components/List";
@@ -655,47 +659,74 @@ function CentralClub() {
   let flag2 = false;
   let flag3 = false;
   let flag4 = false;
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   window.addEventListener("scroll", (e) => {
-    if (document.documentElement.scrollTop >= 200 && flag1 === false) {
-      flag1 = true;
-      document.querySelectorAll(".club-container").forEach((item, index) => {
-        if (index === 4 || index === 5) {
-          item.classList.remove("invisible");
-        }
-      });
-    }
-    if (document.documentElement.scrollTop >= 400 && flag2 === false) {
-      flag2 = true;
-      document.querySelectorAll(".club-container").forEach((item, index) => {
-        if (index === 6 || index === 7) {
-          item.classList.remove("invisible");
-        }
-      });
-    }
-    if (document.documentElement.scrollTop >= 600 && flag3 === false) {
-      flag2 = true;
-      document.querySelectorAll(".club-container").forEach((item, index) => {
-        if (index === 8 || index === 9) {
-          item.classList.remove("invisible");
-        }
-      });
-    }
-    if (document.documentElement.scrollTop >= 800 && flag4 === false) {
-      flag2 = true;
-      document.querySelectorAll(".club-container").forEach((item, index) => {
-        if (index === 10 || index === 11) {
-          item.classList.remove("invisible");
-        }
-      });
+    if (isMobile) {
+      if (document.documentElement.scrollTop >= 500 && flag1 === false) {
+        flag1 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 4 || index === 5) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
+      if (document.documentElement.scrollTop >= 800 && flag2 === false) {
+        flag2 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 6 || index === 7) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
+      if (document.documentElement.scrollTop >= 1100 && flag3 === false) {
+        flag3 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 8 || index === 9) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
+      if (document.documentElement.scrollTop >= 1400 && flag4 === false) {
+        flag4 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 10 || index === 11) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
+    } else {
+      if (document.documentElement.scrollTop >= 400 && flag2 === false) {
+        flag2 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 6 || index === 7) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
+      if (document.documentElement.scrollTop >= 600 && flag3 === false) {
+        flag2 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 8 || index === 9) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
+      if (document.documentElement.scrollTop >= 800 && flag4 === false) {
+        flag2 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 10 || index === 11) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
     }
   });
-  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
   return (
     <>
       <Container verticalAlign="flex-start">
         <img src={v2} alt="" width="100%" />
       </Container>
-      <Container height={isMobile ? "1000vw" : "1800px"} backgroundColor="">
+      <Container height={isMobile ? "600vw" : "1800px"} backgroundColor="">
         {!isMobile && (
           <Container width="200px" verticalAlign="baseline">
             <Container
@@ -837,26 +868,131 @@ function CentralClub() {
                 fd="column"
                 horizontalAlign="left"
                 verticalAlign="flex-start"
-                height="400px"
+                height={isMobile ? "200px" : "400px"}
                 className="fifth-floor"
               >
                 <Text
                   marginLeft={isMobile ? "10px" : ""}
+                  marginTop={isMobile ? "10px" : ""}
                   fontColor="#14406c"
                   fontSize={isMobile ? "18px" : "24px"}
                 >
                   학생회관 5층
                 </Text>
-                <Container fd="column" horizontalAlign="flex-start">
-                  <Container height="125px">
-                    {five_leftup.map((club, index) =>
-                      club.link !== "" ? (
-                        <a
-                          href={club.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={index}
-                        >
+                {isMobile ? (
+                  <img src={floor5} alt="floor5" width="100%" />
+                ) : (
+                  <Container fd="column" horizontalAlign="flex-start">
+                    <Container height="125px">
+                      {five_leftup.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <Button
+                              width="45px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  height: "18px",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button
+                            width="40px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            cursor="unset"
+                            marginLeft="-1px"
+                            key={index}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                              }}
+                            >
+                              &nbsp;
+                            </div>
+                          </Button>
+                        )
+                      )}
+                      <Container width="90px" />
+                      {five_rightup.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <Button
+                              width="50px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  width: "39px",
+                                  height: "18px",
+                                  margin: "auto",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
                           <Button
                             width="45px"
                             height="80px"
@@ -864,8 +1000,9 @@ function CentralClub() {
                             hoverBackgrounColor="#14406c"
                             hoverFontColor="white"
                             border="1px solid #14406c"
+                            cursor="unset"
                             marginLeft="-1px"
-                            padding={0}
+                            key={index}
                           >
                             <div
                               style={{
@@ -878,242 +1015,65 @@ function CentralClub() {
                             <div
                               style={{
                                 fontFamily: "SeoulLight",
-                                fontSize: "16px",
-                                height: "18px",
-                              }}
-                            >
-                              {club.name}
-                            </div>
-                          </Button>
-                        </a>
-                      ) : (
-                        <Button
-                          width="40px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
-                          >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "16px",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
-                    <Container width="90px" />
-                    {five_rightup.map((club, index) =>
-                      club.link !== "" ? (
-                        <a
-                          href={club.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={index}
-                        >
-                          <Button
-                            width="50px"
-                            height="80px"
-                            backgroundColor="white"
-                            hoverBackgrounColor="#14406c"
-                            hoverFontColor="white"
-                            border="1px solid #14406c"
-                            marginLeft="-1px"
-                            padding={0}
-                          >
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
                                 fontSize: "18px",
                               }}
                             >
-                              {club.number}
-                            </div>
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
-                                fontSize: "16px",
-                                width: "39px",
-                                height: "18px",
-                                margin: "auto",
-                              }}
-                            >
-                              {club.name}
+                              &nbsp;
                             </div>
                           </Button>
-                        </a>
-                      ) : (
-                        <Button
-                          width="45px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
-                          >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
-                  </Container>
-                  <Container height="80px"></Container>
-                  <Container height="125px">
-                    {five_leftdown.map((club, index) =>
-                      club.link !== "" ? (
-                        <a
-                          href={club.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={index}
-                        >
-                          <Button
-                            width="45px"
-                            height="80px"
-                            backgroundColor="white"
-                            hoverBackgrounColor="#14406c"
-                            hoverFontColor="white"
-                            border="1px solid #14406c"
-                            marginLeft="-1px"
-                            padding={0}
-                          >
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
-                                fontSize: "18px",
-                              }}
-                            >
-                              {club.number}
-                            </div>
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
-                                fontSize: "16px",
-                                height: "18px",
-                              }}
-                            >
-                              {club.name}
-                            </div>
-                          </Button>
-                        </a>
-                      ) : (
-                        <Button
-                          width="40px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
-                          >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "16px",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
-                    <Container width="315px">
-                      <Container>
-                        <Text
-                          fontSize="18px"
-                          fontColor="#14406c"
-                          fontFamily="SeoulLight"
-                        >
-                          계단
-                        </Text>
-                      </Container>
-                      <Container width="420px">
-                        <Text
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
-                          fontColor="#14406c"
-                        >
-                          엘리베이터
-                        </Text>
-                      </Container>
-                      <Container>
-                        <Text
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
-                          fontColor="#14406c"
-                        >
-                          게시판
-                        </Text>
-                      </Container>
-                      <Container>
-                        <Text
-                          fontSize="18px"
-                          fontFamily="SeoulLight"
-                          fontColor="#14406c"
-                        >
-                          화장실
-                        </Text>
-                      </Container>
+                        )
+                      )}
                     </Container>
-                    {five_rightdown.map((club, index) =>
-                      club.link !== "" ? (
-                        <a
-                          href={club.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={index}
-                        >
+                    <Container height="80px"></Container>
+                    <Container height="125px">
+                      {five_leftdown.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <Button
+                              width="45px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  height: "18px",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
                           <Button
-                            width="45px"
+                            width="40px"
                             height="80px"
                             backgroundColor="white"
                             hoverBackgrounColor="#14406c"
                             hoverFontColor="white"
                             border="1px solid #14406c"
+                            cursor="unset"
                             marginLeft="-1px"
-                            padding={0}
+                            key={index}
                           >
                             <div
                               style={{
@@ -1127,67 +1087,252 @@ function CentralClub() {
                               style={{
                                 fontFamily: "SeoulLight",
                                 fontSize: "16px",
-                                height: "18px",
                               }}
                             >
-                              {club.name}
+                              &nbsp;
                             </div>
                           </Button>
-                        </a>
-                      ) : (
-                        <Button
-                          width="40px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
+                        )
+                      )}
+                      <Container width="315px">
+                        <Container>
+                          <Text
+                            fontSize="18px"
+                            fontColor="#14406c"
+                            fontFamily="SeoulLight"
                           >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "16px",
-                            }}
+                            계단
+                          </Text>
+                        </Container>
+                        <Container width="420px">
+                          <Text
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                            fontColor="#14406c"
                           >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
+                            엘리베이터
+                          </Text>
+                        </Container>
+                        <Container>
+                          <Text
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                            fontColor="#14406c"
+                          >
+                            게시판
+                          </Text>
+                        </Container>
+                        <Container>
+                          <Text
+                            fontSize="18px"
+                            fontFamily="SeoulLight"
+                            fontColor="#14406c"
+                          >
+                            화장실
+                          </Text>
+                        </Container>
+                      </Container>
+                      {five_rightdown.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <Button
+                              width="45px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  height: "18px",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button
+                            width="40px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            cursor="unset"
+                            marginLeft="-1px"
+                            key={index}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                              }}
+                            >
+                              &nbsp;
+                            </div>
+                          </Button>
+                        )
+                      )}
+                    </Container>
                   </Container>
-                </Container>
+                )}
               </Container>
               <Container
                 fd="column"
                 horizontalAlign="left"
                 verticalAlign="flex-start"
-                height="400px"
+                height={isMobile ? "200px" : "400px"}
                 className="sixth-floor"
               >
-                <Text fontColor="#14406c" fontSize="24px">
+                <Text
+                  marginLeft={isMobile ? "10px" : ""}
+                  marginTop={isMobile ? "10px" : ""}
+                  fontColor="#14406c"
+                  fontSize={isMobile ? "18px" : "24px"}
+                >
                   학생회관 6층
                 </Text>
-                <Container fd="column" horizontalAlign="flex-start">
-                  <Container height="125px">
-                    {six_leftup.map((club, index) =>
-                      club.link !== "" ? (
-                        <a
-                          href={club.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={index}
-                        >
+                {isMobile ? (
+                  <img src={floor6} alt="floor6" width="100%" />
+                ) : (
+                  <Container fd="column" horizontalAlign="flex-start">
+                    <Container height="125px">
+                      {six_leftup.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <Button
+                              width="45px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  height: "18px",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button
+                            width="40px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            cursor="unset"
+                            marginLeft="-1px"
+                            key={index}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                              }}
+                            >
+                              &nbsp;
+                            </div>
+                          </Button>
+                        )
+                      )}
+                      <Container width="90px" />
+                      {six_rightup.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <Button
+                              width="50px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  width: "39px",
+                                  height: "18px",
+                                  margin: "auto",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
                           <Button
                             width="45px"
                             height="80px"
@@ -1195,8 +1340,9 @@ function CentralClub() {
                             hoverBackgrounColor="#14406c"
                             hoverFontColor="white"
                             border="1px solid #14406c"
+                            cursor="unset"
                             marginLeft="-1px"
-                            padding={0}
+                            key={index}
                           >
                             <div
                               style={{
@@ -1209,63 +1355,65 @@ function CentralClub() {
                             <div
                               style={{
                                 fontFamily: "SeoulLight",
-                                fontSize: "16px",
-                                height: "18px",
+                                fontSize: "18px",
                               }}
                             >
-                              {club.name}
+                              &nbsp;
                             </div>
                           </Button>
-                        </a>
-                      ) : (
-                        <Button
-                          width="40px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
+                        )
+                      )}
+                    </Container>
+                    <Container height="80px"></Container>
+                    <Container height="125px">
+                      {six_leftdown.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
                           >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "16px",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
-                    <Container width="90px" />
-                    {six_rightup.map((club, index) =>
-                      club.link !== "" ? (
-                        <a
-                          href={club.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={index}
-                        >
+                            <Button
+                              width="45px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  height: "18px",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
                           <Button
-                            width="50px"
+                            width="40px"
                             height="80px"
                             backgroundColor="white"
                             hoverBackgrounColor="#14406c"
                             hoverFontColor="white"
                             border="1px solid #14406c"
+                            cursor="unset"
                             marginLeft="-1px"
-                            padding={0}
+                            key={index}
                           >
                             <div
                               style={{
@@ -1279,51 +1427,144 @@ function CentralClub() {
                               style={{
                                 fontFamily: "SeoulLight",
                                 fontSize: "16px",
-                                width: "39px",
-                                height: "18px",
-                                margin: "auto",
                               }}
                             >
-                              {club.name}
+                              &nbsp;
                             </div>
                           </Button>
-                        </a>
-                      ) : (
-                        <Button
-                          width="45px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
+                        )
+                      )}
+                      <Container width="315px">
+                        <Container>
+                          <Text
+                            fontSize="18px"
+                            fontColor="#14406c"
+                            fontFamily="SeoulLight"
                           >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
+                            계단
+                          </Text>
+                        </Container>
+                        <Container width="420px">
+                          <Text
+                            fontSize="18px"
+                            fontColor="#14406c"
+                            fontFamily="SeoulLight"
                           >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
+                            엘리베이터
+                          </Text>
+                        </Container>
+                        <Container>
+                          <Text
+                            fontSize="18px"
+                            fontColor="#14406c"
+                            fontFamily="SeoulLight"
+                          >
+                            게시판
+                          </Text>
+                        </Container>
+                        <Container>
+                          <Text
+                            fontSize="18px"
+                            fontColor="#14406c"
+                            fontFamily="SeoulLight"
+                          >
+                            화장실
+                          </Text>
+                        </Container>
+                      </Container>
+                      {six_rightdown.map((club, index) =>
+                        club.link !== "" ? (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
+                          >
+                            <Button
+                              width="45px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                            >
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "18px",
+                                }}
+                              >
+                                {club.number}
+                              </div>
+                              <div
+                                style={{
+                                  fontFamily: "SeoulLight",
+                                  fontSize: "16px",
+                                  height: "18px",
+                                }}
+                              >
+                                {club.name}
+                              </div>
+                            </Button>
+                          </a>
+                        ) : (
+                          <Button
+                            width="40px"
+                            height="80px"
+                            backgroundColor="white"
+                            hoverBackgrounColor="#14406c"
+                            hoverFontColor="white"
+                            border="1px solid #14406c"
+                            cursor="unset"
+                            marginLeft="-1px"
+                            key={index}
+                          >
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "18px",
+                              }}
+                            >
+                              {club.number}
+                            </div>
+                            <div
+                              style={{
+                                fontFamily: "SeoulLight",
+                                fontSize: "16px",
+                              }}
+                            >
+                              &nbsp;
+                            </div>
+                          </Button>
+                        )
+                      )}
+                    </Container>
                   </Container>
-                  <Container height="80px"></Container>
-                  <Container height="125px">
-                    {six_leftdown.map((club, index) =>
-                      club.link !== "" ? (
+                )}
+              </Container>
+              <Container
+                fd="column"
+                horizontalAlign="left"
+                verticalAlign="flex-start"
+                height={isMobile ? "200px" : "400px"}
+                className="minus-two-floor"
+              >
+                <Text
+                  marginLeft={isMobile ? "10px" : ""}
+                  marginTop={isMobile ? "10px" : ""}
+                  fontColor="#14406c"
+                  fontSize={isMobile ? "18px" : "24px"}
+                >
+                  학생회관 지하 2층
+                </Text>
+                {isMobile ? (
+                  <img src={basement2} alt="basement2" width="100%" />
+                ) : (
+                  <>
+                    <Container>
+                      {minus2_leftup.map((club, index) => (
                         <a
                           href={club.link}
                           target="_blank"
@@ -1331,7 +1572,7 @@ function CentralClub() {
                           key={index}
                         >
                           <Button
-                            width="45px"
+                            width="100px"
                             height="80px"
                             backgroundColor="white"
                             hoverBackgrounColor="#14406c"
@@ -1339,59 +1580,30 @@ function CentralClub() {
                             border="1px solid #14406c"
                             marginLeft="-1px"
                             padding={0}
+                            font="SeoulLight"
                           >
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
-                                fontSize: "18px",
-                              }}
-                            >
-                              {club.number}
-                            </div>
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
-                                fontSize: "16px",
-                                height: "18px",
-                              }}
-                            >
-                              {club.name}
-                            </div>
+                            {club.name}
                           </Button>
                         </a>
-                      ) : (
-                        <Button
-                          width="40px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
-                          >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "16px",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
-                    <Container width="315px">
-                      <Container>
+                      ))}
+                      <Container width="90px" />
+                      <Container
+                        width="500px"
+                        height="80px"
+                        borderLeft="1px solid #14406c"
+                        borderBottom="1px solid #14406c"
+                      />
+                    </Container>
+                    <Container height="80px" />
+                    <Container>
+                      <Container
+                        width="270px"
+                        height="80px"
+                        borderTop="1px solid #14406c"
+                        borderRight="1px solid #14406c"
+                        horizontalAlign="flex-end"
+                        paddingRight="30px"
+                      >
                         <Text
                           fontSize="18px"
                           fontColor="#14406c"
@@ -1400,207 +1612,51 @@ function CentralClub() {
                           계단
                         </Text>
                       </Container>
-                      <Container width="420px">
+                      <Container width="90px" />
+                      <Container
+                        height="79px"
+                        width="220px"
+                        borderTop="1px solid #14406c"
+                        borderLeft="1px solid #14406c"
+                        marginRight="-1px"
+                        horizontalAlign="flex-start"
+                      >
                         <Text
                           fontSize="18px"
                           fontColor="#14406c"
                           fontFamily="SeoulLight"
+                          marginLeft="30px"
                         >
                           엘리베이터
                         </Text>
                       </Container>
-                      <Container>
-                        <Text
-                          fontSize="18px"
-                          fontColor="#14406c"
-                          fontFamily="SeoulLight"
-                        >
-                          게시판
-                        </Text>
-                      </Container>
-                      <Container>
-                        <Text
-                          fontSize="18px"
-                          fontColor="#14406c"
-                          fontFamily="SeoulLight"
-                        >
-                          화장실
-                        </Text>
-                      </Container>
-                    </Container>
-                    {six_rightdown.map((club, index) =>
-                      club.link !== "" ? (
-                        <a
-                          href={club.link}
-                          target="_blank"
-                          rel="noreferrer"
-                          key={index}
-                        >
-                          <Button
-                            width="45px"
-                            height="80px"
-                            backgroundColor="white"
-                            hoverBackgrounColor="#14406c"
-                            hoverFontColor="white"
-                            border="1px solid #14406c"
-                            marginLeft="-1px"
-                            padding={0}
+                      <Container width="280px" height="80px">
+                        {minus2_rightdown.map((club, index) => (
+                          <a
+                            href={club.link}
+                            target="_blank"
+                            rel="noreferrer"
+                            key={index}
                           >
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
-                                fontSize: "18px",
-                              }}
-                            >
-                              {club.number}
-                            </div>
-                            <div
-                              style={{
-                                fontFamily: "SeoulLight",
-                                fontSize: "16px",
-                                height: "18px",
-                              }}
+                            <Button
+                              width="70px"
+                              height="80px"
+                              backgroundColor="white"
+                              hoverBackgrounColor="#14406c"
+                              hoverFontColor="white"
+                              border="1px solid #14406c"
+                              marginLeft="-1px"
+                              padding={0}
+                              font="SeoulLight"
                             >
                               {club.name}
-                            </div>
-                          </Button>
-                        </a>
-                      ) : (
-                        <Button
-                          width="40px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          cursor="unset"
-                          marginLeft="-1px"
-                          key={index}
-                        >
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "18px",
-                            }}
-                          >
-                            {club.number}
-                          </div>
-                          <div
-                            style={{
-                              fontFamily: "SeoulLight",
-                              fontSize: "16px",
-                            }}
-                          >
-                            &nbsp;
-                          </div>
-                        </Button>
-                      )
-                    )}
-                  </Container>
-                </Container>
-              </Container>
-              <Container
-                fd="column"
-                horizontalAlign="left"
-                verticalAlign="flex-start"
-                height="400px"
-                className="minus-two-floor"
-              >
-                <Text fontColor="#14406c" fontSize="24px">
-                  학생회관 지하 2층
-                </Text>
-                <Container>
-                  {minus2_leftup.map((club, index) => (
-                    <a
-                      href={club.link}
-                      target="_blank"
-                      rel="noreferrer"
-                      key={index}
-                    >
-                      <Button
-                        width="100px"
-                        height="80px"
-                        backgroundColor="white"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        border="1px solid #14406c"
-                        marginLeft="-1px"
-                        padding={0}
-                        font="SeoulLight"
-                      >
-                        {club.name}
-                      </Button>
-                    </a>
-                  ))}
-                  <Container width="90px" />
-                  <Container
-                    width="500px"
-                    height="80px"
-                    borderLeft="1px solid #14406c"
-                    borderBottom="1px solid #14406c"
-                  />
-                </Container>
-                <Container height="80px" />
-                <Container>
-                  <Container
-                    width="270px"
-                    height="80px"
-                    borderTop="1px solid #14406c"
-                    borderRight="1px solid #14406c"
-                    horizontalAlign="flex-end"
-                    paddingRight="30px"
-                  >
-                    <Text
-                      fontSize="18px"
-                      fontColor="#14406c"
-                      fontFamily="SeoulLight"
-                    >
-                      계단
-                    </Text>
-                  </Container>
-                  <Container width="90px" />
-                  <Container
-                    height="79px"
-                    width="220px"
-                    borderTop="1px solid #14406c"
-                    borderLeft="1px solid #14406c"
-                    marginRight="-1px"
-                    horizontalAlign="flex-start"
-                  >
-                    <Text
-                      fontSize="18px"
-                      fontColor="#14406c"
-                      fontFamily="SeoulLight"
-                      marginLeft="30px"
-                    >
-                      엘리베이터
-                    </Text>
-                  </Container>
-                  <Container width="280px" height="80px">
-                    {minus2_rightdown.map((club, index) => (
-                      <a
-                        href={club.link}
-                        target="_blank"
-                        rel="noreferrer"
-                        key={index}
-                      >
-                        <Button
-                          width="70px"
-                          height="80px"
-                          backgroundColor="white"
-                          hoverBackgrounColor="#14406c"
-                          hoverFontColor="white"
-                          border="1px solid #14406c"
-                          marginLeft="-1px"
-                          padding={0}
-                          font="SeoulLight"
-                        >
-                          {club.name}
-                        </Button>
-                      </a>
-                    ))}
-                  </Container>
-                </Container>
+                            </Button>
+                          </a>
+                        ))}
+                      </Container>
+                    </Container>
+                  </>
+                )}
               </Container>
             </Container>
           </Route>
@@ -1633,19 +1689,21 @@ function CentralClub() {
               display="block"
             >
               <Container
-                width="1000px"
+                width={isMobile ? "100%" : "1000px"}
                 height="50px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="21px" fontColor="grey">
+                <Text fontSize={isMobile ? "12px" : "21px"} fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
               {physicalClub.map((club, index) => {
                 return (
                   <Container
-                    width="500px"
-                    height="210px"
+                    width={isMobile ? "100%" : "500px"}
+                    height={
+                      isMobile ? (index === 9 ? "180px" : "150px") : "210px"
+                    }
                     display="inline-block"
                     key={club.clubID}
                     className={
@@ -1659,6 +1717,7 @@ function CentralClub() {
                         className="club-image-container"
                         width="150px"
                         height="150px"
+                        marginLeft={isMobile ? "10px" : ""}
                       >
                         <img
                           src={club.clubLogo}
@@ -1714,19 +1773,19 @@ function CentralClub() {
               display="block"
             >
               <Container
-                width="1000px"
+                width={isMobile ? "100%" : "1000px"}
                 height="50px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="21px" fontColor="grey">
+                <Text fontSize={isMobile ? "12px" : "21px"} fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
               {cultureClub.map((club, index) => {
                 return (
                   <Container
-                    width="500px"
-                    height="210px"
+                    width={isMobile ? "100%" : "500px"}
+                    height={isMobile ? "150px" : "210px"}
                     display="inline-block"
                     key={club.clubID}
                     className={
@@ -1740,6 +1799,7 @@ function CentralClub() {
                         className="club-image-container"
                         width="150px"
                         height="150px"
+                        marginLeft={isMobile ? "10px" : ""}
                       >
                         <img
                           src={club.clubLogo}
@@ -1795,19 +1855,19 @@ function CentralClub() {
               display="block"
             >
               <Container
-                width="1000px"
+                width={isMobile ? "100%" : "1000px"}
                 height="50px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="21px" fontColor="grey">
+                <Text fontSize={isMobile ? "12px" : "21px"} fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
               {showClub.map((club, index) => {
                 return (
                   <Container
-                    width="500px"
-                    height="210px"
+                    width={isMobile ? "100%" : "500px"}
+                    height={isMobile ? "150px" : "210px"}
                     display="inline-block"
                     key={club.clubID}
                     className={
@@ -1821,6 +1881,7 @@ function CentralClub() {
                         className="club-image-container"
                         width="150px"
                         height="150px"
+                        marginLeft={isMobile ? "10px" : ""}
                       >
                         <img
                           src={club.clubLogo}
@@ -1876,19 +1937,19 @@ function CentralClub() {
               display="block"
             >
               <Container
-                width="1000px"
+                width={isMobile ? "100%" : "1000px"}
                 height="50px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="21px" fontColor="grey">
+                <Text fontSize={isMobile ? "12px" : "21px"} fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
               {academicClub.map((club, index) => {
                 return (
                   <Container
-                    width="500px"
-                    height="210px"
+                    width={isMobile ? "100%" : "500px"}
+                    height={isMobile ? "150px" : "210px"}
                     display="inline-block"
                     key={club.clubID}
                     className={
@@ -1896,13 +1957,13 @@ function CentralClub() {
                     }
                     marginTop="30px"
                     animation="club-container-animation 0.5s forwards"
-                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
                         className="club-image-container"
                         width="150px"
                         height="150px"
+                        marginLeft={isMobile ? "10px" : ""}
                       >
                         <img
                           src={club.clubLogo}
@@ -1958,19 +2019,19 @@ function CentralClub() {
               display="block"
             >
               <Container
-                width="1000px"
+                width={isMobile ? "100%" : "1000px"}
                 height="50px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="21px" fontColor="grey">
+                <Text fontSize={isMobile ? "12px" : "21px"} fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
               {religionClub.map((club, index) => {
                 return (
                   <Container
-                    width="500px"
-                    height="210px"
+                    width={isMobile ? "100%" : "500px"}
+                    height={isMobile ? "150px" : "210px"}
                     display="inline-block"
                     key={club.clubID}
                     className={
@@ -1978,13 +2039,13 @@ function CentralClub() {
                     }
                     marginTop="30px"
                     animation="club-container-animation 0.5s forwards"
-                    visual
                   >
                     <Container className="club-contents-container">
                       <Container
                         className="club-image-container"
                         width="150px"
                         height="150px"
+                        marginLeft={isMobile ? "10px" : ""}
                       >
                         <img
                           src={club.clubLogo}
@@ -2040,19 +2101,19 @@ function CentralClub() {
               display="block"
             >
               <Container
-                width="1000px"
+                width={isMobile ? "100%" : "1000px"}
                 height="50px"
                 horizontalAlign="flex-end"
               >
-                <Text fontSize="21px" fontColor="grey">
+                <Text fontSize={isMobile ? "12px" : "21px"} fontColor="grey">
                   동아리 로고를 클릭하시면 각 동아리 페이지로 이동합니다.
                 </Text>
               </Container>
               {volunteerClub.map((club, index) => {
                 return (
                   <Container
-                    width="500px"
-                    height="210px"
+                    width={isMobile ? "100%" : "500px"}
+                    height={isMobile ? "150px" : "210px"}
                     display="inline-block"
                     key={club.clubID}
                     className={
@@ -2066,6 +2127,7 @@ function CentralClub() {
                         className="club-image-container"
                         width="150px"
                         height="150px"
+                        marginLeft={isMobile ? "10px" : ""}
                       >
                         <img
                           src={club.clubLogo}
