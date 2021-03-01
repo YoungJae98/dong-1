@@ -32,10 +32,7 @@ router.post("/login", (req, res) => {
     scriptPath: "./server/",
     args: [req.body.id, req.body.pw],
   };
-  if (
-    (req.body.id == "sejongclubunion" && req.body.pw == "sejong12!") ||
-    (req.body.id == "123" && req.body.pw == "123")
-  ) {
+  if (req.body.id == "sejongclubunion" && req.body.pw == "sejong12!") {
     req.session.isLogin = true;
     req.session.user = "10298374";
     req.session.save(() => {
