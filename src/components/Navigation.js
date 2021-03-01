@@ -404,24 +404,22 @@ function Navigation({
                     </Button>
                   </div>
                   <div>
-                    <Link
-                      to="/information/seoul"
-                      onClick={() => setMain(false)}
+                    <Button
+                      height="40px"
+                      width="183px"
+                      backgroundColor="white"
+                      fontColor="#14406c"
+                      hoverBackgrounColor="#14406c"
+                      hoverFontColor="white"
+                      fontSize="18px"
+                      className="navigation-submenu-button"
+                      font="SeoulLight"
+                      onClick={() => {
+                        alert("준비중입니다.");
+                      }}
                     >
-                      <Button
-                        height="40px"
-                        width="183px"
-                        backgroundColor="white"
-                        fontColor="#14406c"
-                        hoverBackgrounColor="#14406c"
-                        hoverFontColor="white"
-                        fontSize="18px"
-                        className="navigation-submenu-button"
-                        font="SeoulLight"
-                      >
-                        서동협
-                      </Button>
-                    </Link>
+                      서동협
+                    </Button>
                   </div>
                   <div>
                     <Link
@@ -835,18 +833,6 @@ function Navigation({
                     }}
                   >
                     <Text fontFamily="SeoulLight">공약이행도</Text>
-                  </Link>
-                  <Link
-                    to="/information/seoul"
-                    onClick={() => {
-                      document
-                        .querySelector(".mobile-menu-container")
-                        .classList.toggle("invisible");
-                    }}
-                  >
-                    <Text marginLeft="10px" fontFamily="SeoulLight">
-                      서동협
-                    </Text>
                   </Link>
                   <Link
                     to="/information/report"

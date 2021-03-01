@@ -95,8 +95,14 @@ function Main() {
       getImageData().then(() => {
         setIsLoaded(true);
       });
-      if (file["1"]) setMeetinglogs(file["1"]);
-      if (file["2"]) setReports(file["2"]);
+      if (file["1"])
+        setMeetinglogs(
+          file["1"].sort((a, b) => (a.f_id > b.f_id ? -1 : 1)).slice(0, 4)
+        );
+      if (file["2"])
+        setReports(
+          file["2"].sort((a, b) => (a.f_id > b.f_id ? -1 : 1)).slice(0, 4)
+        );
     }
   }, [file]);
   return (
