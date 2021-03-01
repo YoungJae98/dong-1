@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
-import v2 from "../assets/images/visual/visual2.jpg";
+import v2 from "../assets/images/visual/visual2.png";
 
 //show
 import hanwoollim from "../assets/images/clubs/show/hanwoollim.jpg";
@@ -695,6 +695,14 @@ function CentralClub() {
         });
       }
     } else {
+      if (document.documentElement.scrollTop >= 200 && flag1 === false) {
+        flag1 = true;
+        document.querySelectorAll(".club-container").forEach((item, index) => {
+          if (index === 4 || index === 5) {
+            item.classList.remove("invisible");
+          }
+        });
+      }
       if (document.documentElement.scrollTop >= 400 && flag2 === false) {
         flag2 = true;
         document.querySelectorAll(".club-container").forEach((item, index) => {

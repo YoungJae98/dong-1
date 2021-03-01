@@ -5,7 +5,7 @@ import { NavLink, Route } from "react-router-dom";
 
 import logo_inversed from "../assets/images/logo_reversed.png";
 import pdf from "../assets/images/pdf_image.png";
-import v3 from "../assets/images/visual/visual3.jpg";
+import v3 from "../assets/images/visual/visual3.png";
 import pledge_checkbox from "../assets/images/pledge.png";
 import pledge_checked from "../assets/images/pledge_done.png";
 
@@ -18,6 +18,7 @@ import List from "../components/List";
 import Listitem from "../components/Listitem";
 import Remote from "../components/Remote";
 import Text from "../components/Text";
+import { useMediaQuery } from "react-responsive";
 
 function Main() {
   const [file, setFile] = useState({});
@@ -42,6 +43,7 @@ function Main() {
   const [reportPageArr, setReportPageArr] = useState([]);
   const [meetinglogPageArr, setMeetinglogPageArr] = useState([]);
   const [pageNum, setPageNum] = useState(0);
+  const isMobile = useMediaQuery({ query: "(max-width: 1240px)" });
 
   const getPledge = () => {
     fetch("http://sejongclubunion.com:3001/api/pledges/getPledge", {
@@ -99,8 +101,12 @@ function Main() {
     download(files[name], name);
   };
   const openFile = (name) => {
-    let url = URL.createObjectURL(files[name]);
-    window.open(url);
+    try {
+      let url = URL.createObjectURL(files[name]);
+      window.open(url);
+    } catch (error) {
+      alert("로딩중입니다.");
+    }
   };
   useEffect(() => {
     getPledge();
@@ -152,115 +158,122 @@ function Main() {
   }, [meetinglogsSearchResult]);
   return (
     <>
-      <Container height="145px">
-        <img src={v3} alt="" width="100%" height="100%" />
+      <Container verticalAlign="flex-start">
+        <img src={v3} alt="" width="100%" />
       </Container>
-      <Container height="1400px" backgroundColor="">
-        <Container width="200px" verticalAlign="baseline">
-          <Container
-            width="200px"
-            height="282px"
-            fd="column"
-            verticalAlign="baseline"
-            position="sticky"
-            marginTop="90px"
-          >
+      <Container height={isMobile ? "400vw" : "1400px"} backgroundColor="">
+        {!isMobile && (
+          <Container width="200px" verticalAlign="baseline">
             <Container
-              height="50px"
-              horizontalAlign="left"
-              verticalAlign="flex-end"
-            >
-              <img src={logo_inversed} alt="" width="40px" />
-              <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
-                정보
-              </Text>
-            </Container>
-            <Remote
               width="200px"
-              paddingTop="10px"
-              paddingBottom="10px"
-              marginTop="10px"
+              height="282px"
+              fd="column"
+              verticalAlign="baseline"
+              position="sticky"
+              marginTop="90px"
             >
-              <List fd="column">
-                <Button backgroundColor="white">
-                  <NavLink to="/information">
+              <Container
+                height="50px"
+                horizontalAlign="left"
+                verticalAlign="flex-end"
+              >
+                <img src={logo_inversed} alt="" width="40px" />
+                <Text fontColor="#14406c" fontSize="21px" marginLeft="5px">
+                  정보
+                </Text>
+              </Container>
+              <Remote
+                width="200px"
+                paddingTop="10px"
+                paddingBottom="10px"
+                marginTop="10px"
+              >
+                <List fd="column">
+                  <Button backgroundColor="white">
+                    <NavLink to="/information">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="공약 이행도"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button
+                    backgroundColor="white"
+                    onClick={() => {
+                      alert("준비중입니다.");
+                    }}
+                  >
+                    {/* <NavLink to="/information/alliance"> */}
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      label="공약 이행도"
+                      label="제휴사업"
                       hoverUnderline
                     ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button
-                  backgroundColor="white"
-                  onClick={() => {
-                    alert("준비중입니다.");
-                  }}
-                >
-                  {/* <NavLink to="/information/alliance"> */}
-                  <Listitem
-                    height="40px"
-                    fontColor="#14406c"
-                    label="제휴사업"
-                    hoverUnderline
-                  ></Listitem>
-                  {/* </NavLink> */}
-                </Button>
-                <Button
-                  backgroundColor="white"
-                  onClick={() => {
-                    alert("준비중입니다.");
-                  }}
-                >
-                  {/* <NavLink to="/information/seoul"> */}
-                  <Listitem
-                    height="40px"
-                    fontColor="#14406c"
-                    label="서동협"
-                    hoverUnderline
-                  ></Listitem>
-                  {/* </NavLink> */}
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/information/report">
+                    {/* </NavLink> */}
+                  </Button>
+                  <Button
+                    backgroundColor="white"
+                    onClick={() => {
+                      alert("준비중입니다.");
+                    }}
+                  >
+                    {/* <NavLink to="/information/seoul"> */}
                     <Listitem
                       height="40px"
                       fontColor="#14406c"
-                      label="예결산 보고"
+                      label="서동협"
                       hoverUnderline
                     ></Listitem>
-                  </NavLink>
-                </Button>
-                <Button backgroundColor="white">
-                  <NavLink to="/information/meetinglog">
-                    <Listitem
-                      height="40px"
-                      fontColor="#14406c"
-                      label="회의록"
-                      hoverUnderline
-                    ></Listitem>
-                  </NavLink>
-                </Button>
-              </List>
-            </Remote>
+                    {/* </NavLink> */}
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/information/report">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="예결산 보고"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                  <Button backgroundColor="white">
+                    <NavLink to="/information/meetinglog">
+                      <Listitem
+                        height="40px"
+                        fontColor="#14406c"
+                        label="회의록"
+                        hoverUnderline
+                      ></Listitem>
+                    </NavLink>
+                  </Button>
+                </List>
+              </Remote>
+            </Container>
           </Container>
-        </Container>
+        )}
         <Container
-          width="1062px"
+          backgroundColor=""
+          width={isMobile ? "100%" : "1062px"}
           fd="column"
-          marginLeft="30px"
+          marginLeft={isMobile ? "" : "30px"}
           verticalAlign="flex-start"
         >
           <Route exact path="/information/">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 공약 이행도
               </Text>
             </Container>
@@ -269,24 +282,29 @@ function Main() {
               borderRadius="8px"
               fd="column"
               horizontalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
             >
               {loading ? (
-                <MoonLoader color="#14406c" size="56" />
+                <Container verticalAlign="flex-start" marginTop="100px">
+                  <MoonLoader color="#14406c" size="56px" />
+                </Container>
               ) : (
                 <>
                   <Container
-                    height="50px"
+                    height="30px"
                     className="promise-button-container"
-                    borderBottom="2px solid #14406c"
                     horizontalAlign="flex-end"
                     paddingBottom="30px"
+                    marginTop={isMobile ? "10px" : ""}
                   >
-                    <Text fontColor="#14406c" fontSize="22px">
+                    <Text
+                      fontColor="#14406c"
+                      fontSize={isMobile ? "18px" : "22px"}
+                    >
                       공약집
                     </Text>
                     <div
@@ -300,7 +318,11 @@ function Main() {
                     />
 
                     <a href={promises} target="_blank" rel="noreferrer">
-                      <Text fontSize="21px" fontColor="#14406c" underline>
+                      <Text
+                        fontSize={isMobile ? "18px" : "22px"}
+                        fontColor="#14406c"
+                        underline
+                      >
                         바로 보기
                       </Text>
                     </a>
@@ -313,7 +335,7 @@ function Main() {
                           style={{ display: "inline" }}
                         />
                         <Text
-                          fontSize="21px"
+                          fontSize={isMobile ? "18px" : "22px"}
                           fontColor="#14406c"
                           underline
                           marginLeft="5px"
@@ -323,6 +345,18 @@ function Main() {
                       </Container>
                     </a>
                   </Container>
+                  {isMobile && (
+                    <Container
+                      height="20px"
+                      borderBottom="2px solid #14406c"
+                      horizontalAlign="flex-end"
+                      paddingBottom="10px"
+                    >
+                      <Text fontColor="grey">
+                        세부 진행도는 PC에서 확인해 주세요.
+                      </Text>
+                    </Container>
+                  )}
                   <Container
                     height="160px"
                     className="totalPromise"
@@ -330,11 +364,16 @@ function Main() {
                     fd="column"
                     horizontalAlign="flex-start"
                   >
-                    <Text fontSize="28px" fontColor="#14406c" marginTop="30px">
+                    <Text
+                      fontSize={isMobile ? "22px" : "28px"}
+                      fontColor="#14406c"
+                      marginTop="30px"
+                    >
                       전체 공약 이행도
                     </Text>
                     <Container
                       className="progressBar-container"
+                      width={isMobile ? "90%" : "100%"}
                       height="40px"
                       position="relative"
                       marginTop="30px"
@@ -349,21 +388,47 @@ function Main() {
                           position="absolute"
                           className="progressBar-content"
                           backgroundColor="#a8bec9"
-                          width={`${
-                            ((assignment1.filter((act) => act.p_status === 1)
-                              .length +
-                              assignment2.filter((act) => act.p_status === 1)
-                                .length +
-                              assignment3.filter((act) => act.p_status === 1)
-                                .length +
-                              assignment4.filter((act) => act.p_status === 1)
-                                .length) /
-                              (assignment1.length +
-                                assignment2.length +
-                                assignment3.length +
-                                assignment4.length)) *
-                            1000
-                          }px`}
+                          width={
+                            isMobile
+                              ? `${
+                                  ((assignment1.filter(
+                                    (act) => act.p_status === 1
+                                  ).length +
+                                    assignment2.filter(
+                                      (act) => act.p_status === 1
+                                    ).length +
+                                    assignment3.filter(
+                                      (act) => act.p_status === 1
+                                    ).length +
+                                    assignment4.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                    (assignment1.length +
+                                      assignment2.length +
+                                      assignment3.length +
+                                      assignment4.length)) *
+                                  100
+                                }%`
+                              : `${
+                                  ((assignment1.filter(
+                                    (act) => act.p_status === 1
+                                  ).length +
+                                    assignment2.filter(
+                                      (act) => act.p_status === 1
+                                    ).length +
+                                    assignment3.filter(
+                                      (act) => act.p_status === 1
+                                    ).length +
+                                    assignment4.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                    (assignment1.length +
+                                      assignment2.length +
+                                      assignment3.length +
+                                      assignment4.length)) *
+                                  1000
+                                }px`
+                          }
                         >
                           <Text fontSize="21px" fontColor="#14406c">
                             {parseInt(
@@ -385,140 +450,157 @@ function Main() {
                           </Text>
                         </Container>
                       </Container>
-                      <div
-                        className="totalProgress"
-                        style={{ width: "360px", height: "220px" }}
-                      >
-                        <div className="totalProgress-uparrow" />
-                        <div className="totalProgress-uparrow-cover" />
-                        <Container fd="column">
-                          <Text fontSize="21px" fontColor="#14406c">
-                            전체 공약 이행도
-                          </Text>
-                          <Container height="22px" marginTop="20px">
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                과제1&nbsp;
-                              </Text>
+                      {isMobile ? (
+                        <></>
+                      ) : (
+                        <div
+                          className="totalProgress"
+                          style={{ width: "360px", height: "220px" }}
+                        >
+                          <div className="totalProgress-uparrow" />
+                          <div className="totalProgress-uparrow-cover" />
+                          <Container fd="column">
+                            <Text fontSize="21px" fontColor="#14406c">
+                              전체 공약 이행도
+                            </Text>
+                            <Container height="22px" marginTop="20px">
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  과제1&nbsp;
+                                </Text>
+                              </Container>
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  {`${parseInt(
+                                    (assignment1.filter(
+                                      (act) => act.p_status === 1
+                                    ).length /
+                                      assignment1.length) *
+                                      100
+                                  )}%`}
+                                </Text>
+                              </Container>
                             </Container>
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                {`${parseInt(
-                                  (assignment1.filter(
-                                    (act) => act.p_status === 1
-                                  ).length /
-                                    assignment1.length) *
-                                    100
-                                )}%`}
-                              </Text>
+                            <Container height="22px" marginTop="3px">
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  과제2&nbsp;
+                                </Text>
+                              </Container>
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  {`${parseInt(
+                                    (assignment2.filter(
+                                      (act) => act.p_status === 1
+                                    ).length /
+                                      assignment2.length) *
+                                      100
+                                  )}%`}
+                                </Text>
+                              </Container>
                             </Container>
-                          </Container>
-                          <Container height="22px" marginTop="3px">
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                과제2&nbsp;
-                              </Text>
+                            <Container height="22px" marginTop="3px">
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  과제3&nbsp;
+                                </Text>
+                              </Container>
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  {`${parseInt(
+                                    (assignment3.filter(
+                                      (act) => act.p_status === 1
+                                    ).length /
+                                      assignment3.length) *
+                                      100
+                                  )}%`}
+                                </Text>
+                              </Container>
                             </Container>
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                {`${parseInt(
-                                  (assignment2.filter(
-                                    (act) => act.p_status === 1
-                                  ).length /
-                                    assignment2.length) *
-                                    100
-                                )}%`}
-                              </Text>
+                            <Container height="22px" marginTop="3px">
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  과제4&nbsp;
+                                </Text>
+                              </Container>
+                              <Container width="55px">
+                                <Text fontColor="#14406c" fontSize="21px">
+                                  {`${parseInt(
+                                    (assignment4.filter(
+                                      (act) => act.p_status === 1
+                                    ).length /
+                                      assignment4.length) *
+                                      100
+                                  )}%`}
+                                </Text>
+                              </Container>
                             </Container>
-                          </Container>
-                          <Container height="22px" marginTop="3px">
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                과제3&nbsp;
-                              </Text>
-                            </Container>
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                {`${parseInt(
-                                  (assignment3.filter(
-                                    (act) => act.p_status === 1
-                                  ).length /
-                                    assignment3.length) *
-                                    100
-                                )}%`}
-                              </Text>
-                            </Container>
-                          </Container>
-                          <Container height="22px" marginTop="3px">
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                과제4&nbsp;
-                              </Text>
-                            </Container>
-                            <Container width="55px">
-                              <Text fontColor="#14406c" fontSize="21px">
-                                {`${parseInt(
-                                  (assignment4.filter(
-                                    (act) => act.p_status === 1
-                                  ).length /
-                                    assignment4.length) *
-                                    100
-                                )}%`}
-                              </Text>
-                            </Container>
-                          </Container>
-                          <Text
-                            fontColor="#14406c"
-                            fontSize="21px"
-                            marginTop="20px"
-                          >
-                            합계&nbsp;
-                            {`(${
-                              assignment1.filter((act) => act.p_status === 1)
-                                .length +
-                              assignment2.filter((act) => act.p_status === 1)
-                                .length +
-                              assignment3.filter((act) => act.p_status === 1)
-                                .length +
-                              assignment4.filter((act) => act.p_status === 1)
-                                .length
-                            } / ${
-                              assignment1.length +
-                              assignment2.length +
-                              assignment3.length +
-                              assignment4.length
-                            }) ${parseInt(
-                              ((assignment1.filter((act) => act.p_status === 1)
-                                .length +
+                            <Text
+                              fontColor="#14406c"
+                              fontSize="21px"
+                              marginTop="20px"
+                            >
+                              합계&nbsp;
+                              {`(${
+                                assignment1.filter((act) => act.p_status === 1)
+                                  .length +
                                 assignment2.filter((act) => act.p_status === 1)
                                   .length +
                                 assignment3.filter((act) => act.p_status === 1)
                                   .length +
                                 assignment4.filter((act) => act.p_status === 1)
-                                  .length) /
-                                (assignment1.length +
-                                  assignment2.length +
-                                  assignment3.length +
-                                  assignment4.length)) *
-                                100
-                            )}%`}
-                          </Text>
-                        </Container>
-                      </div>
+                                  .length
+                              } / ${
+                                assignment1.length +
+                                assignment2.length +
+                                assignment3.length +
+                                assignment4.length
+                              }) ${parseInt(
+                                ((assignment1.filter(
+                                  (act) => act.p_status === 1
+                                ).length +
+                                  assignment2.filter(
+                                    (act) => act.p_status === 1
+                                  ).length +
+                                  assignment3.filter(
+                                    (act) => act.p_status === 1
+                                  ).length +
+                                  assignment4.filter(
+                                    (act) => act.p_status === 1
+                                  ).length) /
+                                  (assignment1.length +
+                                    assignment2.length +
+                                    assignment3.length +
+                                    assignment4.length)) *
+                                  100
+                              )}%`}
+                            </Text>
+                          </Container>
+                        </div>
+                      )}
                     </Container>
                   </Container>
-                  <Text marginTop="30px" fontColor="#14406c" fontSize="28px">
+                  <Text
+                    marginTop="30px"
+                    fontColor="#14406c"
+                    fontSize={isMobile ? "22px" : "28px"}
+                  >
                     과제별 공약 이행도
                   </Text>
                   <Container
                     height="80px"
                     className="assignment1Progress"
+                    width={isMobile ? "90%" : "100%"}
                     fd="column"
                     horizontalAlign="flex-start"
                     verticalAlign="flex-start"
                     marginTop="10px"
                   >
-                    <Text fontSize="21px" fontColor="#14406c">
+                    <Text
+                      fontSize={isMobile ? "16px" : "21px"}
+                      fontColor="#14406c"
+                      marginLeft="10px"
+                    >
                       과제1 동아리와 총동연을 밀접하게
                     </Text>
                     <Container
@@ -539,12 +621,23 @@ function Main() {
                           position="absolute"
                           className="progressBar-content"
                           backgroundColor="#a8bec9"
-                          width={`${
-                            (1000 *
-                              assignment1.filter((act) => act.p_status === 1)
-                                .length) /
-                            assignment1.length
-                          }px`}
+                          width={
+                            isMobile
+                              ? `${
+                                  (100 *
+                                    assignment1.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment1.length
+                                }%`
+                              : `${
+                                  (1000 *
+                                    assignment1.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment1.length
+                                }px`
+                          }
                         >
                           <Text
                             fontColor="#14406c"
@@ -557,69 +650,78 @@ function Main() {
                           )}%`}</Text>
                         </Container>
                       </Container>
-                      <div
-                        className="subProgress"
-                        style={{ width: "360px", height: "280px" }}
-                      >
-                        <Container fd="column" horizontalAlign="flex-start">
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            fontFamily="SeoulLight"
-                            marginTop="15px"
-                          >
-                            과제1 동아리와 총동연을 밀접하게
-                          </Text>
-                          {assignment1.map((act, index) => (
-                            <Container key={act.p_id}>
-                              <Container horizontalAlign="flex-start">
-                                <Text
-                                  marginLeft="10px"
-                                  fontSize="18px"
-                                  fontFamily="SeoulLight"
-                                >
-                                  행동{index + 1}&nbsp;
-                                </Text>
-                                <Text fontSize="18px" fontFamily="SeoulLight">
-                                  {act.p_name}
-                                </Text>
+                      {isMobile ? (
+                        <></>
+                      ) : (
+                        <div
+                          className="subProgress"
+                          style={{ width: "360px", height: "280px" }}
+                        >
+                          <Container fd="column" horizontalAlign="flex-start">
+                            <Text
+                              fontSize="21px"
+                              fontColor="#14406c"
+                              fontFamily="SeoulLight"
+                              marginTop="15px"
+                            >
+                              과제1 동아리와 총동연을 밀접하게
+                            </Text>
+                            {assignment1.map((act, index) => (
+                              <Container key={act.p_id}>
+                                <Container horizontalAlign="flex-start">
+                                  <Text
+                                    marginLeft="10px"
+                                    fontSize="18px"
+                                    fontFamily="SeoulLight"
+                                  >
+                                    행동{index + 1}&nbsp;
+                                  </Text>
+                                  <Text fontSize="18px" fontFamily="SeoulLight">
+                                    {act.p_name}
+                                  </Text>
+                                </Container>
+                                <Container width="50px">
+                                  {act.p_status ? (
+                                    <img
+                                      src={pledge_checked}
+                                      alt=""
+                                      height="35px"
+                                      style={{
+                                        marginLeft: "5px",
+                                        marginTop: "-5px",
+                                      }}
+                                    />
+                                  ) : (
+                                    <img
+                                      src={pledge_checkbox}
+                                      alt=""
+                                      height="30px"
+                                    />
+                                  )}
+                                </Container>
                               </Container>
-                              <Container width="50px">
-                                {act.p_status ? (
-                                  <img
-                                    src={pledge_checked}
-                                    alt=""
-                                    height="35px"
-                                    style={{
-                                      marginLeft: "5px",
-                                      marginTop: "-5px",
-                                    }}
-                                  />
-                                ) : (
-                                  <img
-                                    src={pledge_checkbox}
-                                    alt=""
-                                    height="30px"
-                                  />
-                                )}
-                              </Container>
-                            </Container>
-                          ))}
-                        </Container>
-                        <div className="subProgress-downarrow" />
-                        <div className="subProgress-downarrow-cover" />
-                      </div>
+                            ))}
+                          </Container>
+                          <div className="subProgress-downarrow" />
+                          <div className="subProgress-downarrow-cover" />
+                        </div>
+                      )}
                     </Container>
                   </Container>
                   <Container
                     height="80px"
                     className="assignment2Progress"
+                    width={isMobile ? "90%" : "100%"}
                     fd="column"
                     horizontalAlign="flex-start"
                     verticalAlign="flex-start"
                     marginTop="10px"
                   >
-                    <Text fontSize="21px" fontColor="#14406c">
+                    <Text
+                      fontSize={isMobile ? "16px" : "21px"}
+                      fontColor="#14406c"
+                      marginLeft="10px"
+                    >
                       과제2 분과 살리기
                     </Text>
                     <Container
@@ -638,12 +740,23 @@ function Main() {
                           position="absolute"
                           className="progressBar-content"
                           backgroundColor="#a8bec9"
-                          width={`${
-                            (1000 *
-                              assignment2.filter((act) => act.p_status === 1)
-                                .length) /
-                            assignment2.length
-                          }px`}
+                          width={
+                            isMobile
+                              ? `${
+                                  (100 *
+                                    assignment2.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment2.length
+                                }%`
+                              : `${
+                                  (1000 *
+                                    assignment2.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment2.length
+                                }px`
+                          }
                         >
                           <Text
                             fontColor="#14406c"
@@ -656,69 +769,78 @@ function Main() {
                           )}%`}</Text>
                         </Container>
                       </Container>
-                      <div
-                        className="subProgress-big"
-                        style={{ width: "460px", height: "200px" }}
-                      >
-                        <Container fd="column" horizontalAlign="flex-start">
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            fontFamily="SeoulLight"
-                            marginTop="15px"
-                          >
-                            과제2 분과 살리기
-                          </Text>
-                          {assignment2.map((act, index) => (
-                            <Container key={act.p_id}>
-                              <Container horizontalAlign="flex-start">
-                                <Text
-                                  marginLeft="10px"
-                                  fontSize="18px"
-                                  fontFamily="SeoulLight"
-                                >
-                                  행동{index + 1}&nbsp;
-                                </Text>
-                                <Text fontSize="18px" fontFamily="SeoulLight">
-                                  {act.p_name}
-                                </Text>
+                      {isMobile ? (
+                        <></>
+                      ) : (
+                        <div
+                          className="subProgress-big"
+                          style={{ width: "460px", height: "200px" }}
+                        >
+                          <Container fd="column" horizontalAlign="flex-start">
+                            <Text
+                              fontSize="21px"
+                              fontColor="#14406c"
+                              fontFamily="SeoulLight"
+                              marginTop="15px"
+                            >
+                              과제2 분과 살리기
+                            </Text>
+                            {assignment2.map((act, index) => (
+                              <Container key={act.p_id}>
+                                <Container horizontalAlign="flex-start">
+                                  <Text
+                                    marginLeft="10px"
+                                    fontSize="18px"
+                                    fontFamily="SeoulLight"
+                                  >
+                                    행동{index + 1}&nbsp;
+                                  </Text>
+                                  <Text fontSize="18px" fontFamily="SeoulLight">
+                                    {act.p_name}
+                                  </Text>
+                                </Container>
+                                <Container width="50px">
+                                  {act.p_status ? (
+                                    <img
+                                      src={pledge_checked}
+                                      alt=""
+                                      height="35px"
+                                      style={{
+                                        marginLeft: "5px",
+                                        marginTop: "-5px",
+                                      }}
+                                    />
+                                  ) : (
+                                    <img
+                                      src={pledge_checkbox}
+                                      alt=""
+                                      height="30px"
+                                    />
+                                  )}
+                                </Container>
                               </Container>
-                              <Container width="50px">
-                                {act.p_status ? (
-                                  <img
-                                    src={pledge_checked}
-                                    alt=""
-                                    height="35px"
-                                    style={{
-                                      marginLeft: "5px",
-                                      marginTop: "-5px",
-                                    }}
-                                  />
-                                ) : (
-                                  <img
-                                    src={pledge_checkbox}
-                                    alt=""
-                                    height="30px"
-                                  />
-                                )}
-                              </Container>
-                            </Container>
-                          ))}
-                        </Container>
-                        <div className="subProgress-big-downarrow" />
-                        <div className="subProgress-big-downarrow-cover" />
-                      </div>
+                            ))}
+                          </Container>
+                          <div className="subProgress-big-downarrow" />
+                          <div className="subProgress-big-downarrow-cover" />
+                        </div>
+                      )}
                     </Container>
                   </Container>
                   <Container
                     height="80px"
                     className="assignment2Progress"
+                    width={isMobile ? "90%" : "100%"}
                     fd="column"
                     horizontalAlign="flex-start"
                     verticalAlign="flex-start"
                     marginTop="10px"
                   >
-                    <Text fontSize="21px" fontColor="#14406c">
+                    <Text
+                      fontSize={isMobile ? "16px" : "21px"}
+                      fontColor="#14406c"
+                      marginLeft="10px"
+                    >
                       과제3 동아리 알리기
                     </Text>
                     <Container
@@ -737,12 +859,23 @@ function Main() {
                           position="absolute"
                           className="progressBar-content"
                           backgroundColor="#a8bec9"
-                          width={`${
-                            (1000 *
-                              assignment3.filter((act) => act.p_status === 1)
-                                .length) /
-                            assignment3.length
-                          }px`}
+                          width={
+                            isMobile
+                              ? `${
+                                  (100 *
+                                    assignment3.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment3.length
+                                }%`
+                              : `${
+                                  (1000 *
+                                    assignment3.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment3.length
+                                }px`
+                          }
                         >
                           <Text
                             fontColor="#14406c"
@@ -755,69 +888,78 @@ function Main() {
                           )}%`}</Text>
                         </Container>
                       </Container>
-                      <div
-                        className="subProgress"
-                        style={{ width: "360px", height: "200px" }}
-                      >
-                        <Container fd="column" horizontalAlign="flex-start">
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            marginTop="15px"
-                            fontFamily="SeoulLight"
-                          >
-                            과제3 동아리 알리기
-                          </Text>
-                          {assignment3.map((act, index) => (
-                            <Container key={act.p_id}>
-                              <Container horizontalAlign="flex-start">
-                                <Text
-                                  marginLeft="10px"
-                                  fontSize="18px"
-                                  fontFamily="SeoulLight"
-                                >
-                                  행동{index + 1}&nbsp;
-                                </Text>
-                                <Text fontSize="18px" fontFamily="SeoulLight">
-                                  {act.p_name}
-                                </Text>
+                      {isMobile ? (
+                        <></>
+                      ) : (
+                        <div
+                          className="subProgress"
+                          style={{ width: "360px", height: "200px" }}
+                        >
+                          <Container fd="column" horizontalAlign="flex-start">
+                            <Text
+                              fontSize="21px"
+                              fontColor="#14406c"
+                              marginTop="15px"
+                              fontFamily="SeoulLight"
+                            >
+                              과제3 동아리 알리기
+                            </Text>
+                            {assignment3.map((act, index) => (
+                              <Container key={act.p_id}>
+                                <Container horizontalAlign="flex-start">
+                                  <Text
+                                    marginLeft="10px"
+                                    fontSize="18px"
+                                    fontFamily="SeoulLight"
+                                  >
+                                    행동{index + 1}&nbsp;
+                                  </Text>
+                                  <Text fontSize="18px" fontFamily="SeoulLight">
+                                    {act.p_name}
+                                  </Text>
+                                </Container>
+                                <Container width="50px">
+                                  {act.p_status ? (
+                                    <img
+                                      src={pledge_checked}
+                                      alt=""
+                                      height="35px"
+                                      style={{
+                                        marginLeft: "5px",
+                                        marginTop: "-5px",
+                                      }}
+                                    />
+                                  ) : (
+                                    <img
+                                      src={pledge_checkbox}
+                                      alt=""
+                                      height="30px"
+                                    />
+                                  )}
+                                </Container>
                               </Container>
-                              <Container width="50px">
-                                {act.p_status ? (
-                                  <img
-                                    src={pledge_checked}
-                                    alt=""
-                                    height="35px"
-                                    style={{
-                                      marginLeft: "5px",
-                                      marginTop: "-5px",
-                                    }}
-                                  />
-                                ) : (
-                                  <img
-                                    src={pledge_checkbox}
-                                    alt=""
-                                    height="30px"
-                                  />
-                                )}
-                              </Container>
-                            </Container>
-                          ))}
-                        </Container>
-                        <div className="subProgress-downarrow" />
-                        <div className="subProgress-downarrow-cover" />
-                      </div>
+                            ))}
+                          </Container>
+                          <div className="subProgress-downarrow" />
+                          <div className="subProgress-downarrow-cover" />
+                        </div>
+                      )}
                     </Container>
                   </Container>
                   <Container
                     height="80px"
                     className="assignment2Progress"
+                    width={isMobile ? "90%" : "100%"}
                     fd="column"
                     horizontalAlign="flex-start"
                     verticalAlign="flex-start"
                     marginTop="10px"
                   >
-                    <Text fontSize="21px" fontColor="#14406c">
+                    <Text
+                      fontSize={isMobile ? "16px" : "21px"}
+                      fontColor="#14406c"
+                      marginLeft="10px"
+                    >
                       과제4 동아리 활동성 증진
                     </Text>
                     <Container
@@ -836,12 +978,23 @@ function Main() {
                           position="absolute"
                           className="progressBar-content"
                           backgroundColor="#a8bec9"
-                          width={`${
-                            (1000 *
-                              assignment4.filter((act) => act.p_status === 1)
-                                .length) /
-                            assignment4.length
-                          }px`}
+                          width={
+                            isMobile
+                              ? `${
+                                  (100 *
+                                    assignment4.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment4.length
+                                }%`
+                              : `${
+                                  (1000 *
+                                    assignment4.filter(
+                                      (act) => act.p_status === 1
+                                    ).length) /
+                                  assignment4.length
+                                }px`
+                          }
                         >
                           <Text
                             fontColor="#14406c"
@@ -854,58 +1007,62 @@ function Main() {
                           )}%`}</Text>
                         </Container>
                       </Container>
-                      <div
-                        className="subProgress"
-                        style={{ width: "360px", height: "200px" }}
-                      >
-                        <Container fd="column" horizontalAlign="flex-start">
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            marginTop="15px"
-                            fontFamily="SeoulLight"
-                          >
-                            과제4 동아리 활동성 증진
-                          </Text>
-                          {assignment4.map((act, index) => (
-                            <Container key={act.p_id}>
-                              <Container horizontalAlign="flex-start">
-                                <Text
-                                  marginLeft="10px"
-                                  fontSize="18px"
-                                  fontFamily="SeoulLight"
-                                >
-                                  행동{index + 1}&nbsp;
-                                </Text>
-                                <Text fontSize="18px" fontFamily="SeoulLight">
-                                  {act.p_name}
-                                </Text>
+                      {isMobile ? (
+                        <></>
+                      ) : (
+                        <div
+                          className="subProgress"
+                          style={{ width: "360px", height: "200px" }}
+                        >
+                          <Container fd="column" horizontalAlign="flex-start">
+                            <Text
+                              fontSize="21px"
+                              fontColor="#14406c"
+                              marginTop="15px"
+                              fontFamily="SeoulLight"
+                            >
+                              과제4 동아리 활동성 증진
+                            </Text>
+                            {assignment4.map((act, index) => (
+                              <Container key={act.p_id}>
+                                <Container horizontalAlign="flex-start">
+                                  <Text
+                                    marginLeft="10px"
+                                    fontSize="18px"
+                                    fontFamily="SeoulLight"
+                                  >
+                                    행동{index + 1}&nbsp;
+                                  </Text>
+                                  <Text fontSize="18px" fontFamily="SeoulLight">
+                                    {act.p_name}
+                                  </Text>
+                                </Container>
+                                <Container width="50px">
+                                  {act.p_status ? (
+                                    <img
+                                      src={pledge_checked}
+                                      alt=""
+                                      height="35px"
+                                      style={{
+                                        marginLeft: "5px",
+                                        marginTop: "-5px",
+                                      }}
+                                    />
+                                  ) : (
+                                    <img
+                                      src={pledge_checkbox}
+                                      alt=""
+                                      height="30px"
+                                    />
+                                  )}
+                                </Container>
                               </Container>
-                              <Container width="50px">
-                                {act.p_status ? (
-                                  <img
-                                    src={pledge_checked}
-                                    alt=""
-                                    height="35px"
-                                    style={{
-                                      marginLeft: "5px",
-                                      marginTop: "-5px",
-                                    }}
-                                  />
-                                ) : (
-                                  <img
-                                    src={pledge_checkbox}
-                                    alt=""
-                                    height="30px"
-                                  />
-                                )}
-                              </Container>
-                            </Container>
-                          ))}
-                        </Container>
-                        <div className="subProgress-downarrow" />
-                        <div className="subProgress-downarrow-cover" />
-                      </div>
+                            ))}
+                          </Container>
+                          <div className="subProgress-downarrow" />
+                          <div className="subProgress-downarrow-cover" />
+                        </div>
+                      )}
                     </Container>
                   </Container>
                 </>
@@ -1038,12 +1195,16 @@ function Main() {
           <Route exact path="/information/report">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 예결산 보고
               </Text>
             </Container>
@@ -1053,228 +1214,234 @@ function Main() {
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
             >
-              <Container className="reports-button-container" height="40px">
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    const list = document.querySelector(".report-sort-options");
-                    list.classList.toggle("invisible");
-                  }}
-                >
-                  <Text fontSize="21px" fontFamily="SeoulLight">
-                    정렬 방식 ▼
-                  </Text>
-                </Button>
-                <div className="report-sort-options invisible">
-                  <Container
-                    width="110px"
-                    height="90px"
+              {isMobile ? (
+                <></>
+              ) : (
+                <Container className="reports-button-container" height="40px">
+                  <Button
+                    width="120px"
                     backgroundColor="#14406c"
-                    fd="column"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      const list = document.querySelector(
+                        ".report-sort-options"
+                      );
+                      list.classList.toggle("invisible");
+                    }}
                   >
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".report-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(reportSearchResult)
-                        );
-                        setReportSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.f_name < b.f_name) return -1;
-                            else return 1;
-                          })
-                        );
-                      }}
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      정렬 방식 ▼
+                    </Text>
+                  </Button>
+                  <div className="report-sort-options invisible">
+                    <Container
+                      width="110px"
+                      height="90px"
+                      backgroundColor="#14406c"
+                      fd="column"
                     >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".report-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(reportSearchResult)
-                        );
-                        setReportSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.f_date < b.f_date) return 1;
-                            if (a.f_date === b.f_date) return 0;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      최근
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".report-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(reportSearchResult)
-                        );
-                        setReportSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.f_date > b.f_date) return 1;
-                            if (a.f_date === b.f_date) return 0;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      오래된
-                    </Button>
-                  </Container>
-                </div>
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    const list = document.querySelector(
-                      ".report-search-options"
-                    );
-                    list.classList.toggle("invisible");
-                  }}
-                >
-                  <Text fontSize="21px" fontFamily="SeoulLight">
-                    검색 방식 ▼
-                  </Text>
-                </Button>
-                <div className="report-search-options invisible">
-                  <Container
-                    width="110px"
-                    height="60px"
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".report-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(reportSearchResult)
+                          );
+                          setReportSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.f_name < b.f_name) return -1;
+                              else return 1;
+                            })
+                          );
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".report-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(reportSearchResult)
+                          );
+                          setReportSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.f_date < b.f_date) return 1;
+                              if (a.f_date === b.f_date) return 0;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        최근
+                      </Button>
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".report-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(reportSearchResult)
+                          );
+                          setReportSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.f_date > b.f_date) return 1;
+                              if (a.f_date === b.f_date) return 0;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        오래된
+                      </Button>
+                    </Container>
+                  </div>
+                  <Button
+                    width="120px"
                     backgroundColor="#14406c"
-                    fd="column"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      const list = document.querySelector(
+                        ".report-search-options"
+                      );
+                      list.classList.toggle("invisible");
+                    }}
                   >
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".report-search-options"
-                        );
-                        list.classList.toggle("invisible");
-                        setSearchOption(0);
-                      }}
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색 방식 ▼
+                    </Text>
+                  </Button>
+                  <div className="report-search-options invisible">
+                    <Container
+                      width="110px"
+                      height="60px"
+                      backgroundColor="#14406c"
+                      fd="column"
                     >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".report-search-options"
-                        );
-                        list.classList.toggle("invisible");
-                        setSearchOption(1);
-                      }}
-                    >
-                      날짜
-                    </Button>
-                  </Container>
-                </div>
-                <input
-                  type="text"
-                  placeholder="검색어를 입력하세요."
-                  style={{
-                    width: "435px",
-                    height: "35px",
-                    border: "2px solid #14406c",
-                    borderRadius: "10px",
-                    fontSize: "21px",
-                    fontFamily: "SeoulLight",
-                    paddingLeft: "10px",
-                  }}
-                  value={searchStr1}
-                  onChange={(e) => {
-                    setSearchStr1(e.target.value);
-                  }}
-                />
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginLeft="15px"
-                  onClick={() => {
-                    setReportSearchResult(() => {
-                      switch (searchOption) {
-                        case 0: // title
-                          return reports.filter((report) =>
-                            report.f_name.includes(searchStr1)
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".report-search-options"
                           );
-                        case 1: // date
-                          return reports.filter((report) =>
-                            report.f_date.slice(0, 10).includes(searchStr1)
+                          list.classList.toggle("invisible");
+                          setSearchOption(0);
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".report-search-options"
                           );
-                        default:
-                          return reports;
-                      }
-                    });
-                  }}
-                >
-                  <Text fontSize="21px" fontFamily="SeoulLight">
-                    검색
-                  </Text>
-                </Button>
-              </Container>
+                          list.classList.toggle("invisible");
+                          setSearchOption(1);
+                        }}
+                      >
+                        날짜
+                      </Button>
+                    </Container>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="검색어를 입력하세요."
+                    style={{
+                      width: "435px",
+                      height: "35px",
+                      border: "2px solid #14406c",
+                      borderRadius: "10px",
+                      fontSize: "21px",
+                      fontFamily: "SeoulLight",
+                      paddingLeft: "10px",
+                    }}
+                    value={searchStr1}
+                    onChange={(e) => {
+                      setSearchStr1(e.target.value);
+                    }}
+                  />
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginLeft="15px"
+                    onClick={() => {
+                      setReportSearchResult(() => {
+                        switch (searchOption) {
+                          case 0: // title
+                            return reports.filter((report) =>
+                              report.f_name.includes(searchStr1)
+                            );
+                          case 1: // date
+                            return reports.filter((report) =>
+                              report.f_date.slice(0, 10).includes(searchStr1)
+                            );
+                          default:
+                            return reports;
+                        }
+                      });
+                    }}
+                  >
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색
+                    </Text>
+                  </Button>
+                </Container>
+              )}
               <Container
                 className="reports-contents-container"
                 fd="column"
@@ -1287,6 +1454,7 @@ function Main() {
                   .map((report) => (
                     <Container
                       className="report-item"
+                      width="100%"
                       height="75px"
                       horizontalAlign="flex-start"
                       marginTop="20px"
@@ -1299,7 +1467,10 @@ function Main() {
                         verticalAlign="flex-start"
                         marginLeft="30px"
                       >
-                        <Text fontSize="21px" fontFamily="SeoulLight">
+                        <Text
+                          fontSize={isMobile ? "2.2vmax" : "20px"}
+                          fontFamily="SeoulLight"
+                        >
                           {report.f_name}
                         </Text>
                         <Container
@@ -1309,7 +1480,7 @@ function Main() {
                         >
                           <Text
                             fontColor="grey"
-                            fontSize="18px"
+                            fontSize={isMobile ? "1.3vmax" : "20px"}
                             fontFamily="SeoulLight"
                           >
                             {report.f_date.slice(0, 10)}
@@ -1325,53 +1496,55 @@ function Main() {
                           ></div>
                           <Text
                             fontColor="grey"
-                            fontSize="18px"
+                            fontSize={isMobile ? "1.3vmax" : "20px"}
                             fontFamily="SeoulLight"
                           >
                             관리자
                           </Text>
                         </Container>
                       </Container>
-                      <Button
-                        backgroundColor="white"
-                        width="75px"
-                        height="20px"
-                        onClick={() => {
-                          if (isLoaded) {
-                            openFile(report.f_originalname);
-                          }
-                        }}
-                      >
-                        <Container width="75px">
-                          <Text fontSize="21px" fontColor="#14406c" underline>
-                            바로 보기
-                          </Text>
-                        </Container>
-                      </Button>
-                      <Button
-                        marginLeft="50px"
-                        marginRight="50px"
-                        width="120px"
-                        height="20px"
-                        backgroundColor="white"
-                        onClick={() => {
-                          if (isLoaded) {
-                            downloadFile(report.f_originalname);
-                          }
-                        }}
-                      >
-                        <Container width="105px">
-                          <img src={pdf} alt="" height="30px" />
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            underline
-                            marginLeft="5px"
-                          >
-                            다운로드
-                          </Text>
-                        </Container>
-                      </Button>
+                      <Container horizontalAlign="flex-end">
+                        <Button
+                          backgroundColor="white"
+                          height="50%"
+                          onClick={() => {
+                            if (isLoaded) {
+                              openFile(report.f_originalname);
+                            }
+                          }}
+                          font="SeoulLight"
+                          fontSize={isMobile ? "12px" : "20px"}
+                          fontColor="#14406c"
+                          padding="0"
+                          marginTop="10px"
+                          width={!isMobile ? "100px" : ""}
+                        >
+                          바로 보기
+                        </Button>
+                        <Button
+                          height="50%"
+                          backgroundColor="white"
+                          fontSize={isMobile ? "11px" : "20px"}
+                          font="SeoulLight"
+                          fontColor="#14406c"
+                          padding="0"
+                          width={!isMobile ? "100px" : ""}
+                          marginRight={!isMobile ? "30px" : ""}
+                          onClick={() => {
+                            if (isLoaded) {
+                              downloadFile(report.f_originalname);
+                            }
+                          }}
+                        >
+                          <img
+                            src={pdf}
+                            alt=""
+                            height={isMobile ? "20px" : "30px"}
+                            style={{ display: "inline" }}
+                          />
+                          다운로드
+                        </Button>
+                      </Container>
                     </Container>
                   ))}
               </Container>
@@ -1381,7 +1554,7 @@ function Main() {
                   height="20px"
                   backgroundColor="white"
                   fontColor="#14406c"
-                  fontSize="20px"
+                  fontSize={isMobile ? "12px" : "20px"}
                   font="SeoulLight"
                   onClick={() => {
                     if (pageNum === 0) {
@@ -1400,7 +1573,15 @@ function Main() {
                     height="20px"
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize={pageNum === item ? "20px" : "14px"}
+                    fontSize={
+                      isMobile
+                        ? pageNum === item
+                          ? "16px"
+                          : "12px"
+                        : pageNum === item
+                        ? "20px"
+                        : "14px"
+                    }
                     font="SeoulLight"
                     key={item}
                     onClick={() => {
@@ -1418,7 +1599,7 @@ function Main() {
                   height="20px"
                   backgroundColor="white"
                   fontColor="#14406c"
-                  fontSize="20px"
+                  fontSize={isMobile ? "12px" : "20px"}
                   font="SeoulLight"
                   onClick={() => {
                     if (pageNum === parseInt(reportSearchResult.length / 10)) {
@@ -1437,12 +1618,16 @@ function Main() {
           <Route exact path="/information/meetinglog">
             <Container
               height="40px"
-              marginTop="80px"
-              marginLeft="20px"
-              width="1000px"
+              marginTop={isMobile ? "20px" : "80px"}
+              width={isMobile ? "100%" : "1000px"}
+              paddingLeft={isMobile ? "" : "10px"}
               horizontalAlign="left"
             >
-              <Text fontColor="#14406c" fontSize="32px">
+              <Text
+                fontColor="#14406c"
+                fontSize={isMobile ? "18px" : "32px"}
+                marginLeft="10px"
+              >
                 회의록
               </Text>
             </Container>
@@ -1452,227 +1637,234 @@ function Main() {
               fd="column"
               horizontalAlign="left"
               verticalAlign="flex-start"
-              paddingLeft="30px"
-              paddingRight="30px"
-              paddingTop="30px"
-              marginTop="30px"
-              width="1000px"
+              paddingLeft={isMobile ? "" : "30px"}
+              paddingRight={isMobile ? "" : "30px"}
+              paddingTop={isMobile ? "" : "30px"}
+              marginTop={isMobile ? "" : "30px"}
+              width={isMobile ? "100%" : "1000px"}
             >
-              <Container className="meetinglog-button-container" height="40px">
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    const list = document.querySelector(
-                      ".meetinglogs-sort-options"
-                    );
-                    list.classList.toggle("invisible");
-                  }}
+              {isMobile ? (
+                <></>
+              ) : (
+                <Container
+                  className="meetinglog-button-container"
+                  height="40px"
                 >
-                  <Text fontSize="21px" fontFamily="SeoulLight">
-                    정렬 방식 ▼
-                  </Text>
-                </Button>
-                <div className="meetinglogs-sort-options invisible">
-                  <Container
-                    width="110px"
-                    height="90px"
+                  <Button
+                    width="120px"
                     backgroundColor="#14406c"
-                    fd="column"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      const list = document.querySelector(
+                        ".meetinglogs-sort-options"
+                      );
+                      list.classList.toggle("invisible");
+                    }}
                   >
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".meetinglogs-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(meetinglogsSearchResult)
-                        );
-                        setMeetinglogsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.f_name < b.f_name) return -1;
-                            else return 1;
-                          })
-                        );
-                      }}
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      정렬 방식 ▼
+                    </Text>
+                  </Button>
+                  <div className="meetinglogs-sort-options invisible">
+                    <Container
+                      width="110px"
+                      height="90px"
+                      backgroundColor="#14406c"
+                      fd="column"
                     >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".meetinglogs-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(meetinglogsSearchResult)
-                        );
-                        setMeetinglogsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.f_date < b.f_date) return 1;
-                            if (a.f_date === b.f_date) return 0;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      최근
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        const list = document.querySelector(
-                          ".meetinglogs-sort-options"
-                        );
-                        list.classList.toggle("invisible");
-                        const tmp = JSON.parse(
-                          JSON.stringify(meetinglogsSearchResult)
-                        );
-                        setMeetinglogsSearchResult(
-                          tmp.sort((a, b) => {
-                            if (a.f_date > b.f_date) return 1;
-                            if (a.f_date === b.f_date) return 0;
-                            else return -1;
-                          })
-                        );
-                      }}
-                    >
-                      오래된
-                    </Button>
-                  </Container>
-                </div>
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginRight="15px"
-                  onClick={() => {
-                    document
-                      .querySelector(".meetinglogs-search-options")
-                      .classList.toggle("invisible");
-                  }}
-                >
-                  <Text fontSize="21px" fontFamily="SeoulLight">
-                    검색 방식 ▼
-                  </Text>
-                </Button>
-                <div className="meetinglogs-search-options invisible">
-                  <Container
-                    width="110px"
-                    height="60px"
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".meetinglogs-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(meetinglogsSearchResult)
+                          );
+                          setMeetinglogsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.f_name < b.f_name) return -1;
+                              else return 1;
+                            })
+                          );
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".meetinglogs-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(meetinglogsSearchResult)
+                          );
+                          setMeetinglogsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.f_date < b.f_date) return 1;
+                              if (a.f_date === b.f_date) return 0;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        최근
+                      </Button>
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          const list = document.querySelector(
+                            ".meetinglogs-sort-options"
+                          );
+                          list.classList.toggle("invisible");
+                          const tmp = JSON.parse(
+                            JSON.stringify(meetinglogsSearchResult)
+                          );
+                          setMeetinglogsSearchResult(
+                            tmp.sort((a, b) => {
+                              if (a.f_date > b.f_date) return 1;
+                              if (a.f_date === b.f_date) return 0;
+                              else return -1;
+                            })
+                          );
+                        }}
+                      >
+                        오래된
+                      </Button>
+                    </Container>
+                  </div>
+                  <Button
+                    width="120px"
                     backgroundColor="#14406c"
-                    fd="column"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginRight="15px"
+                    onClick={() => {
+                      document
+                        .querySelector(".meetinglogs-search-options")
+                        .classList.toggle("invisible");
+                    }}
                   >
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        document
-                          .querySelector(".meetinglogs-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(0);
-                      }}
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색 방식 ▼
+                    </Text>
+                  </Button>
+                  <div className="meetinglogs-search-options invisible">
+                    <Container
+                      width="110px"
+                      height="60px"
+                      backgroundColor="#14406c"
+                      fd="column"
                     >
-                      제목
-                    </Button>
-                    <Button
-                      backgroundColor="white"
-                      fontColor="#14406c"
-                      hoverBackgrounColor="#14406c"
-                      hoverFontColor="white"
-                      font="SeoulLight"
-                      fontSize="18px"
-                      onClick={() => {
-                        document
-                          .querySelector(".meetinglogs-search-options")
-                          .classList.toggle("invisible");
-                        setSearchOption(1);
-                      }}
-                    >
-                      날짜
-                    </Button>
-                  </Container>
-                </div>
-                <input
-                  type="text"
-                  placeholder="검색어를 입력하세요."
-                  style={{
-                    width: "435px",
-                    height: "35px",
-                    border: "2px solid #14406c",
-                    borderRadius: "10px",
-                    fontSize: "21px",
-                    fontFamily: "SeoulLight",
-                    paddingLeft: "10px",
-                  }}
-                  value={searchStr2}
-                  onChange={(e) => {
-                    setSearchStr2(e.target.value);
-                  }}
-                />
-                <Button
-                  width="120px"
-                  backgroundColor="#14406c"
-                  border="2px solid #14406c"
-                  borderRadius="10px"
-                  fontColor="white"
-                  hoverBackgrounColor="white"
-                  hoverFontColor="#14406c"
-                  marginLeft="15px"
-                  onClick={() => {
-                    setMeetinglogsSearchResult(() => {
-                      switch (searchOption) {
-                        case 0: // title
-                          return meetinglogs.filter((log) =>
-                            log.f_name.includes(searchStr2)
-                          );
-                        case 1: //date
-                          return meetinglogs.filter((log) =>
-                            log.f_date.slice(0, 10).includes(searchStr2)
-                          );
-                        default:
-                          return meetinglogs;
-                      }
-                    });
-                  }}
-                >
-                  <Text fontSize="21px" fontFamily="SeoulLight">
-                    검색
-                  </Text>
-                </Button>
-              </Container>
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          document
+                            .querySelector(".meetinglogs-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(0);
+                        }}
+                      >
+                        제목
+                      </Button>
+                      <Button
+                        backgroundColor="white"
+                        fontColor="#14406c"
+                        hoverBackgrounColor="#14406c"
+                        hoverFontColor="white"
+                        font="SeoulLight"
+                        fontSize="18px"
+                        onClick={() => {
+                          document
+                            .querySelector(".meetinglogs-search-options")
+                            .classList.toggle("invisible");
+                          setSearchOption(1);
+                        }}
+                      >
+                        날짜
+                      </Button>
+                    </Container>
+                  </div>
+                  <input
+                    type="text"
+                    placeholder="검색어를 입력하세요."
+                    style={{
+                      width: "435px",
+                      height: "35px",
+                      border: "2px solid #14406c",
+                      borderRadius: "10px",
+                      fontSize: "21px",
+                      fontFamily: "SeoulLight",
+                      paddingLeft: "10px",
+                    }}
+                    value={searchStr2}
+                    onChange={(e) => {
+                      setSearchStr2(e.target.value);
+                    }}
+                  />
+                  <Button
+                    width="120px"
+                    backgroundColor="#14406c"
+                    border="2px solid #14406c"
+                    borderRadius="10px"
+                    fontColor="white"
+                    hoverBackgrounColor="white"
+                    hoverFontColor="#14406c"
+                    marginLeft="15px"
+                    onClick={() => {
+                      setMeetinglogsSearchResult(() => {
+                        switch (searchOption) {
+                          case 0: // title
+                            return meetinglogs.filter((log) =>
+                              log.f_name.includes(searchStr2)
+                            );
+                          case 1: //date
+                            return meetinglogs.filter((log) =>
+                              log.f_date.slice(0, 10).includes(searchStr2)
+                            );
+                          default:
+                            return meetinglogs;
+                        }
+                      });
+                    }}
+                  >
+                    <Text fontSize="21px" fontFamily="SeoulLight">
+                      검색
+                    </Text>
+                  </Button>
+                </Container>
+              )}
               <Container
                 className="meetinglogs-contents-container"
                 fd="column"
@@ -1685,6 +1877,7 @@ function Main() {
                   .map((meetinglog) => (
                     <Container
                       className="meetinglog-item"
+                      width="100%"
                       height="75px"
                       horizontalAlign="flex-start"
                       marginTop="20px"
@@ -1697,7 +1890,10 @@ function Main() {
                         verticalAlign="flex-start"
                         marginLeft="30px"
                       >
-                        <Text fontSize="21px" fontFamily="SeoulLight">
+                        <Text
+                          fontSize={isMobile ? "2.2vmax" : "20px"}
+                          fontFamily="SeoulLight"
+                        >
                           {meetinglog.f_name}
                         </Text>
                         <Container
@@ -1707,8 +1903,8 @@ function Main() {
                         >
                           <Text
                             fontColor="grey"
-                            fontSize="18px"
                             fontFamily="SeoulLight"
+                            fontSize={isMobile ? "1.3vmax" : "20px"}
                           >
                             {meetinglog.f_date.slice(0, 10)}
                           </Text>
@@ -1723,53 +1919,55 @@ function Main() {
                           ></div>
                           <Text
                             fontColor="grey"
-                            fontSize="18px"
+                            fontSize={isMobile ? "1.3vmax" : "20px"}
                             fontFamily="SeoulLight"
                           >
                             관리자
                           </Text>
                         </Container>
                       </Container>
-                      <Button
-                        backgroundColor="white"
-                        width="75px"
-                        height="20px"
-                        onClick={() => {
-                          if (isLoaded) {
-                            openFile(meetinglog.f_originalname);
-                          }
-                        }}
-                      >
-                        <Container width="75px">
-                          <Text fontSize="21px" fontColor="#14406c" underline>
-                            바로 보기
-                          </Text>
-                        </Container>
-                      </Button>
-                      <Button
-                        marginLeft="50px"
-                        marginRight="50px"
-                        width="120px"
-                        height="20px"
-                        backgroundColor="white"
-                        onClick={() => {
-                          if (isLoaded) {
-                            downloadFile(meetinglog.f_originalname);
-                          }
-                        }}
-                      >
-                        <Container width="105px">
-                          <img src={pdf} alt="" height="30px" />
-                          <Text
-                            fontSize="21px"
-                            fontColor="#14406c"
-                            underline
-                            marginLeft="5px"
-                          >
-                            다운로드
-                          </Text>
-                        </Container>
-                      </Button>
+                      <Container horizontalAlign="flex-end">
+                        <Button
+                          backgroundColor="white"
+                          height="50%"
+                          onClick={() => {
+                            if (isLoaded) {
+                              openFile(meetinglog.f_originalname);
+                            }
+                          }}
+                          font="SeoulLight"
+                          fontSize={isMobile ? "12px" : "20px"}
+                          fontColor="#14406c"
+                          padding="0"
+                          marginTop="10px"
+                          width={!isMobile ? "100px" : ""}
+                        >
+                          바로 보기
+                        </Button>
+                        <Button
+                          height="50%"
+                          backgroundColor="white"
+                          fontSize={isMobile ? "11px" : "20px"}
+                          font="SeoulLight"
+                          fontColor="#14406c"
+                          padding="0"
+                          width={!isMobile ? "100px" : ""}
+                          marginRight={!isMobile ? "30px" : ""}
+                          onClick={() => {
+                            if (isLoaded) {
+                              downloadFile(meetinglog.f_originalname);
+                            }
+                          }}
+                        >
+                          <img
+                            src={pdf}
+                            alt=""
+                            height={isMobile ? "20px" : "30px"}
+                            style={{ display: "inline" }}
+                          />
+                          다운로드
+                        </Button>
+                      </Container>
                     </Container>
                   ))}
               </Container>
@@ -1779,7 +1977,7 @@ function Main() {
                   height="20px"
                   backgroundColor="white"
                   fontColor="#14406c"
-                  fontSize="20px"
+                  fontSize={isMobile ? "12px" : "20px"}
                   font="SeoulLight"
                   onClick={() => {
                     if (pageNum === 0) {
@@ -1798,7 +1996,15 @@ function Main() {
                     height="20px"
                     backgroundColor="white"
                     fontColor="#14406c"
-                    fontSize={pageNum === item ? "20px" : "14px"}
+                    fontSize={
+                      isMobile
+                        ? pageNum === item
+                          ? "16px"
+                          : "12px"
+                        : pageNum === item
+                        ? "20px"
+                        : "14px"
+                    }
                     font="SeoulLight"
                     key={item}
                     onClick={() => {
@@ -1816,7 +2022,7 @@ function Main() {
                   height="20px"
                   backgroundColor="white"
                   fontColor="#14406c"
-                  fontSize="20px"
+                  fontSize={isMobile ? "12px" : "20px"}
                   font="SeoulLight"
                   onClick={() => {
                     if (
