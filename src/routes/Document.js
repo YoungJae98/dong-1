@@ -70,7 +70,12 @@ function Main() {
       });
   };
   const downloadFile = (name) => {
-    download(files[name], name);
+    try {
+      URL.createObjectURL(files[name]);
+      download(files[name], name);
+    } catch (error) {
+      alert("로딩중입니다.");
+    }
   };
   useEffect(() => {
     getFile();
